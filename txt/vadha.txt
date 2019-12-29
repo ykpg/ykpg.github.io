@@ -1,0 +1,492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 6.3.3.2 (Windows)"/>
+	<meta name="created" content="2019-11-20T12:25:53.365000000"/>
+	<meta name="changed" content="2019-11-20T12:26:16.687000000"/>
+	<style type="text/css">
+		@page { size: 8.5in 11in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><p style="margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<center>
+	<table width="547" cellpadding="7" cellspacing="0">
+		<col width="131"/>
+
+		<col width="132"/>
+
+		<col width="170"/>
+
+		<col width="57"/>
+
+		<tr>
+			<td colspan="4" width="531" height="10" bgcolor="#d9d9d9" style="background: #d9d9d9" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3111;
+				&#3112;&#3093;&#3149;&#3127;&#3108;&#3149;&#3120;&#3074; </span></font></span></font><font face="Gautami, serif"><font size="2" style="font-size: 10pt">-
+				7</font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;
+				&#3112;&#3093;&#3149;&#3127;&#3108;&#3149;&#3120;&#3074; </span></font></span></font><font face="Gautami, serif"><font size="2" style="font-size: 10pt">-
+				</font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3093;&#3126;&#3149;&#3119;&#3114;
+				&#3118;&#3129;&#3120;&#3149;&#3127;&#3135;</span></font></span></font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" bgcolor="#d9d9d9" style="background: #d9d9d9" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3112;&#3093;&#3149;&#3127;&#3108;&#3149;&#3120;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="132" bgcolor="#d9d9d9" style="background: #d9d9d9" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Gautami, serif"><font size="2" style="font-size: 10pt">7</font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;
+				&#3112;&#3093;&#3149;&#3127;&#3108;&#3149;&#3120;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="170" bgcolor="#d9d9d9" style="background: #d9d9d9" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3115;&#3122;&#3135;&#3108;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" bgcolor="#d9d9d9" style="background: #d9d9d9" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN"><b>&#3118;&#3074;&#3098;&#3135;</b></span></font></span></font><font face="Gautami, serif"><font size="2" style="font-size: 10pt"><b>/</b></font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN"><b>&#3098;&#3142;&#3105;&#3137;</b></span></font></span></font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3077;&#3126;&#3149;&#3125;&#3112;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3112;&#3120;&#3149;&#3125;&#3128;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3086;&#3093;&#3149;&#3093;&#3137;&#3125;
+				&#3128;&#3149;&#3108;&#3149;&#3120;&#3136; &#3128;&#3074;&#3108;&#3134;&#3112;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Picture 0" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3117;&#3120;&#3107;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3127;&#3149;&#3119;&#3118;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3148;&#3117;&#3134;&#3095;&#3149;&#3119;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image1" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="12" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3093;&#3139;&#3108;&#3149;&#3108;&#3135;&#3093;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3078;&#3126;&#3149;&#3122;&#3143;&#3127;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3120;&#3147;&#3129;&#3135;&#3107;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3094;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3086;&#3093;&#3149;&#3093;&#3137;&#3125;
+				&#3114;&#3137;&#3120;&#3137;&#3127; &#3128;&#3074;&#3108;&#3134;&#3112;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image2" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3139;&#3095;&#3126;&#3135;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3116;&#3149;&#3116;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;
+				&#3122;&#3143;&#3093; &#3125;&#3135;&#3105;&#3135;&#3114;&#3147;&#3125;&#3137;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3078;&#3120;&#3137;&#3110;&#3149;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3081;&#3108;&#3149;&#3108;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3074;&#3108;&#3147;&#3127;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image3" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3112;&#3120;&#3149;&#3125;&#3128;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3129;&#3128;&#3149;&#3108;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3093;&#3137;&#3103;&#3137;&#3074;&#3116;
+				&#3128;&#3148;&#3094;&#3149;&#3119;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image4" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3127;&#3149;&#3119;&#3118;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3098;&#3135;&#3108;&#3149;&#3108;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3074;&#3108;&#3147;&#3127;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image5" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3078;&#3126;&#3149;&#3122;&#3143;&#3127;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3149;&#3125;&#3134;&#3108;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3094;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3126;&#3134;&#3094;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3112;&#3120;&#3149;&#3125;&#3135;&#3125;&#3134;&#3129;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3137;&#3116;&#3149;&#3116;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3077;&#3112;&#3138;&#3120;&#3134;&#3111;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3137;&#3094;
+				&#3128;&#3074;&#3108;&#3147;&#3127;&#3118;&#3137;&#3122;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image6" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3081;&#3108;&#3149;&#3108;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3100;&#3149;&#3119;&#3143;&#3127;&#3149;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3117;&#3143;&#3110;&#3118;&#3137;&#3122;&#3137;</span></font></span></font><font face="Gautami, serif"><font size="2" style="font-size: 10pt">,
+				</font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3105;&#3135;&#3114;&#3147;&#3125;&#3137;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3129;&#3128;&#3149;&#3108;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3138;&#3122;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3112;&#3127;&#3149;&#3103;
+				&#3093;&#3127;&#3149;&#3103;&#3118;&#3137;&#3122;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="12" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3098;&#3135;&#3108;&#3149;&#3108;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3138;&#3120;&#3149;&#3125;&#3134;&#3127;&#3134;&#3105;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3149;&#3125;&#3134;&#3108;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3081;&#3108;&#3149;&#3108;&#3120;&#3134;&#3127;&#3134;&#3105;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3086;&#3093;&#3149;&#3093;&#3137;&#3125;
+				&#3128;&#3149;&#3108;&#3149;&#3120;&#3136; &#3128;&#3074;&#3108;&#3134;&#3112;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image7" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3126;&#3134;&#3094;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3126;&#3149;&#3120;&#3125;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3093;&#3123;&#3108;&#3149;&#3120;
+				&#3125;&#3144;&#3120;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3077;&#3112;&#3138;&#3120;&#3134;&#3111;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3111;&#3112;&#3135;&#3127;&#3149;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3100;&#3149;&#3119;&#3143;&#3127;&#3149;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3126;&#3108;&#3117;&#3135;&#3127;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3117;&#3143;&#3110;&#3118;&#3137;&#3122;&#3137;</span></font></span></font><font face="Gautami, serif"><font size="2" style="font-size: 10pt">,
+				</font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3105;&#3135;&#3114;&#3147;&#3125;&#3137;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="12" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3138;&#3122;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3138;&#3120;&#3149;&#3125;&#3134;&#3117;&#3134;&#3110;&#3149;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3128;&#3148;&#3117;&#3134;&#3095;&#3149;&#3119;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image8" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3138;&#3120;&#3149;&#3125;&#3134;&#3127;&#3134;&#3105;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3081;&#3108;&#3149;&#3108;&#3120;&#3134;&#3117;&#3134;&#3110;&#3149;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3149;&#3120;&#3143;&#3118;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image9" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3081;&#3108;&#3149;&#3108;&#3120;&#3134;&#3127;&#3134;&#3105;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3120;&#3143;&#3125;&#3108;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3105;&#3135;&#3114;&#3147;&#3125;&#3137;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3126;&#3149;&#3120;&#3125;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3077;&#3126;&#3149;&#3125;&#3112;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="12" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3111;&#3112;&#3135;&#3127;&#3149;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3117;&#3120;&#3107;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3126;&#3108;&#3117;&#3135;&#3127;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3093;&#3139;&#3108;&#3149;&#3108;&#3135;&#3093;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3114;&#3138;&#3120;&#3149;&#3125;&#3134;&#3117;&#3134;&#3110;&#3149;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3120;&#3147;&#3129;&#3135;&#3107;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3086;&#3093;&#3149;&#3093;&#3137;&#3125;
+				&#3114;&#3137;&#3120;&#3137;&#3127; &#3128;&#3074;&#3108;&#3134;&#3112;&#3118;&#3137;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<img src="img/correct.png" name="Image10" align="bottom" width="13" height="15" border="0"/>
+</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3081;&#3108;&#3149;&#3108;&#3120;&#3134;&#3117;&#3134;&#3110;&#3149;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3139;&#3095;&#3126;&#3135;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3118;&#3120;&#3107;&#3074;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="131" height="11" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3120;&#3143;&#3125;&#3108;&#3135;</span></font></span></font></p>
+			</td>
+			<td width="132" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3078;&#3120;&#3137;&#3110;&#3149;&#3120;</span></font></span></font></p>
+			</td>
+			<td width="170" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3117;&#3143;&#3110;&#3118;&#3137;&#3122;&#3137;</span></font></span></font><font face="Gautami, serif"><font size="2" style="font-size: 10pt">,
+				</font></font><font face="Mangal"><span lang="ar-SA"><font size="2" style="font-size: 10pt"><span lang="te-IN">&#3125;&#3135;&#3105;&#3135;&#3114;&#3147;&#3125;&#3137;&#3103;</span></font></span></font></p>
+			</td>
+			<td width="57" style="background: transparent" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="en-IN" align="center">
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+</body>
+</html>
