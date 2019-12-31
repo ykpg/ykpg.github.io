@@ -131,7 +131,7 @@ var showContent = function()
 		getPoints("csv/ppidaparti.csv",theRowNum,theColNum);
 		
 		$('#rightcol1').append('<h3>  మేలాపకము - కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
-		$('#rightcol1').append("<h3>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h3>' );   // show anchanga points
+		$('#rightcol1').append("<h2>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h2>' );   // show anchanga points
 		
 		
 		strTemp = '<table id="mytable"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';			// 1st table- table headings
