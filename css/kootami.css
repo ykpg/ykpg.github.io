@@ -28,19 +28,19 @@ article {
 }
 
 h1 {
-  	font-size: 0.8rem;
-  	margin: 0 0 0.75rem 0;
-  	color:#1B83B7;
+  font-size: 0.8rem;
+  margin: 0 0 0.75rem 0;
+  color:#1B83B7;
 }
 h2 {
-	font-size: 1.0rem;
-  	margin: 0 0 0.75rem 0;
-  	color:#1B83B7;
-  }
-h3 {
 	font-size: 0.8rem;
 	margin: 0 0 0.75rem 0;
 	color:#EE2C2C;
+  }
+h3 {
+  font-size: 1.0rem;
+  margin: 0 0 0.75rem 0;
+  color:#1B83B7;
 }
 
 /* Pattern styles */
@@ -48,16 +48,22 @@ h3 {
   background-color: #EDEDED;
   float: left;
   width: 20%;
-  padding: 10px;
 
 }
-#rightcol{
+#rightcol1 {
   background-color: #F4F4F4;
   float: left;
-  width:80%;
+  width:40%;
   padding: 10px;
 }
-
+#rightcol2 {
+  background-color: #F4F4F4;
+  float: left;
+  width:40%;
+  padding: 10px;
+  text-align: justify;
+  font-size: 0.8rem;
+}
 hr {
     border: 0;
     height: 1px;
@@ -113,25 +119,21 @@ select#girlstar{
 	
 	background-color: #9E0508; 
 	width: 90%;
-	padding: 4px;	
 }
 select#boystar{
 	
 	background-color: #5B59BA; 
 	width: 90%;
-	padding: 4px;	
 }
-select#girlpaadam{
+select#paadam1{
 	
 	background-color: #9E0508; 
 	width: 50%;
-	padding: 4px;	
 }
-select#boypaadam{
+select#paadam2{
 	
 	background-color: #5B59BA; 
 	width: 50%;
-	padding: 4px;	
 }
 
 
@@ -161,23 +163,22 @@ input[type="button"]:hover {
 
 }
 
-input#girldeg{
+input#gdeg{
 	
 	background-color: #9E0508; 
-	width: 60%;
+	width: 50%;
 	color: #fff;
 	padding: 4px;	
 	font-weight: bold;
 }
-input#boydeg{
+input#bdeg{
 	
 	background-color: #5B59BA; 
-	width: 60%;
+	width: 50%;
 	color: #fff;
 	padding: 4px;	
 	font-weight: bold;
 }
-
 ul {
     list-style-type: none;	
 	/*background: #A4D3EE	;	*/
