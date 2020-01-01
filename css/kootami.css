@@ -50,20 +50,13 @@ h3 {
   width: 20%;
 
 }
-#rightcol1 {
+#rightcol{
   background-color: #F4F4F4;
   float: left;
-  width:40%;
+  width:80%;
   padding: 10px;
 }
-#rightcol2 {
-  background-color: #F4F4F4;
-  float: left;
-  width:40%;
-  padding: 10px;
-  text-align: justify;
-  font-size: 0.8rem;
-}
+
 hr {
     border: 0;
     height: 1px;
