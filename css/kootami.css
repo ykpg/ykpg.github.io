@@ -65,6 +65,9 @@ hr {
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
+.form-dropdown{
+	-webkit-appearance: listbox !important;
+}
 form.myform {
 	margin: 0px auto;
 	font-size: 0.8rem;
