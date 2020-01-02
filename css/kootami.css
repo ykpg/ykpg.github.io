@@ -27,12 +27,12 @@ article {
   /*transform: translate(-50%, -50%); */
 }
 
-h1 {
-  	font-size: 0.8rem;
+h2 {
+  	font-size: 0.7rem;
   	margin: 0 0 0.75rem 0;
   	color:#1B83B7;
 }
-h2 {
+h1 {
 	font-size: 1.0rem;
   	margin: 0 0 0.75rem 0;
   	color:#1B83B7;
@@ -190,8 +190,11 @@ ul {
 }
 table {
   border-collapse: collapse;
-  width: 100%;
+  float: left;
+  margin-left: 40px;
+  width: 500px;
   font-size: 0.8rem;
+
 }
 
 th {
