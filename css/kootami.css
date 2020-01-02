@@ -1,32 +1,50 @@
-* {
-  box-sizing: border-box;
-}
-
-html, body, section, div {
-  height: 100%;
-}
-
-body { 
-  color: #000;
-  font-family: sans-serif;
-  font-size: 1.0rem;
-  line-height: 150%;
-  text-align: center;
-  /*text-shadow: 0 2px 2px #b6701e; */
-}
-
-section {
-  width: 100%;
-}
-article {
-  position: relative;
-  /*top: 10%;
-  left: 50%;	*/
-  padding: 1rem;
-  text-align: center;
-  /*transform: translate(-50%, -50%); */
-}
-
+html {
+	box-sizing: border-box;
+  }
+  *, *:before, *:after {
+	box-sizing: inherit;
+  }
+  
+  body {
+	margin: 10px;
+  }
+  
+  .wrapper {
+	margin: 0 0 20px 0;
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(5, 18%);
+	grid-template-rows: repeat(3,400px);
+	align-content: space-around;
+	justify-content: space-between;
+  }
+  
+  
+  
+  .box {
+	background-color: #fafafa;
+	color: #000;
+	border-radius: 3px;
+	padding: 5px;
+	font-size: 100%;
+  }
+  
+  .item1 {
+	grid-column: 1 / 2;
+	grid-row: 1 / 4;
+  }
+  
+  .item2 {
+	grid-column: 2 / 6;
+	grid-row: 1 / 4;
+	text-align: center;
+  }
+  
+  
+  
+  
+  
+ 
 h2 {
   	font-size: 0.7rem;
   	margin: 0 0 0.75rem 0;
@@ -41,22 +59,10 @@ h3 {
 	font-size: 0.8rem;
 	margin: 0 0 0.75rem 0;
 	color:#EE2C2C;
+	
 }
 
-/* Pattern styles */
-#leftcol {
-  background-color: #EDEDED;
-  float: left;
-  width: 20%;
-  padding: 10px;
 
-}
-#rightcol{
-  background-color: #F4F4F4;
-  float: left;
-  width:80%;
-  padding: 10px;
-}
 
 hr {
     border: 0;
@@ -75,9 +81,9 @@ form.myform {
 	border-radius: 5px;
 	background-color: #f4f4f4; 
 	padding: 10px;
-	width: 90%;
+	width: 80%;
 	text-align: center;
-	margin-top:10%;
+	margin-top:20px;
 }
 
 fieldset{
@@ -167,17 +173,18 @@ select#boypaadam{
 input#girldeg{
 	
 	background-color: #9E0508; 
-	width: 50%;
+	width: 40%;
 	color: #fff;
 	font-weight: bold;
 }
 input#boydeg{
 	
 	background-color: #5B59BA; 
-	width: 50%;
+	width: 40%;
 	color: #fff;	
 	font-weight: bold;
 }
+
 
 ul {
     list-style-type: none;	
@@ -188,15 +195,16 @@ ul {
 	padding: 10;
 	overflow: hidden;
 }
-table {
-  border-collapse: collapse;
-  float: left;
-  margin-left: 40px;
-  width: 500px;
-  font-size: 0.8rem;
 
+table {
+  border-collapse: collapse; 
+  margin-left: 200px;
+  width:600px;
+  font-size: 0.8rem;
 }
 
+
+  
 th {
   background-color: #6CA6CD;
   color: white;
@@ -214,15 +222,12 @@ td {
 tr {
 	color: black;
 }
-	
 
-#mytable tr:hover {
-	color:#39FC16;
-	background-color: black;
-	
+tbody tr:nth-child(even) {
+	background: #eee;
 }
-
-#mytable2 tr:hover {
+	
+table tr:hover {
 	color:#39FC16;
 	background-color: black;
 	
@@ -241,12 +246,6 @@ tr {
 }
 #starnum option {
     font-weight:normal;
-}
-
-
-
-tbody tr:nth-child(even) {
-  background: #eee;
 }
 
 
