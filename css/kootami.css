@@ -26,7 +26,7 @@ html {
 	color: #000;
 	border-radius: 3px;
 	padding: 5px;
-	font-size: 100%;
+	font-size: 0.8rem;
   }
   
   .item1 {
@@ -35,11 +35,18 @@ html {
   }
   
   .item2 {
-	grid-column: 2 / 6;
+	grid-column: 2 / 4;
 	grid-row: 1 / 4;
 	text-align: left;
   }
   
+  
+  .item3 {
+	grid-column: 4 / 6;
+	grid-row: 1 / 4;
+	text-align: left;
+	margin: 0 0 0.75rem 0;
+  }
   
   
   
@@ -57,7 +64,7 @@ h1 {
   }
 h3 {
 	font-size: 0.8rem;
-	margin: 10 0 0.75rem 10;
+	margin: 0 0 0.75rem 0;
 	color:#EE2C2C;
 	
 }
@@ -199,10 +206,20 @@ ul {
 	overflow: hidden;
 }
 
+ul.links{
+    list-style-type: none;	
+	background: rgb(247, 249, 250)	;	
+	font-size: 0.8rem;
+	letter-spacing: 1.4px;
+	text-align: center;
+	padding: 10px;
+	overflow: hidden;
+}
+
 table {
   border-collapse: collapse; 
   margin-left: 10px;
-  width:600px;
+  width:460px;
   font-size: 0.8rem;
 }
 
@@ -251,19 +268,25 @@ table tr:hover {
     font-weight:normal;
 }
 
-
-.minahaa {
+p{
 	font-size: 0.8rem;
 	margin: 0 0 0.75rem 0;
-	color:#0000F7;
+	color:#000;
+	text-align: justify;
+}
+.minahaa {
+	font-size: 0.9rem;
+	margin: 0 0 0.75rem 0;
+	color:rgb(26, 138, 69);
 	font-weight: bold;
 }
 
-.link {
+a.link {
 	color: #1D88EA; 
 	font-size: 0.7rem;
+	
 } 
-.link:hover {
+a.link:hover {
 	color: #104E8B; 
 	font-size: 0.7rem;
 } 
