@@ -12,11 +12,6 @@ let totalPoints = 0;
 let arrayResults = [];
 let goodPoints = 18;
 
-let strTemp ;			// general usage
-let bd = 0;
-let gd = 0;
-
-
 let girlNavamsa = 0;
 let boyNavamsa = 0;
 let girlRasiNum =0;
@@ -28,6 +23,7 @@ let boyNavakam = 0;
 let theRowNum = 0;
 let theColNum = 0;
 
+let strTemp ;			// general usage
 
 //var strTemp = "Aswini,Bharani,Kruttika,Rohini,Mrugasira,Ardra,Punarvasu,Pushyami,Aslesha,Makha,PoorvaPhalguni,UttaraPhalguni,Hasta,Chitta,Swati,Visakha,Anuradha,Jyeshta,Moola,PoorvaShaada,UttaraShaada,Sravana,Dhanishta,Satabhisha,PoorvaBhaadra,UttaraBhaadra,Revati";		
 strTemp = "అశ్వని,భరణి,కృత్తిక,రోహిణి,మృగశిర, ఆర్ద్ర,పునర్వసు,పుష్యమి,ఆశ్లేష,మఖ,పుబ్బ, ఉత్తర,హస్త,చిత్త,స్వాతి,విశాఖ,అనూరాధ,జ్యేష్ట,మూల,పూర్వాషాడ,ఉత్తరాషాడ,శ్రవణం,ధనిష్ట,శతభిషం,పూర్వాభాద్ర,ఉత్తరాభాద్ర,రేవతి";
@@ -120,20 +116,17 @@ $(document).ready(function()
 {	
 	showContent();
 	handleLink1();
-	handleLink2();
+	//handleLink2();
 	handleLink3();
 	handleLink4();
 	handleLink5();
-	handleLink6();
-	handleLink7();
-	handleLink8();
 	
 });
 
 var showContent = function() 
 {
 	
-	// Init. fill select boxes of nakshatra names
+	// for each loop to fill select boxes of nakshatra names
 	$.each(arrayNamesOfStars, function(val, text) 
 	{
             $('#girlstar').append( $('<option></option>').val(val).html(text) );
@@ -147,8 +140,10 @@ var showContent = function()
 	$('#bt').click( function () 
 	{		
 		prepareData();
-		$(".item2").empty();			
+		
+		$(".item2").empty();	
 		$('.item2').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
+		
 		
 		//Table1 Starts
 		strTemp = '<table id="mytable1"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';			// 1st table- table headings
@@ -323,9 +318,10 @@ var showContent = function()
 		showText("txt/t0.txt");
 
 		let theRow = highlight_row();
-		
 
 	});	//function button click ends
+		
+
 	
 };// function show content ends
 
@@ -525,7 +521,7 @@ function handleLink1(){
 		let strAmsa = "";
 		
 		//$('#item3').append('<h3>  </h3> <hr>');		// Dispaly starts here
-		strData+=  '<h1>' + arrayNamesOfStars[gs] + ' - ' + (gp+1) + ' - వధువుకు సరిపడే నక్షత్రములు</h1><hr>' ;
+		strData+=  '<h1>' + arrayNamesOfStars[gs] + ' - ' + (gp+1) + ' - వధువుకు సరిపడే నక్షత్రములు > 18 పాయింట్స్</h1><hr>' ;
 		//strData+=  '<table><tr><th>' + 'గుణములు' + '</th><th>' + 'నక్షత్రం' + '</th><th>' + 'పాదములు' + '</th></tr>' ;
 		for (i=0;i<108;i++)
 		{
@@ -594,7 +590,7 @@ function handleLink1(){
 		if ( a88 > 107 ) { a88 = a88 - 108 ;}
 		theStar = parseInt(a88 / 4);
 		thePaada = (a88 % 4 ) + 1;
-		strAmsa+=   ' , G->B - 88th Navamsa = ' + a88;
+		strAmsa+=   '<br>G->B - 88th Navamsa = ' + a88;
 		strAmsa+= ' - ' + arrayNamesOfStars[theStar] + ' - ' + thePaada ;
 
 		$(".item3").append(strAmsa);
@@ -661,7 +657,7 @@ function handleLink2(){
 		let strAmsa = "";
 		
 		$('.item3').append('<h3>  </h3> <hr>');		// Dispaly starts here
-		strData+=  '<h1>' + arrayNamesOfStars[bs] + ' - ' + (bp+1) + ' - వరుడికి సరిపడే నక్షత్రములు</h1><hr>' ;
+		strData+=  '<h1>' + arrayNamesOfStars[bs] + ' - ' + (bp+1) + ' - వరుడికి సరిపడే నక్షత్రములు > 18 పాయింట్స్</h1><hr>' ;
 		for (i=0;i<108;i++)
 		{
 			var theRowNum = 0;
@@ -732,7 +728,7 @@ function handleLink2(){
 		if ( a88 > 107 ) { a88 = a88 - 108 ;}
 		theStar = parseInt(a88 / 4);
 		thePaada = (a88 % 4 ) + 1;
-		strAmsa+=   ' , G->B - 88th Navamsa = ' + a88;
+		strAmsa+=   '<br>G->B - 88th Navamsa = ' + a88;
 		strAmsa+= ' - ' + arrayNamesOfStars[theStar] + ' - ' + thePaada ;
 
 
@@ -814,294 +810,16 @@ function handleLink5(){
 	
 	$("#link5").on("click",  function()
 	{
-		prepareData();	
-		$(".item3").empty();
-		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
-		
-		//Table1 Starts
-		// 1st table- table headings
-		strTemp = '<table id="mytable3"><caption>' + arrayNamesOfStars[gs] ;
-		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రముల అష్టకూటములు" + '</caption>';
-		strTemp+= '<tr><th>Star</th><th>Paadam</th><th>వర్ణ</th><th>వశ్య</th><th>దిన</th><th>యోని</th><th>రాశ్యాధిప</th><th>గణ</th><th>రాశి</th><th>నాడి</th><th>మొత్తం</th></tr>';
-		
-		for (n=0; n<108; n++)
+		var fileName = "txt/visha.txt" ;
+			
+		jQuery.get(fileName, function(data) 
 		{
-			totalPoints = 0;
-			boyNavamsa = n;
-			bp = n % 4;
-			girlRasiNum = parseInt( girlNavamsa / 9 );    // rasi numbers are 0 to 11. 
-			boyRasiNum =  parseInt( boyNavamsa / 9 );	
-
-			//calc1 Varna
-			theRowNum = girlRasiNum % 4; //theRowNum points to the Navamsa.
-			theColNum = boyRasiNum % 4;
-			getPoints("csv/varna.csv",theRowNum,theColNum);		
-			subPoints = parseInt(thePoints);
-			arrayResults[0] = subPoints;
-			totalPoints = totalPoints + subPoints;
-			
-			//Calc2 Vashya
-			theRowNum = arrayVasyaNum[girlRasiNum];
-			theColNum = arrayVasyaNum[boyRasiNum];
-			if ( girlRasiNum == 8  && gd > 14 )theRowNum = 0; // for dhanus 2nd half is animal.
-			if ( girlRasiNum == 9  && gd > 14 ) theRowNum = 2;	// for makara 2nd half is jalachara.
-			if ( boyRasiNum == 8  && bd > 14 )theColNum = 0; // for dhanus 2nd half is animal.
-			if ( boyRasiNum == 9  && bd > 14 ) theColNum = 2;	// for makara 2nd half is jalachara.			
-			getPoints("csv/vasya.csv",theRowNum,theColNum);	
-			subPoints = parseInt(thePoints);
-			arrayResults[1] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc3 Dina or Tara
-			bs = parseInt(n/4); // findNavakam function needs bs
-
-			findNavakam(); // it creates ~Diff and ~Navakam
-			thePoints = 3;
-			if ( (girlDiff+1) == 3 || (girlDiff+1) == 5 || (girlDiff+1) == 7 || (boyDiff+1) == 3 || (boyDiff+1) == 5  || (boyDiff+1) == 7 ) 
-			{
-				thePoints =0;
-			}
-			subPoints = parseInt(thePoints);
-			arrayResults[2] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//clac4 Yoni
-			theRowNum = arrayYoniNum[gs] -1;
-			theColNum = arrayYoniNum[bs] -1;
-			//alert("rownum = " + theRowNum + "  -  " + "   Colnum = " + theColNum + " g = " + g + "  peru = " + arrayYoniNames[g]);
-			getPoints("csv/yoni.csv",theRowNum,theColNum);		
-			subPoints = parseInt(thePoints);
-			arrayResults[3] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc5 maitri
-			theRowNum = getRaasyaadhipa(girlRasiNum);
-			theColNum = getRaasyaadhipa(boyRasiNum);
-			getPoints("csv/raasyaadhipa.csv",theRowNum,theColNum);	
-			subPoints = parseInt(thePoints);
-			arrayResults[4] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc6 Gana
-			//arrayGanaTypes gives 3 ganas and list of all stars in each gana - deva ,manushya, raakshasa
-			//for each gana get the list of nakshatras
-			// then check if one of them matches the girl's nakshatra.		
-			thePoints = getGanaPoints(arrayStarInfo[gs].gananum,arrayStarInfo[bs].gananum);
-			subPoints = parseInt(thePoints);
-			arrayResults[5] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc7 bha
-			theRowNum = girlRasiNum;
-			theColNum = boyRasiNum;
-			getPoints("csv/bhakoota.csv",theRowNum,theColNum);
-			subPoints = parseInt(thePoints);
-			arrayResults[6] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc8 Nadi
-			let girlNadiNum = getNadiNum(gs+1);
-			let boyNadiNum = getNadiNum(bs+1);
-			
-			thePoints = 8;
-			if ( girlNadiNum == boyNadiNum){ thePoints = 0;}
-			subPoints = parseInt(thePoints);
-			arrayResults[7] = subPoints;
-			totalPoints = totalPoints + subPoints;
-		
-			strTemp+= '<tr><td>' + arrayNamesOfStars[bs] +  '</td><td>' + (bp+1) + '</td>';
-			for( i = 0 ; i < 8; i++)
-			{
-				strTemp+= '<td>' + arrayResults[i] +  '</td>';
-			}
-			strTemp+= '<td>' + totalPoints +  '</td></tr>';		
-		
-		}	// for loop ends here	
-		
-		strTemp+= '</table>';
-		$('.item3').append(strTemp);   // show panchanga points
-		
-
-	});
-}
-
-function handleLink6(){
-	
-	
-	$("#link6").on("click",  function()
-	{
-		prepareData();		
-		$(".item3").empty();
-		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
-		
-		//Table1 Starts
-		// 1st table- table headings
-		strTemp = '<table id="mytable3"><caption>' + arrayNamesOfStars[bs] ;
-		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రముల అష్టకూటములు" + '</caption>';
-		strTemp+= '<tr><th>Star</th><th>Paadam</th><th>వర్ణ</th><th>వశ్య</th><th>దిన</th><th>యోని</th><th>రాశ్యాధిప</th><th>గణ</th><th>రాశి</th><th>నాడి</th><th>మొత్తం</th></tr>';
-		
-		for (n=0; n<108; n++)
-		{
-			totalPoints = 0;
-			girlNavamsa = n;
-			gp = n % 4;
-			girlRasiNum = parseInt( girlNavamsa / 9 );    // rasi numbers are 0 to 11. 
-			boyRasiNum =  parseInt( boyNavamsa / 9 );	
-
-			//calc1 Varna
-			theRowNum = girlRasiNum % 4; //theRowNum points to the Navamsa.
-			theColNum = boyRasiNum % 4;
-			getPoints("csv/varna.csv",theRowNum,theColNum);		
-			subPoints = parseInt(thePoints);
-			arrayResults[0] = subPoints;
-			totalPoints = totalPoints + subPoints;
-			
-			//Calc2 Vashya
-			theRowNum = arrayVasyaNum[girlRasiNum];
-			theColNum = arrayVasyaNum[boyRasiNum];
-			if ( girlRasiNum == 8  && gd > 14 )theRowNum = 0; // for dhanus 2nd half is animal.
-			if ( girlRasiNum == 9  && gd > 14 ) theRowNum = 2;	// for makara 2nd half is jalachara.
-			if ( boyRasiNum == 8  && bd > 14 )theColNum = 0; // for dhanus 2nd half is animal.
-			if ( boyRasiNum == 9  && bd > 14 ) theColNum = 2;	// for makara 2nd half is jalachara.			
-			getPoints("csv/vasya.csv",theRowNum,theColNum);	
-			subPoints = parseInt(thePoints);
-			arrayResults[1] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc3 Dina or Tara
-			gs = parseInt(n/4); // findNavakam function needs gs
-			let oldStarName = arrayNamesOfStars[gs];
-			findNavakam(); // it creates ~Diff and ~Navakam
-			thePoints = 3;
-			if ( (girlDiff+1) == 3 || (girlDiff+1) == 5 || (girlDiff+1) == 7 || (boyDiff+1) == 3 || (boyDiff+1) == 5  || (boyDiff+1) == 7 ) 
-			{
-				thePoints =0;
-			}
-			subPoints = parseInt(thePoints);
-			arrayResults[2] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//clac4 Yoni
-			theRowNum = arrayYoniNum[gs] -1;
-			theColNum = arrayYoniNum[bs] -1;
-			//alert("rownum = " + theRowNum + "  -  " + "   Colnum = " + theColNum + " g = " + g + "  peru = " + arrayYoniNames[g]);
-			getPoints("csv/yoni.csv",theRowNum,theColNum);		
-			subPoints = parseInt(thePoints);
-			arrayResults[3] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc5 maitri
-			theRowNum = getRaasyaadhipa(girlRasiNum);
-			theColNum = getRaasyaadhipa(boyRasiNum);
-			getPoints("csv/raasyaadhipa.csv",theRowNum,theColNum);	
-			subPoints = parseInt(thePoints);
-			arrayResults[4] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc6 Gana
-			//arrayGanaTypes gives 3 ganas and list of all stars in each gana - deva ,manushya, raakshasa
-			//for each gana get the list of nakshatras
-			// then check if one of them matches the girl's nakshatra.		
-			thePoints = getGanaPoints(arrayStarInfo[gs].gananum,arrayStarInfo[bs].gananum);
-			subPoints = parseInt(thePoints);
-			arrayResults[5] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc7 bha
-			theRowNum = girlRasiNum;
-			theColNum = boyRasiNum;
-			getPoints("csv/bhakoota.csv",theRowNum,theColNum);
-			subPoints = parseInt(thePoints);
-			arrayResults[6] = subPoints;
-			totalPoints = totalPoints + subPoints;
-
-			//calc8 Nadi
-			let girlNadiNum = getNadiNum(gs+1);
-			let boyNadiNum = getNadiNum(bs+1);
-			
-			thePoints = 8;
-			if ( girlNadiNum == boyNadiNum){ thePoints = 0;}
-			subPoints = parseInt(thePoints);
-			arrayResults[7] = subPoints;
-			totalPoints = totalPoints + subPoints;
-			
-			strTemp+= '<tr><td>' + arrayNamesOfStars[gs] +  '</td><td>' + (gp+1) + '</td>';
-			for( i = 0 ; i < 8; i++)
-			{
-				strTemp+= '<td>' + arrayResults[i] +  '</td>';
-			}
-			strTemp+= '<td>' + totalPoints +  '</td></tr>';		
-			
-		}	// for loop ends here	
-		
-		strTemp+= '</table>';
-		//strTemp+= "<h3>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h2>' ;
-		$('.item3').append(strTemp);   // show panchanga points
-		
-
-	});
-}
-
-
-function handleLink7(){	
-	$("#link7").on("click",  function()
-	{
-		prepareData();
-		$(".item3").empty();		
-		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
-				
-		//Table1 Starts. - table headings
-		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] ;
-		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రముల పాయింట్స్" + '</caption>';
-		strTemp+= '<th>Star</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>';
-		for(s = 0; s < 27; s++)
-		{
-			strTemp+= '<tr><td>' + arrayNamesOfStars[s] + '</td>';
-			for(p = 0; p<4 ; p++)
-			{
-				getPoints("csv/ppidaparti.csv",girlNavamsa,(4*s + p) );
-				strTemp+= '<td>'+ thePoints + '</td>';
-
-			}
-		}	
-		
-		strTemp+= '</table>';				
-		strTemp+= '<h3>పిడపర్తి పంచాంగం ప్రకారం ఇవ్వబడ్డాయి.</h2>' ;					
-		$('.item3').append(strTemp);   // show panchanga points
-	});
-}
-
-
-function handleLink8(){		
-	$("#link8").on("click",  function()
-	{
-		prepareData();
-		$(".item3").empty();
-		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
-		
-		//Table2 Starts
-		// 2nd table- table headings
-		strTemp = '<table id="mytable2"><caption>' + arrayNamesOfStars[bs] ;
-		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రముల పాయింట్స్" + '</caption>';
-		strTemp+= '<th>Star</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>';
-		for(s = 0; s < 27; s++)
-		{
-			strTemp+= '<tr><td>' + arrayNamesOfStars[s] + '</td>';
-			for(p = 0; p<4 ; p++)
-			{
-				getPoints("csv/ppidaparti.csv",(4*s + p), boyNavamsa );
-				strTemp+= '<td>'+ thePoints + '</td>';
-
-			}
-		}		
-		strTemp+= '</table>';
-		strTemp+= '<h3>పిడపర్తి పంచాంగం ప్రకారం ఇవ్వబడ్డాయి.</h2>' ;
-		$('.item3').append(strTemp);   // show panchanga points
+			$('.item3').empty();
+			$(".item3").append(data);
+        });
 		
 	});
 }
-
-
 
 function highlight_row() 
 {
