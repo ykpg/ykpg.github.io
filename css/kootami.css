@@ -10,9 +10,9 @@ html {
   }
   
   .wrapper {
-	margin: 0 0 20px 0;
+	margin: 0 0 10px 0;
 	display: grid;
-	grid-gap: 10px;
+	grid-gap: 5px;
 	grid-template-columns: repeat(5, 18%);
 	grid-template-rows: repeat(3,400px);
 	align-content: space-around;
@@ -213,13 +213,15 @@ ul.links{
 	letter-spacing: 1.4px;
 	text-align: center;
 	padding: 10px;
+	line-height: 1.6rem;
 	overflow: hidden;
+
 }
 
 table {
   border-collapse: collapse; 
   margin-left: 10px;
-  width:460px;
+  width:440px;
   font-size: 0.8rem;
 }
 
@@ -282,11 +284,15 @@ p{
 }
 
 a.link {
-	color: #1D88EA; 
+	color: rgb(30, 66, 226); 
 	font-size: 0.7rem;
 	
 } 
 a.link:hover {
-	color: #104E8B; 
+	color: rgb(206, 31, 31); 
+	font-size: 0.7rem;
+} 
+a.link:visited {
+	color: rgb(88, 38, 29); 
 	font-size: 0.7rem;
 } 

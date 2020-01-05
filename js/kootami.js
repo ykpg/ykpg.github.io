@@ -116,10 +116,10 @@ $(document).ready(function()
 {	
 	showContent();
 	handleLink1();
-	//handleLink2();
+	handleLink2();
 	handleLink3();
 	handleLink4();
-	handleLink5();
+
 	
 });
 
@@ -805,21 +805,7 @@ function handleLink4(){
 	});
 }
 
-function handleLink5(){
-	
-	
-	$("#link5").on("click",  function()
-	{
-		var fileName = "txt/visha.txt" ;
-			
-		jQuery.get(fileName, function(data) 
-		{
-			$('.item3').empty();
-			$(".item3").append(data);
-        });
-		
-	});
-}
+
 
 function highlight_row() 
 {
