@@ -12,6 +12,9 @@ let totalPoints = 0;
 let arrayResults = [];
 let goodPoints = 18;
 
+let strTemp ;			// general usage
+
+
 let girlNavamsa = 0;
 let boyNavamsa = 0;
 let girlRasiNum =0;
@@ -23,7 +26,6 @@ let boyNavakam = 0;
 let theRowNum = 0;
 let theColNum = 0;
 
-let strTemp ;			// general usage
 
 //var strTemp = "Aswini,Bharani,Kruttika,Rohini,Mrugasira,Ardra,Punarvasu,Pushyami,Aslesha,Makha,PoorvaPhalguni,UttaraPhalguni,Hasta,Chitta,Swati,Visakha,Anuradha,Jyeshta,Moola,PoorvaShaada,UttaraShaada,Sravana,Dhanishta,Satabhisha,PoorvaBhaadra,UttaraBhaadra,Revati";		
 strTemp = "అశ్వని,భరణి,కృత్తిక,రోహిణి,మృగశిర, ఆర్ద్ర,పునర్వసు,పుష్యమి,ఆశ్లేష,మఖ,పుబ్బ, ఉత్తర,హస్త,చిత్త,స్వాతి,విశాఖ,అనూరాధ,జ్యేష్ట,మూల,పూర్వాషాడ,ఉత్తరాషాడ,శ్రవణం,ధనిష్ట,శతభిషం,పూర్వాభాద్ర,ఉత్తరాభాద్ర,రేవతి";
@@ -115,18 +117,20 @@ const arrayNadiNames = strTemp.split(',');
 $(document).ready(function() 
 {	
 	showContent();
-	handleLink1();
-	handleLink2();
+	
 	handleLink3();
 	handleLink4();
-
+	
+	handleLink7();
+	handleLink8();
+	
 	
 });
 
 var showContent = function() 
 {
 	
-	// for each loop to fill select boxes of nakshatra names
+	// Init. fill select boxes of nakshatra names
 	$.each(arrayNamesOfStars, function(val, text) 
 	{
             $('#girlstar').append( $('<option></option>').val(val).html(text) );
@@ -140,10 +144,8 @@ var showContent = function()
 	$('#bt').click( function () 
 	{		
 		prepareData();
-		
-		$(".item2").empty();	
+		$(".item2").empty();			
 		$('.item2').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
-		
 		
 		//Table1 Starts
 		strTemp = '<table id="mytable1"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';			// 1st table- table headings
@@ -163,15 +165,9 @@ var showContent = function()
 		strTemp+= '<tr><td>నవాంశ - రాశి - అధిపతి</td> <td>'  + arrayRasiInfo[(girlNavamsa % 12)].name + ' - ' + arrayRasiInfo[(girlNavamsa % 12)].lord + '</td>';
 		strTemp+= '<td>' +  arrayRasiInfo[(boyNavamsa % 12)].name + ' - ' + arrayRasiInfo[(boyNavamsa % 12)].lord + '</td></tr>';
 		//alert("g = " + g + "Paadam = " + p1 + "navaamsa = " + theRowNum + "by 12 Mod = " + (theRowNum % 12) + "rasi = " + arrayRasiInfo[(theRowNum % 12)].name);
-		
-		//Table1-4th row - show G->B and B->G counts.
-		findNavakam();
-		strTemp+= '<tr><td>నక్షత్ర దూరము:</td> <td>' + "g->b : " + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + " (N-" + girlNavakam + ")" + '</td>';
-		strTemp+= 	'<td>' + "b->g : " + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + " (N-" + boyNavakam + ")"  + '</td></tr>';
-
-
-		strTemp+= '</table>';				
-		$('.item2').append(strTemp);		
+			
+		strTemp+= '</table>';
+		$('.item2').append(strTemp); 
 		//Table1 Ends							
 		
 		// *** Table2 ***
@@ -194,10 +190,17 @@ var showContent = function()
 		//vasya divisions are - Chatushpada =0,Nara=1, JalaChara=2 ,VanaChara=3,Keetaka=4.rasinum is 0 to 11						
 		theRowNum = arrayVasyaNum[girlRasiNum];
 		theColNum = arrayVasyaNum[boyRasiNum];
-		if ( girlRasiNum == 8  && gdegrees > 14 )theRowNum = 0; // for dhanus 2nd half is animal.
-		if ( girlRasiNum == 9  && gdegrees > 14 ) theRowNum = 2;	// for makara 2nd half is jalachara.
-		if ( boyRasiNum == 8  && bdegrees > 14 )theColNum = 0; // for dhanus 2nd half is animal.
-		if ( boyRasiNum == 9  && bdegrees > 14 ) theColNum = 2;	// for makara 2nd half is jalachara.			
+		
+		if ( girlRasiNum == 8)
+		{	if (  girlNavamsa > 75 && girlNavamsa < 81 ) 
+			{ 
+				theRowNum = 0;
+			} // for dhanus 2nd half is animal.
+		}
+		
+		if ( girlRasiNum == 9  && (girlNavamsa == 88 || girlNavamsa == 89) ) theRowNum = 2;	// for makara 2nd half is jalachara.
+		if ( boyRasiNum == 8  && (boyNavamsa > 75 && boyNavamsa < 81) )theColNum = 0; // for dhanus 2nd half is animal.
+		if ( boyRasiNum == 9  && (boyNavamsa == 88 || boyNavamsa == 89)  ) theColNum = 2;	// for makara 2nd half is jalachara.			
 		getPoints("csv/vasya.csv",theRowNum,theColNum);		
 		strTemp+= '<tr><td>2. వశ్య కూటమి</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
@@ -307,7 +310,10 @@ var showContent = function()
 		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
-
+		//Table2 - 11th row - show G->B and B->G counts. sthree deergham
+		findNavakam();
+		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + "g->b : " + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + " (N-" + girlNavakam + ")" + '</td>';
+		strTemp+= 	'<td>' + "b->g : " + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + " (N-" + boyNavakam + ")"  + '</td><td></td></tr>';			
 		strTemp+= '</table>';
 		$('.item2').append(strTemp); // end of table2 and div
 
@@ -318,10 +324,9 @@ var showContent = function()
 		showText("txt/t0.txt");
 
 		let theRow = highlight_row();
-
-	});	//function button click ends
 		
 
+	});	//function button click ends
 	
 };// function show content ends
 
@@ -505,270 +510,6 @@ function showText(fname)
 	});
 }
 
-function handleLink1(){
-	
-	
-	$("#link1").on("click",  function()
-	{
-		prepareData();		
-		let arrayGoodNavamsas = [];
-		let arrayGoodPoints = [];
-		let j = 0;
-	
-		
-		$('.item3').empty();
-		let strData = "";
-		let strAmsa = "";
-		
-		//$('#item3').append('<h3>  </h3> <hr>');		// Dispaly starts here
-		strData+=  '<h1>' + arrayNamesOfStars[gs] + ' - ' + (gp+1) + ' - వధువుకు సరిపడే నక్షత్రములు > 18 పాయింట్స్</h1><hr>' ;
-		//strData+=  '<table><tr><th>' + 'గుణములు' + '</th><th>' + 'నక్షత్రం' + '</th><th>' + 'పాదములు' + '</th></tr>' ;
-		for (i=0;i<108;i++)
-		{
-			theRowNum = 0;
-			theRowNum = gs * 4 + gp;		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls. 			
-		
-			theColNum = 0;					
-			theColNum = bs * 4 + bp;		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. col is boys.
-			
-			getPoints("csv/ppidaparti.csv",theRowNum,i);
-			
-			if (thePoints >= goodPoints)
-			{
-				//alert("Points = " + thePoints);
-				arrayGoodNavamsas[j] = i;
-				arrayGoodPoints[j] = thePoints;
-				j = j + 1;
-				
-			}
-		}
-		let oldStar = -1;
-		let starRepeated = 0;
-		
-		for (i=0;i< arrayGoodNavamsas.length;i++)
-		{
-			let theStar = 	parseInt(arrayGoodNavamsas[i] / 4 ); // 0 to 107 divided by 4. Take the quotient only.
-			
-			let thePaada = (arrayGoodNavamsas[i] % 4) + 1 ; // 0 to 107 mod by 4. gives 0 to 3. So, +1
-			//alert("i = " + i + ", Star Number = " + theStar + ", Star = " + arrayStarNames[theStar] + ", Paadam = "  + thePaada);
-			if (theStar != oldStar) 
-			{ 
-				starDataV = '<br>';
-				starDataX = arrayNamesOfStars[theStar] ;
-				starDataN = arrayGoodPoints[i] + ' - ' ;
-				starDataY = ' - ';
-				starDataZ = '';
-				starRepeated = 0;
-			}
-			else
-			{
-				starDataV = '';
-				starDataN = '' ;
-				starRepeated = 1;
-				starDataX = '' ;
-				starDataY = ',';
-				starDataZ = 'thePaada'
-				starDataZ = '';
-			}
-			strData+= starDataV + starDataN  + starDataX + starDataY + thePaada + starDataZ;
-			oldStar = theStar;
-		}
-
-		//strData+= '</table>'
-		$(".item3").append(strData);
-		strData = "";
-		
-		let a108 = 0;
-		a108 = theRowNum + 107; // therownum is 0 to 107. gs and gp start from 0		
-		if ( a108 > 107) { a108 = a108 - 108;}
-		theStar = parseInt(a108 / 4);
-		thePaada = (a108 % 4 ) + 1;
-		strAmsa = '<br><br>' + 'G->B - 108th Navamsa = ' + a108;
-		strAmsa+= ' - ' + arrayNamesOfStars[theStar] + ' - ' + thePaada ;
-		
-		let a88 = theRowNum + 87;
-		if ( a88 > 107 ) { a88 = a88 - 108 ;}
-		theStar = parseInt(a88 / 4);
-		thePaada = (a88 % 4 ) + 1;
-		strAmsa+=   '<br>G->B - 88th Navamsa = ' + a88;
-		strAmsa+= ' - ' + arrayNamesOfStars[theStar] + ' - ' + thePaada ;
-
-		$(".item3").append(strAmsa);
-
-
-		// vedha nakshtaras
-		$(".item3").append('<br> ' + 'వేధ నక్షత్రములు నిషిద్ధము:  ');
-
-		if ( (gs == 4) || (gs == 13) || (gs == 22) )
-		{
-			
-			if (gs == 4) {
-				$(".item3").append(arrayNamesOfStars[13] + ' & ' + arrayNamesOfStars[22]);
-			 }
-			 if (gs == 13) {
-				$(".item3").append(arrayNamesOfStars[4] + ' & ' + arrayNamesOfStars[22]);
-			 }
-			 if (gs == 22) {
-				$(".item3").append(arrayNamesOfStars[13] + ' & ' + arrayNamesOfStars[4]);
-			 }
-		}
-		else
-		{
-			theStar = arrayStarInfo[gs].vedha - 1;
-			$(".item3").append(arrayStarInfo[theStar].name);
-		}
-
-		//vadha nakshatras
-		$(".item3").append('<br> ' + 'వధ నక్షత్రము:  ');
-		let vadhaStar = gs + 1 + 6;
-		if (vadhaStar > 27)
-		{
-			vadhaStar = vadhaStar - 27;
-		}
-		
-		$(".item3").append(arrayStarInfo[vadhaStar-1].name + ' - ' + arrayStarInfo[gs].vadha);
-
-		//alert(strData);
-		/*
-		var x=window.open("/","Test", windowParams);
-		x.document.open();
-		x.document.write(strData);
-		x.document.close();
-		*/
-		
-	});
-}
-
-
-
-function handleLink2(){
-	
-	
-	$("#link2").on("click",  function()
-	{
-		prepareData();
-		let arrayGoodNavamsas = [];
-		let arrayGoodPoints = [];
-		let j = 0;
-	
-		
-		$('.item3').empty();
-		let strData = "";
-		let strAmsa = "";
-		
-		$('.item3').append('<h3>  </h3> <hr>');		// Dispaly starts here
-		strData+=  '<h1>' + arrayNamesOfStars[bs] + ' - ' + (bp+1) + ' - వరుడికి సరిపడే నక్షత్రములు > 18 పాయింట్స్</h1><hr>' ;
-		for (i=0;i<108;i++)
-		{
-			var theRowNum = 0;
-			theRowNum = gs * 4 + gp;		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls. 			
-		
-			var theColNum = 0;					
-			theColNum = bs * 4 + bp;		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. col is boys.
-		
-			getPoints("csv/ppidaparti.csv",i,theColNum);
-			
-			if (thePoints >= goodPoints)
-			{
-				//alert("Points = " + thePoints);
-				arrayGoodNavamsas[j] = i;
-				arrayGoodPoints[j] = thePoints;
-				j = j + 1;
-				
-			}
-		}
-		var oldStar = -1;
-		var starRepeated = 0;
-		
-		for (i=0;i< arrayGoodNavamsas.length;i++)
-		{
-			var theStar = 	parseInt(arrayGoodNavamsas[i] / 4 ); // 0 to 107 divided by 4. Take the quotient only.
-			
-			var thePaada = (arrayGoodNavamsas[i] % 4) + 1 ; // 0 to 107 mod by 4. gives 0 to 3. So, +1
-			//alert("i = " + i + ", Star Number = " + theStar + ", Star = " + arrayStarNames[theStar] + ", Paadam = "  + thePaada);
-			if (theStar != oldStar) 
-			{ 
-				
-				starDataX = arrayNamesOfStars[theStar] ;
-				
-				starDataN = arrayGoodPoints[i] + ' - ' ;
-				starDataY = ' - ';
-				starDataZ = '';
-				starDataV = '<br>';
-				starRepeated = 0;
-			}
-			else
-			{
-				starRepeated = 1;
-				starDataN = '';
-				starDataX = '' ;
-				starDataY = ',';
-				starDataZ = 'thePaada'
-				starDataZ = '';
-				starDataV = '';
-			}
-			strData+= starDataV + starDataN + starDataX + starDataY + thePaada + starDataZ;
-			oldStar = theStar;
-			
-						
-		}
-		
-		$(".item3").append(strData);
-		strData = "";
-		
-		let a108 = 0;
-		a108 = theColNum + 107; // therownum is 0 to 107. gs and gp start from 0		
-		if ( a108 > 107) { a108 = a108 - 108;}
-		theStar = parseInt(a108 / 4);
-		thePaada = (a108 % 4 ) + 1;
-		strAmsa = '<br><br>' + 'G->B - 108th Navamsa = ' + a108;
-		strAmsa+= ' - ' + arrayNamesOfStars[theStar] + ' - ' + thePaada ;
-		
-		let a88 = theColNum + 87;
-		if ( a88 > 107 ) { a88 = a88 - 108 ;}
-		theStar = parseInt(a88 / 4);
-		thePaada = (a88 % 4 ) + 1;
-		strAmsa+=   '<br>G->B - 88th Navamsa = ' + a88;
-		strAmsa+= ' - ' + arrayNamesOfStars[theStar] + ' - ' + thePaada ;
-
-
-		$(".item3").append(strAmsa);
-
-		// vedha nakshtaras
-		$(".item3").append('<br> ' + 'వేధ నక్షత్రములు నిషిద్ధము:  ');
-
-		if ( (bs == 4) || (bs == 13) || (bs == 22) )
-		{
-			
-			if (bs == 4) {
-				$(".item3").append(arrayNamesOfStars[13] + ' & ' + arrayNamesOfStars[22]);
-			 }
-			 if (bs == 13) {
-				$(".item3").append(arrayNamesOfStars[4] + ' & ' + arrayNamesOfStars[22]);
-			 }
-			 if (bs == 22) {
-				$(".item3").append(arrayNamesOfStars[13] + ' & ' + arrayNamesOfStars[4]);
-			 }
-		}
-		else
-		{
-			theStar = arrayStarInfo[bs].vedha - 1;
-			$(".item3").append(arrayStarInfo[theStar].name);
-		}
-
-		//vadha nakshatras
-		$(".item3").append('<br> ' + 'వధ నక్షత్రము:  ');
-		let vadhaStar = bs + 1 + 6;
-		if (vadhaStar > 27)
-		{
-			vadhaStar = vadhaStar - 27;
-		}
-		
-		$(".item3").append(arrayStarInfo[vadhaStar-1].name + ' - ' + arrayStarInfo[bs].vadha);
-
-		
-	});
-}
 
 
 function handleLink3(){
@@ -805,6 +546,64 @@ function handleLink4(){
 	});
 }
 
+
+function handleLink7(){	
+	$("#link7").on("click",  function()
+	{
+		prepareData();
+		$(".item3").empty();		
+		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
+				
+		//Table1 Starts. - table headings
+		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] ;
+		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రముల పాయింట్స్" + '</caption>';
+		strTemp+= '<th>Star</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>';
+		for(s = 0; s < 27; s++)
+		{
+			strTemp+= '<tr><td>' + arrayNamesOfStars[s] + '</td>';
+			for(p = 0; p<4 ; p++)
+			{
+				getPoints("csv/ppidaparti.csv",girlNavamsa,(4*s + p) );
+				strTemp+= '<td>'+ thePoints + '</td>';
+
+			}
+		}	
+		
+		strTemp+= '</table>';				
+		strTemp+= '<h3>పిడపర్తి పంచాంగం ప్రకారం ఇవ్వబడ్డాయి.</h2>' ;					
+		$('.item3').append(strTemp);   // show panchanga points
+	});
+}
+
+
+function handleLink8(){		
+	$("#link8").on("click",  function()
+	{
+		prepareData();
+		$(".item3").empty();
+		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
+		
+		//Table2 Starts
+		// 2nd table- table headings
+		strTemp = '<table id="mytable2"><caption>' + arrayNamesOfStars[bs] ;
+		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రముల పాయింట్స్" + '</caption>';
+		strTemp+= '<th>Star</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>';
+		for(s = 0; s < 27; s++)
+		{
+			strTemp+= '<tr><td>' + arrayNamesOfStars[s] + '</td>';
+			for(p = 0; p<4 ; p++)
+			{
+				getPoints("csv/ppidaparti.csv",(4*s + p), boyNavamsa );
+				strTemp+= '<td>'+ thePoints + '</td>';
+
+			}
+		}		
+		strTemp+= '</table>';
+		strTemp+= '<h3>పిడపర్తి పంచాంగం ప్రకారం ఇవ్వబడ్డాయి.</h2>' ;
+		$('.item3').append(strTemp);   // show panchanga points
+		
+	});
+}
 
 
 function highlight_row() 
@@ -850,14 +649,6 @@ function highlight_row()
 	
 }
 
-
-function isinArray(arr, obj) {
-    for( i=0; i<arr.length; i++) {
-        if (arr[i] == obj) return true;
-	}
-	return false;
-}
-
 function prepareData()
 {
 	// gs/bs is 0 to 26. gp/bp is 0 to 3
@@ -870,12 +661,11 @@ function prepareData()
 	bp = $("#boypaadam").prop('selectedIndex');
 	if (bp < 0 ) { bp = 0};	
 	
-	// degrees are 0 to 29	
-	gd = $("#girldeg").prop('value');
-	bd = $("#boydeg").prop('value');
-
+	
 	girlNavamsa = gs * 4 + gp;		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls. 				
 	boyNavamsa  = bs * 4 + bp;		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. col is boys.
 		
-		
+	girlRasiNum = parseInt( girlNavamsa / 9 );    // rasi numbers are 0 to 11. 
+	boyRasiNum =  parseInt( boyNavamsa / 9 );	
+	
 }

@@ -204,6 +204,7 @@ ul {
 	text-align: left;
 	padding: 10px;
 	overflow: hidden;
+	
 }
 
 ul.links{
@@ -213,15 +214,14 @@ ul.links{
 	letter-spacing: 1.4px;
 	text-align: center;
 	padding: 10px;
-	line-height: 1.6rem;
+	line-height: 1.8rem;
 	overflow: hidden;
-
 }
 
 table {
   border-collapse: collapse; 
   margin-left: 10px;
-  width:440px;
+  width:420px;
   font-size: 0.8rem;
 }
 
@@ -243,10 +243,11 @@ td {
 
 tr {
 	color: black;
+	background-color: white;
 }
 
 tbody tr:nth-child(even) {
-	background: #eee;
+	background-color: #eee;
 }
 	
 table tr:hover {
@@ -284,15 +285,17 @@ p{
 }
 
 a.link {
-	color: rgb(30, 66, 226); 
+	color: rgb(32, 29, 233); 
 	font-size: 0.7rem;
 	
 } 
 a.link:hover {
-	color: rgb(206, 31, 31); 
+	color: rgb(206, 33, 33); 
 	font-size: 0.7rem;
 } 
-a.link:visited {
-	color: rgb(88, 38, 29); 
+
+a:visited {
+	color: rgb(77, 32, 2); 
 	font-size: 0.7rem;
-} 
+  }
+  
