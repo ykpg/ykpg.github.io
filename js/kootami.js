@@ -312,8 +312,11 @@ var showContent = function()
 		
 		//Table2 - 11th row - show G->B and B->G counts. sthree deergham
 		findNavakam();
-		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + "g->b : " + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + " (N-" + girlNavakam + ")" + '</td>';
-		strTemp+= 	'<td>' + "b->g : " + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + " (N-" + boyNavakam + ")"  + '</td><td></td></tr>';			
+		//strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + "g->b : " + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + " (N-" + girlNavakam + ")" + '</td>';
+		//strTemp+= 	'<td>' + "b->g : " + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + " (N-" + boyNavakam + ")"  + '</td><td></td></tr>';			
+		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + '</td>';
+		strTemp+= 	'<td>'  +  ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + '</td><td></td></tr>';			
+	
 		strTemp+= '</table>';
 		$('.item2').append(strTemp); // end of table2 and div
 
@@ -556,8 +559,8 @@ function handleLink7(){
 				
 		//Table1 Starts. - table headings
 		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] ;
-		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రముల పాయింట్స్" + '</caption>';
-		strTemp+= '<th>Star</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>';
+		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రములిచ్చే గుణములు" + '</caption>';
+		strTemp+= '<th>నక్షత్రము</th><th>పా1</th><th>పా2</th><th>పా3</th><th>పా4</th></tr>';
 		for(s = 0; s < 27; s++)
 		{
 			strTemp+= '<tr><td>' + arrayNamesOfStars[s] + '</td>';
@@ -586,8 +589,8 @@ function handleLink8(){
 		//Table2 Starts
 		// 2nd table- table headings
 		strTemp = '<table id="mytable2"><caption>' + arrayNamesOfStars[bs] ;
-		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రముల పాయింట్స్" + '</caption>';
-		strTemp+= '<th>Star</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>';
+		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రములిచ్చే గుణములు" + '</caption>';
+		strTemp+= '<th>నక్షత్రము</th><th>పా1</th><th>పా2</th><th>పా3</th><th>పా4</th></tr>';
 		for(s = 0; s < 27; s++)
 		{
 			strTemp+= '<tr><td>' + arrayNamesOfStars[s] + '</td>';
