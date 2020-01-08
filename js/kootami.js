@@ -123,6 +123,8 @@ $(document).ready(function()
 	
 	handleLink7();
 	handleLink8();
+
+	handleLink11();
 	
 	
 });
@@ -608,6 +610,23 @@ function handleLink8(){
 	});
 }
 
+
+function handleLink11(){
+	
+	
+	$("#link11").on("click",  function()
+	{
+		var fileName = "txt/eka.txt" ;
+		//alert(fileName);
+			
+		jQuery.get(fileName, function(data) 
+		{
+			$('.item3').empty();
+			$(".item3").append(data);
+        });
+		
+	});
+}
 
 function highlight_row() 
 {
