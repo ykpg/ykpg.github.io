@@ -251,9 +251,8 @@ tbody tr:nth-child(even) {
 }
 	
 table tr:hover {
-	color:#39FC16;
-	background-color: black;
-	
+	color:black;
+	background-color: rgb(220, 245, 174);
 }
 
 

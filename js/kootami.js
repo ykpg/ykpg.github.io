@@ -651,7 +651,7 @@ function highlight_row()
                 rowsNotSelected[row].classList.remove('selected');
             }
             rowSelected = table.getElementsByTagName('tr')[rowId];
-            rowSelected.style.backgroundColor = "yellow";
+            rowSelected.style.backgroundColor = "#FFEA9F";
             rowSelected.className += " selected";
 			let fileName = "txt/t" + rowId.toString() + ".txt" ;
 			//alert(fileName);
