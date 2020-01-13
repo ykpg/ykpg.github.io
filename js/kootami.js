@@ -561,7 +561,7 @@ function handleLink7(){
 				
 		//Table1 Starts. - table headings
 		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] ;
-                strTemp+= "-" + gp;
+                strTemp+= "-" + (gp + 1);
 		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రములిచ్చే గుణములు" + '</caption>';
 		strTemp+= '<th>నక్షత్రము</th><th>పా1</th><th>పా2</th><th>పా3</th><th>పా4</th></tr>';
 		for(s = 0; s < 27; s++)
@@ -592,7 +592,7 @@ function handleLink8(){
 		//Table2 Starts
 		// 2nd table- table headings
 		strTemp = '<table id="mytable2"><caption>' + arrayNamesOfStars[bs] ;
-                strTemp+= "-" + bp;
+                strTemp+= "-" + (bp + 1);
 		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రములిచ్చే గుణములు" + '</caption>';
 		strTemp+= '<th>నక్షత్రము</th><th>పా1</th><th>పా2</th><th>పా3</th><th>పా4</th></tr>';
 		for(s = 0; s < 27; s++)
