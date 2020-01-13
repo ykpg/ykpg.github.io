@@ -300,7 +300,7 @@ var showContent = function()
 		totalPoints = totalPoints + subPoints;
 		
 		//Table2 - row 9. Total
-		strTemp+= '<tr><td>మొత్తం గుణములు</td> <td>' +   '</td>';  // g is 0 to 26
+		strTemp+= '<tr><td>మొత్తం గుణములు(out of 36)</td> <td>' +   '</td>';  // g is 0 to 26
 		strTemp+= '<td>' + '</td><td>' + totalPoints +'</td></tr>';
 
 		
