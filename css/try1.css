@@ -83,13 +83,13 @@ aside {
   .main {
     flex: 3 0px;
   }
-  .aside1 {
+  #pattika {
     order: 1;
   }
   .main {
     order: 2;
   }
-  .aside2 {
+  #vivarana {
     order: 3;
   }
   .footer {
