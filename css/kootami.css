@@ -272,4 +272,12 @@ table {
 	  background-color: rgb(220, 245, 174);
 	  
   }
+img{
+	  margin:0 auto;
+	  padding:0;
+	  padding-left: 5px;
+  }
+ img :hover{
+	background: none;
+ }
  
