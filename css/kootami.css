@@ -276,8 +276,8 @@ img{
 	  margin:0 auto;
 	  padding:0;
 	  padding-left: 5px;
+	  vertical-align: middle;
   }
  img :hover{
 	background: none;
  }
- 
