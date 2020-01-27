@@ -9,7 +9,7 @@ body{
 	font-weight: noraml;
 	line-height: 1.2em;	 
 	text-align:center; /* with this all elements get centered */
-	width: 95%;
+	width: 94%;
 }
 .clear 
     { 
@@ -24,8 +24,15 @@ body{
 		margin:0 auto;
 		padding:0;
 	}
-	#navbar ul, li{
+	
+	#navbar ul{
 		display: flex;
+        flex-flow: row wrap;
+		justify-content: flex-end;
+	}
+	#navbar  li{
+		border: none;
+		padding:0;
 	}
 	
 	.container{
@@ -100,7 +107,6 @@ h1 {
 	padding: 5px;
 	color:#14181a;
 }
-
 
 h2 {
 	font-size: 1rem;
@@ -197,6 +203,7 @@ select#boypaadam{
 	color:#fcf9f9;
 	margin:0 auto;
 	padding-top:4px;
+	border:none;
 }
 
 #navbar ul{
@@ -204,15 +211,20 @@ select#boypaadam{
 	list-style:none;
 	margin:0;
 	padding:0;
+	border:none;
 }
 #navbar li{
-	display: inline;
+	display: block;
+	padding: 8px;
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 #navbar a{
 	text-decoration: none;
 	font-size: 12px;
 	color: black;
-	padding-right: 15px;
+	padding: 0 15px 0 5px;
 
 }
 
@@ -280,8 +292,7 @@ table {
 	  background-color: rgb(220, 245, 174);
 	  
   }
-
-  img{
+img{
 	  margin:0 auto;
 	  padding:0;
 	  padding-left: 5px;
