@@ -94,6 +94,14 @@ body{
 	color: dimgray;
 }
 
+h1 {
+	font-size: 1rem;
+	margin: 0;
+	padding: 5px;
+	color:#14181a;
+}
+
+
 h2 {
 	font-size: 1rem;
 	margin: 0;
@@ -272,7 +280,8 @@ table {
 	  background-color: rgb(220, 245, 174);
 	  
   }
-img{
+
+  img{
 	  margin:0 auto;
 	  padding:0;
 	  padding-left: 5px;
