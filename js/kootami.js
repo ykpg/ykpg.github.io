@@ -117,15 +117,19 @@ const arrayNadiNames = strTemp.split(',');
 $(document).ready(function() 
 {	
 	showContent();
-	
-	handleLink3();
-	handleLink4();
-	
-	handleLink7();
-	handleLink8();
+	//handleLink1();	//suitable stars for girl 
+	//handleLink2();	//suitable stars for boy 
+	handleLink3();	//vadha
+	handleLink4();	//vedha
+	//handleLink5();	// ashta kootami for girl
+	//handleLink6();	// ashta kootami for boy
+	handleLink7();	// panchanga points girl
+	handleLink8();	// panchanga points boy
+	//handleLink9();	// visha kanya
+	//handleLink10();	// dosha nakshatra
+	handleLink11();	// eka
 
-	handleLink11();
-	
+	handleLink20();	// visleshana
 	
 });
 
@@ -146,8 +150,8 @@ var showContent = function()
 	$('#bt').click( function () 
 	{		
 		prepareData();
-		$(".item2").empty();			
-		$('.item2').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
+		$(".pattika").empty();			
+		$('.pattika').append('<h2>  మేలాపకము - కూటముల పట్టిక  </h2> <hr>');		// Dispaly starts here
 		
 		//Table1 Starts
 		strTemp = '<table id="mytable1"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';			// 1st table- table headings
@@ -169,12 +173,12 @@ var showContent = function()
 		//alert("g = " + g + "Paadam = " + p1 + "navaamsa = " + theRowNum + "by 12 Mod = " + (theRowNum % 12) + "rasi = " + arrayRasiInfo[(theRowNum % 12)].name);
 			
 		strTemp+= '</table>';
-		$('.item2').append(strTemp); 
+		$('.pattika').append(strTemp); 
 		//Table1 Ends							
 		
 		// *** Table2 ***
 		//Table2 - headings 
-		strTemp = '<br><table id="mytable2"><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణములు</th></tr>';
+		strTemp = '<br><table id="mytable2"><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణం</th></tr>';
 		subPoints = 0;
 		totalPoints = 0;
 		
@@ -300,7 +304,7 @@ var showContent = function()
 		totalPoints = totalPoints + subPoints;
 		
 		//Table2 - row 9. Total
-		strTemp+= '<tr><td>మొత్తం గుణములు</td> <td>' +   '</td>';  // g is 0 to 26
+		strTemp+= '<tr><td>మొత్తం గుణములు(36 కి)</td> <td>' +   '</td>';  // g is 0 to 26
 		strTemp+= '<td>' + '</td><td>' + totalPoints +'</td></tr>';
 
 		
@@ -314,21 +318,18 @@ var showContent = function()
 		
 		//Table2 - 11th row - show G->B and B->G counts. sthree deergham
 		findNavakam();
-		//strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + "g->b : " + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + " (N-" + girlNavakam + ")" + '</td>';
-		//strTemp+= 	'<td>' + "b->g : " + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + " (N-" + boyNavakam + ")"  + '</td><td></td></tr>';			
-		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + ( (girlDiff+1) + (girlNavakam-1) * 9 ) + '</td>';
-		strTemp+= 	'<td>'  +  ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + '</td><td></td></tr>';			
-	
+		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
+		strTemp+= 	'<td>'  + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + '</td><td></td></tr>';			
 		strTemp+= '</table>';
-		$('.item2').append(strTemp); // end of table2 and div
+		$('.pattika').append(strTemp); // end of table2 and div
 
 		getPoints("csv/ppidaparti.csv",girlNavamsa,boyNavamsa);	
-		strTemp = "<h3>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h2>' ;
-		$('.item2').append(strTemp);   // show panchanga points
+		strTemp = "<p><h3>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h2></p>' ;
+		$('.pattika').append(strTemp);   // show panchanga points
 		
 		showText("txt/t0.txt");
 
-		let theRow = highlight_row();
+		let theRow = highlight_row(); // for table2 only
 		
 
 	});	//function button click ends
@@ -509,17 +510,16 @@ function showText(fname)
 		//alert("here in showtext");
 		//alert(fname);
 		//process text file line by line
-		$('.item3').html(data.replace('n',''));
-		$('#item3').empty();
-		$("#item3").append(data);
+		$('.vivarana').html(data.replace('n',''));
+		$('#vivarana').empty();
+		$("#vivarana").append(data);
 	});
 }
 
 
-
 function handleLink3(){
 	
-	
+	//vadha
 	$("#link3").on("click",  function()
 	{
 		var fileName = "txt/vadha.txt" ;
@@ -527,15 +527,15 @@ function handleLink3(){
 			
 		jQuery.get(fileName, function(data) 
 		{
-			$('.item3').empty();
-			$(".item3").append(data);
+			$('.vivarana').empty();
+			$(".vivarana").append(data);
         });
 		
 	});
 }
 
 function handleLink4(){
-	
+	//vedha
 	
 	$("#link4").on("click",  function()
 	{
@@ -544,20 +544,22 @@ function handleLink4(){
 			
 		jQuery.get(fileName, function(data) 
 		{
-			$('.item3').empty();
-			$(".item3").append(data);
+			$('.vivarana').empty();
+			$(".vivarana").append(data);
         });
 		
 	});
 }
 
 
+
 function handleLink7(){	
+	//panchanga points girl
 	$("#link7").on("click",  function()
 	{
 		prepareData();
-		$(".item3").empty();		
-		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
+		$(".vivarana").empty();		
+		$('.vivarana').append('<h3>  మేలాపకము - కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
 				
 		//Table1 Starts. - table headings
 		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] ;
@@ -576,17 +578,18 @@ function handleLink7(){
 		
 		strTemp+= '</table>';				
 		strTemp+= '<h3>పిడపర్తి పంచాంగం ప్రకారం ఇవ్వబడ్డాయి.</h2>' ;					
-		$('.item3').append(strTemp);   // show panchanga points
+		$('.vivarana').append(strTemp);   // show panchanga points
 	});
 }
 
 
-function handleLink8(){		
+function handleLink8(){	
+	//panchanga points boy
 	$("#link8").on("click",  function()
 	{
 		prepareData();
-		$(".item3").empty();
-		$('.item3').append('<h1>  మేలాపకము - కూటముల పట్టిక  </h1> <hr>');		// Dispaly starts here
+		$(".vivarana").empty();
+		$('.vivarana').append('<h3>  మేలాపకము - కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
 		
 		//Table2 Starts
 		// 2nd table- table headings
@@ -605,14 +608,14 @@ function handleLink8(){
 		}		
 		strTemp+= '</table>';
 		strTemp+= '<h3>పిడపర్తి పంచాంగం ప్రకారం ఇవ్వబడ్డాయి.</h2>' ;
-		$('.item3').append(strTemp);   // show panchanga points
+		$('.vivarana').append(strTemp);   // show panchanga points
 		
 	});
 }
 
 
 function handleLink11(){
-	
+// eka rasi or eka nakshatra 
 	
 	$("#link11").on("click",  function()
 	{
@@ -621,16 +624,36 @@ function handleLink11(){
 			
 		jQuery.get(fileName, function(data) 
 		{
-			$('.item3').empty();
-			$(".item3").append(data);
+			$('.vivarana').empty();
+			$(".vivarana").append(data);
         });
 		
 	});
 }
 
+
+function handleLink20(){
+//visleshana
+	
+	$("#link20").on("click",  function()
+	{
+		var fileName = "txt/visleshana.txt" ;
+		//alert(fileName);
+			
+		jQuery.get(fileName, function(data) 
+		{
+			$('.vivarana').empty();
+			$(".vivarana").append(data);
+        });
+		
+	});
+}
+
+
 function highlight_row() 
 {
-    let table = document.getElementById('mytable2');
+	//only for table2
+	let table = document.getElementById('mytable2');
     let cells = table.getElementsByTagName('td');
 	let rowSelected = 0;
 	let rowId = 0;
@@ -662,8 +685,8 @@ function highlight_row()
 			//alert(msg);
 			jQuery.get(fileName, function(data) 
 			{
-				$('.item3').empty();
-				$(".item3").append(data);
+				$('.vivarana').empty();
+				$(".vivarana").append(data);
             });
         }
     }
