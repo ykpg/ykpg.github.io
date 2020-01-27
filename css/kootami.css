@@ -15,7 +15,7 @@ body{
     { 
     clear:both; 
 } 
-@media  (min-width: 768px )  {
+@media  (min-width: 768px ) {
 	/* This part is only read by viewports wider than 1200 pixels */
 	body{ 
 		font-size: 14px;
