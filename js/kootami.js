@@ -158,7 +158,7 @@ var showContent = function()
 		
 		// Table1-1st row - show nakshatra and paadam
 		strTemp+= '<tr>'			
-		strTemp+= '<td>నక్షత్రము - పాదం  </td> <td>' + arrayNamesOfStars[gs]  + ' - '+ (gp+1) + '</td> <td>' + arrayNamesOfStars[bs]   + ' - ' + (bp+1) + '</td></tr>';
+		strTemp+= '<td>నక్షత్రము - పాదం  </td> <td><strong>' + arrayNamesOfStars[gs]  + ' - '+ (gp+1) + '</strong></td> <td><strong>' + arrayNamesOfStars[bs]   + ' - ' + (bp+1) + '</strong></td></tr>';
 		
 		// Table1-2nd row - show rasi name and lord of that rasi.
 		girlRasiNum = parseInt( girlNavamsa / 9 );    // rasi numbers are 0 to 11. theRowNum points to the Navamsa.
@@ -304,8 +304,8 @@ var showContent = function()
 		totalPoints = totalPoints + subPoints;
 		
 		//Table2 - row 9. Total
-		strTemp+= '<tr><td>మొత్తం గుణములు(36 కి)</td> <td>' +   '</td>';  // g is 0 to 26
-		strTemp+= '<td>' + '</td><td>' + totalPoints +'</td></tr>';
+		strTemp+= '<tr><td><strong>మొత్తం గుణములు(36 కి)</strong></td> <td>-</td>';  // g is 0 to 26
+		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 
 		
 		
@@ -318,13 +318,14 @@ var showContent = function()
 		
 		//Table2 - 11th row - show G->B and B->G counts. sthree deergham
 		findNavakam();
-		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
-		strTemp+= 	'<td>'  + ( (boyDiff+1 ) + (boyNavakam-1) * 9 ) + '</td><td></td></tr>';			
+		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>g->b:' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
+		strTemp+= 	'<td></td><td></td></tr>';	
+		//'<td>b->g:'  + ( (boyDiff+1 ) + (boyNavakam-1) * 9 )		
 		strTemp+= '</table>';
 		$('.pattika').append(strTemp); // end of table2 and div
 
 		getPoints("csv/ppidaparti.csv",girlNavamsa,boyNavamsa);	
-		strTemp = "<p><h3>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h2></p>' ;
+		strTemp = "<p><h3>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = " + thePoints + '</h2></p><hr class="style2">' ;
 		$('.pattika').append(strTemp);   // show panchanga points
 		
 		showText("txt/t0.txt");

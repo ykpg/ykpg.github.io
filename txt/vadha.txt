@@ -32,5 +32,5 @@
 <tr><td>ఉత్తరాభాద్ర</td><td>మృగశిర</td><td>మరణం</td><td><img src="/img/wrong.png" style="width: 16px;" alt="X"></td></tr>
 <tr><td>రేవతి</td><td>ఆర్ద్ర</td><td>విభేదములు, విడిపోవుట</td><td><img src="/img/wrong.png" style="width: 16px;" alt="X"></td></tr>
 
-<tr><td colspan='4'><img src="/img/attention.png" style="width: 18px;" alt="!"> నైధాన తార అయినప్పటికీ కొన్ని జంటలకు శుభ ఫలితమే చెప్పబడింది. </td></tr>
+<tr><td colspan='4'><img src="/img/attention.png" style="width: 18px;" alt="!"> మొదటి నవకంలో నైధాన తార అయినప్పటికీ కొన్ని జంటలకు శుభ ఫలితమే చెప్పబడింది. </td></tr>
 </table>
