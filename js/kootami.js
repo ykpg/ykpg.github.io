@@ -651,6 +651,7 @@ function handleLink20(){
 }
 
 
+
 function highlight_row() 
 {
 	//only for table2
