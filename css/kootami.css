@@ -11,148 +11,32 @@ body{
 	text-align:center; /* with this all elements get centered */
 	width: 94%;
 }
-.clear 
-    { 
-    clear:both; 
-} 
-@media  all and (min-width: 768px ) and (orientation:landscape) {
-	/* This part is only read by viewports wider than 1200 pixels */
-	body{ 
-		font-size: 14px;
-		line-height: 1.2em;	 
-		width: 100%;
-		margin:0 auto;
-		padding:0;
-	}
-	
-	#navbar ul{
-		display: flex;
-        flex-flow: row wrap;
-		justify-content: flex-end;
-		flex-wrap: nowrap;
-		align-items: stretch;
-		
-	}
 
-	#navbar  li{
-		border: none;
-		padding:0;
-		display:inline;
-		display:flex;
-  flex-grow:1;
- 
-	}
-	
-	#navbar a{
-		display: inline;
-		border:none;
-	}
-	input[type="button"]{
-		display:inline;
-	}
-	.container{
-		display:flex;
-		overflow:hidden;
-		justify-content: space-between;
-	}
-	.pattika, .vivarana{
-		flex:1;
-	}
+.container{	
+	display: flex;
+	min-height: 300px;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */		
+	flex-direction: column;	
+	justify-content: center; 	
 }
 
 
-}
-
-
-.container{
-	
-	display:block;
-	
-}
-.pattika{
-  margin:0 auto;  
-  text-align: center;
-  justify-content: center;
-  align-content: center;
-  background-color:gainsboro;
-  color: black;
-  font-size: 14px;
-  line-height: 1.2rem;
-  padding: 5px;
-}
-.vivarana{
-  margin:0 auto;  
-  text-align: left;
-  justify-content: center;
-  align-content: center;
-  background-color:gainsboro;
-  color: black;
-  font-size: 14px;
-  padding: 5px;
-  line-height: 1.2rem;
-}
-#myheader{
+.header{
 	color:black;
-	background-image: linear-gradient( rgb(131, 151, 161), rgb(117, 205, 235));
-	margin:0 auto;
-	padding: 8px;
-	line-height: 1.2rem;
-	font-size: 1.1rem;
-}
-#myfooter{
-	color:white;
-	background-image: linear-gradient( rgb(117, 205, 235), rgb(131, 151, 161));
-	margin:0 auto;
-	padding: 4px;
-	line-height: 1.2rem;
+	background-image: linear-gradient( #8397a1, #75cdeb);
+	padding: 3px 0px 3px 0px;
+	width:100%;
 }
 
-#showcase{
-	min-height:80px;
-	background-image: linear-gradient(to right, rgb(212, 133, 58) , rgb(124, 204, 241));
-	display: block;
-	margin: 0;
+
+.showcase{
+	min-height:60px;
+	background-image: linear-gradient(to right, #d4853a , #7cccf1);
 	padding: 5px;
 	color: dimgray;
 }
 
-h1 {
-	font-size: 1rem;
-	margin: 0;
-	padding: 5px;
-	color:#14181a;
-}
-
-h2 {
-	font-size: 1rem;
-	margin: 0;
-	margin-bottom: 5px;
-	padding: 0;
-	color:#2283a0;
-}
-
-h3 {
-	font-size: 1rem;
-	margin: 0;
-	margin-bottom: 5px;
-	padding: 0;
-	color:#2283a0;
-  
-}
-
-.minahaa {
-	font-size: 0.9rem;
-	margin: 0 0 0.75rem 0;
-	color:rgb(26, 138, 69);
-	font-weight: bold;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: #333;
-  background-image: linear-gradient(to right, #ccc, #333, #ccc);
-}
 
 .form-dropdown{
 	-webkit-appearance: listbox !important;
@@ -213,53 +97,42 @@ select#boypaadam{
 	padding:10px;	
 }
 
-#navbar{
-	background-color: lightskyblue;
-	color:#fcf9f9;
-	margin:0 auto;
-
-	border:none;
-}
-
-#navbar ul{
-	
-	list-style:none;
-	margin:0;
-	padding:0;
-	border:none;
-}
-#navbar li{
-	display: block;
-	padding: 8px;
+.navbar1 {
+	padding: 0;
+	list-style: none;
+	margin: 0;
+	background: #7cccf1;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+	font-size: 12px;
+  }
+  .navbar1 a {
+	text-align: center;
+	padding: 10px;
 	border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#navbar a{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	text-decoration: none;
-	font-size: 12px;
+	display: block;
 	color: black;
-	padding: 0 ;
-	display:block;
-	z-index: 1;
-
-}
-
-#navbar a:hover{
+  }
+  .navbar1 a:hover {
 	background: #67C8FF;
-	color: #fff;
-	font-weight: bold;
-	text-shadow:none;
-	cursor: pointer;
-	text-decoration: none;
-}
-input[type="button"]{
-	background-color: lightskyblue;
+	color:white;
+  }
+  .navbar1 li {
+	border: none;
+  }
+
+  input[type="button"]{
+	background-color: #7cccf1;
 	color: black;
+	border:none;
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	font-size: 12px;
 	margin:0;
-	padding: 0 15px 0 5px;
-	border:none;
+	padding: 12px 7px 6px 7px;
 	display:block;
 	z-index: 1;
 	width: 100%;
@@ -267,9 +140,110 @@ input[type="button"]{
 }
 input[type="button"]:hover {
 	background: #67C8FF;
-	color: #fff;	
+	color: white;	
 	font-weight: bold;
 	cursor: pointer;
+}
+
+
+.pattika{
+	text-align: center;
+	padding: 5px;
+	background-color:gainsboro;
+}
+
+.vivarana{
+	text-align: left;
+	padding: 5px;
+	background-color:gainsboro;
+}
+
+.footer{
+	color:white;
+	background-image: linear-gradient( rgb(117, 205, 235), rgb(131, 151, 161));
+	padding:3px 0px 3px 0px ;
+	width:100%;
+}
+
+
+@media  all and (min-width: 768px ) and (orientation:landscape) {
+	/* This part is only read by viewports wider than 768 pixels */
+	body{ 
+		font-size: 14px;
+		line-height: 1.2rem;	 
+		width: 100%;
+		margin:0 auto;
+		padding:0;
+	}
+	
+	.container{	
+		display: flex;
+   	
+	}
+
+	.main{
+		display: flex;
+		flex: 2 0 0;
+
+	}
+	.pattika{
+		flex: 1 0 0;
+	}
+	.vivarana{
+		flex: 1 0 0 ;
+		text-align:left;
+	}
+	.navbar1 {
+		flex-flow: row ;
+		justify-content: flex-end;
+	  }
+	
+	
+}
+
+
+h1 {
+	font-size: 1rem;
+	margin: 0;
+	padding: 5px;
+	color:#14181a;
+}
+
+h2 {
+	font-size: 1rem;
+	margin: 0;
+	margin-bottom: 5px;
+	padding: 0;
+	color:#2283a0;
+}
+
+h3 {
+	font-size: 1rem;
+	margin: 0;
+	margin-bottom: 5px;
+	padding: 0;
+	color:#2283a0;
+  
+}
+
+.minahaa {
+	font-size: 0.9rem;
+	margin: 0 0 0.75rem 0;
+	color:rgb(26, 138, 69);
+	font-weight: bold;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+hr.style2 {
+    height: 10px;
+	border: 0;
+	background-image: linear-gradient(to right, #cdd4d6, #aeb5b6, #cdd4d6);
 }
 
 table {
@@ -313,9 +287,9 @@ table {
   }
 img{
 	  margin:0 auto;
-	  padding:0;
-	  padding-left: 5px;
+	  padding:0px;
 	  vertical-align: middle;
+	  text-align:center;
   }
  img :hover{
 	background: none;
