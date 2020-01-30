@@ -329,7 +329,7 @@ var showContent = function()
 		$('.pattika').append(strTemp);   // show panchanga points
 		
 		showText("txt/t0.txt");
-
+		
 		let theRow = highlight_row(); // for table2 only
 		
 
@@ -560,10 +560,10 @@ function handleLink7(){
 	{
 		prepareData();
 		$(".vivarana").empty();		
-		$('.vivarana').append('<h3>  మేలాపకము - కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
+		$('.vivarana').append('<h3>  మేలాపకము - వధువు నక్షత్రానికి కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
 				
 		//Table1 Starts. - table headings
-		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] ;
+		strTemp = '<table id="mytable1"><caption>' + arrayNamesOfStars[gs] + '-' + (gp+1) ;
 		strTemp+= " - అమ్మాయి నక్షత్రానికి - వివిధ అబ్బాయి నక్షత్రములిచ్చే గుణములు" + '</caption>';
 		strTemp+= '<th>నక్షత్రము</th><th>పా1</th><th>పా2</th><th>పా3</th><th>పా4</th></tr>';
 		for(s = 0; s < 27; s++)
@@ -590,11 +590,11 @@ function handleLink8(){
 	{
 		prepareData();
 		$(".vivarana").empty();
-		$('.vivarana').append('<h3>  మేలాపకము - కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
+		$('.vivarana').append('<h3>  మేలాపకము - వరుని నక్షత్రానికి కూటముల పట్టిక  </h3> <hr>');		// Dispaly starts here
 		
 		//Table2 Starts
 		// 2nd table- table headings
-		strTemp = '<table id="mytable2"><caption>' + arrayNamesOfStars[bs] ;
+		strTemp = '<table id="mytable2"><caption>' + arrayNamesOfStars[bs] + '-' + (bp+1);
 		strTemp+= " - అబ్బాయి నక్షత్రానికి - వివిధ అమ్మాయి నక్షత్రములిచ్చే గుణములు" + '</caption>';
 		strTemp+= '<th>నక్షత్రము</th><th>పా1</th><th>పా2</th><th>పా3</th><th>పా4</th></tr>';
 		for(s = 0; s < 27; s++)
