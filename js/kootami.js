@@ -620,7 +620,7 @@ function handleLink11(){
 	
 	$("#link11").on("click",  function()
 	{
-		var fileName = "txt/eka.txt" ;
+		let fileName = "txt/eka.txt" ;
 		//alert(fileName);
 			
 		jQuery.get(fileName, function(data) 
