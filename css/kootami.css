@@ -318,3 +318,16 @@ img{
 	border: none;
 	display:inline;
   }
+
+  p.mytext{
+	  color:black;
+	  font-size:0.8rem;
+	  padding-left: 12px;
+
+  }
+  .myred{
+	  color:red;
+  }
+  .mygreen{
+	  color:green;
+  }
