@@ -802,7 +802,9 @@ function find3Tara(){
 	if ( (boyDiff+1) == 7 ){ tpB = 0.0;}
 	if ( ( (boyDiff+1) == 5 ) && ( boyNavakam == 1 || boyNavakam == 2) ){ tpB = 0.0; }
 	if ( ( (boyDiff+1) == 3 ) && ( boyNavakam == 1 ) ){ tpB = 0.0; }
+	
 	thePoints = tpG + tpB;
+	if(tpG == 0){ thePoints = 0;} // points only if G->B is OK.
 	
 		/*
 	//first, g 2 b must be ok. then only chck b 2 g.

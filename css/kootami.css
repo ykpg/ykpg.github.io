@@ -1,13 +1,13 @@
 /* Mobile First */
 body{
-	color:black;
+	color:#333333;
 	background-color:white; 
 	margin:0 auto;
 	padding:0;
-	font-family: "Arial, Tahoma, Helvetica, Verdana, sans-serif";    
+	font-family: "Roboto, Arial, Tahoma, Helvetica, Verdana", sans-serif;    
 	font-size: 14px;
 	font-weight: normal;
-	line-height: 1.4em;	 
+	line-height: 1.6em;	 
 	text-align:center; /* with this all elements get centered */
 	width: 94%;
 }
@@ -22,8 +22,7 @@ body{
 }
 
 
-.header{
-	color:black;
+.header{	
 	background-image: linear-gradient( #8397a1, #75cdeb);
 	padding: 3px 0px 3px 0px;
 	width:100%;
@@ -33,14 +32,14 @@ body{
 .showcase{
 	min-height:60px;
 	background-image: linear-gradient(to right, #d4853a , #7cccf1);
-	padding: 5px;
-	color: dimgray;
+	padding: 5px;	
 }
 
 
 .form-dropdown{
 	-webkit-appearance: listbox !important;
 }
+
 form.myform {
 	margin: 0px auto;
 	font-size: 0.8rem;	
@@ -49,35 +48,37 @@ form.myform {
 	width: 90%;
 	text-align: center;
 }
-select{
 
+select{
 	background-color: #6CA6CD;
 	color: #fff;
 	border: 1px solid #eee;
 	border-radius: 6px;
 	box-shadow: 1px 1px 1px #A4D3EE	;
-	text-shadow:none;
-	
+	text-shadow:none;	
 	height: 26px;
 	padding: 2px;	
 	font-weight: bold;
 
 }
+
 select#girlstar{	
 	background-color: #9E0508; 
-
 }
+
 select#boystar{	
 	background-color: #5B59BA; 
 }
+
 select#girlpaadam{	
-	background-color: #9E0508; 
-	
+	background-color: #9E0508; 	
 }
+
 select#boypaadam{
 	background-color: #5B59BA; 
 	text-align:right;
 }
+
 #fg{
 	background-color:transparent; 
 	color:#9E0508;
@@ -87,6 +88,7 @@ select#boypaadam{
 	display: inline-block;
 	padding:10px;	
 }
+
 #fb{
 	background-color:transparent; 
 	color:#5B59BA;
@@ -106,25 +108,28 @@ select#boypaadam{
 	flex-flow: column wrap;
 	justify-content: space-around;
 	font-size: 0.8rem;
-  }
-  .navbar1 a {
-	text-align: center;
-	padding: 10px;
-	border-top: 1px solid rgba(255, 255, 255, 0.3);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	text-decoration: none;
-	display: block;
-	color: black;
-  }
-  .navbar1 a:hover {
+}
+
+.navbar1 a {
+text-align: center;
+padding: 10px;
+border-top: 1px solid rgba(255, 255, 255, 0.3);
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+text-decoration: none;
+display: block;
+color: black;
+}
+
+.navbar1 a:hover {
 	background: #67C8FF;
 	color:white;
-  }
-  .navbar1 li {
-	border: none;
-  }
+}
 
-  input[type="button"]{
+.navbar1 li {
+border: none;
+}
+
+input[type="button"]{
 	background-color: #7cccf1;
 	color: black;
 	border:none;
@@ -132,12 +137,12 @@ select#boypaadam{
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	font-size: 0.8rem;
 	margin:0;
-	padding: 12px 7px 8px 7px;
+	padding: 14px 7px 9px 7px;
 	display:block;
 	z-index: 1;
 	width: 100%;
-
 }
+
 input[type="button"]:hover {
 	background: #67C8FF;
 	color: white;	
@@ -145,23 +150,24 @@ input[type="button"]:hover {
 	cursor: pointer;
 }
 
+.main{
+	background-color:#e5e5e5;
+}
 
 .pattika{
 	text-align: center;
-	padding: 5px;
-	background-color:gainsboro;
+	padding: 5px;	
 }
 
 .vivarana{
 	text-align: left;
-	padding: 5px;
-	background-color:gainsboro;
+	padding: 5px;	
 }
 
 .footer{
 	color:white;
 	background-image: linear-gradient( rgb(117, 205, 235), rgb(131, 151, 161));
-	padding:3px 0px 3px 0px ;
+	padding:2px 0px 2px 0px ;
 	width:100%;
 	font-size: 0.8rem;
 }
@@ -171,7 +177,7 @@ input[type="button"]:hover {
 	/* This part is only read by viewports wider than 768 pixels */
 	body{ 
 		font-size: 16px;
-		line-height: 1.4rem;	 
+		line-height: 1.6rem;	 
 		width: 100%;
 		margin:0 auto;
 		padding:0;
@@ -179,35 +185,38 @@ input[type="button"]:hover {
 	
 	.container{	
 		display: flex;
-   	
 	}
 
 	.main{
 		display: flex;
 		flex: 2 0 0;
-
+		background-color:#e5e5e5;
 	}
+
 	.pattika{
 		flex: 1 0 0;
 	}
+
 	.vivarana{
 		flex: 1 0 0 ;
 		text-align:left;
 	}
+
 	.navbar1 {
 		flex-flow: row ;
 		justify-content: flex-end;
-	  }
-	
+	}	
 	
 }
 
 
 h1 {
 	font-size: 1rem;
+	font-weight: bold;
+	text-shadow: 1px 1px #0b8aaa;
 	margin: 0;
-	padding: 5px;
-	color:#14181a;
+	padding: 4px;
+	color:#1411be;
 }
 
 h2 {
@@ -244,7 +253,7 @@ hr {
 hr.style2 {
     height: 10px;
 	border: 0;
-	background-image: linear-gradient(to right, #cdd4d6, #aeb5b6, #cdd4d6);
+	background-image: linear-gradient(to right, #d5d5d5, #bababa, #d5d5d5);
 }
 
 table {
@@ -252,82 +261,87 @@ table {
 	margin:0 auto; /* centering */
 	width:96%;
 	font-size: 0.8rem;
-  }
+}	
   
-	
-  th {
+th {
 	background-color: #6CA6CD;
 	color: white;
 	padding: 2px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
-  }
+}
   
-  td {
+td {
 	padding: 1px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
 	
-  }
+}
   
-  tr {
-	  color: black;
-	  background-color: white;
-	  padding: 2px;
-	  text-align: left;
-  }
+tr {
+	color: black;
+	background-color: white;
+	padding: 2px;
+	text-align: left;
+}
   
-  tbody tr:nth-child(even) {
-	  background-color: #eee;
-  }
+tbody tr:nth-child(even) {
+	background-color: #eee;
+}
 	  
-  table tr:hover {
-	  color:black;
-	  background-color: rgb(220, 245, 174);
+table tr:hover {
+	color:black;
+	background-color: rgb(220, 245, 174);
 	  
-  }
+}
+
 img{
-	  margin:0 auto;
-	  padding:0px;
-	  vertical-align: middle;
-	  text-align:center;
-  }
- img :hover{
+	margin:0 auto;
+	padding:0px;
+	vertical-align: middle;
+	text-align:center;
+}
+
+img :hover{
 	background: none;
- }
+}
  
- .nav2{
+.nav2{
 	padding: 0;
 	list-style: none;
 	margin: 0;
 	background:none;
 	display: inline;
 	font-size: 0.8rem;
-  }
-  .nav2 a {
+}
+
+.nav2 a {
 	text-align: center;
 	padding: 0px 3px 0px 3px;
 	text-decoration: none;
 	color: gray;
-  }
-  .nav2 a:hover {
+}
+
+.nav2 a:hover {
 	background: #67C8FF;
 	color:white;
-  }
-  .nav2 li {
+}
+
+.nav2 li {
 	border: none;
 	display:inline;
-  }
+}
 
-  p.mytext{
-	  color:black;
-	  font-size:0.8rem;
-	  padding-left: 12px;
+p.mytext{
+	color:black;
+	font-size:0.8rem;
+	padding-left: 12px;
+}
 
-  }
-  .myred{
+.myred{
 	  color:red;
-  }
-  .mygreen{
+}
+
+.mygreen{
 	  color:green;
-  }
+}
