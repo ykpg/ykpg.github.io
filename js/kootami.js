@@ -258,9 +258,11 @@ var showContent = function()
 		$('.pattika').append(strTemp);   // show panchanga points
 		
 		showText("txt/t0.txt");
-		let divPosition = $('#pattika').offset();
+		let divPosition = $('#vivarana').offset();
 		$('html, body').animate({scrollTop: divPosition.top}, "slow");
-		
+		$('html, body').animate({
+			scrollTop: $("#pattika").offset().top
+		}, 1000);
 		let theRow = highlight_row(); // for table2 only
 		
 		
@@ -470,7 +472,7 @@ function handleVedha(){
 		showText("txt/vedha.txt") ;
 		let divPosition = $('#vivarana').offset();
 		$('html, body').animate({scrollTop: divPosition.top}, "slow");		
-		
+		$("#vivaran").focus();
 	});
 }
 
@@ -481,7 +483,7 @@ function handleEka(){
 		showText("txt/eka.txt") ;
 		let divPosition = $('#vivarana').offset();
 		$('html, body').animate({scrollTop: divPosition.top}, "slow");		
-		
+		$("#vivaran").focus();
 	});
 }
 
@@ -493,8 +495,9 @@ function handleVisleshana(){
 	{
 		showText("txt/visleshana.txt");	
 		let divPosition = $('#vivarana').offset();
+		console.log(divPosition);
 		$('html, body').animate({scrollTop: divPosition.top}, "slow");	
-			
+		$("#vivaran").focus();	
 	});
 }
 
@@ -562,7 +565,7 @@ function handleVadhuvuku(){
 		$('.vivarana').append(strTemp); 
 		let divPosition = $('#vivarana').offset();
 		$('html, body').animate({scrollTop: divPosition.top}, "slow");
-		
+		$("#vivaran").focus();
 	});
 }
 
@@ -630,6 +633,7 @@ function handleVaruniki(){
 		
 		let divPosition = $('#vivarana').offset();
 		$('html, body').animate({scrollTop: divPosition.top}, "slow");
+		$("#vivaran").focus();
 	});
 }
 
@@ -751,8 +755,10 @@ function handleMyMethod(){
 	$('.vivarana').append(strTemp); // end of table2 and div	
 
 	});
+	
 	let divPosition = $('#vivarana').offset();
 	$('html, body').animate({scrollTop: divPosition.top}, "slow");
+	$("#vivaran").focus();
 	
 }
 
