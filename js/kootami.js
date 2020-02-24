@@ -258,8 +258,11 @@ var showContent = function()
 		$('.pattika').append(strTemp);   // show panchanga points
 		
 		showText("txt/t0.txt");
+		let divPosition = $('#pattika').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");
 		
 		let theRow = highlight_row(); // for table2 only
+		
 		
 
 	});	//function button click ends
@@ -436,7 +439,6 @@ tPidaparti = [
 
 
 
-
 function showText(fileName)
 {	
 	$.get(fileName) 	
@@ -454,7 +456,9 @@ function handleVadha(){
 	//vadha
 	$("#vadha").on("click",  function()
 	{
-		showText("txt/vadha.txt") ;		
+		showText("txt/vadha.txt") ;	
+		let divPosition = $('#vivarana').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");
 		
 	});
 }
@@ -463,7 +467,9 @@ function handleVedha(){
 	//vedha	
 	$("#vedha").on("click",  function()
 	{
-		showText("txt/vedha.txt") ;		
+		showText("txt/vedha.txt") ;
+		let divPosition = $('#vivarana').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");		
 		
 	});
 }
@@ -472,7 +478,9 @@ function handleEka(){
 // eka rasi or eka nakshatra 	
 	$("#eka").on("click",  function()
 	{
-		showText("txt/eka.txt") ;		
+		showText("txt/eka.txt") ;
+		let divPosition = $('#vivarana').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");		
 		
 	});
 }
@@ -483,7 +491,9 @@ function handleVisleshana(){
 //visleshana	
 	$("#visleshana").on("click",  function()
 	{
-		showText("txt/visleshana.txt");		
+		showText("txt/visleshana.txt");	
+		let divPosition = $('#vivarana').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");	
 			
 	});
 }
@@ -550,6 +560,8 @@ function handleVadhuvuku(){
 		strTemp += '<p class="mytext">గుణములు పిడపర్తి పంచాంగములోనివి. నా పద్ధతిలో అన్నిటికన్నా మేలయిన నక్షత్రములు మాత్రమె ఇవ్వబడ్డాయి.';
 		strTemp += '</p>';
 		$('.vivarana').append(strTemp); 
+		let divPosition = $('#vivarana').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");
 		
 	});
 }
@@ -616,6 +628,8 @@ function handleVaruniki(){
 		strTemp += '</p>';
 		$('.vivarana').append(strTemp); 
 		
+		let divPosition = $('#vivarana').offset();
+		$('html, body').animate({scrollTop: divPosition.top}, "slow");
 	});
 }
 
@@ -737,6 +751,8 @@ function handleMyMethod(){
 	$('.vivarana').append(strTemp); // end of table2 and div	
 
 	});
+	let divPosition = $('#vivarana').offset();
+	$('html, body').animate({scrollTop: divPosition.top}, "slow");
 	
 }
 
@@ -771,7 +787,8 @@ function highlight_row()
 			showText(fileName);
         }
     }
-	
+	let divPosition = $('#vivarana').offset();
+	$('html, body').animate({scrollTop: divPosition.top}, "slow");
 	
 }
 
