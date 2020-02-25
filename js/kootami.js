@@ -898,6 +898,7 @@ function find3Tara(){
 	// then if from  boy also tara is not 3/5/7 then 3 points
 	//calculates sub and total points
 
+	/*
 	let tpG = 1.5;
 	let tpB = 1.5;
 	thePoints = 0.0;
@@ -912,8 +913,9 @@ function find3Tara(){
 	
 	thePoints = tpG + tpB;
 	if(tpG == 0){ thePoints = 0;} // points only if G->B is OK.
+	*/
 	
-		/*
+	/*
 	//first, g 2 b must be ok. then only chck b 2 g.
 	thePoints = 0;
 	if ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  )
@@ -925,18 +927,18 @@ function find3Tara(){
 		}	
 
 	}
-
+		*/
 
 	// either ok means 1.5 points. both ways is 3
 	thePoints = 0.0;
-	thePoints = 1.5; // only g 2 b ok
+	//thePoints = 1.5; // only g 2 b ok
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) || (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
 		thePoints = 1.5; // either way ok
 	}
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) && (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
 		thePoints = 3.0; // both ways ok
 	}		
-	*/
+
 
 		
 	subPoints = thePoints;
@@ -1021,8 +1023,8 @@ function getGanaPoints(f,m)
 	// as per muhurta sindhu.
 	if ( f == m) { return 6;} // both same
 	else if (f == 1 && m == 2) { return 4;} // G= deva. B= nara
-	else if (f == 1 && m == 3) { return 2;} // G= deva. B= rak
-	else if (f == 2 && m == 1) { return 5;} // G= nara. B= deva
+	else if (f == 1 && m == 3) { return 1;} // G= deva. B= rak
+	else if (f == 2 && m == 1) { return 6;} // G= nara. B= deva
 	else if (f == 2 && m == 3) { return 1;} // G= nara. B= rak
 	else if (f == 3 && m == 1) { return 0;} // G= rak. B= deva
 	else if (f == 3 && m == 2) { return 0;} // G= rak. B= nara
