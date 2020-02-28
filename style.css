@@ -23,6 +23,7 @@ body{
 	align-items: center;
 	align-content: center;
 	text-align: center;	
+	width: 100%;
 	
 }
 
@@ -57,7 +58,7 @@ body{
 	text-decoration: none;
 	display: block;
 
-	color: #64490f;
+	color: #24211a;
 }
 
 .navbar1 a:hover {
@@ -70,6 +71,7 @@ ul{
 	text-align: center;
 	margin: 0 auto;
 	padding:0;
+	width: 100%;
 }
 li {
 	border: none;
@@ -88,6 +90,7 @@ h1 {
 	font-weight: bold;
 	margin:0;
 	margin-top: 30px;
+	margin-bottom: 30px;
 	padding: 4px;
 	color:#e3e3e9;
 	vertical-align: top;
