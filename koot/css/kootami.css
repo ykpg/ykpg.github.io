@@ -8,15 +8,15 @@ body{
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.6em;	 
-	text-align:center; 
+	text-align:center; /* with this all elements get centered */
 	width: 94%;
 }
 
 .container{	
-	display: -webkit-flex; /* Safari */	
 	display: flex;
 	min-height: 300px;
-	margin: 0 auto;	
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */		
 	flex-direction: column;	
 	justify-content: center; 	
 }
@@ -108,6 +108,7 @@ select#boypaadam{
 	flex-flow: column wrap;
 	justify-content: space-around;
 	font-size: 0.8rem;
+	
 }
 
 .navbar1 a {
@@ -174,6 +175,7 @@ input[type="button"]:hover {
 
 
 @media  all and (min-width: 768px ) and (orientation:landscape) {
+	/* This part is only read by viewports wider than 768 pixels */
 	body{ 
 		font-size: 16px;
 		line-height: 1.6rem;	 
@@ -183,7 +185,6 @@ input[type="button"]:hover {
 	}
 	
 	.container{	
-		display: -webkit-flex; /* Safari */	
 		display: flex;
 	}
 
@@ -211,12 +212,12 @@ input[type="button"]:hover {
 
 
 h1 {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	font-weight: bold;
-	text-shadow: 1px 1px #0b8aaa;
+	/*text-shadow: 1px 1px #0b8aaa;*/
 	margin: 0;
 	padding: 4px;
-	color:#1411be;
+	color:#0a50a0;
 }
 
 h2 {
@@ -224,7 +225,7 @@ h2 {
 	margin: 0;
 	margin-bottom: 5px;
 	padding: 0;
-	color:#2283a0;
+	color:#308bc4;
 }
 
 h3 {
@@ -232,7 +233,7 @@ h3 {
 	margin: 0;
 	margin-bottom: 5px;
 	padding: 0;
-	color:#2283a0;
+	color:#308bc4;
   
 }
 
@@ -258,7 +259,7 @@ hr.style2 {
 
 table {
 	border-collapse: collapse; 
-	margin:0 auto; 
+	margin:0 auto; /* centering */
 	width:96%;
 	font-size: 0.8rem;
 }	

@@ -1,0 +1,38 @@
+<h3>వధ నక్షత్రముల పట్టిక </h3><hr>
+<table>
+<caption>వధ నక్షత్రం - ప్రశ్న మార్గ</caption>
+<tr>
+
+<th>నక్షత్రము</th><th>వధ నక్షత్రము</th><th>ఫలితము</th><th>మంచి/చెడు</th></tr>
+<tr><td>అశ్వని</td><td>పునర్వసు</td><td>ఎక్కువ స్త్రీ సంతానము</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>భరణి</td><td>పుష్యమి</td><td>సౌభాగ్యము</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>కృత్తిక</td><td>ఆశ్లేష</td><td>మరణము</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>రోహిణి</td><td>మఖ</td><td>ఎక్కువ పురుష సంతానము</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>మృగశిర</td><td>పుబ్బ</td><td>మరణం లేక విడిపోవుట</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>ఆర్ద్ర</td><td>ఉత్తర</td><td>సంతోషం</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>పునర్వసు</td><td>హస్త</td><td>కుటుంబ సౌఖ్యం</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>పుష్యమి</td><td>చిత్త</td><td>సంతోషం</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>ఆశ్లేష</td><td>స్వాతి</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>మఖ</td><td>విశాఖ</td><td>పునర్వివాహం</td><td><img src="img/wrong.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>పుబ్బ</td><td>అనూరాధ</td><td>సుఖ సంతోషములు</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>ఉత్తర</td><td>జ్యేష్ట</td><td>విభేదములు, విడిపోవుట</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>హస్త</td><td>మూల</td><td>కష్ట నష్టములు</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>చిత్త</td><td>పూర్వాషాడ</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>స్వాతి</td><td>ఉత్తరాషాడ</td><td>ఎక్కువ స్త్రీ సంతానము</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>విశాఖ</td><td>శ్రవణం</td><td>కళత్ర వైరం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>అనూరాధ</td><td>ధనిష్ట</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>జ్యేష్ట</td><td>శతభిషం</td><td>విభేదములు, విడిపోవుట</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>మూల</td><td>పూర్వాభాద్ర</td><td>సౌభాగ్యము</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>పూర్వాషాడ</td><td>ఉత్తరాభాద్ర</td><td>ప్రేమ</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>ఉత్తరాషాడ</td><td>రేవతి</td><td>విడిపోవుట</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>శ్రవణం</td><td>అశ్వని</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>ధనిష్ట</td><td>భరణి</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>శతభిషం</td><td>కృత్తిక</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>పూర్వాభాద్ర</td><td>రోహిణి</td><td>ఎక్కువ పురుష సంతానము</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>ఉత్తరాభాద్ర</td><td>మృగశిర</td><td>మరణం</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>రేవతి</td><td>ఆర్ద్ర</td><td>విభేదములు, విడిపోవుట</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+
+<tr><td colspan='4'><img src="img/attention.png" style="width: 18px;" alt="!"> మొదటి నవకంలో నైధాన తారయినా, కొన్ని జంటలకు శుభ ఫలితమే చెప్పారు. </td></tr>
+<tr><td colspan='4'>G-->B మొదటి నవకంలో నైధాన తార నిషిద్ధం. పైగా ఏక నాడీ అవుతుంది. </td></tr>
+<tr><td colspan='4'>మరి వీటిలో  కొన్నిటికి శుభ ఫలం ఎలా చెప్పారో తెలియదు. </td></tr>
+</table>
