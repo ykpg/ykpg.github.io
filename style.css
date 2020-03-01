@@ -67,9 +67,14 @@
 
   article p {
 	
-	padding: 5px;
+	padding: 5px 8px 5px 8px;
 	text-indent: 20px;
 	
+}
+
+li {
+
+	padding-left: 10px;
 }
   .footer {
 	background: #5E42A6;
@@ -124,11 +129,13 @@
 
 	article p {
 	
-		padding: 20px;
+		padding: 6px 20px 6px 20px;
 		text-indent: 50px;
 		
 	}
-
+	li {
+		padding-left: 20px;
+	}
 	.aside1 {
 	  order: 1;
 	}
