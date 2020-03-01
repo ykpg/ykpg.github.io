@@ -23,7 +23,7 @@
   }
   .navigation a {
 	text-align: center;
-	padding: 10px;
+	padding: 12px;
 	border-top: 1px solid rgba(255, 255, 255, 0.3);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	text-decoration: none;
@@ -74,7 +74,7 @@
   .footer {
 	background: #5E42A6;
 	font-size: 0.7rem;
-	color: #413e38;
+	color: #929292;
   }
   .main {
 	text-align: justify;
