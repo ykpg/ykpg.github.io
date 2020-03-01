@@ -6,12 +6,12 @@
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.6em;	 
-	text-align:center; /* with this all elements get centered */
+	text-align:center;
 	width: 94%;
 	background-color: #555555;
 	color: white;
   }
-  /* navigation */
+
   .navigation {
 	padding: 0;
 	list-style: none;
@@ -37,7 +37,6 @@
 	border-bottom: none;
   }
 
-  /* main layout */
   .wrapper {
 	display: -webkit-box;
 	display: -moz-box;
@@ -87,7 +86,6 @@ li {
   }
   
 
-  /* medium sized screens */
   @media all and (min-width: 600px) {
 	body{
 		font-size: 14px;
@@ -103,7 +101,7 @@ li {
 	}
   }
 
-  /* large sized screens */
+
   @media all and (min-width: 800px) {
 	
 	body{

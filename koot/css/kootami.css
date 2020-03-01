@@ -8,7 +8,7 @@ body{
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.6em;	 
-	text-align:center; /* with this all elements get centered */
+	text-align:center; 
 	width: 94%;
 }
 
@@ -16,7 +16,7 @@ body{
 	display: flex;
 	min-height: 300px;
 	margin: 0 auto;
-	display: -webkit-flex; /* Safari */		
+	display: -webkit-flex; 
 	flex-direction: column;	
 	justify-content: center; 	
 }
@@ -175,7 +175,7 @@ input[type="button"]:hover {
 
 
 @media  all and (min-width: 768px ) and (orientation:landscape) {
-	/* This part is only read by viewports wider than 768 pixels */
+	
 	body{ 
 		font-size: 16px;
 		line-height: 1.6rem;	 
@@ -214,7 +214,7 @@ input[type="button"]:hover {
 h1 {
 	font-size: 1.2rem;
 	font-weight: bold;
-	/*text-shadow: 1px 1px #0b8aaa;*/
+	
 	margin: 0;
 	padding: 4px;
 	color:#0a50a0;
@@ -259,7 +259,7 @@ hr.style2 {
 
 table {
 	border-collapse: collapse; 
-	margin:0 auto; /* centering */
+	margin:0 auto; 
 	width:96%;
 	font-size: 0.8rem;
 }	

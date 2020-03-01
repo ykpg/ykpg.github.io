@@ -6,12 +6,12 @@
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.6em;	 
-	text-align:center; /* with this all elements get centered */
+	text-align:center; 
 	width: 94%;
 	background-color: #555555;
 	color: #c2c2c2;
   }
-  /* navigation */
+
   .navigation {
 	padding: 0;
 	list-style: none;
@@ -39,7 +39,7 @@
 	border-bottom: none;
   }
 
-  /* main layout */
+
   .wrapper {
 	display: -webkit-box;
 	display: -moz-box;
@@ -140,11 +140,10 @@ hr {
 	  background-image: linear-gradient(to right, #d5d5d5, #bababa, #d5d5d5);
   }
 
-
   
 table {
 	border-collapse: collapse; 
-	margin:0 auto; /* centering */
+	margin:0 auto; 
 	width:96%;
 	font-size: 0.8rem;
 }	
@@ -182,7 +181,7 @@ table tr:hover {
 }
 
 
-  /* medium sized screens */
+
   @media all and (min-width: 600px) {
 	.navigation {
 	  flex-flow: row wrap;
@@ -195,7 +194,7 @@ table tr:hover {
 	}
   }
 
-  /* large sized screens */
+
   @media all and (min-width: 800px) {
 	.navigation {
 	  justify-content: flex-end;
