@@ -73,14 +73,14 @@ header.header {
 }
 
   article p {
-	padding: 5px 8px 5px 8px;
-	text-indent: 20px;	
+	padding: 1em 1em 1em 1em;
+	text-indent: 2em;	
 }
 
 article li{
-	padding:2px;
+	
 	margin-left: 0px;
-	margin-right:15px;
+	margin-right:2em;
 }
 
 .footer {
@@ -112,7 +112,7 @@ article li{
 	}
 	
 	article p {
-		padding: 1em 5em 1em 5em;
+		padding: 1em 4em 1em 4em;
 		text-indent: 5em;	
 	}
 
