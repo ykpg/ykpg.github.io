@@ -3,6 +3,7 @@ let t2,t3,t4,t5,t6,t7;
 let x, y,d="D";
 let strTemp ;			
 let myDate;
+let isOK = false;
 
 let aGrahaAll = [];
 
@@ -10,135 +11,153 @@ let planetsInNZD1 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
 
 let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "]; 
 
+let aRasiNames = ['Mesha','Vrushabha','Midhuna','Karkataka','Simha','Kanya','Tula','Vruschika','Dhanus','Makara','Kumbha','Meena'];
+
 
 let aLL = [
-    
-    ['Hyderabad', '17N23', '78E28', 5.5],
-    ['Secunderabad', '17N27', '78E30', 5.5],
-    ['Guntur', '16N18', '80E27', 5.5],
-    ['Vijayawada', '16N31', '80E37', 5.5],
-    ['Visakha', '17N42', '83E18', 5.5],   
+
+    ['Anantapur',		'14E41',    '77E36',    5.5],  
+    ['Guntur',          '16N18',    '80E27',    5.5],
+    ['Hyderabad',       '17N23',    '78E28',    5.5],
+    ['Kadapa',		    '14E28',    '78E49',    5.5],
+    ['Kakinada',	    '16N56',    '82E13',    5.5],	
+    ['Rajahmundry',	    '16N59',   	'81E47',    5.5],
+    ['Mumbai',		    '18N58',    '72E50',    5.5],
+    ['New Delhi',		'28N36',    '77E12',    5.5],   
+    ['Secunderabad',    '17N27',    '78E30',    5.5],
+    ['Vijayawada',      '16N31',    '80E37',    5.5],
+    ['Visakha',         '17N42',    '83E18',    5.5]  
 
 ];
 
+let aDasaInfo = [
+    [0,7,20,6,10,7,18,16,19,17],
+    ["","Ketu","Sukr","Ravi","Chan","Kuja","Rahu","Guru","Sani","Budh"]
+
+];
+
+let mdLordName = "";
+
 var name,date,time,tz,lat,lon,latdir,londir,lattmp,lontmp,dn,forward=0;
     
-    var DEGS = 180/Math.PI;
-    var RADS = Math.PI/180;
-    var EPS  = 1.0e-12;
-   
-    var planets    = [];   
-    /* D1 zod,house  */
-    var mygrahas   = []; 
-    var mybhavas   = [];
-    var myrashis   = [];
-    /* D2 zod,house  */
-    var myhoraz    = [];
-    var myhorah    = [];
-    /* D6 zod,house  */
-    var mysashthamshaz = [];
-    var mysashthamshah = [];
-    /* D8 zod,house  */
-    var myashthamsaz = [];
-    var myashthamsah = [];
-    /* D9 zod,house  */
-    var mynavamsaz = [];
-    var mynavamsah = []; 
-    /* D12 zod,house */
-    var mydwadashamsaz = [];
-    var mydwadashamsah = []; 
-    
-    /* Nakshatras    */
-    var mynaksha   = [];
-    var mynakshal  = [];
-    var mynakshap  = [];
-    
-    var index      = [ 2,2,6,6,8,8,9,9,12,12 ];
-    var division   = [ myhoraz,myhorah,mysashthamshaz,mysashthamshah,
-                       myashthamsaz,myashthamsah,mynavamsaz,mynavamsah,
-                       mydwadashamsaz,mydwadashamsah ];
+var DEGS = 180/Math.PI;
+var RADS = Math.PI/180;
+var EPS  = 1.0e-12;
+
+var planets    = [];   
+/* D1 zod,house  */
+var mygrahas   = []; 
+var mybhavas   = [];
+var myrashis   = [];
+/* D2 zod,house  */
+var myhoraz    = [];
+var myhorah    = [];
+/* D6 zod,house  */
+var mysashthamshaz = [];
+var mysashthamshah = [];
+/* D8 zod,house  */
+var myashthamsaz = [];
+var myashthamsah = [];
+/* D9 zod,house  */
+var mynavamsaz = [];
+var mynavamsah = []; 
+/* D12 zod,house */
+var mydwadashamsaz = [];
+var mydwadashamsah = []; 
+
+/* Nakshatras    */
+var mynaksha   = [];
+var mynakshal  = [];
+var mynakshap  = [];
+
+var index      = [ 2,2,6,6,8,8,9,9,12,12 ];
+var division   = [ myhoraz,myhorah,mysashthamshaz,mysashthamshah,
+                    myashthamsaz,myashthamsah,mynavamsaz,mynavamsah,
+                    mydwadashamsaz,mydwadashamsah ];
        
-    /* Planets or Grahas */
-    var AS    = 0;  /* Ascendant or Lagna  */
-    var SU    = 1;  /* Sun     Surya      (Leo)                  South 7th          Sunday     6Y 29D     */
-    var MO    = 2;  /* Moon    Chandra    (Cancer)               North 7th          Monday    10Y 2D      */
-    var MA    = 3;  /* Mars    Mangala    (Aries+, Scorpio)      South 4th,7th,8th  Tuesday    7Y 2M5D    */
-    var ME    = 4;  /* Mercury Budha      (Virgo+, Gemini)       East  7th          Wednesday 17Y 2M9D    */
-    var JU    = 5;  /* Jupiter Brihaspati (Sagittarius+, Pisces) East  5th,7th,9th  Thursday  16Y 1Y1M11D */
-    var VE    = 6;  /* Venus   Shukra     (Libra+, Taurus)       North 7th          Friday    20Y 25D     */
-    var SA    = 7;  /* Saturn  Shani      (Aquarius+,Capricorn)  West  3rd,7th,10th Saturday  19Y 3Y1M24D */
-    var RA    = 8;  /* Rahu    5th, 7th, 9th 18Y */
-    var KE    = 9;  /* Ketu    5th, 7th, 9th  7Y */
-    
-    /* Sidereal Zodiac Signs(Fixed) or Rashis   */
-    var Aries     = 1;       /* Mesha      Fire  M Movable Mars    [00-30]   Apr15 - May15 */
-    var Taurus    = 2;       /* Vrishaba   Earth F Fixed   Venus   [30-60]   May16 - Jun15 */
-    var Gemini    = 3;       /* Mithuna    Air   M Common  Mercury [60-90]   Jun16 - Jul15 */
-    var Cancer    = 4;       /* Karkata    Water F Movable Moon    [90-120]  Jul16 - Aug15 */
-    var Leo       = 5;       /* Simha      Fire  M Fixed   Sun     [120-150] Aug16 - Sep15 */
-    var Virgo     = 6;       /* Kanya      Earth F Common  Mercury [150-180] Sep16 - Oct15 */
-    var Libra     = 7;       /* Tula       Air   M Movable Venus   [180-210] Oct16 - Nov15 */
-    var Scorpio   = 8;       /* Vrishchika Water F Fixed   Mars    [210-240] Nov16 - Dec15 */
-    var Sagittarius = 9;     /* Dhanus     Fire  M Common  Jupiter [240-270] Dec16 - Jan14 */
-    var Capricorn   = 10;    /* Makara     Earth F Movable Saturn  [270-300] Jan15 - Feb14 */
-    var Aquarius  = 11;      /* Kumbha     Air   M Fixed   Saturn  [300-330] Feb15 - Mar14 */
-    var Pisces    = 12;      /* Meena      Water F Common  Jupiter [330-360] Mar15 - Apr14 */
-    var MAXZOD    = 12;      /* Max zodiacs */
-    
-    /* Houses or Bhavas */
-    var H1  = 1   /* Lagna     Su    E */
-    var H2  = 2   /* Dhana     Ju,Ve   */
-    var H3  = 3   /* Sahaja    Ma      */
-    var H4  = 4   /* Sukha     Mo    S */
-    var H5  = 5   /* Putra     Ju      */
-    var H6  = 6   /* Ari       Me,Ma   */
-    var H7  = 7   /* Yuvati    Ve    W */
-    var H8  = 8   /* Randhara  Sa      */
-    var H9  = 9   /* Dharma    Ju      */
-    var H10 = 10  /* Karma     Su,Sa,Ma,Me N */
-    var H11 = 11  /* Labha     Ju      */
-    var H12 = 12  /* Vyaya     Sa      */
-    var MAXH= 12  /* Max houses        */
-   
-    /* Nakshatras (4 Padas x 3°20’)    */
-    var Ashvini        = 1   /* 0°00'Arie  - 13°20'Arie   Ke */
-    var Bharani        = 2   /* 13°20'Arie - 26°40'Arie   Ve */
-    var Krittika       = 3   /* 26°40'Arie - 10°00'Taur   Su */
-    var Rohini         = 4   /* 10°00'Taur - 23°20'Taur   Mo */
-    var Mrigasira      = 5   /* 23°20'Taur - 6°40'Gemi    Ma */
-    var Ardra          = 6   /* 6°40'Gemi  - 20°00'Gemi   Ra */
-    var Punarvasu      = 7   /* 20°00'Gemi - 3°20'Canc    Ju */
-    var Pushyami       = 8   /* 3°20'Canc  - 16°40'Canc   Sa */
-    var Aslesha        = 9   /* 16°40'Canc - 0°00'Leo     Me */
-    var Makha          = 10  /* 0°00'Leo   - 13°20'Leo    Ke */
-    var PPhalguni      = 11  /* 13°20'Leo  - 26°40'Leo    Ve */
-    var UPhalguni      = 12  /* 26°40'Leo  - 10°00'Virg   Su */
-    var Hasta          = 13  /* 10°00'Virg - 23°20'Virg   Mo */
-    var Chitra         = 14  /* 23°20'Virg - 6°40'Libr    Ma */
-    var SWati          = 15  /* 6°40'Libr  - 20°00'Libr   Ra */
-    var Visakha        = 16  /* 20°00'Libr - 3°20'Scor    Ju */
-    var Anuradha       = 17  /* 3°20'Scor  - 16°40'Scor   Sa */
-    var Jyeshta        = 18  /* 16°40'Scor - 0°00'Sagi    Me */
-    var Moola          = 19  /* 0°00'Sagi  - 13°20'Sagi   Ke */
-    var PShadha        = 20  /* 13°20'Sagi - 26°40'Sagi   Ve */
-    var UShadha        = 21  /* 26°40'Sagi - 10°00'Capr   Su */
-    var Sravana        = 22  /* 10°00'Capr - 23°20'Capr   Mo */
-    var Dhanista       = 23  /* 23°20'Capr - 6°40'Aqua    Ma */ 
-    var Satabhisha     = 24  /* 6°40'Aqua  - 20°00'Aqua   Ra */
-    var PBhadra        = 25  /* 20°00'Aqua - 3°20'Pisc    Ju */
-    var UBhadra        = 26  /* 3°20'Pisc  - 16°40'Pisc   Sa */
-    var Revati         = 27  /* 16°40'Pisc - 30°00'Pisc   Me */
-    var MAXNAKSHA      = 27  /* Max  */
-  
+/* Planets or Grahas */
+var AS    = 0;  /* Ascendant or Lagna  */
+var SU    = 1;  /* Sun     Surya      (Leo)                  South 7th          Sunday     6Y 29D     */
+var MO    = 2;  /* Moon    Chandra    (Cancer)               North 7th          Monday    10Y 2D      */
+var MA    = 3;  /* Mars    Mangala    (Aries+, Scorpio)      South 4th,7th,8th  Tuesday    7Y 2M5D    */
+var ME    = 4;  /* Mercury Budha      (Virgo+, Gemini)       East  7th          Wednesday 17Y 2M9D    */
+var JU    = 5;  /* Jupiter Brihaspati (Sagittarius+, Pisces) East  5th,7th,9th  Thursday  16Y 1Y1M11D */
+var VE    = 6;  /* Venus   Shukra     (Libra+, Taurus)       North 7th          Friday    20Y 25D     */
+var SA    = 7;  /* Saturn  Shani      (Aquarius+,Capricorn)  West  3rd,7th,10th Saturday  19Y 3Y1M24D */
+var RA    = 8;  /* Rahu    5th, 7th, 9th 18Y */
+var KE    = 9;  /* Ketu    5th, 7th, 9th  7Y */
+
+/* Sidereal Zodiac Signs(Fixed) or Rashis   */
+var Aries     = 1;       /* Mesha      Fire  M Movable Mars    [00-30]   Apr15 - May15 */
+var Taurus    = 2;       /* Vrishaba   Earth F Fixed   Venus   [30-60]   May16 - Jun15 */
+var Gemini    = 3;       /* Mithuna    Air   M Common  Mercury [60-90]   Jun16 - Jul15 */
+var Cancer    = 4;       /* Karkata    Water F Movable Moon    [90-120]  Jul16 - Aug15 */
+var Leo       = 5;       /* Simha      Fire  M Fixed   Sun     [120-150] Aug16 - Sep15 */
+var Virgo     = 6;       /* Kanya      Earth F Common  Mercury [150-180] Sep16 - Oct15 */
+var Libra     = 7;       /* Tula       Air   M Movable Venus   [180-210] Oct16 - Nov15 */
+var Scorpio   = 8;       /* Vrishchika Water F Fixed   Mars    [210-240] Nov16 - Dec15 */
+var Sagittarius = 9;     /* Dhanus     Fire  M Common  Jupiter [240-270] Dec16 - Jan14 */
+var Capricorn   = 10;    /* Makara     Earth F Movable Saturn  [270-300] Jan15 - Feb14 */
+var Aquarius  = 11;      /* Kumbha     Air   M Fixed   Saturn  [300-330] Feb15 - Mar14 */
+var Pisces    = 12;      /* Meena      Water F Common  Jupiter [330-360] Mar15 - Apr14 */
+var MAXZOD    = 12;      /* Max zodiacs */
+
+/* Houses or Bhavas */
+var H1  = 1   /* Lagna     Su    E */
+var H2  = 2   /* Dhana     Ju,Ve   */
+var H3  = 3   /* Sahaja    Ma      */
+var H4  = 4   /* Sukha     Mo    S */
+var H5  = 5   /* Putra     Ju      */
+var H6  = 6   /* Ari       Me,Ma   */
+var H7  = 7   /* Yuvati    Ve    W */
+var H8  = 8   /* Randhara  Sa      */
+var H9  = 9   /* Dharma    Ju      */
+var H10 = 10  /* Karma     Su,Sa,Ma,Me N */
+var H11 = 11  /* Labha     Ju      */
+var H12 = 12  /* Vyaya     Sa      */
+var MAXH= 12  /* Max houses        */
+
+/* Nakshatras (4 Padas x 3°20’)    */
+var Ashvini        = 1   /* 0°00'Arie  - 13°20'Arie   Ke */
+var Bharani        = 2   /* 13°20'Arie - 26°40'Arie   Ve */
+var Krittika       = 3   /* 26°40'Arie - 10°00'Taur   Su */
+var Rohini         = 4   /* 10°00'Taur - 23°20'Taur   Mo */
+var Mrigasira      = 5   /* 23°20'Taur - 6°40'Gemi    Ma */
+var Ardra          = 6   /* 6°40'Gemi  - 20°00'Gemi   Ra */
+var Punarvasu      = 7   /* 20°00'Gemi - 3°20'Canc    Ju */
+var Pushyami       = 8   /* 3°20'Canc  - 16°40'Canc   Sa */
+var Aslesha        = 9   /* 16°40'Canc - 0°00'Leo     Me */
+var Makha          = 10  /* 0°00'Leo   - 13°20'Leo    Ke */
+var PPhalguni      = 11  /* 13°20'Leo  - 26°40'Leo    Ve */
+var UPhalguni      = 12  /* 26°40'Leo  - 10°00'Virg   Su */
+var Hasta          = 13  /* 10°00'Virg - 23°20'Virg   Mo */
+var Chitra         = 14  /* 23°20'Virg - 6°40'Libr    Ma */
+var SWati          = 15  /* 6°40'Libr  - 20°00'Libr   Ra */
+var Visakha        = 16  /* 20°00'Libr - 3°20'Scor    Ju */
+var Anuradha       = 17  /* 3°20'Scor  - 16°40'Scor   Sa */
+var Jyeshta        = 18  /* 16°40'Scor - 0°00'Sagi    Me */
+var Moola          = 19  /* 0°00'Sagi  - 13°20'Sagi   Ke */
+var PShadha        = 20  /* 13°20'Sagi - 26°40'Sagi   Ve */
+var UShadha        = 21  /* 26°40'Sagi - 10°00'Capr   Su */
+var Sravana        = 22  /* 10°00'Capr - 23°20'Capr   Mo */
+var Dhanista       = 23  /* 23°20'Capr - 6°40'Aqua    Ma */ 
+var Satabhisha     = 24  /* 6°40'Aqua  - 20°00'Aqua   Ra */
+var PBhadra        = 25  /* 20°00'Aqua - 3°20'Pisc    Ju */
+var UBhadra        = 26  /* 3°20'Pisc  - 16°40'Pisc   Sa */
+var Revati         = 27  /* 16°40'Pisc - 30°00'Pisc   Me */
+var MAXNAKSHA      = 27  /* Max  */
+
 
 $(document).ready(function() 
 {	
-    showContent();
-    handlePlaces();	
+    showInfo();
+    showPlaces();	
+    showCharts();
+    showDasa();
 		
 });
 
-var showContent = function() 
+var showInfo = function() 
 {
 	
 	$("#button").on("click",  function()
@@ -147,28 +166,285 @@ var showContent = function()
         calc_position(false);
 
         $('.main').empty();
-        printData(false);
-  
-        $('.aside2').html('<canvas id="mycanvas1"  width="350" height="350" > D1 </canvas>	<canvas id="mycanvas2"  width="350" height="350" > D1 </canvas>');
-        let d1Chart = document.getElementById('mycanvas1');
-        let ctx1 = d1Chart.getContext('2d');
-        ctx1.clearRect (0, 0, 350, 350);
-
-        let d9Chart = document.getElementById('mycanvas2');
-        let ctx2 = d9Chart.getContext('2d');
-        ctx2.clearRect (0, 0, 350, 350);
-
-        draw_empty_chart(ctx1,0,0,3,80,"D1");
-        draw_d1_planets(ctx1);
-    
-        draw_empty_chart(ctx2,0,0,3,80,"D9");
-        draw_d9_planets(ctx2);
-
-		
+        isOK = printInfo(false);		
 	});
     
 };
 
+var printInfo = function(transit) {
+    
+    
+    let tempStr;
+    if ( lat == null || lon == null || lat == undefined || lon == undefined ){
+        $('.aside2').empty();
+        strTemp = '<p style="color:#FF9912; text-align: center">Lattitude or Longitude is not proper. Hyd = 17N23 & 78E28<p>';
+        $('.aside2').append(strTemp);
+        isOK = false;
+        return false;
+    }
+    
+    strTemp = '<h2>Birth Details:</h2><table>';
+    strTemp += '<tr><th>Planet</th><th>Rasi</th><th>Degree</th><th>Nakashatra</th><th>Paada</th></tr>';
+       
+    for (var i=0; i<=9; i++) {
+        strTemp += '<tr><td>' + mygrahas[i].name + '</td><td>' + aRasiNames[(mygrahas[i].rasizn-1) ] ;
+        strTemp +=  '</td><td>' +  deg2DMS(mygrahas[i].ra.toFixed(3));
+        strTemp += '</td><td>' + mynaksha[i] + '</td><td>' + mynakshap[i] + '</td></tr>';
+       
+    }
+    
+    strTemp += '</table>';
+    $(".main").append(strTemp);
+
+    strTemp = '<p class="right1P">' + name + ' - ' + date.toDateString()  + ', ' + time.toTimeString().slice(0,8) + '<br>';
+    strTemp +=  ' Lattitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + '<br>';
+    strTemp += '<span style = "color:#FF9912;"> Janma-Lagna:  ' + aRasiNames[(mygrahas[0].rasizn-1) ] + ' ,  Janma-Rasi: ' + aRasiNames[(mygrahas[2].rasizn-1) ] + ' - ' + mynaksha[2] + ' - ' + mynakshap[2] + '</span><br>';
+    strTemp +=  "Ayanamsa:" + (calc_ayanamsa(transit).toFixed(4)) +'° , '; 
+    strTemp += '  Sid.Time:' + (deg2hms(calc_sideral_time(time.getHours(),time.getMinutes(),transit)));
+    strTemp += '<br>' + "Sunrise: " + calc_sunriseset(true,  false, true, transit);
+    strTemp += ",  Sunset: "+ calc_sunriseset(false, false, true, transit) + '<br>';
+    strTemp += "Tithi: "+ calc_tidhi(mygrahas[2].ra,mygrahas[1].ra)  + ",  Weekday: "+ calc_day_of_the_week(transit) + '<br>';
+    strTemp += 'Day Lord:' + calc_day_lord(false) + ',  Hora Lord:' + calc_hora_lord(false);
+    strTemp += '</p>';
+    $(".main").append(strTemp);
+    isOK = true;
+    $('.aside2').empty();
+    return true;
+    
+}
+
+function showCharts(){	
+	
+	$("#charts").on("click",  function()
+	{
+		$('.aside2').empty();
+        printCharts();
+		
+	});
+}
+
+
+function printCharts(){
+       
+        if(isOK){
+
+            $('.aside2').empty();
+            $('.aside2').html('<canvas id="mycanvas1"  width="350" height="350" > D1 </canvas>	<canvas id="mycanvas2"  width="350" height="350" > D1 </canvas>');
+            let d1Chart = document.getElementById('mycanvas1');
+            let ctx1 = d1Chart.getContext('2d');
+            ctx1.clearRect (0, 0, 350, 350);
+
+            let d9Chart = document.getElementById('mycanvas2');
+            let ctx2 = d9Chart.getContext('2d');
+            ctx2.clearRect (0, 0, 350, 350);
+
+            draw_empty_chart(ctx1,0,0,3,80,"D1");
+            draw_d1_planets(ctx1);
+
+            draw_empty_chart(ctx2,0,0,3,80,"D9");
+            draw_d9_planets(ctx2);
+        }
+
+        else{
+
+            strTemp = '<p style="color:#FF9912; text-align: center">Charts can be viewed only after entering proper data and clicking on Generate button.<p>';
+            $('.aside2').empty();
+            $('.aside2').append(strTemp);
+        }
+}
+
+function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
+
+    ctx.lineWidth = lwidth;   
+    ctx.strokeStyle = "gray";  
+    
+    
+    let x=_x,y=_y;
+    
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+
+    ctx.rect(x,y,x+320,y+320);
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath(); 
+    ctx.strokeStyle = "gray";
+    ctx.lineWidth = lwidth-1;
+    ctx.moveTo(x+80,y);
+    ctx.lineTo(x+80,y+320);
+    ctx.moveTo(x+240,y);
+    ctx.lineTo(x+240,y+320);
+    ctx.moveTo(x,y+80);
+    ctx.lineTo(x+320,y+80);
+    ctx.moveTo(x+0,y+240);
+    ctx.lineTo(x+320,y+240);
+
+    ctx.moveTo(x+160,y);
+    ctx.lineTo(x+160,y+80);
+    ctx.moveTo(x+240,y+160);
+    ctx.lineTo(x+320,y+160);
+    ctx.moveTo(x+160,y+240);
+    ctx.lineTo(x+160,y+320);
+    ctx.moveTo(x,y+160);
+    ctx.lineTo(x+80,y+160);
+    ctx.stroke();
+    
+    ctx.font = 'Bold 18px Sans-Serif';
+    ctx.fillStyle = "#777777";
+    ctx.fillText(title, x+150, y+170);  
+    ctx.stroke();
+    
+}
+
+function draw_d1_planets(ctx)
+{
+    
+    ctx.font = '9pt Arial';
+    ctx.textAlign = 'start';
+    ctx.fillStyle = 'white';
+    let maxWidth = 90;
+
+    let k = myrashis[0];  
+
+    let pos=[   10,20,  90,40,   170,20, 250,40,
+                250,120,  250,200,   250,280,
+                170,260, 90,280, 10,260,
+                10,200,  10,120 ];
+  
+    for(let i=1; i< 13; i++){
+        planetsInNZD1[k] = mybhavas[i]; 
+        k = k+1;
+        if ( k > 12 ) { k = 1;}
+        
+    }
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD1[12], pos[0], pos[1],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD1[1], pos[2], pos[3],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD1[2], pos[4], pos[5],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD1[3], pos[6], pos[7],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD1[4], pos[8], pos[9],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD1[5], pos[10],pos[11],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD1[6], pos[12],pos[13],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD1[7], pos[14],pos[15],maxWidth); 
+    ctx.fillStyle = '#c4c4c4';    
+    ctx.fillText(planetsInNZD1[8], pos[16],pos[17],maxWidth); 
+    ctx.fillStyle = 'black';    
+    ctx.fillText(planetsInNZD1[9], pos[18],pos[19],maxWidth); 
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD1[10], pos[20],pos[21],maxWidth); 
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD1[11], pos[22],pos[23],maxWidth);
+
+}
+
+
+
+function draw_d9_planets(ctx)
+{
+    
+    ctx.font = '9pt Arial';
+    ctx.textAlign = 'start';
+    ctx.fillStyle = 'white';
+    let maxWidth = 90;
+    let k = 0;  
+    let pos=[   10,20,  90,40,   170,20, 250,40,
+        250,120,  250,200,   250,280,
+        170,260, 90,280, 10,260,
+        10,200,  10,120 ];
+
+    for ( let i = 0; i < 12; i++){
+        planetsInNZD9[i] = "";
+    }
+
+    for(let i = 0; i < 10; i++){
+        k = mygrahas[i].navzn - 1; 
+        
+       
+        planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
+    }
+
+    
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD9[11], pos[0], pos[1],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD9[0], pos[2], pos[3],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD9[1], pos[4], pos[5],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD9[2], pos[6], pos[7],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD9[3], pos[8], pos[9],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD9[4], pos[10],pos[11],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD9[5], pos[12],pos[13],maxWidth);
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD9[6], pos[14],pos[15],maxWidth); 
+    ctx.fillStyle = '#c4c4c4';   
+    ctx.fillText(planetsInNZD9[7], pos[16],pos[17],maxWidth);  
+    ctx.fillStyle = 'black';   
+    ctx.fillText(planetsInNZD9[8], pos[18],pos[19],maxWidth);
+    ctx.fillStyle = '#c4c4c4';
+    ctx.fillText(planetsInNZD9[9], pos[20],pos[21],maxWidth); 
+    ctx.fillStyle = 'black';
+    ctx.fillText(planetsInNZD9[10], pos[22],pos[23],maxWidth);
+    
+}
+
+
+
+function showPlaces(){	
+	
+	$("#places").on("click",  function()
+	{
+		$('.aside2').empty();
+        printPlaces();
+		
+	});
+}
+
+function printPlaces(){
+
+    strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><table>';
+    strTemp += '<th>Place</th><th>Lattitude</th><th>Longitude</th><th>GMT</th>'
+    aLL.forEach( function (v1, i1){
+        strTemp += '<tr>';
+        v1.forEach( function (v2,i2){
+            strTemp += '<td>' + v2 + '</td>';
+        });
+        strTemp += '</tr>';
+    });
+    strTemp += '</table>';
+    $('.aside2').append(strTemp);
+}
+
+
+var showDasa = function() 
+{
+	
+	$("#dasa").on("click",  function()
+	{
+		
+        if(isOK){
+            $('.aside2').empty();
+            calc_vdasa();
+        }
+        else{
+            strTemp = '<p style="color:#FF9912; text-align: center">Dasa can be viewed only after entering proper data and clicking on Generate button.<p>';
+            $('.aside2').empty();
+            $('.aside2').append(strTemp);
+        }		
+	});
+    
+};
 
 
 
@@ -202,7 +478,7 @@ function map ()
         var l4 = "&zoom=13";
         var link = l1+"lat="+l2+"&lon="+l3+l4;
         
-                
+               
         window.open(link);
     }
 }
@@ -220,7 +496,7 @@ function parse_input_data ()
 
 function parse_date (input) 
 {
-    
+   
     
     date  = 0;
     date  = new Date(input);
@@ -229,7 +505,7 @@ function parse_date (input)
     
 function parse_time (input)
 {
-    
+   
     
     time = 0;
     time = new Date();
@@ -237,8 +513,8 @@ function parse_time (input)
     var tmp = input.replace(/\s+/g,'');
     tmp     = tmp.match(/(\d{1,2})(:(\d\d))/);
         
-    if (tmp[1] < 10) tmp[1] = parseInt(tmp[1], 10);//.replace(/^0+/, '');
-    if (tmp[3] < 10) tmp[3] = parseInt(tmp[3], 10);//.replace(/^0+/, '');
+    if (tmp[1] < 10) tmp[1] = parseInt(tmp[1], 10);
+    if (tmp[3] < 10) tmp[3] = parseInt(tmp[3], 10);
     
     time.setHours(parseInt(tmp[1]) + ((parseInt(tmp[1]) < 12 && tmp[4] ) ? 12 : 0));
     time.setMinutes(parseInt(tmp[3]) || 0);
@@ -254,8 +530,7 @@ function parse_time (input)
     
 function parse_latitude (input) 
 {
-    
-
+   
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("N") !=-1) {
         lattmp=tmp.split("N");
@@ -271,7 +546,6 @@ function parse_latitude (input)
 function parse_longitude (input) 
 {
     
-
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("W") !=-1) {
         lontmp=tmp.split("W");
@@ -577,35 +851,36 @@ function calc_houses (zodiac,house,planetname)
 
 function calc_nakshatra (deg,n)
 {
-    let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0; 
+    let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0, lnum=0; 
+   
     if      (deg < 0)     {  deg += 360; }  
-    if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
-    else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
-    else if (deg>26.6667  && deg<=40.0000)  {nakshatra="Krittika";  nnum=3;  lord="Su"; vperiod = 6;  pada=(deg -  26.6667);sdeg= 26.6667;}
-    else if (deg>40.0000  && deg<=53.3333)  {nakshatra="Rohini";    nnum=4;  lord="Mo"; vperiod = 10; pada=(deg -  40.0000);sdeg= 40.0000;}
-    else if (deg>53.3333  && deg<=66.6667)  {nakshatra="Mrugasira"; nnum=5;  lord="Ma"; vperiod = 7;  pada=(deg -  53.3333);sdeg= 53.3333;}
-    else if (deg>66.6667  && deg<=80.0000)  {nakshatra="Ardra";     nnum=6;  lord="Ra"; vperiod = 18; pada=(deg -  66.6667);sdeg= 66.6667;}
-    else if (deg>80.0000  && deg<=93.3333)  {nakshatra="Punarvasu"; nnum=7;  lord="Ju"; vperiod = 16; pada=(deg -  80.0000);sdeg= 80.0000;}
-    else if (deg>93.3333  && deg<=106.6667) {nakshatra="Pushyami";  nnum=8;  lord="Sa"; vperiod = 19; pada=(deg -  93.3333);sdeg= 93.3333;}
-    else if (deg>106.6667 && deg<=120.0000) {nakshatra="Aslesha";   nnum=9;  lord="Me"; vperiod = 17; pada=(deg - 106.6667);sdeg=106.6667;}
-    else if (deg>120.0000 && deg<=133.3333) {nakshatra="Makha";     nnum=10; lord="Ke"; vperiod = 7;  pada=(deg - 120.0000);sdeg=120.0000;}
-    else if (deg>133.3333 && deg<=146.6667) {nakshatra="P.Phalg";   nnum=11; lord="Ve"; vperiod = 20; pada=(deg - 133.3333);sdeg=133.3333;}
-    else if (deg>146.6667 && deg<=160.0000) {nakshatra="U.Phalg";   nnum=12; lord="Su"; vperiod = 6;  pada=(deg - 146.6667);sdeg=146.6667;}
-    else if (deg>160.0000 && deg<=173.3333) {nakshatra="Hasta";     nnum=13; lord="Mo"; vperiod = 10; pada=(deg - 160.0000);sdeg=160.0000;}
-    else if (deg>173.3333 && deg<=186.6667) {nakshatra="Chitra";    nnum=14; lord="Ma"; vperiod = 7;  pada=(deg - 173.3333);sdeg=173.3333;}
-    else if (deg>186.6667 && deg<=200.0000) {nakshatra="Swati";     nnum=15; lord="Ra"; vperiod = 18; pada=(deg - 186.6667);sdeg=186.6667;}
-    else if (deg>200.0000 && deg<=213.3333) {nakshatra="Visakha";   nnum=16; lord="Ju"; vperiod = 16; pada=(deg - 200.0000);sdeg=200.0000;}
-    else if (deg>213.3333 && deg<=226.6667) {nakshatra="Anuradha";  nnum=17; lord="Sa"; vperiod = 19; pada=(deg - 213.3333);sdeg=213.3333;}
-    else if (deg>226.6667 && deg<=240.0000) {nakshatra="Jyeshta";   nnum=18; lord="Me"; vperiod = 17; pada=(deg - 226.6667);sdeg=226.6667;}
-    else if (deg>240.0000 && deg<=253.3333) {nakshatra="Moola";     nnum=19; lord="Ke"; vperiod = 7;  pada=(deg - 240.0000);sdeg=240.0000;}
-    else if (deg>253.3333 && deg<=266.6667) {nakshatra="P.Shadha";  nnum=20; lord="Ve"; vperiod = 20; pada=(deg - 253.3333);sdeg=253.3333;}
-    else if (deg>266.6667 && deg<=280.0000) {nakshatra="U.Shadha";  nnum=21; lord="Su"; vperiod = 6;  pada=(deg - 266.6667);sdeg=266.6667;}
-    else if (deg>280.0000 && deg<=293.3333) {nakshatra="Sravana";   nnum=22; lord="Mo"; vperiod = 10; pada=(deg - 280.0000);sdeg=280.0000;}
-    else if (deg>293.3333 && deg<=306.6667) {nakshatra="Dhanista";  nnum=23; lord="Ma"; vperiod = 7;  pada=(deg - 293.3333);sdeg=293.3333;}
-    else if (deg>306.6667 && deg<=320.0000) {nakshatra="Satabhisha";nnum=24; lord="Ra"; vperiod = 18; pada=(deg - 306.6667);sdeg=306.6667;}
-    else if (deg>320.0000 && deg<=333.3333) {nakshatra="P.Bhadra";  nnum=25; lord="Ju"; vperiod = 16; pada=(deg - 320.0000);sdeg=320.0000;}
-    else if (deg>333.3333 && deg<=346.6667) {nakshatra="U.Bhadra";  nnum=26; lord="Sa"; vperiod = 19; pada=(deg - 333.3333);sdeg=333.3333;}
-    else if (deg>346.6667 && deg<=360.0000) {nakshatra="Revati";    nnum=27; lord="Me"; vperiod = 17; pada=(deg - 346.6667);sdeg=346.6667;}
+    if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; lnum=1; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
+    else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; lnum=2; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
+    else if (deg>26.6667  && deg<=40.0000)  {nakshatra="Krittika";  nnum=3;  lord="Su"; lnum=3; vperiod = 6;  pada=(deg -  26.6667);sdeg= 26.6667;}
+    else if (deg>40.0000  && deg<=53.3333)  {nakshatra="Rohini";    nnum=4;  lord="Mo"; lnum=4; vperiod = 10; pada=(deg -  40.0000);sdeg= 40.0000;}
+    else if (deg>53.3333  && deg<=66.6667)  {nakshatra="Mrugasira"; nnum=5;  lord="Ma"; lnum=5; vperiod = 7;  pada=(deg -  53.3333);sdeg= 53.3333;}
+    else if (deg>66.6667  && deg<=80.0000)  {nakshatra="Ardra";     nnum=6;  lord="Ra"; lnum=6; vperiod = 18; pada=(deg -  66.6667);sdeg= 66.6667;}
+    else if (deg>80.0000  && deg<=93.3333)  {nakshatra="Punarvasu"; nnum=7;  lord="Ju"; lnum=7; vperiod = 16; pada=(deg -  80.0000);sdeg= 80.0000;}
+    else if (deg>93.3333  && deg<=106.6667) {nakshatra="Pushyami";  nnum=8;  lord="Sa"; lnum=8; vperiod = 19; pada=(deg -  93.3333);sdeg= 93.3333;}
+    else if (deg>106.6667 && deg<=120.0000) {nakshatra="Aslesha";   nnum=9;  lord="Me"; lnum=9; vperiod = 17; pada=(deg - 106.6667);sdeg=106.6667;}
+    else if (deg>120.0000 && deg<=133.3333) {nakshatra="Makha";     nnum=10; lord="Ke"; lnum=1; vperiod = 7;  pada=(deg - 120.0000);sdeg=120.0000;}
+    else if (deg>133.3333 && deg<=146.6667) {nakshatra="P.Phalguni";nnum=11; lord="Ve"; lnum=2; vperiod = 20; pada=(deg - 133.3333);sdeg=133.3333;}
+    else if (deg>146.6667 && deg<=160.0000) {nakshatra="U.Phalguni";nnum=12; lord="Su"; lnum=3; vperiod = 6;  pada=(deg - 146.6667);sdeg=146.6667;}
+    else if (deg>160.0000 && deg<=173.3333) {nakshatra="Hasta";     nnum=13; lord="Mo"; lnum=4; vperiod = 10; pada=(deg - 160.0000);sdeg=160.0000;}
+    else if (deg>173.3333 && deg<=186.6667) {nakshatra="Chitra";    nnum=14; lord="Ma"; lnum=5; vperiod = 7;  pada=(deg - 173.3333);sdeg=173.3333;}
+    else if (deg>186.6667 && deg<=200.0000) {nakshatra="Swati";     nnum=15; lord="Ra"; lnum=6; vperiod = 18; pada=(deg - 186.6667);sdeg=186.6667;}
+    else if (deg>200.0000 && deg<=213.3333) {nakshatra="Visakha";   nnum=16; lord="Ju"; lnum=7; vperiod = 16; pada=(deg - 200.0000);sdeg=200.0000;}
+    else if (deg>213.3333 && deg<=226.6667) {nakshatra="Anuradha";  nnum=17; lord="Sa"; lnum=8; vperiod = 19; pada=(deg - 213.3333);sdeg=213.3333;}
+    else if (deg>226.6667 && deg<=240.0000) {nakshatra="Jyeshta";   nnum=18; lord="Me"; lnum=9; vperiod = 17; pada=(deg - 226.6667);sdeg=226.6667;}
+    else if (deg>240.0000 && deg<=253.3333) {nakshatra="Moola";     nnum=19; lord="Ke"; lnum=1;  vperiod = 7;  pada=(deg - 240.0000);sdeg=240.0000;}
+    else if (deg>253.3333 && deg<=266.6667) {nakshatra="P.Shadha";  nnum=20; lord="Ve"; lnum=2; vperiod = 20; pada=(deg - 253.3333);sdeg=253.3333;}
+    else if (deg>266.6667 && deg<=280.0000) {nakshatra="U.Shadha";  nnum=21; lord="Su"; lnum=3; vperiod = 6;  pada=(deg - 266.6667);sdeg=266.6667;}
+    else if (deg>280.0000 && deg<=293.3333) {nakshatra="Sravanam";  nnum=22; lord="Mo"; lnum=4; vperiod = 10; pada=(deg - 280.0000);sdeg=280.0000;}
+    else if (deg>293.3333 && deg<=306.6667) {nakshatra="Dhanista";  nnum=23; lord="Ma"; lnum=5; vperiod = 7;  pada=(deg - 293.3333);sdeg=293.3333;}
+    else if (deg>306.6667 && deg<=320.0000) {nakshatra="Satabhisha";nnum=24; lord="Ra"; lnum=6; vperiod = 18; pada=(deg - 306.6667);sdeg=306.6667;}
+    else if (deg>320.0000 && deg<=333.3333) {nakshatra="P.Bhadra";  nnum=25; lord="Ju"; lnum=7; vperiod = 16; pada=(deg - 320.0000);sdeg=320.0000;}
+    else if (deg>333.3333 && deg<=346.6667) {nakshatra="U.Bhadra";  nnum=26; lord="Sa"; lnum=8; vperiod = 19; pada=(deg - 333.3333);sdeg=333.3333;}
+    else if (deg>346.6667 && deg<=360.0000) {nakshatra="Revati";    nnum=27; lord="Me"; lnum=9; vperiod = 17; pada=(deg - 346.6667);sdeg=346.6667;}
 
     if      (n == 1)  return nakshatra;
     else if (n == 2)  return lord;
@@ -620,7 +895,7 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;        
+        return sdeg;       
     }
     else if (n == 5)  {
         return nnum;       
@@ -628,7 +903,9 @@ function calc_nakshatra (deg,n)
     else if (n == 6)  {
         return vperiod;    
     }
-
+    else if (n == 7)  {
+        return lnum;     
+    }
 
 }
 
@@ -696,6 +973,7 @@ function calc_position (transit)
 function elements ()
 {   
     
+
     a = parseFloat("0");        /*   semi-major axis [AU]       */
     e = parseFloat("0");        /*   eccentricity of orbit      */
     i = parseFloat("0");        /*   inclination of orbit [deg] */
@@ -738,6 +1016,7 @@ return (b + c + d - 730550.5 + dd + (((hours-tz)) + minutes/60.0)/24.0);
 
 function calc_julian_date (hours,minutes,_tz,transit) 
 {   
+
 
 var today = new Date(),yy,mm,dd;
 if (!transit) { 
@@ -809,7 +1088,6 @@ function calc_day_of_the_week (transit)
 function calc_sideral_time (hours,minutes,transit)
 {
     
-
     if (londir == "W")
     lon = -lon;
 
@@ -823,6 +1101,7 @@ function calc_sideral_time (hours,minutes,transit)
 function calc_ra (p)
 {
     
+
     var cy = (dn/36525); 
 
     var planet = new elements();
@@ -875,16 +1154,16 @@ function calc_ra (p)
     var yg = yh - ye;
     var zg = zh - ze;
 
-    
+   
     var ecl = ((23.4392911 - 0.0000003563) * cy) * RADS;             
     var xeq = xg;
     var yeq = yg*Math.cos(ecl) - zg*Math.sin(ecl);
     var zeq = yg*Math.sin(ecl) + zg*Math.cos(ecl);
 
-    
+   
     ra = mod2pi(Math.atan2(yeq, xeq))*DEGS;
 
-   
+    
     return ra;
 }
 
@@ -892,7 +1171,7 @@ function true_anomaly (M, e)
 {
     var V, E1;
 
-   
+    
     var E = M + e*Math.sin(M)*(1.0 + e*Math.cos(M));
     do                                   
     {
@@ -969,12 +1248,13 @@ function mean_elements (p, i)
 function calc_vsop87 (planet,jd)
 {
     
+
     var  X=0, Y=1, Z=2;
     var  Xp,  Yp,  Zp,  Rp;
     var  Xe,  Ye,  Ze,  Re;
     var  Xa,  Ya,  Za,  Ra;
 
-    
+    // number of Julian millenia elapsed from J2000
     var T = (jd - 2451545.0)/365250.0;
 
     // calculate heliocentric rectangular coordinates of Earth 
@@ -1212,6 +1492,7 @@ function calc_moon_positionII ()
     var Ls = mod2pi((Ms*DEGS + ws*DEGS)*RADS); 
 
    
+
     var Mm = M*DEGS;
     var Lm = mod2pi(N + w + M)*DEGS;
     var D  = Lm-Ls*DEGS;
@@ -1263,6 +1544,7 @@ function calc_moon_positionII ()
 function calc_moon_positionIII (transit) 
 {
     
+
     var lrCoeff = [60]; for (var i=0; i<60; i++) { lrCoeff[i] = [4] }
     lrCoeff = [
     [0, 0, 1, 0],[2, 0,-1, 0],[2, 0, 0, 0],[0, 0, 2, 0],[0, 1, 0, 0],[0, 0, 0, 2],[2, 0,-2, 0],
@@ -1351,7 +1633,7 @@ function calc_moon_positionIII (transit)
 
 function _ecl (jd)
 {
-    /* J. Laskar, Astronomy and Astrophysics, Vol. 157, page 68 [1986] */
+    
 
     var terms = [ -4680.93/3600.0,   -1.55/3600.0,  1999.25/3600.0, 
         -51.38/3600.0, -249.67/3600.0,  -39.05/3600.0, 
@@ -1375,7 +1657,6 @@ function _ecl (jd)
 function dT (transit)
 {
     
-
     var today=new Date(),y;
     if (!transit) y = date.getFullYear()  + ((date.getMonth()+1)  - 0.5)/12;
     else          y = today.getFullYear() + ((today.getMonth()+1) - 0.5)/12;
@@ -1452,6 +1733,8 @@ function dT (transit)
 
 function dms2real (deg, min, sec)
 {
+    
+
     var r;
     if (deg < 0) r =  deg - min/60 - sec/3600;
     else         r =  deg + min/60 + sec/3600;       
@@ -1462,7 +1745,6 @@ function dms2real (deg, min, sec)
 function hms2deg (hours, min, sec)
 {
     
-
     return (hours * 15 + min/4 + sec/240);
 }
 
@@ -1501,7 +1783,7 @@ function dec2hms (x)
 
 function deg2hms (x)
 {
-    /* convert degrees to hh:mm:ss */
+    
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1534,7 +1816,7 @@ function deg2hms (x)
 
 function dec2date (etime)
 {
-    /* convert dec number to dd/mm/yyyy */
+    
 
     if (isNaN(etime)) return ("00/00/0000");
 
@@ -1575,7 +1857,7 @@ function mod24 (x)
 
 function mod2pi(x)
 {
-    /* range 0-2PI radians */
+    
 
     var b = x/(2*Math.PI);
     var a = (2*Math.PI)*(b - _abs(b));
@@ -1586,7 +1868,7 @@ function mod2pi(x)
 
 function mod360 (x) 
 {
-    /* range 0-360 degrees */
+    
 
     var a = 360 * ((x / 360) - _abs(x / 360));
     if (a < 0) a = a + 360; 
@@ -1597,6 +1879,7 @@ function mod360 (x)
 function calc_moon_acending_node (transit) 
 { 
     
+
     var T,today=new Date(),ay,n;
     if (!transit) T=(calc_julian_date(time.getHours(),time.getMinutes(),tz,transit)-2415020.5)/36525.0;
     else          T=(calc_julian_date(today.getHours(),today.getMinutes(),tz,transit)-2415020.5)/36525.0;
@@ -1823,326 +2106,14 @@ if((browser.indexOf("firefox") > -1) ||
         return hms ? dec2hms(UT) : (UT);
 }
 
-function calc_vimsottari_dasa (d)
-{
-    var lord   = ["Me","Ke","Ve","Su","Mo","Ma","Ra","Ju","Sa"];
-    var tdasa  = [6209.116431424950, 2556.695001174980, 7304.842860499940,
-        2191.452858149980, 3652.421430249970, 2556.695001174980,
-        6574.358574449950, 5843.874288399950, 6939.600717474940];
-
-    var jd =  calc_julian_date(time.getHours(),time.getMinutes(),0,false);
-    var Ts = (jd - 2415020.0)/36525.0;
-    var Tm = (jd - 2451545.0)/36525.0;
-
-    /*  Tropical month */
-    var tropmonth = 27.321661547  + 0.000000001857 * date.getFullYear();
-    /*  Synodic month */
-    var synmonth  = 29.5305888531 + 0.00000021621*Tm - 3.64*(10e-10)*Tm*Tm;
-
-    /*  Mean Tropical year(solar year), McCarthy & Seidelmann, 2009, page.18, J. Laskar [1986] */
-    var solaryear   = 365.2421896698-6.15359*(10e-6)*Ts-7.29*(10e-10)*Ts*Ts+2.64*(10e-10)*Ts*Ts*Ts; 
-    var sideralyear = solaryear + (1 + (1/26000));
-    var savanayear  = 360;
-    var lunaryear   = 12 * synmonth;
-
-    var sideralday  = 24 * solaryear/sideralyear;
-    var civilday    = 24 * 86400/60/60/24;
-    var synodicday  = 24 * 360/sideralyear;
-    var ratio       = 1/100273790935;
-
-    var ay    = calc_ayanamsa(false);
-    var moon  = mod360(calc_moon_positionIII(false) - ay);
-    var sdeg  = calc_nakshatra(mygrahas[2].getra(),4);
-    var nlord = calc_nakshatra(mygrahas[2].getra(),2);
-
-    var index  = lord.indexOf(nlord);
-    var period = tdasa[lord.indexOf(nlord)];
-
-    
-    var balance  = ((moon - sdeg) / 13.3333);
-    var lbalance = 1 - balance;
-    var etime    = Math.abs(balance * (period/solaryear));
-
-    var ta=0, tp=0, mlord=nlord, alord, plord, cmlord, calord, cplord,
-    today=new Date(), currentmaha=0, indexcurrent=index, year;
-    var ayear = (today.getFullYear()*solaryear)+((today.getMonth()+1)*30)+today.getDate();
-    var byear = (date.getFullYear()*solaryear)+((date.getMonth()+1)*30)+date.getDate();
-    var tyear = ayear - byear;
-
-    /* Vimsottari Antardasa */
-    for(var i=0; i<9; i++) {
-        if (index > 8) index = 0;
-        ta += tdasa[index]/solaryear/120;
-        if(ta > balance) { alord = lord[index]; break; }
-        index++; 
-    }   
-    /* Vimsottari Pratyantardasa */
-    ta = 1 - ((ta - balance) / (tdasa[index]/solaryear/120)); 
-    for(var i=0; i<9; i++) {
-        if(index > 8) index = 0;
-        tp += tdasa[index]/solaryear/120;
-        if(tp > ta) { plord = lord[index]; break; } 
-        index++;
-    }
-    /* Current Vimsottari Maha Dasa */
-    var nbalance = (lbalance * tdasa[indexcurrent]);
-    year = (ayear-(byear+nbalance)); indexcurrent++; ta = 0; 
-    for(var i=0; i<9; i++) {
-        if(indexcurrent > 8) indexcurrent = 0;
-        ta += tdasa[indexcurrent];
-        if(ta > year) { cmlord = lord[indexcurrent]; break; } 
-        indexcurrent++;
-    }
-    /* Current Vimsottari Antardasa */
-    year = 1 - (ta - year)/tdasa[indexcurrent]; ta = 0;
-    for(var i=0; i<9; i++) {
-        if(indexcurrent > 8) indexcurrent = 0;
-        ta += tdasa[indexcurrent]/solaryear/120;
-        if(ta > year) { calord = lord[indexcurrent]; break; } 
-        indexcurrent++;
-    }
-    /* Current Vimsottari Pratyantardasa */
-    tp = 0; ta = 1 - ((ta - year) / (tdasa[indexcurrent]/solaryear/120)); 
-    for(var i=0; i<9; i++) {
-        if(indexcurrent > 8) indexcurrent = 0;
-        tp += tdasa[indexcurrent]/solaryear/120;
-        if(tp > ta) { cplord = lord[indexcurrent]; break; } 
-        indexcurrent++;
-    }
-
-    var tstr   =  dec2date (etime);
-
-    var nowstr = " ";
-    nowstr    += (((today.getDate())    <10)   ?  "0" :  "") + (today.getDate());
-    nowstr    += (((today.getMonth()+1) <10)   ? "/0" : "/") + (today.getMonth()+1);
-    nowstr    += (((today.getFullYear())<1000) ? "/0" : "/") + (today.getFullYear());
-
-    var nstr = mlord; //    M.Lord
-    nstr    += "/";
-    nstr    += alord; //    A.Lord
-    nstr    += "/";
-    nstr    += plord; //    P.Lord
-    nstr    += "     ";
-    nstr    += cmlord;// C. M.Lord 
-    nstr    += "/";
-    nstr    += calord;// C. A.Lord
-    nstr    += "/";
-    nstr    += cplord;// C. P.Lord
-
-    return d ? tstr+" "+ nowstr : nstr;
-}
-
-function onmousedown (e)
-{
-    var x, y,d="D";
-    var canvas_chart = document.getElementById('canvas_chart');
-    var mychart = canvas_chart.getContext('2d');
-    e.preventDefault();
-
-    if (e.layerX || e.layerX == 0) { 
-        x = e.layerX;
-        y = e.layerY;
-    } 
-    else if (e.offsetX || e.offsetX == 0) { 
-        x = e.offsetX;
-        y = e.offsetY;
-    }
-
-    if (x > 277 && x < 309 && y > 610 && y < 623 ) {
-        calc_position(false);
-        draw(false);
-    }
-    else if(x > 313 && x < 350 && y > 610 && y < 623 ) {
-        calc_position(true);
-        draw(true);
-    }
-    else if (x > 600 && x < 621 && y > 610 && y < 623 ) {
-        if (forward <= 0)  forward = 2;
-        mychart.clearRect (300, 0, 300, 200);
-        draw_empty_chart (mychart,canvas_chart,330,0,0.2);
-        draw_division_chart (mychart,division[forward-2],division[forward-1],d+index[forward-1]);
-        forward -= 2; 
-
-    }
-    else if(x > 624 && x < 645 && y > 610 && y < 623 ) {
-        if (forward >= 10)  forward = 8;
-        mychart.clearRect (300, 0, 300, 200);
-        draw_empty_chart (mychart,canvas_chart,330,0,0.2);
-        //draw_division_chart (mychart,division[forward],division[forward+1],d+index[forward]);
-        forward += 2;  
-    }
-}
-
-function onkeydown (e) 
-{
-    if (e.keyCode == 27)       { alert('esc');} // esc 
-    else if (e.keyCode == 38)  { alert('up'); } // up
-    else if (e.keyCode == 40)  { alert('down');}// down
-    else if (e.keyCode == 187) { alert('+');  } // +
-    else if (e.keyCode == 189) { alert('-');  } // -
-}
-
-
-function draw_zodiacs (ctx) 
-{
-    ctx.font = '7pt Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'green';
-
-    var pos=[   5,5,  85,5,   165,5,   
-                245,5, 245,85,  245,165,   245,245,
-                165,245, 85,245, 5,245,
-                5,165,  5,85 ];
-
-    ctx.fillText(myrashis[11], pos[0], pos[1]);
-    ctx.fillText(myrashis[0], pos[2], pos[3]);
-    ctx.fillText(myrashis[1], pos[4], pos[5]);
-    ctx.fillText(myrashis[2], pos[6], pos[7]);
-    ctx.fillText(myrashis[3], pos[8], pos[9]);
-    ctx.fillText(myrashis[4], pos[10],pos[11]);
-    ctx.fillText(myrashis[5], pos[12],pos[13]);
-    ctx.fillText(myrashis[6], pos[14],pos[15]);      
-    ctx.fillText(myrashis[7], pos[16],pos[17]);      
-    ctx.fillText(myrashis[8], pos[18],pos[19]);  
-    ctx.fillText(myrashis[9], pos[18],pos[19]);  
-    ctx.fillText(myrashis[10], pos[20],pos[21]); 
-
-}
-
-function draw_d1_planets(ctx)
-{
-    
-    ctx.font = '9pt Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'white';
-
-    let k = myrashis[0];  
-    let pos=[   25,15,  105,15,   185,15,   
-        265,15, 265,95,  265,175,   265,255,
-        185,255, 105,255, 25,255,
-        25,175,  25,95 ];
-  
-    for(let i=1; i< 13; i++){
-        planetsInNZD1[k] = mybhavas[i]; 
-        k = k+1;
-        if ( k > 12 ) { k = 1;}
-    }
-
-    ctx.fillText(planetsInNZD1[12], pos[0], pos[1]);
-    ctx.fillText(planetsInNZD1[1], pos[2], pos[3]);
-    ctx.fillText(planetsInNZD1[2], pos[4], pos[5]);
-    ctx.fillText(planetsInNZD1[3], pos[6], pos[7]);
-    ctx.fillText(planetsInNZD1[4], pos[8], pos[9]);
-    ctx.fillText(planetsInNZD1[5], pos[10],pos[11]);
-    ctx.fillText(planetsInNZD1[6], pos[12],pos[13]);
-    ctx.fillText(planetsInNZD1[7], pos[14],pos[15]);      
-    ctx.fillText(planetsInNZD1[8], pos[16],pos[17]);      
-    ctx.fillText(planetsInNZD1[9], pos[18],pos[19]); 
-    ctx.fillText(planetsInNZD1[10], pos[20],pos[21]); 
-    ctx.fillText(planetsInNZD1[11], pos[22],pos[23]);
-
-}
-
-
-
-function draw_d9_planets(ctx)
-{
-    
-    ctx.font = '9pt Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'white';
-    let k = 0;  
-    let pos=[   25,15,  105,15,   185,15,   
-        265,15, 265,95,  265,175,   265,255,
-        185,255, 105,255, 25,255,
-        25,175,  25,95 ];
-
-    for ( let i = 0; i < 12; i++){
-        planetsInNZD9[i] = "";
-    }
-
-    for(let i = 0; i < 10; i++){
-        k = mygrahas[i].navzn - 1;  
-        planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' ';
-    }
-
-      
-    ctx.fillText(planetsInNZD9[11], pos[0], pos[1]);
-    ctx.fillText(planetsInNZD9[0], pos[2], pos[3]);
-    ctx.fillText(planetsInNZD9[1], pos[4], pos[5]);
-    ctx.fillText(planetsInNZD9[2], pos[6], pos[7]);
-    ctx.fillText(planetsInNZD9[3], pos[8], pos[9]);
-    ctx.fillText(planetsInNZD9[4], pos[10],pos[11]);
-    ctx.fillText(planetsInNZD9[5], pos[12],pos[13]);
-    ctx.fillText(planetsInNZD9[6], pos[14],pos[15]);      
-    ctx.fillText(planetsInNZD9[7], pos[16],pos[17]);      
-    ctx.fillText(planetsInNZD9[8], pos[18],pos[19]); 
-    ctx.fillText(planetsInNZD9[9], pos[20],pos[21]); 
-    ctx.fillText(planetsInNZD9[10], pos[22],pos[23]);
-    
-}
-
-
-function draw_smile (ctx) 
-{
-    
-    ctx.beginPath();
-    ctx.strokeStyle = 'white';
-    ctx.arc(456, 55, 17, 0.9*Math.PI, 2.1*Math.PI, true);
-    ctx.lineWidth = 0.1;
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(455, 59, 21, -Math.PI, Math.PI, true);
-    ctx.lineWidth = 0.1;
-    ctx.stroke();
-    ctx.fillStyle = 'F2F2F2';
-    ctx.fillText('.',447 ,54);
-    ctx.fillText('.',463 ,54);
-    myContext.stroke();
-}
-
-
-var printData = function(transit) {
-    
-    //var today = new Date();  
-    let tempStr;
-    strTemp = '<table>';
-    strTemp += '<tr><th>Planet</th><th>Rasi</th><th>Degree</th><th>Nakashatra</th><th>Paada</th></tr>';
-       
-    for (var i=0; i<=9; i++) {
-        strTemp += '<tr><td>' + mygrahas[i].name + '</td><td>' + mygrahas[i].getzodiac()  ;
-        strTemp +=  '</td><td>' +  deg2DMS(mygrahas[i].ra.toFixed(3));
-        strTemp += '</td><td>' + mynaksha[i] + '</td><td>' + mynakshap[i] + '</td></tr>';
-       
-    }
-    
-    strTemp += '</table>';
-    $(".main").append(strTemp);
-
-    strTemp = '<p class="right1P">' + name + ' - ' + date.toDateString()  + ', ' + time.toTimeString().slice(0,8) + '<br>';
-    strTemp +=  ' Lattitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + '<br>';
-    strTemp +=  "Ayanamsa:" + (calc_ayanamsa(transit).toFixed(4)) +'° , '; 
-    strTemp += '  Sid.Time:' + (deg2hms(calc_sideral_time(time.getHours(),time.getMinutes(),transit)));
-    strTemp += '<br>' + "Sunrise: " + calc_sunriseset(true,  false, true, transit);
-    strTemp += ",  Sunset: "+ calc_sunriseset(false, false, true, transit) + '<br>';
-    strTemp += "Tithi: "+ calc_tidhi(mygrahas[2].ra,mygrahas[1].ra)  + ",  Weekday: "+ calc_day_of_the_week(transit) + '<br>';
-    tempStr = '&nbsp' + calc_vimsottari_dasa(false).slice(0,9);
-      strTemp += 'Day Lord:' + calc_day_lord(false) + ',  Hora Lord:' + calc_hora_lord(false);
-    strTemp += '</p>';
-    $(".main").append(strTemp);
-    if ( lat == null || lon == null){
-        alert("Lattitude or Longitude is wrong! Hyd = 17N23 & 78E28");
-    }
-    
-}
 
 var deg2DMS = function(mydeg){
 
    
     let tempVal = parseInt(mydeg);
-    let myD = parseInt(tempVal % 30 );
+    let myD = parseInt(tempVal % 30 ); 
     tempVal = mydeg - tempVal;  
-    tempVal = tempVal * 60 * 60;  
+    tempVal = tempVal * 60 * 60; 
     let myM = parseInt(tempVal / 60);  
     let myS = parseInt(tempVal - myM * 60); 
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
@@ -2152,7 +2123,7 @@ var deg2DMS = function(mydeg){
 
 function numToString(num) { 
 
-  
+    
 	if ((num/10) < 1) { 
 	  return ( '0' + num.toString() );
 	} else {
@@ -2160,100 +2131,6 @@ function numToString(num) {
 	}
 }
 
-
-function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
-
-    ctx.lineWidth = lwidth;   
-    ctx.strokeStyle = "gray";  
-     
-    let x=_x,y=_y;
-    
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-
-    ctx.rect(x,y,x+320,y+320);
-    ctx.stroke();
-    ctx.closePath();
-
-    ctx.beginPath(); 
-    ctx.strokeStyle = "gray";
-    ctx.lineWidth = lwidth-1;
-    ctx.moveTo(x+80,y);
-    ctx.lineTo(x+80,y+320);
-    ctx.moveTo(x+240,y);
-    ctx.lineTo(x+240,y+320);
-
-    ctx.moveTo(x,y+80);
-    ctx.lineTo(x+320,y+80);
-    ctx.moveTo(x+0,y+240);
-    ctx.lineTo(x+320,y+240);
-
-
-    ctx.moveTo(x+160,y);
-    ctx.lineTo(x+160,y+80);
-
-    ctx.moveTo(x+240,y+160);
-    ctx.lineTo(x+320,y+160);
-
-    ctx.moveTo(x+160,y+240);
-    ctx.lineTo(x+160,y+320);
-
-    ctx.moveTo(x,y+160);
-    ctx.lineTo(x+80,y+160);
-    ctx.stroke();
-    
-    ctx.font = 'Bold 18px Sans-Serif';
-    ctx.fillStyle = "#777777";
-    
-    
-    ctx.fillText(title, x+150, y+170);  
-    ctx.stroke();
-    
-}
-
-
-function calc_all_navamsas(){
-    let obj = {};
-    for ( let i = 0 ; i < 10 ; i++){
-        
-        obj["id"] = i;
-        obj["planet"] = mygrahas[i].name;
-        obj["rasinum"] = mygrahas[i].rasizn; 
-        obj["rasiname"] = mygrahas[i].zodiac;
-        obj["rad"] = mygrahas[i].getra();
-        obj["d9"] = calc_navamsa( mygrahas[i].rasizn, mygrahas[i].getra() );
-        aGrahaAll.push(obj);
-        console.log( aGrahaAll[i]);
-    }
-}
-
-function calc_navamsa(myrasinum, mydegrees){
-
-    let myRasiNum = myrasinum - 1 ; 
-    let myDegrees = mydegrees % 30 ; 
-    let myNavamsa = parseInt( myDegrees/(30/9) ); 
-    let myNavamsaRasi = 0;
-    
-    if ( ( myRasiNum % 4) == 0 ){
-            myNavamsaRasi = myNavamsa;
-    }
-    if ( ( myRasiNum % 4) == 1 ){
-        myNavamsaRasi = 9 + myNavamsa;
-        if (myNavamsaRasi > 11) { myNavamsaRasi = myNavamsaRasi - 12}
-    }
-    if ( ( myRasiNum % 4) == 2 ){
-        myNavamsaRasi = myNavamsa;
-        myNavamsaRasi = 6 + myNavamsa;
-        if (myNavamsaRasi > 11) { myNavamsaRasi = myNavamsaRasi - 12}
-    }
-    if ( ( myRasiNum % 4) == 3 ){
-        myNavamsaRasi = myNavamsa;
-        myNavamsaRasi = 3 + myNavamsa;
-        if (myNavamsaRasi > 11) { myNavamsaRasi = myNavamsaRasi - 12}
-    }
-    
-    return myNavamsaRasi;
-}
 
 function calc_tidhi(moondeg, sundeg){
 
@@ -2277,7 +2154,7 @@ function calc_tidhi(moondeg, sundeg){
     theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
-    
+  
     if (theNum == 15){
         pakshaStr = " ";  
     }
@@ -2294,53 +2171,112 @@ function calc_tidhi(moondeg, sundeg){
 
 function calc_vdasa(){
 
-    let moonDegrees = mygrahas[2].ra;
-    let mdPeriod = calc_nakshatra(moonDegrees,6); 
-    let theDiff = (moonDegrees - calc_nakshatra(moonDegrees,4)) ;
-    console.log('theDiff=' + theDiff);
-    theDiff = theDiff/13.3333;
-    console.log('theDiff=' + theDiff);
-    theDiff = theDiff * mdPeriod; 
-    console.log('theDiff=' + theDiff);
     let jd =  calc_julian_date(time.getHours(),time.getMinutes(),0,false);
     let Ts = (jd - 2415020.0)/36525.0;
     let solaryear   = 365.2421896698-6.15359*(10e-6)*Ts-7.29*(10e-10)*Ts*Ts+2.64*(10e-10)*Ts*Ts*Ts; 
-    //solaryear = 360;
-    let theYears = 0, theMonths = 0, theDays = 0;
-    theYears = parseInt(theDiff);
-    theMonths =  (theDiff - theYears) * solaryear / 30 ; 
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ; 
-    theMonths = parseInt(theMonths); 
-    console.log('years = ' + theYears +', months ='+ theMonths + ', days = ' + theDays);
-    console.log("date=" + date );
+    
+    let tempStr = "";
+    let firstStr = "";
+    let mDate = new Date();
+    let isFirst = true;
 
-    let vdate = createDate(-theDays,-theMonths,-theYears,date);
-    console.log('vdate = ' + vdate);
-    strTemp =  '<h1>Vimsottari Dasa</h1>';
-    strTemp += calc_nakshatra(moonDegrees,2) + " Dasa starts from: " + createDateStr(vdate) + '<br>';
-    strTemp +=  "Sat - Sat" + " Anthar: " + createDateStr(vdate) ;
+    let mdPeriod = 0;
+    let mdLordName = "";
+    let adPeriod = 0;
+
+    let mDegrees = mygrahas[2].ra; 
+    let msDegrees = calc_nakshatra(mDegrees,4)  
+    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
+    let antarLordSeqNum = dasaLordSeqNum;
+    
+    $('.aside2').append('<h2>Vimsottari Dasa:</h2>');
+    
+
+    mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+    
+    mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
+   
+    tempStr = createDateStr(mDate);
+    
    
 
+    for (let m = 0; m < 9 ; m++){
+        
+        firstStr = '<table><tr><th>Maha-Anthara</th><th>From/To</th><th>Date</th></tr>';
+        firstStr += '<tr span style = "color:#F49209;"><td>' +  mdLordName +  ' Dasa Starts</td><td>' + 'From</td><td>' + tempStr + '</td></span></tr>';
+        
 
-    theDiff = mdPeriod * mdPeriod;
+        strTemp = "";
+
+        for ( let a = 0 ; a < 9; a++){
+          
+            adPeriod = aDasaInfo[0][antarLordSeqNum]; 
+            mDate = calc_antarDasa(mdPeriod, adPeriod,mDate);
+            tempStr = createDateStr(mDate);        
+            strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';
+            strTemp +=  tempStr + '</td></tr>';
+      
+            
+            antarLordSeqNum++;
+            if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
+    
+        }
+
+        dasaLordSeqNum++;
+        if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
+        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+        antarLordSeqNum = dasaLordSeqNum;
+        $('.aside2').append(firstStr + strTemp + '<tr><td>&nbsp </td> <td>&nbsp </td> <td>&nbsp </td></tr></table>');
+        
+
+    }   
+    
+    
+}
+
+function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
+
+    let theYears = 0, theMonths = 0, theDays = 0;
+    let theDiff = (mdeg - msdeg) ;
+    theDiff = theDiff/13.3333;
+    theDiff = theDiff * mdperiod; 
+
+    theYears = parseInt(theDiff);
+    theMonths =  (theDiff - theYears) * syear / 30 ; 
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
+    theMonths = parseInt(theMonths); 
+    
+    let vdate;
+    vdate = createDate(-theDays,-theMonths,-theYears,date);
+    
+    return vdate;
+}
+
+function calc_antarDasa(mperiod, aperiod,sdate){
+
+    let theYears = 0, theMonths = 0, theDays = 0;
+    let theDiff = mperiod * aperiod;
+  
     theMonths = parseInt(theDiff /10); 
+    
     theDays = theDiff - theMonths * 10;
     theYears = parseInt(theMonths /12); 
     theMonths = theMonths % 12;
     theDays = 3 * theDays;
-
-    vdate = createDate(theDays,theMonths,theYears,vdate);
-    console.log('vdate = ' + vdate);
-    strTemp +=  "  => " + createDateStr(vdate) + '<br>';
-    $('.right3').append(strTemp);
-
+   
+    let vdate = createDate(theDays,theMonths,theYears,sdate);
+   
+    return vdate;
 }
 
 function createDate(days, months, years,idate) {
     let odate = new Date(); 
-    odate.setUTCDate(idate.getUTCDate() + days);
+    odate.setUTCFullYear(idate.getUTCFullYear() + years); 
     odate.setUTCMonth(idate.getUTCMonth() + months);
-    odate.setUTCFullYear(idate.getUTCFullYear() + years);
+    odate.setUTCDate(idate.getUTCDate() + days);
+ 
     return odate;    
 }
 
@@ -2351,27 +2287,4 @@ function createDateStr(idate){
     return (strY + ' - ' + strM + ' - ' + strD) ;
 }
 
-function printPlaces(){
-    strTemp = '<table>';
-    strTemp += '<th>Place</th><th>Lattitude</th><th>Longitude</th><th>GMT</th>'
-    aLL.forEach( function (v1, i1){
-        strTemp += '<tr>';
-        v1.forEach( function (v2,i2){
-            strTemp += '<td>' + v2 + '</td>';
 
-        });
-        strTemp += '</tr>';
-    });
-    strTemp += '</table>';
-    $('.aside2').append(strTemp);
-}
-
-function handlePlaces(){	
-	
-	$("#places").on("click",  function()
-	{
-		$('.aside2').empty();
-        printPlaces();
-		
-	});
-}
