@@ -49,6 +49,7 @@ body {
 
 .nav1 a:hover {
 	background: #5533ac;
+	color: white;
 }
   
 .nav1 li:last-of-type a {

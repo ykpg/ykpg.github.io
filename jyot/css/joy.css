@@ -1,120 +1,32 @@
 
- body {
+body {
 	margin:0 auto;
 	padding:0;
 	font-family: "Roboto, Arial, Tahoma, Helvetica, Verdana", sans-serif;    
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 	line-height: 1.6em;	 
-	text-align:center; 
-	width: 94%;
 	background-color: #555555;
 	color: #c2c2c2;
-  }
-
+	width:94%;
+}
 
 .wrapper {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
+	
 	display: flex;
-	-webkit-flex-flow: row wrap;
-	flex-flow: row wrap;	
+	
+	flex-direction: column;
+	background-color:#3B5BC7;
+	
+	
 }
 
-.wrapper > * {
-	padding: 10px;
-	flex: 1 100%;
-}
-  
-.nav1 {
-	padding: 0;
-	list-style: none;
-	margin: 0;
-	background: #708adf;	
-	display: flex;
-	flex-flow: column wrap;
-}
-  
-.nav1 a {
-	text-align: center;
-	padding: 12px;
-	border-top: 1px solid #97b1d852;
-	border-bottom: 1px solid #0b31551a;
-	text-decoration: none;
-	display: block;
-	color:#d3d3d3;
-}
-  
-.nav1 a:hover {
-	background: #3255c9;
-	color:white;
-}
-  
-.nav1 li:last-of-type a {
-	border-bottom: none;
-}
-
-header.header {
-	padding-right:0;
-	padding-left: 0;
-	padding-bottom: 0;
-}
-  
 .header{
-	background: #3b5bc7;
 	
-}
-
-
-.main {
-	text-align: left;
-	color:#c9c9c9;
-	font-size: 0.8rem;
-	background: #4160c4;
-}
-
-.main p {
-	  padding:10px;
-}
-aside {
-	background: #4160c4;
-	text-align: left;
-	font-size: 0.8rem;
-	padding: 5px;
-}
-
-.form-dropdown{
-	-webkit-appearance: listbox !important;
-}
-
-form{
-	
-	justify-content: center;
-	align-content: center;
-	align-items: center;
-}
-
-input, textarea, select, button {
-	width : 94%;
-	padding: 2px;
-	margin: 0;
-	box-sizing: border-box;
-	font-size: 0.8rem;
-}
-
-input, textarea {
-	
-	border  : none;
-	padding : 4px;
-	margin  : 0;
-	background : #708adf;
-}
-
-label {
-	color: #c2c2c2;
-	font-size: 0.8rem;	
+	align-self: center; /* only this works to center header and nav1. */
+	width:100%; /* when you give this above does not work */
+	text-align: center; /* then, this is required */
+	background-color: #3b5bc7;
 }
 
 h1{
@@ -128,30 +40,137 @@ h2{
 }
 
 
-hr {
-	border: 0;
-	height: 1px;
-	background: #333;
-	background-image: linear-gradient(to right, #ccc, #333, #ccc);
+.nav1{
+	
+	flex-direction: row;
+	width:100%;
+	margin:0 auto;
+	padding:0px;
+	
+	background: #708adf;
 }
-  
-hr.style2 {
-	  height: 10px;
-	  border: 0;
-	  background-image: linear-gradient(to right, #d5d5d5, #bababa, #d5d5d5);
+
+li{
+	list-style: none;
+}
+
+.nav1 a {
+	text-align: center;
+	padding: 10px;
+	border-top: 1px solid #bcd0ee52;
+	border-bottom: 1px solid #30373d1a ;
+	text-decoration: none;
+	display: block;
+	color:#d3d3d3;
+	background: #708adf;
+}
+
+.nav1 a:hover {
+	background: #3255c9;
+	color:white;
+}
+
+.aside1{
+
+	
+	align-self: center; /* this works */
+	
+	background-color: #3b5bc7;
+	margin:0px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+
+}
+
+form{
+
+	display: flex;
+	justify-content: center; /* this doeos the trick */
+	/*max-width: 150px;*/
+	background-color: #3b5bc7;
+}
+
+fieldset{
+	border: 1px solid #3A5Bc1;
+	border-radius: 6px;
+	box-shadow: 3px 3px 3px  rgb(33, 52, 138)	;
+	background-color: #5275d3;
+	margin: 0px;
+	
+}
+fieldset, fieldset div {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap; /* without this they lay inline */
+	/* align-content: center; with this each item is centered */
+
+	font-size: 0.8rem;
+	flex: 1 1 auto;
+	max-width: 150px;
+	padding: 8px 12px 8px 12px;
+	
+  }
+
+form input{
+
+	padding: 2px;
+	width:96%;
+	background : #708adf;
+	border:none;
+} 
+
+form button{
+	background : #a3b2e4;
+	padding: 2px;
+	width:96%;
+
+}
+
+input[type="button"]:hover {
+	background: #67C8FF;
+	color: white;	
+	cursor: pointer;
 }
 
 
-  
+.aside2{
+
+	text-align: center;
+	background-color: #3b5bc7;
+
+}
+
+.main{
+
+	text-align: left;
+	padding: 5px 10px 5px 10px;
+	background-color: #3b5bc7;
+	font-size: 0.8rem;
+}
+
+.main p {
+	padding:10px 10px 5px 20px;
+	
+}
+.footer{
+	
+	text-align: center;
+	padding:3px 0px 3px 0px ; 
+	font-size: 0.8rem;
+	background-color: #2f53c9;
+}
+
+
 table {
 	border-collapse: collapse; 
 	margin:0 auto;
 	width:96%;
 	font-size: 0.8rem;
+	
 }	
   
 th {
-	background-color: #3255c9;
+	background-color: #3b56ad;
 	color: white;
 	padding: 2px;
 	text-align: left;
@@ -182,45 +201,71 @@ table tr:hover {
 	  
 }
 
-.footer {
-	background: #3b5bc7;
-
-	font-size: 0.8rem;
-	color:#a9a9a9;
-}
-
-  
 
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 760px) {
 
 	body{
 		font-size: 14px;
 	}
-	.nav1 {
-		justify-content: flex-end;	
-		flex-flow: row;
+	.wrapper{
+		display:flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		text-align: center;
+		
 	}
 
+	.nav1{
+		
+		margin:0px;
+		padding:0px;
+		border-top: 1px solid #bcd0ee52;
+		border-bottom: 1px solid #30373d1a ;
+	}
+	.nav1 a{
+		padding: 9px 9px 9px 9px;
+		border:none;
+
+	}
+
+	.nav1 li:last-of-type a {
+		border-bottom: none;
+	}
+	 
 	.main {
 	  	flex: 2 0px;
 	  	order: 2;
-		  flex-direction: column;
+		min-width: 35%;
+		  background-color: none;
 		  
 	}
 	.aside1 {
 	  	order: 1;
 	  	flex: 1 0px;
-	  	text-align: left;
+		align-self: auto;
+		  
+	}
+
+	ul{
+		display: flex;
+		justify-content: flex-end;
 	}
 	
 	.aside2 {
 	  	order: 3;
-	  	flex: 2 0px;  
+		  flex: 2 0px;  
+		  min-width: 35%;
 	}
 
 	.footer {
-	  	order: 3;
+		order: 4;
+		justify-self: center;
+		min-width: 100%;
+	}
+
+	fieldset div{
+		text-align: left;
 	}
 	
   }
