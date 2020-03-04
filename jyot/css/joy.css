@@ -119,10 +119,10 @@ input{
 } 
 
 button{
-	background-color : #4262ca;
+	background-color : #798cce;
 	padding: 2px;
 	width:96%;
-	color:#dbdce7;
+	color:black;
 }
 
 button:hover {
@@ -138,6 +138,21 @@ button:hover {
 
 }
 
+.aside2 a {
+	text-align: center;
+	padding: 10px;
+	
+	text-decoration: none;
+	display: block;
+	color: white;
+}
+	
+.aside2 a:hover {
+		background: none;
+		color:black;
+}
+	
+	
 .main{
 
 	text-align: left;
