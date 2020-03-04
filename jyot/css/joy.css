@@ -71,16 +71,16 @@ li{
 }
 
 .aside1{
-
 	
 	align-self: center; /* this works */
-	
 	background-color: #3b5bc7;
 	margin:0px;
 	margin-top: 20px;
 	margin-bottom: 10px;
 
 }
+
+
 
 form{
 
@@ -95,43 +95,41 @@ fieldset{
 	border-radius: 6px;
 	box-shadow: 3px 3px 3px  rgb(33, 52, 138)	;
 	background-color: #5275d3;
-	margin: 0px;
-	
+	margin: 0px;	
 }
+
 fieldset, fieldset div {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap; /* without this they lay inline */
 	/* align-content: center; with this each item is centered */
-
+	
 	font-size: 0.8rem;
 	flex: 1 1 auto;
 	max-width: 150px;
-	padding: 8px 12px 8px 12px;
-	
-  }
+	padding: 8px 12px 8px 12px;	
+}
 
-form input{
+input{
 
 	padding: 2px;
 	width:96%;
-	background : #708adf;
+	background-color : #a0a8ca;
 	border:none;
 } 
 
-form button{
-	background : #a3b2e4;
+button{
+	background-color : #4262ca;
 	padding: 2px;
 	width:96%;
-
+	color:#dbdce7;
 }
 
-input[type="button"]:hover {
-	background: #67C8FF;
+button:hover {
+	background: #3457ca;
 	color: white;	
 	cursor: pointer;
 }
-
 
 .aside2{
 
@@ -222,6 +220,7 @@ table tr:hover {
 		padding:0px;
 		border-top: 1px solid #bcd0ee52;
 		border-bottom: 1px solid #30373d1a ;
+	
 	}
 	.nav1 a{
 		padding: 9px 9px 9px 9px;

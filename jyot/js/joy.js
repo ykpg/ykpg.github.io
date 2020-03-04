@@ -4,6 +4,7 @@ let x, y,d="D";
 let strTemp ;			
 let myDate;
 let isOK = false;
+let divPosition;
 
 let aGrahaAll = [];
 
@@ -166,7 +167,11 @@ var showInfo = function()
         calc_position(false);
 
         $('.main').empty();
-        isOK = printInfo(false);		
+        isOK = printInfo(false);
+        divPosition = $("#maintop").offset();
+        $('html,body').animate({scrollTop: divPosition.top}, "slow");
+
+
 	});
     
 };
@@ -221,6 +226,8 @@ function showCharts(){
 	{
 		$('.aside2').empty();
         printCharts();
+        divPosition = $("#aside2top").offset();
+        $('html,body').animate({scrollTop: divPosition.top}, "slow");	
 		
 	});
 }
@@ -259,12 +266,12 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
 
     ctx.lineWidth = lwidth;   
     ctx.strokeStyle = "gray";  
-   
-    let x=_x,y=_y;
     
+    let x=_x,y=_y;
+   
     ctx.beginPath();
     ctx.moveTo(x, y);
- 
+   
     ctx.rect(x,y,x+320,y+320);
     ctx.stroke();
     ctx.closePath();
@@ -300,13 +307,13 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
 
 function draw_d1_planets(ctx)
 {
- 
+    
     ctx.font = '9pt Arial';
     ctx.textAlign = 'start';
     ctx.fillStyle = 'white';
     let maxWidth = 90;
 
-    let k = myrashis[0]; 
+    let k = myrashis[0];  
 
     let pos=[   10,20,  90,40,   170,20, 250,40,
                 250,120,  250,200,   250,280,
@@ -319,29 +326,29 @@ function draw_d1_planets(ctx)
         if ( k > 12 ) { k = 1;}
         
     }
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD1[12], pos[0], pos[1],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD1[1], pos[2], pos[3],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD1[2], pos[4], pos[5],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD1[3], pos[6], pos[7],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD1[4], pos[8], pos[9],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD1[5], pos[10],pos[11],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD1[6], pos[12],pos[13],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD1[7], pos[14],pos[15],maxWidth); 
-    ctx.fillStyle = '#c4c4c4';    
+    ctx.fillStyle = '#d4d4d4';    
     ctx.fillText(planetsInNZD1[8], pos[16],pos[17],maxWidth); 
-    ctx.fillStyle = 'black';    
+    ctx.fillStyle = '#e4e4e4';    
     ctx.fillText(planetsInNZD1[9], pos[18],pos[19],maxWidth); 
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD1[10], pos[20],pos[21],maxWidth); 
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD1[11], pos[22],pos[23],maxWidth);
 
 }
@@ -350,7 +357,7 @@ function draw_d1_planets(ctx)
 
 function draw_d9_planets(ctx)
 {
-    
+    //$('.right2').empty();
     ctx.font = '9pt Arial';
     ctx.textAlign = 'start';
     ctx.fillStyle = 'white';
@@ -368,33 +375,34 @@ function draw_d9_planets(ctx)
     for(let i = 0; i < 10; i++){
         k = mygrahas[i].navzn - 1;  
         
-      
+        
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
-    ctx.fillStyle = '#c4c4c4';
+   
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[11], pos[0], pos[1],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD9[0], pos[2], pos[3],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[1], pos[4], pos[5],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD9[2], pos[6], pos[7],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[3], pos[8], pos[9],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD9[4], pos[10],pos[11],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[5], pos[12],pos[13],maxWidth);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD9[6], pos[14],pos[15],maxWidth); 
-    ctx.fillStyle = '#c4c4c4';   
+    ctx.fillStyle = '#d4d4d4';   
     ctx.fillText(planetsInNZD9[7], pos[16],pos[17],maxWidth);  
-    ctx.fillStyle = 'black';   
+    ctx.fillStyle = '#e4e4e4';   
     ctx.fillText(planetsInNZD9[8], pos[18],pos[19],maxWidth);
-    ctx.fillStyle = '#c4c4c4';
+    ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[9], pos[20],pos[21],maxWidth); 
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD9[10], pos[22],pos[23],maxWidth);
     
 }
@@ -407,6 +415,9 @@ function showPlaces(){
 	{
 		$('.aside2').empty();
         printPlaces();
+        divPosition = $("#aside2top").offset();
+        $('html,body').animate({scrollTop: divPosition.top}, "slow");
+
 		
 	});
 }
@@ -437,15 +448,19 @@ var showDasa = function()
         if(isOK){
             $('.aside2').empty();
             calc_vdasa();
+            
+
         }
         else{
             strTemp = '<p style="color:#FF9912; text-align: center">Dasa can be viewed only after entering proper data and clicking on Generate button.<p>';
             $('.aside2').empty();
             $('.aside2').append(strTemp);
-        }		
+        }	
+        divPosition = $("#aside2top").offset();
+        $('html,body').animate({scrollTop: divPosition.top}, "slow");	
 	});
     
-};// function show content ends
+};
 
 
 
@@ -479,7 +494,7 @@ function map ()
         var l4 = "&zoom=13";
         var link = l1+"lat="+l2+"&lon="+l3+l4;
         
-       
+        
         
         window.open(link);
     }
@@ -533,6 +548,7 @@ function parse_time (input)
 function parse_latitude (input) 
 {
     
+
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("N") !=-1) {
         lattmp=tmp.split("N");
@@ -552,6 +568,7 @@ function parse_latitude (input)
 function parse_longitude (input) 
 {
     
+
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("W") !=-1) {
         lontmp=tmp.split("W");
@@ -757,7 +774,7 @@ function myplanets ( name,index,ra,ruler,r_index,aspect,day,
         }
         this.compute_division_nakshatra = function()
         {
-        
+        // 1-Nakshatras, 2-N.lord, 3-N.pada,
             for (var i=0; i<=9; i++) {
                 mynaksha [i] = calc_nakshatra(mygrahas[i].getra(),1);
                 mynakshal[i] = calc_nakshatra(mygrahas[i].getra(),2);
@@ -904,16 +921,16 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;       
+        return sdeg;        
     }
     else if (n == 5)  {
         return nnum;        
     }
     else if (n == 6)  {
-        return vperiod;    
+        return vperiod;     
     }
     else if (n == 7)  {
-        return lnum;     
+        return lnum;    
     }
 
 }
@@ -994,6 +1011,7 @@ function elements ()
 function calc_day_number (hours,minutes,transit)
 {   
 
+
 var today = new Date(),yy,mm,dd;
 if (!transit) {
 yy = date.getFullYear();
@@ -1024,7 +1042,9 @@ return (b + c + d - 730550.5 + dd + (((hours-tz)) + minutes/60.0)/24.0);
 
 function calc_julian_date (hours,minutes,_tz,transit) 
 {   
-
+/*    Days since the beginning of the Julian period 
+*    plus dT and the fraction of the day
+*/
 
 var today = new Date(),yy,mm,dd;
 if (!transit) { 
@@ -1158,7 +1178,7 @@ function calc_ra (p)
         zh = 0;
     }
 
-    
+    /* convert to geocentric rectangular coordinates */
     var xg = xh - xe;
     var yg = yh - ye;
     var zg = zh - ze;
@@ -1169,7 +1189,7 @@ function calc_ra (p)
     var yeq = yg*Math.cos(ecl) - zg*Math.sin(ecl);
     var zeq = yg*Math.sin(ecl) + zg*Math.cos(ecl);
 
-    
+   
     ra = mod2pi(Math.atan2(yeq, xeq))*DEGS;
 
     
@@ -1180,7 +1200,7 @@ function true_anomaly (M, e)
 {
     var V, E1;
 
-    
+   
     var E = M + e*Math.sin(M)*(1.0 + e*Math.cos(M));
     do                                   
     {
@@ -1281,7 +1301,7 @@ function calc_vsop87 (planet,jd)
         Zp = -earth[Z];
         break;
         case 2:
-       
+        
         break;
         case 3:
         calc_mars(T);
@@ -1352,7 +1372,8 @@ function calc_moon_positionI ()
     +Math.floor(30.6001 * (jm + 1))
     -730550.4 + day + (jh) / 24 + b;
 
-    
+    /* time of perihelion */
+    // var T = ...toFixed(1)/36525.0;
     var T = JD / 36525.0;
 
     /* Sun's mean longitude */
@@ -1496,8 +1517,7 @@ function calc_moon_positionII ()
     var Ms = mod2pi((356.0470 + 0.9856002585 * JD)*RADS);    
     var Ls = mod2pi((Ms*DEGS + ws*DEGS)*RADS); 
 
-    
-
+   
     var Mm = M*DEGS;
     var Lm = mod2pi(N + w + M)*DEGS;
     var D  = Lm-Ls*DEGS;
@@ -1542,8 +1562,7 @@ function calc_moon_positionII ()
     /* geocentric ra and dec */
     var ra   = mod2pi(Math.atan2(ye, xe))*DEGS;
 
-        
-
+    
     return ra;
 }
 
@@ -1638,7 +1657,7 @@ function calc_moon_positionIII (transit)
 
 function _ecl (jd)
 {
-    /* J. Laskar, Astronomy and Astrophysics, Vol. 157, page 68 [1986] */
+    
 
     var terms = [ -4680.93/3600.0,   -1.55/3600.0,  1999.25/3600.0, 
         -51.38/3600.0, -249.67/3600.0,  -39.05/3600.0, 
@@ -1662,6 +1681,7 @@ function _ecl (jd)
 function dT (transit)
 {
     
+
     var today=new Date(),y;
     if (!transit) y = date.getFullYear()  + ((date.getMonth()+1)  - 0.5)/12;
     else          y = today.getFullYear() + ((today.getMonth()+1) - 0.5)/12;
@@ -1738,7 +1758,7 @@ function dT (transit)
 
 function dms2real (deg, min, sec)
 {
-    /*  convert latitude/longitude (deg, min, sec) to degrees  */
+    
 
     var r;
     if (deg < 0) r =  deg - min/60 - sec/3600;
@@ -1750,12 +1770,13 @@ function dms2real (deg, min, sec)
 function hms2deg (hours, min, sec)
 {
     
+
     return (hours * 15 + min/4 + sec/240);
 }
 
 function dec2hms (x)
 {
-    /*  convert dec hours to hh:mm:ss  */
+   
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1862,7 +1883,7 @@ function mod24 (x)
 
 function mod2pi(x)
 {
-    /* range 0-2PI radians */
+    
 
     var b = x/(2*Math.PI);
     var a = (2*Math.PI)*(b - _abs(b));
@@ -1873,7 +1894,7 @@ function mod2pi(x)
 
 function mod360 (x) 
 {
-    /* range 0-360 degrees */
+    
 
     var a = 360 * ((x / 360) - _abs(x / 360));
     if (a < 0) a = a + 360; 
@@ -2114,12 +2135,12 @@ if((browser.indexOf("firefox") > -1) ||
 
 var deg2DMS = function(mydeg){
 
-    
+   
     let tempVal = parseInt(mydeg);
     let myD = parseInt(tempVal % 30 ); 
     tempVal = mydeg - tempVal;  
     tempVal = tempVal * 60 * 60;  
-    let myM = parseInt(tempVal / 60);  
+    let myM = parseInt(tempVal / 60); 
     let myS = parseInt(tempVal - myM * 60); 
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
     return tempStr;
@@ -2155,7 +2176,7 @@ function calc_tidhi(moondeg, sundeg){
     if (theNum < 0){
         theNum = theNum + 360;  
     }
-    theNum = theNum /12;    
+    theNum = theNum /12;   
     theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
@@ -2189,7 +2210,7 @@ function calc_vdasa(){
     let mdLordName = "";
     let adPeriod = 0;
 
-    let mDegrees = mygrahas[2].ra; 
+    let mDegrees = mygrahas[2].ra;
     let msDegrees = calc_nakshatra(mDegrees,4)  
     let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
     let antarLordSeqNum = dasaLordSeqNum;
@@ -2197,7 +2218,7 @@ function calc_vdasa(){
     $('.aside2').append('<h2>Vimsottari Dasa:</h2>');
     
 
-    mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+    mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
     mdLordName = aDasaInfo[1][dasaLordSeqNum];  
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
@@ -2210,7 +2231,7 @@ function calc_vdasa(){
         
         firstStr = '<table><tr><th>Maha-Anthara</th><th>From/To</th><th>Date</th></tr>';
         firstStr += '<tr span style = "color:#F49209;"><td>' +  mdLordName +  ' Dasa Starts</td><td>' + 'From</td><td>' + tempStr + '</td></span></tr>';
-     
+       
 
         strTemp = "";
 
@@ -2230,8 +2251,8 @@ function calc_vdasa(){
 
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
-        mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
-        mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
+        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
         antarLordSeqNum = dasaLordSeqNum;
         $('.aside2').append(firstStr + strTemp + '</table><br>');
         
@@ -2250,7 +2271,7 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
 
     theYears = parseInt(theDiff);
     theMonths =  (theDiff - theYears) * syear / 30 ; 
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ; 
     theMonths = parseInt(theMonths); 
     
     let vdate;
@@ -2263,7 +2284,7 @@ function calc_antarDasa(mperiod, aperiod,sdate){
 
     let theYears = 0, theMonths = 0, theDays = 0;
     let theDiff = mperiod * aperiod;
-  
+   
     theMonths = parseInt(theDiff /10); 
     
     theDays = theDiff - theMonths * 10;
@@ -2272,7 +2293,7 @@ function calc_antarDasa(mperiod, aperiod,sdate){
     theDays = 3 * theDays;
     
     let vdate = createDate(theDays,theMonths,theYears,sdate);
-    
+   
     return vdate;
 }
 
@@ -2281,7 +2302,7 @@ function createDate(days, months, years,idate) {
     odate.setUTCFullYear(idate.getUTCFullYear() + years); 
     odate.setUTCMonth(idate.getUTCMonth() + months);
     odate.setUTCDate(idate.getUTCDate() + days);
-   
+
     return odate;    
 }
 
