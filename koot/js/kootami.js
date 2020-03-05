@@ -765,6 +765,11 @@ function highlight_row()
 			
 			let fileName = "txt/t" + rowId.toString() + ".txt" ;
 			showText(fileName);
+			if (rowSelected){
+		
+				divPosition = $('#mypos').offset();
+				$('html, body').animate({scrollTop: divPosition.top}, "slow");
+			}	
         }
     }
 	divPosition = $('#mypos').offset();
