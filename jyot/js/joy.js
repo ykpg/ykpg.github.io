@@ -183,7 +183,7 @@ var printInfo = function(transit) {
     let tempStr;
     if ( lat == null || lon == null || lat == undefined || lon == undefined || isNaN(lat) || isNaN(lon) ){
         $('.aside2').empty();
-        strTemp = '<p style="color:#FF9912; text-align: center">Lattitude or Longitude is not proper. Hyd = 17N23 & 78E28<p>';
+        strTemp = '<p style="color:#FF9912; text-align: center">Latitude or Longitude is not proper. Hyd = 17N23 & 78E28<p>';
         $('.aside2').append(strTemp);
         isOK = false;
         alert('Lattitude or Longitude is not proper.');
@@ -204,7 +204,7 @@ var printInfo = function(transit) {
     $(".main").append(strTemp);
 
     strTemp = '<p class="right1P">' + name + ' - ' + date.toDateString()  + ', ' + time.toTimeString().slice(0,8) + '<br>';
-    strTemp +=  ' Lattitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + '<br>';
+    strTemp +=  ' Latitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + '<br>';
     strTemp += '<span style = "color:#FF9912;"> Janma-Lagna:  ' + aRasiNames[(mygrahas[0].rasizn-1) ] + ' ,  Janma-Rasi: ' + aRasiNames[(mygrahas[2].rasizn-1) ] + ' - ' + mynaksha[2] + ' - ' + mynakshap[2] + '</span><br>';
     strTemp +=  "Ayanamsa:" + (calc_ayanamsa(transit).toFixed(4)) +'° , '; 
     strTemp += '  Sid.Time:' + (deg2hms(calc_sideral_time(time.getHours(),time.getMinutes(),transit)));
@@ -425,7 +425,7 @@ function showPlaces(){
 function printPlaces(){
 
     strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><table>';
-    strTemp += '<th>Place</th><th>Lattitude</th><th>Longitude</th><th>GMT</th>'
+    strTemp += '<th>Place</th><th>Latitude</th><th>Longitude</th><th>GMT</th>'
     aLL.forEach( function (v1, i1){
         strTemp += '<tr>';
         v1.forEach( function (v2,i2){
@@ -434,7 +434,7 @@ function printPlaces(){
         strTemp += '</tr>';
     });
     strTemp += '</table>';
-    strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>Search for Lattitude & Longitude...</a>';
+    strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>Search for Latitude & Longitude...</a>';
     $('.aside2').append(strTemp);
 }
 
@@ -2229,8 +2229,7 @@ function calc_vdasa(){
 
     for (let m = 0; m < 9 ; m++){
         
-        firstStr = '<table><tr><th>Maha-Anthara</th><th>From/To</th><th>Date</th></tr>';
-        firstStr += '<tr span style = "color:#F49209;"><td>' +  mdLordName +  ' Dasa Starts</td><td>' + 'From</td><td>' + tempStr + '</td></span></tr>';
+        firstStr = '<table><tr><th>' + mdLordName + ' Dasa Starts</th><th>from</th><th>'+ tempStr + '</th></tr>';
        
 
         strTemp = "";
