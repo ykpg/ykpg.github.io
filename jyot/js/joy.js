@@ -13,7 +13,7 @@ let planetsInNZD1 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
 let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "]; 
 
 let aRasiNames = ['Mesha','Vrushabha','Midhuna','Karkataka','Simha','Kanya','Tula','Vruschika','Dhanus','Makara','Kumbha','Meena'];
-
+let aGrahaNames = ["Lagnam","Ravi","Chandra","Kuja","Budha","Guru","Sukra","Sani","Rahu","Ketu"];
 
 let aLL = [
 
@@ -26,6 +26,7 @@ let aLL = [
     ['Mumbai',		    '18N58',    '72E50',    5.5],
     ['New Delhi',		'28N36',    '77E12',    5.5],   
     ['Secunderabad',    '17N27',    '78E30',    5.5],
+    ['Singapore City',  '01N17',    '103E51',   8.0],
     ['Vijayawada',      '16N31',    '80E37',    5.5],
     ['Visakha',         '17N42',    '83E18',    5.5]  
 
@@ -33,13 +34,15 @@ let aLL = [
 
 let aDasaInfo = [
     [0,7,20,6,10,7,18,16,19,17],
-    ["","Ketu","Sukr","Ravi","Chan","Kuja","Rahu","Guru","Sani","Budh"]
+    ["Lagnam","Ketu","Sukra","Ravi","Chandra","Kuja","Rahu","Guru","Sani","Budha"]
 
 ];
 
 let mdLordName = "";
+let thePlaceName = "";
 
 var name,date,time,tz,lat,lon,latdir,londir,lattmp,lontmp,dn,forward=0;
+
     
 var DEGS = 180/Math.PI;
 var RADS = Math.PI/180;
@@ -152,7 +155,8 @@ var MAXNAKSHA      = 27  /* Max  */
 $(document).ready(function() 
 {	
     showInfo();
-    showPlaces();	
+    showPlaces();
+    	
     showCharts();
     showDasa();
 		
@@ -170,7 +174,7 @@ var showInfo = function()
         isOK = printInfo(false);
         divPosition = $("#maintop").offset();
         $('html,body').animate({scrollTop: divPosition.top}, "slow");
-
+        
 
 	});
     
@@ -179,22 +183,22 @@ var showInfo = function()
 var printInfo = function(transit) {
     
    
-    
     let tempStr;
     if ( lat == null || lon == null || lat == undefined || lon == undefined || isNaN(lat) || isNaN(lon) ){
         $('.aside2').empty();
-        strTemp = '<p style="color:#FF9912; text-align: center">Latitude or Longitude is not proper. Hyd = 17N23 & 78E28<p>';
+        strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">'
+        strTemp += ' Latitude or Longitude is not proper. Hyd = 17N23 & 78E28<p>';
         $('.aside2').append(strTemp);
         isOK = false;
-        alert('Lattitude or Longitude is not proper.');
+        
         return false;
     }
-   
+    
     strTemp = '<h2>Birth Details:</h2><table>';
     strTemp += '<tr><th>Planet</th><th>Rasi</th><th>Degree</th><th>Nakashatra</th><th>Paada</th></tr>';
        
     for (var i=0; i<=9; i++) {
-        strTemp += '<tr><td>' + mygrahas[i].name + '</td><td>' + aRasiNames[(mygrahas[i].rasizn-1) ] ;
+        strTemp += '<tr><td>' + aGrahaNames[i] + '</td><td>' + aRasiNames[(mygrahas[i].rasizn-1) ] ;
         strTemp +=  '</td><td>' +  deg2DMS(mygrahas[i].ra.toFixed(3));
         strTemp += '</td><td>' + mynaksha[i] + '</td><td>' + mynakshap[i] + '</td></tr>';
        
@@ -203,8 +207,8 @@ var printInfo = function(transit) {
     strTemp += '</table>';
     $(".main").append(strTemp);
 
-    strTemp = '<p class="right1P">' + name + ' - ' + date.toDateString()  + ', ' + time.toTimeString().slice(0,8) + '<br>';
-    strTemp +=  ' Latitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + '<br>';
+    strTemp = '<p class="right1P">' + name + ' - ' + date.toDateString()  + ', ' + time.toTimeString().slice(0,8) + (thePlaceName ? (', ' + thePlaceName) : '') + '<br>';
+    strTemp +=  ' Latitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + ', GMT: ' + tz + '<br>';
     strTemp += '<span style = "color:#FF9912;"> Janma-Lagna:  ' + aRasiNames[(mygrahas[0].rasizn-1) ] + ' ,  Janma-Rasi: ' + aRasiNames[(mygrahas[2].rasizn-1) ] + ' - ' + mynaksha[2] + ' - ' + mynakshap[2] + '</span><br>';
     strTemp +=  "Ayanamsa:" + (calc_ayanamsa(transit).toFixed(4)) +'° , '; 
     strTemp += '  Sid.Time:' + (deg2hms(calc_sideral_time(time.getHours(),time.getMinutes(),transit)));
@@ -256,7 +260,8 @@ function printCharts(){
 
         else{
 
-            strTemp = '<p style="color:#FF9912; text-align: center">Charts can be viewed only after entering proper data and clicking on Generate button.<p>';
+            strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">';
+            strTemp += ' Charts can be viewed only after entering proper data and clicking on Generate button.<p>';
             $('.aside2').empty();
             $('.aside2').append(strTemp);
         }
@@ -268,10 +273,10 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     ctx.strokeStyle = "gray";  
     
     let x=_x,y=_y;
-   
+    
     ctx.beginPath();
     ctx.moveTo(x, y);
-   
+
     ctx.rect(x,y,x+320,y+320);
     ctx.stroke();
     ctx.closePath();
@@ -302,7 +307,7 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     ctx.fillStyle = "#777777";
     ctx.fillText(title, x+150, y+170);  
     ctx.stroke();
-    
+  
 }
 
 function draw_d1_planets(ctx)
@@ -350,6 +355,8 @@ function draw_d1_planets(ctx)
     ctx.fillText(planetsInNZD1[10], pos[20],pos[21],maxWidth); 
     ctx.fillStyle = '#e4e4e4';
     ctx.fillText(planetsInNZD1[11], pos[22],pos[23],maxWidth);
+    ctx.font = '7pt Arial';
+    ctx.fillText("Notation: Ascendant,Sun,Moon,Mars,Mercury,Jupiter,Venus,Saturn,Rahu,Ketu",0,340); 
 
 }
 
@@ -357,7 +364,7 @@ function draw_d1_planets(ctx)
 
 function draw_d9_planets(ctx)
 {
-    //$('.right2').empty();
+    
     ctx.font = '9pt Arial';
     ctx.textAlign = 'start';
     ctx.fillStyle = 'white';
@@ -374,12 +381,10 @@ function draw_d9_planets(ctx)
 
     for(let i = 0; i < 10; i++){
         k = mygrahas[i].navzn - 1;  
-        
-        
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
-   
+    
     ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[11], pos[0], pos[1],maxWidth);
     ctx.fillStyle = '#e4e4e4';
@@ -416,16 +421,15 @@ function showPlaces(){
 		$('.aside2').empty();
         printPlaces();
         divPosition = $("#aside2top").offset();
-        $('html,body').animate({scrollTop: divPosition.top}, "slow");
-
+        $('html,body').animate({scrollTop: divPosition.top}, "slow");   
 		
 	});
 }
 
 function printPlaces(){
 
-    strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><table>';
-    strTemp += '<th>Place</th><th>Latitude</th><th>Longitude</th><th>GMT</th>'
+    strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><table id="placest">';
+    strTemp += '<thead><tr><th>Place</th><th>Latitude</th><th>Longitude</th><th>GMT</th></tr></thead><tbody>'
     aLL.forEach( function (v1, i1){
         strTemp += '<tr>';
         v1.forEach( function (v2,i2){
@@ -433,9 +437,12 @@ function printPlaces(){
         });
         strTemp += '</tr>';
     });
-    strTemp += '</table>';
-    strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>Search for Latitude & Longitude...</a>';
+    strTemp += '<tr><td colspan=4>&nbsp</td></tr></tbody></table>';
+    strTemp += '<br>Click on a row to fill the relevant fields.'
+    strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>';
+    strTemp += '<img src="img/ss.png" height=16 > Search for Latitude & Longitude...</a>';
     $('.aside2').append(strTemp);
+    getPlace();
 }
 
 
@@ -447,12 +454,11 @@ var showDasa = function()
 		
         if(isOK){
             $('.aside2').empty();
-            calc_vdasa();
-            
-
+            calc_vdasa();       
         }
         else{
-            strTemp = '<p style="color:#FF9912; text-align: center">Dasa can be viewed only after entering proper data and clicking on Generate button.<p>';
+            strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">';
+            strTemp += ' Dasa can be viewed only after entering proper data and clicking on Generate button.<p>';
             $('.aside2').empty();
             $('.aside2').append(strTemp);
         }	
@@ -494,7 +500,7 @@ function map ()
         var l4 = "&zoom=13";
         var link = l1+"lat="+l2+"&lon="+l3+l4;
         
-        
+       
         
         window.open(link);
     }
@@ -548,7 +554,7 @@ function parse_time (input)
 function parse_latitude (input) 
 {
     
-
+    lat = undefined;
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("N") !=-1) {
         lattmp=tmp.split("N");
@@ -561,6 +567,7 @@ function parse_latitude (input)
         lat = -lat;
         
     }
+
     
 }
 
@@ -568,7 +575,7 @@ function parse_latitude (input)
 function parse_longitude (input) 
 {
     
-
+    lon = undefined;
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("W") !=-1) {
         lontmp=tmp.split("W");
@@ -924,13 +931,13 @@ function calc_nakshatra (deg,n)
         return sdeg;        
     }
     else if (n == 5)  {
-        return nnum;        
+        return nnum;       
     }
     else if (n == 6)  {
-        return vperiod;     
+        return vperiod;    
     }
     else if (n == 7)  {
-        return lnum;    
+        return lnum;     
     }
 
 }
@@ -1010,72 +1017,69 @@ function elements ()
 
 function calc_day_number (hours,minutes,transit)
 {   
+    
 
+    var today = new Date(),yy,mm,dd;
+    if (!transit) {
+    yy = date.getFullYear();
+    mm = date.getMonth()+1;
+    dd = date.getDate();
+    }
+    else {
+    yy = today.getFullYear();
+    mm = today.getMonth()+1;
+    dd = today.getDate();
+    }   
+    if (mm < 3) { yy -= 1; mm += 12; }
 
-var today = new Date(),yy,mm,dd;
-if (!transit) {
-yy = date.getFullYear();
-mm = date.getMonth()+1;
-dd = date.getDate();
-}
-else {
-yy = today.getFullYear();
-mm = today.getMonth()+1;
-dd = today.getDate();
-}   
-if (mm < 3) { yy -= 1; mm += 12; }
+    if (yy*10000+mm*100+dd > 15821004) { // 15821015
+    var a = Math.floor(0.01 * yy);
+    var b = 2 - a + Math.floor(0.25 * a);
+    }
+    else {
+    var a = Math.floor(0.01 * yy);
+    var b = 0*(2 - a + Math.floor(0.25 * a));
+    }
 
-if (yy*10000+mm*100+dd > 15821004) { // 15821015
-var a = Math.floor(0.01 * yy);
-var b = 2 - a + Math.floor(0.25 * a);
-}
-else {
-var a = Math.floor(0.01 * yy);
-var b = 0*(2 - a + Math.floor(0.25 * a));
-}
+    var c  = Math.floor(365.25*yy);
+    var d  = Math.floor(30.6001*(mm+1));
 
-var c  = Math.floor(365.25*yy);
-var d  = Math.floor(30.6001*(mm+1));
-
-return (b + c + d - 730550.5 + dd + (((hours-tz)) + minutes/60.0)/24.0);
+    return (b + c + d - 730550.5 + dd + (((hours-tz)) + minutes/60.0)/24.0);
 }
 
 function calc_julian_date (hours,minutes,_tz,transit) 
 {   
-/*    Days since the beginning of the Julian period 
-*    plus dT and the fraction of the day
-*/
+    
+    var today = new Date(),yy,mm,dd;
+    if (!transit) { 
+    yy=date.getFullYear();
+    mm=date.getMonth()+1;
+    dd=date.getDate();
+    }
+    else {
+    yy=today.getFullYear();
+    mm=today.getMonth()+1;
+    dd=today.getDate();
+    }
+    var jy = yy;
+    var jm = mm;
+    var df;
+    if (mm > 2) { jy = yy; jm++;     } 
+    else        { jy--;    jm += 13; }
 
-var today = new Date(),yy,mm,dd;
-if (!transit) { 
-yy=date.getFullYear();
-mm=date.getMonth()+1;
-dd=date.getDate();
-}
-else {
-yy=today.getFullYear();
-mm=today.getMonth()+1;
-dd=today.getDate();
-}
-var jy = yy;
-var jm = mm;
-var df;
-if (mm > 2) { jy = yy; jm++;     } 
-else        { jy--;    jm += 13; }
+    var j = Math.floor(365.25 * jy) + Math.floor(30.6001*jm) + dd + 1720995.0;
+    if (dd + 31 * (mm + 12 * yy) >= 588829) {
+    var a = Math.floor(0.01 * jy);
+    j += 2 - a + Math.floor(0.25 * a);
+    }
 
-var j = Math.floor(365.25 * jy) + Math.floor(30.6001*jm) + dd + 1720995.0;
-if (dd + 31 * (mm + 12 * yy) >= 588829) {
-var a = Math.floor(0.01 * jy);
-j += 2 - a + Math.floor(0.25 * a);
-}
-
-df = (hours - _tz) / 24.0 - 0.5; 
-if (df < 0.0) { df += 1.0; --j; }
-var fc = df + (minutes + dT(transit) / 60.0) / 60.0 / 24.0;
-var jd = Math.floor(((j + fc) * 10000000));
-if ((((j + fc) * 10000000) - jd) > 0.5) ++jd;
-else jd *= 1.0;
-return (jd * 0.0000001);
+    df = (hours - _tz) / 24.0 - 0.5; 
+    if (df < 0.0) { df += 1.0; --j; }
+    var fc = df + (minutes + dT(transit) / 60.0) / 60.0 / 24.0;
+    var jd = Math.floor(((j + fc) * 10000000));
+    if ((((j + fc) * 10000000) - jd) > 0.5) ++jd;
+    else jd *= 1.0;
+    return (jd * 0.0000001);
 }
 
 function calc_day_of_the_week (transit)
@@ -1183,16 +1187,16 @@ function calc_ra (p)
     var yg = yh - ye;
     var zg = zh - ze;
 
-   
+    
     var ecl = ((23.4392911 - 0.0000003563) * cy) * RADS;             
     var xeq = xg;
     var yeq = yg*Math.cos(ecl) - zg*Math.sin(ecl);
     var zeq = yg*Math.sin(ecl) + zg*Math.cos(ecl);
 
-   
+    
     ra = mod2pi(Math.atan2(yeq, xeq))*DEGS;
 
-    
+   
     return ra;
 }
 
@@ -1200,7 +1204,7 @@ function true_anomaly (M, e)
 {
     var V, E1;
 
-   
+    
     var E = M + e*Math.sin(M)*(1.0 + e*Math.cos(M));
     do                                   
     {
@@ -1209,7 +1213,7 @@ function true_anomaly (M, e)
     }
     while (Math.abs( E - E1 ) > EPS);
 
-    /* convert eccentric anomaly to true anomaly */
+   
     V = 2*Math.atan(Math.sqrt((1 + e)/(1 - e))*Math.tan(0.5*E));
     if (V < 0) V = V + (2*Math.PI);
 
@@ -1277,7 +1281,6 @@ function mean_elements (p, i)
 function calc_vsop87 (planet,jd)
 {
     
-
     var  X=0, Y=1, Z=2;
     var  Xp,  Yp,  Zp,  Rp;
     var  Xe,  Ye,  Ze,  Re;
@@ -1301,7 +1304,7 @@ function calc_vsop87 (planet,jd)
         Zp = -earth[Z];
         break;
         case 2:
-        
+       
         break;
         case 3:
         calc_mars(T);
@@ -1517,7 +1520,8 @@ function calc_moon_positionII ()
     var Ms = mod2pi((356.0470 + 0.9856002585 * JD)*RADS);    
     var Ls = mod2pi((Ms*DEGS + ws*DEGS)*RADS); 
 
-   
+    
+
     var Mm = M*DEGS;
     var Lm = mod2pi(N + w + M)*DEGS;
     var D  = Lm-Ls*DEGS;
@@ -1657,7 +1661,7 @@ function calc_moon_positionIII (transit)
 
 function _ecl (jd)
 {
-    
+    /* J. Laskar, Astronomy and Astrophysics, Vol. 157, page 68 [1986] */
 
     var terms = [ -4680.93/3600.0,   -1.55/3600.0,  1999.25/3600.0, 
         -51.38/3600.0, -249.67/3600.0,  -39.05/3600.0, 
@@ -1758,7 +1762,7 @@ function dT (transit)
 
 function dms2real (deg, min, sec)
 {
-    
+    /*  convert latitude/longitude (deg, min, sec) to degrees  */
 
     var r;
     if (deg < 0) r =  deg - min/60 - sec/3600;
@@ -1770,13 +1774,12 @@ function dms2real (deg, min, sec)
 function hms2deg (hours, min, sec)
 {
     
-
     return (hours * 15 + min/4 + sec/240);
 }
 
 function dec2hms (x)
 {
-   
+    /*  convert dec hours to hh:mm:ss  */
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1809,7 +1812,7 @@ function dec2hms (x)
 
 function deg2hms (x)
 {
-    
+    /* convert degrees to hh:mm:ss */
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1842,7 +1845,7 @@ function deg2hms (x)
 
 function dec2date (etime)
 {
-    
+    /* convert dec number to dd/mm/yyyy */
 
     if (isNaN(etime)) return ("00/00/0000");
 
@@ -1883,7 +1886,7 @@ function mod24 (x)
 
 function mod2pi(x)
 {
-    
+    /* range 0-2PI radians */
 
     var b = x/(2*Math.PI);
     var a = (2*Math.PI)*(b - _abs(b));
@@ -1894,7 +1897,7 @@ function mod2pi(x)
 
 function mod360 (x) 
 {
-    
+    /* range 0-360 degrees */
 
     var a = 360 * ((x / 360) - _abs(x / 360));
     if (a < 0) a = a + 360; 
@@ -1905,7 +1908,6 @@ function mod360 (x)
 function calc_moon_acending_node (transit) 
 { 
     
-
     var T,today=new Date(),ay,n;
     if (!transit) T=(calc_julian_date(time.getHours(),time.getMinutes(),tz,transit)-2415020.5)/36525.0;
     else          T=(calc_julian_date(today.getHours(),today.getMinutes(),tz,transit)-2415020.5)/36525.0;
@@ -1920,7 +1922,6 @@ function calc_moon_acending_node (transit)
 function calc_ayanamsa (transit)
 {
     
-
     var d,today=new Date(),yy,mm,dd;
     if (!transit) {
         yy=date.getFullYear();
@@ -1944,7 +1945,6 @@ function calc_ayanamsa (transit)
 function calc_ascendant (hours,minutes,transit)
 {       
     
-
     var t   = calc_sideral_time(hours,minutes,transit); 
     var ecl = _ecl(calc_julian_date(hours,minutes,tz,transit));
 
@@ -2085,7 +2085,6 @@ function calc_sunriseset (rising,hora,hms,transit)
 var sunhour = parseInt(UT);
 var jd, rsun, asc, rsunrise, rsunset, sunminute=0;
 
-
 var browser = navigator.userAgent.toLowerCase();
 
 if((browser.indexOf("firefox") > -1) ||
@@ -2149,7 +2148,7 @@ var deg2DMS = function(mydeg){
 
 function numToString(num) { 
 
-    
+   
 	if ((num/10) < 1) { 
 	  return ( '0' + num.toString() );
 	} else {
@@ -2174,18 +2173,18 @@ function calc_tidhi(moondeg, sundeg){
 
     theNum = moondeg - sundeg ;
     if (theNum < 0){
-        theNum = theNum + 360;  
+        theNum = theNum + 360; 
     }
     theNum = theNum /12;   
     theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
-    
+   
     if (theNum == 15){
         pakshaStr = " ";  
     }
     else if( theNum == 30){
-        pakshaStr = " ";  
+        pakshaStr = " "; 
     }
     else if ( theNum> 15  && theNum < 30){
         theNum = theNum -15;
@@ -2210,16 +2209,16 @@ function calc_vdasa(){
     let mdLordName = "";
     let adPeriod = 0;
 
-    let mDegrees = mygrahas[2].ra;
+    let mDegrees = mygrahas[2].ra; 
     let msDegrees = calc_nakshatra(mDegrees,4)  
-    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
+    let dasaLordSeqNum = calc_nakshatra(mDegrees,7);
     let antarLordSeqNum = dasaLordSeqNum;
     
     $('.aside2').append('<h2>Vimsottari Dasa:</h2>');
     
 
     mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+    mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2230,7 +2229,7 @@ function calc_vdasa(){
     for (let m = 0; m < 9 ; m++){
         
         firstStr = '<table><tr><th>' + mdLordName + ' Dasa Starts</th><th>from</th><th>'+ tempStr + '</th></tr>';
-       
+        
 
         strTemp = "";
 
@@ -2239,7 +2238,7 @@ function calc_vdasa(){
             adPeriod = aDasaInfo[0][antarLordSeqNum]; 
             mDate = calc_antarDasa(mdPeriod, adPeriod,mDate);
             tempStr = createDateStr(mDate);        
-            strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';
+            strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
            
             
@@ -2250,8 +2249,8 @@ function calc_vdasa(){
 
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
-        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+        mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
         antarLordSeqNum = dasaLordSeqNum;
         $('.aside2').append(firstStr + strTemp + '</table><br>');
         
@@ -2270,7 +2269,7 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
 
     theYears = parseInt(theDiff);
     theMonths =  (theDiff - theYears) * syear / 30 ; 
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ; 
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
     theMonths = parseInt(theMonths); 
     
     let vdate;
@@ -2283,16 +2282,16 @@ function calc_antarDasa(mperiod, aperiod,sdate){
 
     let theYears = 0, theMonths = 0, theDays = 0;
     let theDiff = mperiod * aperiod;
-   
+
     theMonths = parseInt(theDiff /10); 
     
     theDays = theDiff - theMonths * 10;
     theYears = parseInt(theMonths /12); 
     theMonths = theMonths % 12;
     theDays = 3 * theDays;
-    
-    let vdate = createDate(theDays,theMonths,theYears,sdate);
    
+    let vdate = createDate(theDays,theMonths,theYears,sdate);
+
     return vdate;
 }
 
@@ -2301,7 +2300,7 @@ function createDate(days, months, years,idate) {
     odate.setUTCFullYear(idate.getUTCFullYear() + years); 
     odate.setUTCMonth(idate.getUTCMonth() + months);
     odate.setUTCDate(idate.getUTCDate() + days);
-
+   
     return odate;    
 }
 
@@ -2312,4 +2311,38 @@ function createDateStr(idate){
     return (strY + ' - ' + strM + ' - ' + strD) ;
 }
 
+function getPlace() 
+{
+	
+        
+    let theTable;
+    thePlaceName = "";
+    if ( (theTable = document.getElementById('placest')) != null){
+        
+        
+        let rows = theTable.getElementsByTagName('tr');
+        let cname , clat , clon , cgmt ;
+        
+        for ( let i = 1; i < rows.length; i++) {
+
+            rows[i].i = i;
+            rows[i].onclick = function() {
+                
+                cname = theTable.rows[this.i].cells[0].innerHTML;                
+                clat  = theTable.rows[this.i].cells[1].innerHTML;
+                clon  = theTable.rows[this.i].cells[2].innerHTML;
+                cgmt  = theTable.rows[this.i].cells[3].innerHTML;
+               
+            
+                thePlaceName = cname;
+                document.getElementById("tz").value  = cgmt;
+                document.getElementById("lat").value = clat;
+                document.getElementById("lon").value = clon;
+
+            };
+        }
+    }
+
+	
+}
 

@@ -171,7 +171,7 @@ button:hover {
 	padding:3px 0px 3px 0px ; 
 	font-size: 0.8rem;
 	background-color: #2f53c9;
-	color:#d1d1d1;
+	color:#b6b6b6;
 }
 
 
@@ -215,7 +215,12 @@ table tr:hover {
 	  
 }
 
-
+img{
+	margin:0 auto;
+	padding:0px;
+	vertical-align: middle;
+	text-align:center;
+}
 
 @media all and (min-width: 760px) {
 
