@@ -174,7 +174,7 @@ input[type="button"]:hover {
 }
 
 
-@media  all and (min-width: 768px ) and (orientation:landscape) {
+@media  all and (min-width: 800px ) and (orientation:landscape) {
 	/* This part is only read by viewports wider than 768 pixels */
 	body{ 
 		font-size: 16px;

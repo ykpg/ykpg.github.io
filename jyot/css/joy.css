@@ -222,7 +222,7 @@ img{
 	text-align:center;
 }
 
-@media all and (min-width: 760px) {
+@media all and (min-width: 960px) {
 
 	body{
 		font-size: 14px;

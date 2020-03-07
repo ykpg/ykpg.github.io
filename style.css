@@ -92,7 +92,7 @@ article li{
 }
   
   
-@media all and (min-width: 760px) {
+@media all and (min-width: 800px) {
 	
 	body{
 		font-size: 14px;

@@ -1,10 +1,4 @@
 'use strict'
-let t2,t3,t4,t5,t6,t7;
-let x, y,d="D";
-let strTemp ;			
-let myDate;
-let isOK = false;
-let divPosition;
 
 let aGrahaAll = [];
 
@@ -15,21 +9,28 @@ let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
 let aRasiNames = ['Mesha','Vrushabha','Midhuna','Karkataka','Simha','Kanya','Tula','Vruschika','Dhanus','Makara','Kumbha','Meena'];
 let aGrahaNames = ["Lagnam","Ravi","Chandra","Kuja","Budha","Guru","Sukra","Sani","Rahu","Ketu"];
 
+
 let aLL = [
 
-    ['Anantapur',		'14E41',    '77E36',    5.5],  
+    ['Anantapur',		'14N41',    '77E36',    5.5],
+    ['Bangalore',       '12N59',    '72E35',    5.5],  
     ['Guntur',          '16N18',    '80E27',    5.5],
     ['Hyderabad',       '17N23',    '78E28',    5.5],
+    ['Jodhpur',         '26N17',    '73E01',    5.5],
     ['Kadapa',		    '14E28',    '78E49',    5.5],
     ['Kakinada',	    '16N56',    '82E13',    5.5],	
     ['Rajahmundry',	    '16N59',   	'81E47',    5.5],
     ['Mumbai',		    '18N58',    '72E50',    5.5],
-    ['New Delhi',		'28N36',    '77E12',    5.5],   
+    ['Narsaraopet',     '16N15',    '80E04',    5.5],
+    ['Nellore',         '13N05',    '80E17',    5.5],
+    ['New Delhi',		'28N36',    '77E12',    5.5], 
+    ['Repalle',         '16N01',    '80E51',    5.5],  
     ['Secunderabad',    '17N27',    '78E30',    5.5],
-    ['Singapore City',  '01N17',    '103E51',   8.0],
+    ['Singapore',       '01N17',    '103E51',   8.0],
+    ['Tenali',          '16N15',    '80E35',    5.5],
     ['Vijayawada',      '16N31',    '80E37',    5.5],
     ['Visakha',         '17N42',    '83E18',    5.5]  
-
+    
 ];
 
 let aDasaInfo = [
@@ -38,9 +39,16 @@ let aDasaInfo = [
 
 ];
 
+let aKujaDoshaPos = [1,2,4,7,8,12];
+
+let strTemp ;			
+let isOK = false;
+let divPosition;
 let mdLordName = "";
 let thePlaceName = "";
 
+let t2,t3,t4,t5,t6,t7;
+let x, y,d="D";
 var name,date,time,tz,lat,lon,latdir,londir,lattmp,lontmp,dn,forward=0;
 
     
@@ -159,6 +167,7 @@ $(document).ready(function()
     	
     showCharts();
     showDasa();
+    showKujaDosham();
 		
 });
 
@@ -274,6 +283,7 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     
     let x=_x,y=_y;
     
+
     ctx.beginPath();
     ctx.moveTo(x, y);
 
@@ -307,27 +317,30 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     ctx.fillStyle = "#777777";
     ctx.fillText(title, x+150, y+170);  
     ctx.stroke();
-  
+
+
+    
 }
 
 function draw_d1_planets(ctx)
 {
-    
+   
     ctx.font = '9pt Arial';
     ctx.textAlign = 'start';
     ctx.fillStyle = 'white';
     let maxWidth = 90;
 
     let k = myrashis[0];  
+   
 
     let pos=[   10,20,  90,40,   170,20, 250,40,
                 250,120,  250,200,   250,280,
                 170,260, 90,280, 10,260,
                 10,200,  10,120 ];
   
-    for(let i=1; i< 13; i++){
+    for(let i = 1; i < 13; i++){
         planetsInNZD1[k] = mybhavas[i]; 
-        k = k+1;
+        k = k + 1;
         if ( k > 12 ) { k = 1;}
         
     }
@@ -381,6 +394,8 @@ function draw_d9_planets(ctx)
 
     for(let i = 0; i < 10; i++){
         k = mygrahas[i].navzn - 1;  
+        
+       
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
@@ -412,6 +427,116 @@ function draw_d9_planets(ctx)
     
 }
 
+function showKujaDosham(){	
+	
+	$("#kujadosham").on("click",  function()
+	{
+		if(isOK){
+            $('.aside2').empty();
+            printKujaDosham();     
+        }
+        else{
+            strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">';
+            strTemp += ' Kuja Dosham can be viewed only after entering proper data and clicking on Generate.<p>';
+            $('.main').empty();
+            $('.main').append(strTemp);
+
+        }	
+        divPosition = $("#maintop").offset();
+        $('html,body').animate({scrollTop: divPosition.top}, "slow");	
+		
+	});
+}
+
+function printKujaDosham(){
+
+    
+    let posKuja = mygrahas[3].rasizn;
+    let posLagna = mygrahas[0].rasizn;
+    let posChandra = mygrahas[2].rasizn;
+    let posSukra = mygrahas[6].rasizn;
+    let posGuru = mygrahas[5].rasizn;
+    let relativePosLK, relativePosCK, relativePosSK, relativePosGK;
+    strTemp = '<h2>Kuja Dosham</h2><p class="main" >Kuja Dosham is defined as situation of kuja in: <br>';
+    strTemp += aKujaDoshaPos.toString() + ' from Lagna/Chandra/Sukra.</p>'
+    
+    relativePosLK = findRelativePos(posLagna,posKuja);
+    strTemp += '<p class="main" >from Lagna' + ' Kuja is in: ' + relativePosLK  + '<br>' ;
+    strTemp += (aKujaDoshaPos.includes(relativePosLK) ? 'from Lagna Kuja Dosha Exists.</p>' : 'from Lagna there is No Kuja Dosha.</p>');
+    
+    relativePosCK = findRelativePos(posChandra,posKuja);
+    strTemp += '<p class="main" >from Chandra' + ' Kuja is in: ' + relativePosCK + '<br>'  ;
+    strTemp += (aKujaDoshaPos.includes(relativePosCK) ? 'from Chandra Kuja Dosha Exists.</p>' : 'from Chandra there is No Kuja Dosha.</p>');
+   
+    relativePosSK = findRelativePos(posSukra,posKuja);
+    strTemp += '<p class="main" >from Sukra' + ' Kuja is in: ' + relativePosSK  + '<br>' ;
+    strTemp += (aKujaDoshaPos.includes(relativePosSK) ? 'from Sukra Kuja Dosha Exists.</p>' : 'from Sukra there is No Kuja Dosha.</p>');
+    
+    strTemp += '<p class="main">';
+   
+    if(posLagna == 3 || posLagna == 6){
+        if ( relativePosLK == 2) { strTemp += 'Exception: Midhuna or Kanya lagna, kuja in 2nd.<br>';}
+    }
+    
+    if(posLagna == 2 || posLagna == 7){
+        if ( relativePosLK == 12) { strTemp += 'Exception: Vrushabha or Tula lagna, kuja in 12th.<br>';}
+    }
+ 
+    if(posLagna == 2 || posLagna == 7){
+        if ( relativePosLK == 12) { strTemp += 'Exception: Vrushabha or Tula lagna, kuja in 12th.<br>';}
+    }
+ 
+    if(posLagna == 1 || posLagna == 8){
+        if ( relativePosLK == 4) { strTemp += 'Exception: Mesha or Vruschika lagna, kuja in 4th.<br>';}
+    }
+
+    if(posLagna == 4 || posLagna == 10){
+        if ( relativePosLK == 7) { strTemp += 'Exception: Karkaataka or Makara lagna, kuja in 7th.<br>';}
+    }
+    
+    if(posLagna == 9 || posLagna == 12){
+        if ( relativePosLK == 8) { strTemp += 'Exception: Dhanu or Meena lagna, kuja in 8th.<br>';}
+    }
+
+    if(posLagna == 5 || posLagna == 11){
+        strTemp += 'Exception: No Kuja Dosham for - Kumbha or Simha lagna.<br>';
+    }
+
+  
+    if(posKuja == posChandra || posKuja == posGuru){
+        strTemp += 'Exception: No Kuja Dosham - Kuja is in Yuti with Chandra or Guru.<br>';
+    }
+    
+    if(posGuru == 1 || posSukra == 1){
+        strTemp += 'Exception: No Kuja Dosham for - Kumbha or Simha lagna.<br>';
+    }
+
+    relativePosGK = findRelativePos(posGuru,posKuja);
+    if(relativePosGK == 5 || relativePosGK == 9 || relativePosGK == 4 || relativePosGK == 7 || relativePosGK == 10){
+        strTemp += 'Note: Kuja is in Kendra or Kona from Guru.';
+    }
+
+    strTemp += '</p><p class="main">Note: Exceptions if any are as per Muhurta by BV Raman.</p>';
+
+    $('.main').empty();
+    $('.main').append(strTemp);
+
+
+}
+
+function findRelativePos(fromRef,toPlanet){
+
+    let relativePos = 0;
+    if (fromRef > toPlanet){
+        return (12 - fromRef + toPlanet +1);
+    }
+    else if (fromRef = toPlanet ){
+        return 1;
+    }
+    else if( fromRef < toplanet){
+        return ( toplanet - fromRef + 1);
+    }
+}
 
 
 function showPlaces(){	
@@ -442,7 +567,7 @@ function printPlaces(){
     strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>';
     strTemp += '<img src="img/ss.png" height=16 > Search for Latitude & Longitude...</a>';
     $('.aside2').append(strTemp);
-    getPlace();
+    readRowFillData();
 }
 
 
@@ -520,10 +645,9 @@ function parse_input_data ()
 function parse_date (input) 
 {
     
-    
     date  = 0;
     date  = new Date(input);
-    myDate = date;
+  
 }
     
 function parse_time (input)
@@ -931,7 +1055,7 @@ function calc_nakshatra (deg,n)
         return sdeg;        
     }
     else if (n == 5)  {
-        return nnum;       
+        return nnum;        
     }
     else if (n == 6)  {
         return vperiod;    
@@ -1017,8 +1141,7 @@ function elements ()
 
 function calc_day_number (hours,minutes,transit)
 {   
-    
-
+   
     var today = new Date(),yy,mm,dd;
     if (!transit) {
     yy = date.getFullYear();
@@ -1050,6 +1173,7 @@ function calc_day_number (hours,minutes,transit)
 function calc_julian_date (hours,minutes,_tz,transit) 
 {   
     
+
     var today = new Date(),yy,mm,dd;
     if (!transit) { 
     yy=date.getFullYear();
@@ -1196,7 +1320,7 @@ function calc_ra (p)
     
     ra = mod2pi(Math.atan2(yeq, xeq))*DEGS;
 
-   
+    
     return ra;
 }
 
@@ -1213,7 +1337,7 @@ function true_anomaly (M, e)
     }
     while (Math.abs( E - E1 ) > EPS);
 
-   
+    /* convert eccentric anomaly to true anomaly */
     V = 2*Math.atan(Math.sqrt((1 + e)/(1 - e))*Math.tan(0.5*E));
     if (V < 0) V = V + (2*Math.PI);
 
@@ -1281,6 +1405,7 @@ function mean_elements (p, i)
 function calc_vsop87 (planet,jd)
 {
     
+
     var  X=0, Y=1, Z=2;
     var  Xp,  Yp,  Zp,  Rp;
     var  Xe,  Ye,  Ze,  Re;
@@ -1304,7 +1429,7 @@ function calc_vsop87 (planet,jd)
         Zp = -earth[Z];
         break;
         case 2:
-       
+        
         break;
         case 3:
         calc_mars(T);
@@ -1520,7 +1645,7 @@ function calc_moon_positionII ()
     var Ms = mod2pi((356.0470 + 0.9856002585 * JD)*RADS);    
     var Ls = mod2pi((Ms*DEGS + ws*DEGS)*RADS); 
 
-    
+   
 
     var Mm = M*DEGS;
     var Lm = mod2pi(N + w + M)*DEGS;
@@ -1567,12 +1692,14 @@ function calc_moon_positionII ()
     var ra   = mod2pi(Math.atan2(ye, xe))*DEGS;
 
     
+
     return ra;
 }
 
 function calc_moon_positionIII (transit) 
 {
     
+
     var lrCoeff = [60]; for (var i=0; i<60; i++) { lrCoeff[i] = [4] }
     lrCoeff = [
     [0, 0, 1, 0],[2, 0,-1, 0],[2, 0, 0, 0],[0, 0, 2, 0],[0, 1, 0, 0],[0, 0, 0, 2],[2, 0,-2, 0],
@@ -1661,7 +1788,7 @@ function calc_moon_positionIII (transit)
 
 function _ecl (jd)
 {
-    /* J. Laskar, Astronomy and Astrophysics, Vol. 157, page 68 [1986] */
+    
 
     var terms = [ -4680.93/3600.0,   -1.55/3600.0,  1999.25/3600.0, 
         -51.38/3600.0, -249.67/3600.0,  -39.05/3600.0, 
@@ -1762,7 +1889,7 @@ function dT (transit)
 
 function dms2real (deg, min, sec)
 {
-    /*  convert latitude/longitude (deg, min, sec) to degrees  */
+    
 
     var r;
     if (deg < 0) r =  deg - min/60 - sec/3600;
@@ -1779,8 +1906,7 @@ function hms2deg (hours, min, sec)
 
 function dec2hms (x)
 {
-    /*  convert dec hours to hh:mm:ss  */
-
+    
     if (isNaN(x)) return ("00:00:00");
 
     var st = x;
@@ -1812,7 +1938,7 @@ function dec2hms (x)
 
 function deg2hms (x)
 {
-    /* convert degrees to hh:mm:ss */
+    
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1845,7 +1971,7 @@ function deg2hms (x)
 
 function dec2date (etime)
 {
-    /* convert dec number to dd/mm/yyyy */
+    
 
     if (isNaN(etime)) return ("00/00/0000");
 
@@ -1897,7 +2023,7 @@ function mod2pi(x)
 
 function mod360 (x) 
 {
-    /* range 0-360 degrees */
+   
 
     var a = 360 * ((x / 360) - _abs(x / 360));
     if (a < 0) a = a + 360; 
@@ -1908,6 +2034,7 @@ function mod360 (x)
 function calc_moon_acending_node (transit) 
 { 
     
+
     var T,today=new Date(),ay,n;
     if (!transit) T=(calc_julian_date(time.getHours(),time.getMinutes(),tz,transit)-2415020.5)/36525.0;
     else          T=(calc_julian_date(today.getHours(),today.getMinutes(),tz,transit)-2415020.5)/36525.0;
@@ -2085,6 +2212,7 @@ function calc_sunriseset (rising,hora,hms,transit)
 var sunhour = parseInt(UT);
 var jd, rsun, asc, rsunrise, rsunset, sunminute=0;
 
+
 var browser = navigator.userAgent.toLowerCase();
 
 if((browser.indexOf("firefox") > -1) ||
@@ -2139,8 +2267,8 @@ var deg2DMS = function(mydeg){
     let myD = parseInt(tempVal % 30 ); 
     tempVal = mydeg - tempVal;  
     tempVal = tempVal * 60 * 60;  
-    let myM = parseInt(tempVal / 60); 
-    let myS = parseInt(tempVal - myM * 60); 
+    let myM = parseInt(tempVal / 60);  
+    let myS = parseInt(tempVal - myM * 60);
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
     return tempStr;
 
@@ -2173,7 +2301,7 @@ function calc_tidhi(moondeg, sundeg){
 
     theNum = moondeg - sundeg ;
     if (theNum < 0){
-        theNum = theNum + 360; 
+        theNum = theNum + 360;  
     }
     theNum = theNum /12;   
     theNum = Math.ceil(theNum);  
@@ -2184,7 +2312,7 @@ function calc_tidhi(moondeg, sundeg){
         pakshaStr = " ";  
     }
     else if( theNum == 30){
-        pakshaStr = " "; 
+        pakshaStr = " ";  
     }
     else if ( theNum> 15  && theNum < 30){
         theNum = theNum -15;
@@ -2211,7 +2339,7 @@ function calc_vdasa(){
 
     let mDegrees = mygrahas[2].ra; 
     let msDegrees = calc_nakshatra(mDegrees,4)  
-    let dasaLordSeqNum = calc_nakshatra(mDegrees,7);
+    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
     let antarLordSeqNum = dasaLordSeqNum;
     
     $('.aside2').append('<h2>Vimsottari Dasa:</h2>');
@@ -2229,7 +2357,7 @@ function calc_vdasa(){
     for (let m = 0; m < 9 ; m++){
         
         firstStr = '<table><tr><th>' + mdLordName + ' Dasa Starts</th><th>from</th><th>'+ tempStr + '</th></tr>';
-        
+       
 
         strTemp = "";
 
@@ -2240,7 +2368,7 @@ function calc_vdasa(){
             tempStr = createDateStr(mDate);        
             strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
-           
+         
             
             antarLordSeqNum++;
             if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
@@ -2282,7 +2410,7 @@ function calc_antarDasa(mperiod, aperiod,sdate){
 
     let theYears = 0, theMonths = 0, theDays = 0;
     let theDiff = mperiod * aperiod;
-
+   
     theMonths = parseInt(theDiff /10); 
     
     theDays = theDiff - theMonths * 10;
@@ -2291,7 +2419,7 @@ function calc_antarDasa(mperiod, aperiod,sdate){
     theDays = 3 * theDays;
    
     let vdate = createDate(theDays,theMonths,theYears,sdate);
-
+    
     return vdate;
 }
 
@@ -2300,7 +2428,7 @@ function createDate(days, months, years,idate) {
     odate.setUTCFullYear(idate.getUTCFullYear() + years); 
     odate.setUTCMonth(idate.getUTCMonth() + months);
     odate.setUTCDate(idate.getUTCDate() + days);
-   
+
     return odate;    
 }
 
@@ -2311,15 +2439,14 @@ function createDateStr(idate){
     return (strY + ' - ' + strM + ' - ' + strD) ;
 }
 
-function getPlace() 
+function readRowFillData() 
 {
 	
         
     let theTable;
     thePlaceName = "";
     if ( (theTable = document.getElementById('placest')) != null){
-        
-        
+            
         let rows = theTable.getElementsByTagName('tr');
         let cname , clat , clon , cgmt ;
         
@@ -2333,7 +2460,7 @@ function getPlace()
                 clon  = theTable.rows[this.i].cells[2].innerHTML;
                 cgmt  = theTable.rows[this.i].cells[3].innerHTML;
                
-            
+           
                 thePlaceName = cname;
                 document.getElementById("tz").value  = cgmt;
                 document.getElementById("lat").value = clat;
