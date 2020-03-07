@@ -432,7 +432,7 @@ function showKujaDosham(){
 	$("#kujadosham").on("click",  function()
 	{
 		if(isOK){
-            $('.aside2').empty();
+            $('.main').empty();
             printKujaDosham();     
         }
         else{
