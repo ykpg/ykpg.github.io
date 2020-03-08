@@ -29,8 +29,8 @@ let aLL = [
     ['Singapore',       '01N17',    '103E51',   8.0],
     ['Tenali',          '16N15',    '80E35',    5.5],
     ['Vijayawada',      '16N31',    '80E37',    5.5],
-    ['Visakha',         '17N42',    '83E18',    5.5]  
-    
+    ['Visakha',         '17N42',    '83E18',    5.5] 
+  
 ];
 
 let aDasaInfo = [
@@ -283,7 +283,6 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     
     let x=_x,y=_y;
     
-
     ctx.beginPath();
     ctx.moveTo(x, y);
 
@@ -324,14 +323,13 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
 
 function draw_d1_planets(ctx)
 {
-   
+    
     ctx.font = '9pt Arial';
     ctx.textAlign = 'start';
     ctx.fillStyle = 'white';
     let maxWidth = 90;
 
     let k = myrashis[0];  
-   
 
     let pos=[   10,20,  90,40,   170,20, 250,40,
                 250,120,  250,200,   250,280,
@@ -377,7 +375,7 @@ function draw_d1_planets(ctx)
 
 function draw_d9_planets(ctx)
 {
-    
+    //$('.right2').empty();
     ctx.font = '9pt Arial';
     ctx.textAlign = 'start';
     ctx.fillStyle = 'white';
@@ -395,7 +393,7 @@ function draw_d9_planets(ctx)
     for(let i = 0; i < 10; i++){
         k = mygrahas[i].navzn - 1;  
         
-       
+      
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
@@ -451,6 +449,7 @@ function showKujaDosham(){
 function printKujaDosham(){
 
     
+   
     let posKuja = mygrahas[3].rasizn;
     let posLagna = mygrahas[0].rasizn;
     let posChandra = mygrahas[2].rasizn;
@@ -625,7 +624,7 @@ function map ()
         var l4 = "&zoom=13";
         var link = l1+"lat="+l2+"&lon="+l3+l4;
         
-       
+        
         
         window.open(link);
     }
@@ -644,6 +643,7 @@ function parse_input_data ()
 
 function parse_date (input) 
 {
+    
     
     date  = 0;
     date  = new Date(input);
@@ -1052,7 +1052,7 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;        
+        return sdeg;       
     }
     else if (n == 5)  {
         return nnum;        
@@ -1141,17 +1141,18 @@ function elements ()
 
 function calc_day_number (hours,minutes,transit)
 {   
-   
+    
+
     var today = new Date(),yy,mm,dd;
     if (!transit) {
-    yy = date.getFullYear();
-    mm = date.getMonth()+1;
+    yy = date.getUTCFullYear();
+    mm = date.getUTCMonth()+1;
     dd = date.getDate();
     }
     else {
-    yy = today.getFullYear();
-    mm = today.getMonth()+1;
-    dd = today.getDate();
+    yy = today.getUTCFullYear();
+    mm = today.getUTCMonth()+1;
+    dd = today.getUTCDate();
     }   
     if (mm < 3) { yy -= 1; mm += 12; }
 
@@ -1176,14 +1177,14 @@ function calc_julian_date (hours,minutes,_tz,transit)
 
     var today = new Date(),yy,mm,dd;
     if (!transit) { 
-    yy=date.getFullYear();
-    mm=date.getMonth()+1;
-    dd=date.getDate();
+    yy=date.getUTCFullYear();
+    mm=date.getUTCMonth()+1;
+    dd=date.getUTCDate();
     }
     else {
-    yy=today.getFullYear();
-    mm=today.getMonth()+1;
-    dd=today.getDate();
+    yy=today.getUTCFullYear();
+    mm=today.getUTCMonth()+1;
+    dd=today.getUTCDate();
     }
     var jy = yy;
     var jm = mm;
@@ -1258,7 +1259,6 @@ function calc_sideral_time (hours,minutes,transit)
 function calc_ra (p)
 {
     
-
     var cy = (dn/36525); 
 
     var planet = new elements();
@@ -1329,6 +1329,7 @@ function true_anomaly (M, e)
     var V, E1;
 
     
+
     var E = M + e*Math.sin(M)*(1.0 + e*Math.cos(M));
     do                                   
     {
@@ -1405,7 +1406,6 @@ function mean_elements (p, i)
 function calc_vsop87 (planet,jd)
 {
     
-
     var  X=0, Y=1, Z=2;
     var  Xp,  Yp,  Zp,  Rp;
     var  Xe,  Ye,  Ze,  Re;
@@ -1645,7 +1645,7 @@ function calc_moon_positionII ()
     var Ms = mod2pi((356.0470 + 0.9856002585 * JD)*RADS);    
     var Ls = mod2pi((Ms*DEGS + ws*DEGS)*RADS); 
 
-   
+    
 
     var Mm = M*DEGS;
     var Lm = mod2pi(N + w + M)*DEGS;
@@ -1691,15 +1691,13 @@ function calc_moon_positionII ()
     /* geocentric ra and dec */
     var ra   = mod2pi(Math.atan2(ye, xe))*DEGS;
 
-    
-
+   
     return ra;
 }
 
 function calc_moon_positionIII (transit) 
 {
     
-
     var lrCoeff = [60]; for (var i=0; i<60; i++) { lrCoeff[i] = [4] }
     lrCoeff = [
     [0, 0, 1, 0],[2, 0,-1, 0],[2, 0, 0, 0],[0, 0, 2, 0],[0, 1, 0, 0],[0, 0, 0, 2],[2, 0,-2, 0],
@@ -1788,7 +1786,7 @@ function calc_moon_positionIII (transit)
 
 function _ecl (jd)
 {
-    
+    /* J. Laskar, Astronomy and Astrophysics, Vol. 157, page 68 [1986] */
 
     var terms = [ -4680.93/3600.0,   -1.55/3600.0,  1999.25/3600.0, 
         -51.38/3600.0, -249.67/3600.0,  -39.05/3600.0, 
@@ -1889,7 +1887,7 @@ function dT (transit)
 
 function dms2real (deg, min, sec)
 {
-    
+    /*  convert latitude/longitude (deg, min, sec) to degrees  */
 
     var r;
     if (deg < 0) r =  deg - min/60 - sec/3600;
@@ -1906,7 +1904,8 @@ function hms2deg (hours, min, sec)
 
 function dec2hms (x)
 {
-    
+    /*  convert dec hours to hh:mm:ss  */
+
     if (isNaN(x)) return ("00:00:00");
 
     var st = x;
@@ -1938,7 +1937,7 @@ function dec2hms (x)
 
 function deg2hms (x)
 {
-    
+    /* convert degrees to hh:mm:ss */
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1971,7 +1970,7 @@ function deg2hms (x)
 
 function dec2date (etime)
 {
-    
+    /* convert dec number to dd/mm/yyyy */
 
     if (isNaN(etime)) return ("00/00/0000");
 
@@ -2023,7 +2022,7 @@ function mod2pi(x)
 
 function mod360 (x) 
 {
-   
+    /* range 0-360 degrees */
 
     var a = 360 * ((x / 360) - _abs(x / 360));
     if (a < 0) a = a + 360; 
@@ -2034,7 +2033,6 @@ function mod360 (x)
 function calc_moon_acending_node (transit) 
 { 
     
-
     var T,today=new Date(),ay,n;
     if (!transit) T=(calc_julian_date(time.getHours(),time.getMinutes(),tz,transit)-2415020.5)/36525.0;
     else          T=(calc_julian_date(today.getHours(),today.getMinutes(),tz,transit)-2415020.5)/36525.0;
@@ -2262,13 +2260,13 @@ if((browser.indexOf("firefox") > -1) ||
 
 var deg2DMS = function(mydeg){
 
-   
+    
     let tempVal = parseInt(mydeg);
     let myD = parseInt(tempVal % 30 ); 
     tempVal = mydeg - tempVal;  
     tempVal = tempVal * 60 * 60;  
     let myM = parseInt(tempVal / 60);  
-    let myS = parseInt(tempVal - myM * 60);
+    let myS = parseInt(tempVal - myM * 60); 
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
     return tempStr;
 
@@ -2276,7 +2274,7 @@ var deg2DMS = function(mydeg){
 
 function numToString(num) { 
 
-   
+    
 	if ((num/10) < 1) { 
 	  return ( '0' + num.toString() );
 	} else {
@@ -2307,7 +2305,7 @@ function calc_tidhi(moondeg, sundeg){
     theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
-   
+
     if (theNum == 15){
         pakshaStr = " ";  
     }
@@ -2346,7 +2344,7 @@ function calc_vdasa(){
     
 
     mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-    mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
+    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2368,7 +2366,7 @@ function calc_vdasa(){
             tempStr = createDateStr(mDate);        
             strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
-         
+          
             
             antarLordSeqNum++;
             if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
@@ -2417,7 +2415,7 @@ function calc_antarDasa(mperiod, aperiod,sdate){
     theYears = parseInt(theMonths /12); 
     theMonths = theMonths % 12;
     theDays = 3 * theDays;
-   
+    
     let vdate = createDate(theDays,theMonths,theYears,sdate);
     
     return vdate;
@@ -2428,7 +2426,7 @@ function createDate(days, months, years,idate) {
     odate.setUTCFullYear(idate.getUTCFullYear() + years); 
     odate.setUTCMonth(idate.getUTCMonth() + months);
     odate.setUTCDate(idate.getUTCDate() + days);
-
+    
     return odate;    
 }
 
@@ -2446,7 +2444,8 @@ function readRowFillData()
     let theTable;
     thePlaceName = "";
     if ( (theTable = document.getElementById('placest')) != null){
-            
+        
+        
         let rows = theTable.getElementsByTagName('tr');
         let cname , clat , clon , cgmt ;
         
@@ -2460,7 +2459,7 @@ function readRowFillData()
                 clon  = theTable.rows[this.i].cells[2].innerHTML;
                 cgmt  = theTable.rows[this.i].cells[3].innerHTML;
                
-           
+               
                 thePlaceName = cname;
                 document.getElementById("tz").value  = cgmt;
                 document.getElementById("lat").value = clat;
