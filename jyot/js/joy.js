@@ -14,6 +14,7 @@ let aLL = [
 
     ['Anantapur',		'14N41',    '77E36',    5.5],
     ['Bangalore',       '12N59',    '72E35',    5.5],  
+    ['Chennai',         '13N05',    '80E17',    5.5], 
     ['Guntur',          '16N18',    '80E27',    5.5],
     ['Hyderabad',       '17N23',    '78E28',    5.5],
     ['Jodhpur',         '26N17',    '73E01',    5.5],
@@ -282,10 +283,10 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     ctx.strokeStyle = "gray";  
     
     let x=_x,y=_y;
-    
+  
     ctx.beginPath();
     ctx.moveTo(x, y);
-  
+
     ctx.rect(x,y,x+320,y+320);
     ctx.stroke();
     ctx.closePath();
@@ -316,6 +317,8 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
     ctx.fillStyle = "#777777";
     ctx.fillText(title, x+150, y+170);  
     ctx.stroke();
+
+
     
 }
 
@@ -327,8 +330,7 @@ function draw_d1_planets(ctx)
     ctx.fillStyle = 'white';
     let maxWidth = 90;
 
-    let k = myrashis[0]; 
-
+    let k = myrashis[0];  
     let pos=[   10,20,  90,40,   170,20, 250,40,
                 250,120,  250,200,   250,280,
                 170,260, 90,280, 10,260,
@@ -389,13 +391,13 @@ function draw_d9_planets(ctx)
     }
 
     for(let i = 0; i < 10; i++){
-        k = mygrahas[i].navzn - 1;  
+        k = mygrahas[i].navzn - 1; 
         
-       
+        
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
-   
+    
     ctx.fillStyle = '#d4d4d4';
     ctx.fillText(planetsInNZD9[11], pos[0], pos[1],maxWidth);
     ctx.fillStyle = '#e4e4e4';
@@ -446,8 +448,7 @@ function showKujaDosham(){
 
 function printKujaDosham(){
 
-    
-   
+       
     let posKuja = mygrahas[3].rasizn;
     let posLagna = mygrahas[0].rasizn;
     let posChandra = mygrahas[2].rasizn;
@@ -622,8 +623,7 @@ function map ()
         var l4 = "&zoom=13";
         var link = l1+"lat="+l2+"&lon="+l3+l4;
         
-       
-        
+            
         window.open(link);
     }
 }
@@ -632,46 +632,28 @@ function map ()
 function parse_input_data ()
 {
     name = (document.getElementById('name').value);
-    parse_date(document.getElementById('date').value);
-    parse_time(document.getElementById('time').value);
+    parse_date_n_time();
+    
     tz  = (document.getElementById('tz').value);
     parse_latitude(document.getElementById('lat').value.toUpperCase()); 
     parse_longitude(document.getElementById('lon').value.toUpperCase());
 }
 
-function parse_date (input) 
+function parse_date_n_time() 
 {
-    /* Date format: 1901-01-31 | 1901/01/31*/
-    let aDate = input.split('-');
+    let dateInput = document.getElementById('date').value;
+    let timeInput = document.getElementById('time').value;
+
+    let aDate = dateInput.split('-');
+    let aTime = timeInput.split(':');
     date  = 0;
-    date  = new Date(aDate[0],aDate[1]-1,aDate[2]);
+    date  = new Date(aDate[0],aDate[1]-1,aDate[2],aTime[0],aTime[1],aTime[2],0);
+    //
+    time = date;
     
 }
     
-function parse_time (input)
-{
-    /* Time format: 23:59 | 7:59 | 07:59  */
-    
-    time = 0;
-    time = new Date();
-    
-    var tmp = input.replace(/\s+/g,'');
-    tmp     = tmp.match(/(\d{1,2})(:(\d\d))/);
-        
-    if (tmp[1] < 10) tmp[1] = parseInt(tmp[1], 10);//.replace(/^0+/, '');
-    if (tmp[3] < 10) tmp[3] = parseInt(tmp[3], 10);//.replace(/^0+/, '');
-    
-    time.setHours(parseInt(tmp[1]) + ((parseInt(tmp[1]) < 12 && tmp[4] ) ? 12 : 0));
-    time.setMinutes(parseInt(tmp[3]) || 0);
-    time.setSeconds(parseInt(0)); 
-    
-    if (parseInt(tmp[1]) >= 24 || parseInt(tmp[3]) > 59 ||
-            (parseInt(tmp[1]) == 0o0 && parseInt(tmp[3]) == 0o0)) {
-            time.setHours(parseInt(0));
-            time.setMinutes(parseInt(1));
-            document.getElementById('time').value = '00:01';
-    }
-}
+
     
 function parse_latitude (input) 
 {
@@ -1007,7 +989,7 @@ function calc_houses (zodiac,house,planetname)
 function calc_nakshatra (deg,n)
 {
     let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0, lnum=0; 
-    
+   
     if      (deg < 0)     {  deg += 360; }  
     if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; lnum=1; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
     else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; lnum=2; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
@@ -1053,13 +1035,13 @@ function calc_nakshatra (deg,n)
         return sdeg;        
     }
     else if (n == 5)  {
-        return nnum;       
+        return nnum;        
     }
     else if (n == 6)  {
         return vperiod;    
     }
     else if (n == 7)  {
-        return lnum;     
+        return lnum;    
     }
 
 }
@@ -1128,7 +1110,6 @@ function calc_position (transit)
 function elements ()
 {   
     
-
     a = parseFloat("0");        /*   semi-major axis [AU]       */
     e = parseFloat("0");        /*   eccentricity of orbit      */
     i = parseFloat("0");        /*   inclination of orbit [deg] */
@@ -1316,7 +1297,7 @@ function calc_ra (p)
     var yeq = yg*Math.cos(ecl) - zg*Math.sin(ecl);
     var zeq = yg*Math.sin(ecl) + zg*Math.cos(ecl);
 
-   
+    
     ra = mod2pi(Math.atan2(yeq, xeq))*DEGS;
 
     
@@ -1327,7 +1308,7 @@ function true_anomaly (M, e)
 {
     var V, E1;
 
-    
+   
     var E = M + e*Math.sin(M)*(1.0 + e*Math.cos(M));
     do                                   
     {
@@ -1410,13 +1391,13 @@ function calc_vsop87 (planet,jd)
     var  Xe,  Ye,  Ze,  Re;
     var  Xa,  Ya,  Za,  Ra;
 
-    // number of Julian millenia elapsed from J2000
+   
     var T = (jd - 2451545.0)/365250.0;
 
-    // calculate heliocentric rectangular coordinates of Earth 
+    
     calc_earth(T);
 
-    // heliocentric rectangular coordinates of Earth 
+    
     Xe = earth[X];
     Ye = earth[Y];
     Ze = earth[Z];
@@ -1643,7 +1624,7 @@ function calc_moon_positionII ()
     var Ms = mod2pi((356.0470 + 0.9856002585 * JD)*RADS);    
     var Ls = mod2pi((Ms*DEGS + ws*DEGS)*RADS); 
 
-   
+    
 
     var Mm = M*DEGS;
     var Lm = mod2pi(N + w + M)*DEGS;
@@ -1689,13 +1670,14 @@ function calc_moon_positionII ()
     /* geocentric ra and dec */
     var ra   = mod2pi(Math.atan2(ye, xe))*DEGS;
 
-    
+   
     return ra;
 }
 
 function calc_moon_positionIII (transit) 
 {
     
+
     var lrCoeff = [60]; for (var i=0; i<60; i++) { lrCoeff[i] = [4] }
     lrCoeff = [
     [0, 0, 1, 0],[2, 0,-1, 0],[2, 0, 0, 0],[0, 0, 2, 0],[0, 1, 0, 0],[0, 0, 0, 2],[2, 0,-2, 0],
@@ -1784,7 +1766,7 @@ function calc_moon_positionIII (transit)
 
 function _ecl (jd)
 {
-    /* J. Laskar, Astronomy and Astrophysics, Vol. 157, page 68 [1986] */
+    
 
     var terms = [ -4680.93/3600.0,   -1.55/3600.0,  1999.25/3600.0, 
         -51.38/3600.0, -249.67/3600.0,  -39.05/3600.0, 
@@ -1903,7 +1885,7 @@ function hms2deg (hours, min, sec)
 
 function dec2hms (x)
 {
-    /*  convert dec hours to hh:mm:ss  */
+    
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1936,7 +1918,7 @@ function dec2hms (x)
 
 function deg2hms (x)
 {
-    /* convert degrees to hh:mm:ss */
+    
 
     if (isNaN(x)) return ("00:00:00");
 
@@ -1969,7 +1951,7 @@ function deg2hms (x)
 
 function dec2date (etime)
 {
-    /* convert dec number to dd/mm/yyyy */
+    
 
     if (isNaN(etime)) return ("00/00/0000");
 
@@ -2032,6 +2014,7 @@ function mod360 (x)
 function calc_moon_acending_node (transit) 
 { 
     
+
     var T,today=new Date(),ay,n;
     if (!transit) T=(calc_julian_date(time.getHours(),time.getMinutes(),tz,transit)-2415020.5)/36525.0;
     else          T=(calc_julian_date(today.getHours(),today.getMinutes(),tz,transit)-2415020.5)/36525.0;
@@ -2156,7 +2139,6 @@ function calc_hora_lord (transit)
 function calc_sunriseset (rising,hora,hms,transit)
 {       
     
-
     var offical      = (90+(50/60));// 90°50'00"
     var civil        = 96;          // 96°00'00"
     var nautical     = 102;         //102°00'00" 
@@ -2261,12 +2243,12 @@ if((browser.indexOf("firefox") > -1) ||
 
 var deg2DMS = function(mydeg){
 
-   
+    
     let tempVal = parseInt(mydeg);
     let myD = parseInt(tempVal % 30 ); 
     tempVal = mydeg - tempVal;  
-    tempVal = tempVal * 60 * 60; 
-    let myM = parseInt(tempVal / 60); 
+    tempVal = tempVal * 60 * 60;  
+    let myM = parseInt(tempVal / 60);  
     let myS = parseInt(tempVal - myM * 60); 
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
     return tempStr;
@@ -2306,7 +2288,7 @@ function calc_tidhi(moondeg, sundeg){
     theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
-   
+    
     if (theNum == 15){
         pakshaStr = " ";  
     }
@@ -2337,15 +2319,15 @@ function calc_vdasa(){
     let adPeriod = 0;
 
     let mDegrees = mygrahas[2].ra; 
-    let msDegrees = calc_nakshatra(mDegrees,4)  
+    let msDegrees = calc_nakshatra(mDegrees,4) 
     let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
     let antarLordSeqNum = dasaLordSeqNum;
     
     $('.aside2').append('<h2>Vimsottari Dasa:</h2>');
     
 
-    mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-    mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
+    mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2377,7 +2359,7 @@ function calc_vdasa(){
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
         mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+        mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
         antarLordSeqNum = dasaLordSeqNum;
         $('.aside2').append(firstStr + strTemp + '</table><br>');
         
@@ -2396,8 +2378,9 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
 
     theYears = parseInt(theDiff);
     theMonths =  (theDiff - theYears) * syear / 30 ; 
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ; 
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
     theMonths = parseInt(theMonths); 
+    
     let vdate;
     vdate = createDate(-theDays,-theMonths,-theYears,date);
     
@@ -2415,9 +2398,9 @@ function calc_antarDasa(mperiod, aperiod,sdate){
     theYears = parseInt(theMonths /12); 
     theMonths = theMonths % 12;
     theDays = 3 * theDays;
-    
+  
     let vdate = createDate(theDays,theMonths,theYears,sdate);
-   
+
     return vdate;
 }
 
@@ -2426,7 +2409,7 @@ function createDate(days, months, years,idate) {
     odate.setUTCFullYear(idate.getUTCFullYear() + years); 
     odate.setUTCMonth(idate.getUTCMonth() + months);
     odate.setUTCDate(idate.getUTCDate() + days);
-   
+
     return odate;    
 }
 
@@ -2459,7 +2442,7 @@ function readRowFillData()
                 clon  = theTable.rows[this.i].cells[2].innerHTML;
                 cgmt  = theTable.rows[this.i].cells[3].innerHTML;
                
-           
+               
                 thePlaceName = cname;
                 document.getElementById("tz").value  = cgmt;
                 document.getElementById("lat").value = clat;
