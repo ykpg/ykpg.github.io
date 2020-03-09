@@ -538,7 +538,7 @@ function findRelativePos(fromRef,toPlanet){
         return 1;
     }
     else if( fromRef < toPlanet){
-        alert("here" +  fromRef + '&' + toPlanet );
+      
         return ( toPlanet - fromRef + 1);
         
     }
