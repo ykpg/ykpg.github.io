@@ -9,6 +9,7 @@ let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
 let aRasiNames = ['Mesha','Vrushabha','Midhuna','Karkataka','Simha','Kanya','Tula','Vruschika','Dhanus','Makara','Kumbha','Meena'];
 let aGrahaNames = ["Lagnam","Ravi","Chandra","Kuja","Budha","Guru","Sukra","Sani","Rahu","Ketu"];
 
+
 let aLL = [
 
     ['Anantapur',		'14N41',    '77E36',    5.5],
@@ -39,7 +40,7 @@ let aDasaInfo = [
 
 ];
 
-let aKujaDoshaPos = [1,2,4,7,8,12];
+let aKujaDoshaPos = [2,4,7,8,12];
 
 let strTemp ;			
 let isOK = false;
@@ -274,8 +275,6 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
 
     ctx.lineWidth = lwidth;   
     ctx.strokeStyle = "gray";  
-    //ctx.shadowColor="white";
-    //ctx.shadowBlur = 3;
     
     let x=_x,y=_y;
   
@@ -386,6 +385,7 @@ function draw_d9_planets(ctx)
 
     for(let i = 0; i < 10; i++){
         k = mygrahas[i].navzn - 1;  
+
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
@@ -439,8 +439,8 @@ function showKujaDosham(){
 
 function printKujaDosham(){
       
-    let posKuja = mygrahas[3].rasizn;
-   
+    let posKuja = mygrahas[3].rasizn; 
+    
     let posLagna = mygrahas[0].rasizn;
    
     let posChandra = mygrahas[2].rasizn;
@@ -451,7 +451,7 @@ function printKujaDosham(){
     strTemp += aKujaDoshaPos.toString() + ' from Lagna/Chandra/Sukra.</p>'
     
     relativePosLK = findRelativePos(posLagna,posKuja);
- 
+
     strTemp += '<p class="main" >from Lagna' + ' Kuja is in: ' + relativePosLK  + '<br>' ;
     strTemp += (aKujaDoshaPos.includes(relativePosLK) ? 'from Lagna Kuja Dosha Exists.</p>' : 'from Lagna there is No Kuja Dosha.</p>');
     
@@ -465,41 +465,38 @@ function printKujaDosham(){
     
     strTemp += '<p class="main">';
    
-    if(posLagna == 3 || posLagna == 6){
-        if ( relativePosLK == 2) { strTemp += 'Exception: Midhuna or Kanya lagna, kuja in 2nd.<br>';}
+    //ద్వితీయంలో కుజుడు - అది మిధున లేక  కన్యా రాశి అయితే  దోషం లేదు.
+    if ( (relativePosLK == 2 ||  relativePosCK == 2 || relativePosSK == 2) && ( posKuja == 3 || posKuja == 6)){
+        if ( relativePosLK == 2) { strTemp += 'Exception: kuja in 2nd and that Rasi is Midhuna or Kanya Rasi.<br>';}
     }
-    
-    if(posLagna == 2 || posLagna == 7){
-        if ( relativePosLK == 12) { strTemp += 'Exception: Vrushabha or Tula lagna, kuja in 12th.<br>';}
+    // ద్వాదశంలో కుజుడు -  అది వృషభ లేక  తులా రాశి అయితే  దోషం లేదు.
+    if ( (relativePosLK == 12 ||  relativePosCK == 12 || relativePosSK == 12) && ( posKuja == 2 || posKuja == 7)){
+        if ( relativePosLK == 12) { strTemp += 'Exception: kuja in 12th and that is Vrushabha or Tula Rasi.<br>';}
     }
- 
-    if(posLagna == 2 || posLagna == 7){
-        if ( relativePosLK == 12) { strTemp += 'Exception: Vrushabha or Tula lagna, kuja in 12th.<br>';}
+    //  చతుర్ధంలో కుజుడు -  అది మేష  లేక వృశ్చిక రాశి  అయితే  దోషం లేదు.
+    if ( (relativePosLK == 4 ||  relativePosCK == 4 || relativePosSK == 4) && ( posKuja == 1 || posKuja == 8)){
+        if ( relativePosLK == 12) { strTemp += 'Exception: kuja in 4th and that is Mesha or Vruschika Rasi.<br>';}
     }
- 
-    if(posLagna == 1 || posLagna == 8){
-        if ( relativePosLK == 4) { strTemp += 'Exception: Mesha or Vruschika lagna, kuja in 4th.<br>';}
+    // సప్తమంలో కుజుడు -  అది మకర లేక  కర్కాటక రాశి  అయితే  దోషం లేదు.
+    if ( (relativePosLK == 7 ||  relativePosCK == 7 || relativePosSK == 7) && ( posKuja == 4 || posKuja == 10)){
+        if ( relativePosLK == 4) { strTemp += 'Exception: kuja in 7th and that is Karkaataka or Makara Rasi.<br>';}
     }
-
-    if(posLagna == 4 || posLagna == 10){
-        if ( relativePosLK == 7) { strTemp += 'Exception: Karkaataka or Makara lagna, kuja in 7th.<br>';}
+    //  అష్టమంలో కుజుడు -  అది ధనుస్సు లేక మీనం రాశి  అయితే  దోషం లేదు.	
+    if( (relativePosLK == 8 ||  relativePosCK == 8 || relativePosSK == 8) && ( posKuja == 9 || posKuja == 12)){
+        if ( relativePosLK == 7) { strTemp += 'Exception: kuja in 7th and that is Dhanu or Meena Rasi.<br>';}
     }
-    
-    if(posLagna == 9 || posLagna == 12){
-        if ( relativePosLK == 8) { strTemp += 'Exception: Dhanu or Meena lagna, kuja in 8th.<br>';}
-    }
-
-    if(posLagna == 5 || posLagna == 11){
-        strTemp += 'Exception: No Kuja Dosham for - Kumbha or Simha lagna.<br>';
+    //కుజుడు కుంభ లేక  సింహ రాశిలో స్థితి చెంది ఉంటె దోషం లేదు.
+    if(posKuja == 5 || posKuja == 11){
+        if ( relativePosLK == 8) { strTemp += 'Exception:  Kuja in Simha or Kumbha Rasi.<br>';}
     }
 
-  
+    // కుజుడు చంద్రునితోగాని, గురువుతోగాని కలసి ఉంటె కుజ దోషం లేదు.	
     if(posKuja == posChandra || posKuja == posGuru){
-        strTemp += 'Exception: No Kuja Dosham - Kuja is in Yuti with Chandra or Guru.<br>';
+        strTemp += 'Exception: Kuja is in Yuti with Chandra or Guru.<br>';
     }
-    
+    // గురువుగాని, శుక్రుడు గాని లగ్నంలో ఉంటె కుజ దోషముండదు.
     if(posGuru == 1 || posSukra == 1){
-        strTemp += 'Exception: No Kuja Dosham for - Kumbha or Simha lagna.<br>';
+        strTemp += 'Exception: Guru or Sukra is in Lagnam.<br>';
     }
 
     relativePosGK = findRelativePos(posGuru,posKuja);
@@ -597,10 +594,11 @@ function parse_input_data ()
 }
 
 function parseDatenTime(adate, atime){
-
+    console.log(adate);
+    console.log(atime);
     let ad = adate.split('-');
     let at = atime.split(':');
-    date = new Date(ad[0],ad[1]-1,ad[2],at[0],at[1],at[2]);
+    date = new Date(ad[0],ad[1]-1,ad[2],at[0],at[1]);
     time = date;
 
 }
@@ -934,7 +932,7 @@ function calc_houses (zodiac,house,planetname)
 function calc_nakshatra (deg,n)
 {
     let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0, lnum=0; 
-  
+    
     if      (deg < 0)     {  deg += 360; }  
     if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; lnum=1; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
     else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; lnum=2; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
@@ -977,16 +975,16 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;        
+        return sdeg;       
     }
     else if (n == 5)  {
-        return nnum;        
+        return nnum;       
     }
     else if (n == 6)  {
-        return vperiod;    
+        return vperiod;     
     }
     else if (n == 7)  {
-        return lnum;     
+        return lnum;    
     }
 
 }
@@ -2149,8 +2147,8 @@ var deg2DMS = function(mydeg){
     let tempVal = parseInt(mydeg);
     let myD = parseInt(tempVal % 30 ); 
     tempVal = mydeg - tempVal;  
-    tempVal = tempVal * 60 * 60; 
-    let myM = parseInt(tempVal / 60); 
+    tempVal = tempVal * 60 * 60;  
+    let myM = parseInt(tempVal / 60);  
     let myS = parseInt(tempVal - myM * 60); 
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
     return tempStr;
@@ -2159,7 +2157,7 @@ var deg2DMS = function(mydeg){
 
 function numToString(num) { 
 
-   
+    
 	if ((num/10) < 1) { 
 	  return ( '0' + num.toString() );
 	} else {
@@ -2186,8 +2184,8 @@ function calc_tidhi(moondeg, sundeg){
     if (theNum < 0){
         theNum = theNum + 360;  
     }
-    theNum = theNum /12;   
-    theNum = Math.ceil(theNum); 
+    theNum = theNum /12;    
+    theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
   
@@ -2228,7 +2226,7 @@ function calc_vdasa(){
     $('.aside2').append('<h2>Vimsottari Dasa:</h2>');   
 
     mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
-    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+    mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2246,7 +2244,7 @@ function calc_vdasa(){
             tempStr = createDateStr(mDate);        
             strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
-            //$('.aside2').append(strTemp);
+            
             
             antarLordSeqNum++;
             if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
@@ -2255,8 +2253,8 @@ function calc_vdasa(){
 
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
-        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+        mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
         antarLordSeqNum = dasaLordSeqNum;
         $('.aside2').append(firstStr + strTemp + '</table><br>');   
 
@@ -2273,8 +2271,8 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
 
     theYears = parseInt(theDiff);
     theMonths =  (theDiff - theYears) * syear / 30 ; 
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
-    theMonths = parseInt(theMonths); 
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ; 
+    theMonths = parseInt(theMonths);
     
     let vdate;
     vdate = createDate(-theDays,-theMonths,-theYears,date);   
