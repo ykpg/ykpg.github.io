@@ -507,7 +507,7 @@ function printKujaDosham(){
         strTemp += 'Note: Kuja is in Kendra or Kona from Guru.';
     }
 
-    strTemp += '</p><p class="main">Note: Exceptions if any are as per Muhurta by BV Raman.</p>';
+    strTemp += '</p><p class="main">Note: Exceptions if any are as per Muhurta by BV Raman. Please read pdf provided in Ashta-Kootami link.</p>';
 
     $('.main').empty();
     $('.main').append(strTemp);
