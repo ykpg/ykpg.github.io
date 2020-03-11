@@ -222,6 +222,18 @@ img{
 	text-align:center;
 }
 
+a {
+	text-align: center;
+	padding: 0px 3px 0px 3px;
+	text-decoration: none;
+	color: gray;
+}
+
+a:hover {
+	background: #67C8FF;
+	color:white;
+}
+
 @media all and (min-width: 960px) {
 
 	body{
