@@ -4,21 +4,18 @@ body {
 	padding:0;
 	font-family: "Roboto, Arial, Tahoma, Helvetica, Verdana", sans-serif;    
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: normal;
 	line-height: 1.6em;	 
 	background-color: #555555;
 	color: #c2c2c2;
 	width:98%;
+	letter-spacing: 0.1rem;
 }
 
-.wrapper {
-	
+.wrapper {	
 	display: flex;
-	
 	flex-direction: column;
-	background-color:#3B5BC7;
-	
-	
+	background-color:#3B5BC7;		
 }
 
 .header{
@@ -31,7 +28,10 @@ body {
 
 h1{
 	color: white;
-	font-size:1.2rem;
+	font-size:1.4rem;
+	font-weight: bold;
+	/*text-shadow: 1px 1px #0b8aaa;*/
+	padding: 8px;
 }
 
 h2{
@@ -39,14 +39,13 @@ h2{
 	font-size:0.8rem;
 }
 
-
 .nav1{
 	
 	flex-direction: row;
 	width:100%;
 	margin:0 auto;
 	padding:0px;
-	
+	font-size: 0.8rem;
 	background: #708adf;
 }
 
@@ -77,6 +76,7 @@ li{
 	margin:0px;
 	margin-top: 20px;
 	margin-bottom: 10px;
+	font-size: 0.8rem;
 
 }
 
@@ -88,6 +88,7 @@ form{
 	justify-content: center; /* this doeos the trick */
 	/*max-width: 150px;*/
 	background-color: #3b5bc7;
+	font-size: 0.8rem;
 }
 
 fieldset{
@@ -116,6 +117,7 @@ input{
 	width:96%;
 	background-color : #a0a8ca;
 	border:none;
+	font-size: 0.8rem;
 } 
 
 button{
@@ -135,6 +137,7 @@ button:hover {
 
 	text-align: center;
 	background-color: #3b5bc7;
+	font-size: 0.8rem;
 
 }
 
@@ -163,6 +166,7 @@ button:hover {
 
 .main p {
 	padding:10px 10px 5px 20px;
+	font-size: 0.8rem;
 	
 }
 .footer{
@@ -215,12 +219,6 @@ table tr:hover {
 	  
 }
 
-img{
-	margin:0 auto;
-	padding:0px;
-	vertical-align: middle;
-	text-align:center;
-}
 
 a {
 	text-align: center;
@@ -234,10 +232,24 @@ a:hover {
 	color:white;
 }
 
-@media all and (min-width: 960px) {
+img{
+	margin:0 auto;
+	padding:0px;
+	vertical-align: middle;
+	text-align:center;
+}
+
+
+
+img :hover{
+	background: none;
+}
+ 
+
+@media  all and (min-width: 768px ) and (orientation:landscape) {
 
 	body{
-		font-size: 14px;
+		font-size: 16px;
 	}
 	.wrapper{
 		display:flex;

@@ -1,19 +1,19 @@
 'use strict'
 
 let aGrahaAll = [];
-// planets string as in Natural Zodiac for D1. 0 index unsed.
+
 let planetsInNZD1 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
-// planets string as in Natural Zodiac for D9. 0 index unsed.
+
 let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "]; 
 
 let aRasiNames = ['Mesha','Vrushabha','Midhuna','Karkataka','Simha','Kanya','Tula','Vruschika','Dhanus','Makara','Kumbha','Meena'];
 let aGrahaNames = ["Lagnam","Ravi","Chandra","Kuja","Budha","Guru","Sukra","Sani","Rahu","Ketu"];
 
-//['',     '',     '',    5.5],
+
 let aLL = [
 
     ['Anantapur',		'14N41',    '77E36',    5.5],
-    ['Bangalore',       '12N59',    '72E35',    5.5],  
+    ['Bangalore',       '12N59',    '77E35',    5.5],  
     ['Chennai',         '13N05',    '80E17',    5.5], 
     ['Guntur',          '16N18',    '80E27',    5.5],
     ['Hyderabad',       '17N23',    '78E28',    5.5],
@@ -23,7 +23,7 @@ let aLL = [
     ['Rajahmundry',	    '16N59',   	'81E47',    5.5],
     ['Mumbai',		    '18N58',    '72E50',    5.5],
     ['Narsaraopet',     '16N15',    '80E04',    5.5],
-    ['Nellore',         '13N05',    '80E17',    5.5],
+    ['Nellore',         '14N26',    '79E58',    5.5],
     ['New Delhi',		'28N36',    '77E12',    5.5], 
     ['Repalle',         '16N01',    '80E51',    5.5],  
     ['Secunderabad',    '17N27',    '78E30',    5.5],
@@ -246,7 +246,7 @@ function printCharts(){
         if(isOK){
 
             $('.aside2').empty();
-            $('.aside2').html('<h2>Rasi & Navamsa Charts</h2><canvas id="mycanvas1"  width="350" height="350" > D1 </canvas>	<canvas id="mycanvas2"  width="350" height="350" > D1 </canvas>');
+            $('.aside2').html('<h2>Rasi(D1) & Navamsa(D9) Charts</h2><canvas id="mycanvas1"  width="350" height="350" > D1 </canvas>	<canvas id="mycanvas2"  width="350" height="350" > D1 </canvas>');
             let d1Chart = document.getElementById('mycanvas1');
             let ctx1 = d1Chart.getContext('2d');
             ctx1.clearRect (0, 0, 350, 350);
@@ -275,9 +275,7 @@ function draw_empty_chart (ctx,_x,_y, lwidth,dw,title) {
 
     ctx.lineWidth = lwidth;   
     ctx.strokeStyle = "gray";  
-    //ctx.shadowColor="white";
-    //ctx.shadowBlur = 3;
-    
+        
     let x=_x,y=_y;
   
     ctx.beginPath();
@@ -324,8 +322,7 @@ function draw_d1_planets(ctx)
     ctx.fillStyle = 'white';
     let maxWidth = 90;
 
-    let k = myrashis[0];  // in which rasi number is asc. Leo = 5
-    //mybhavas array has present palnets list in index1 to 12.
+    let k = myrashis[0];  
 
     let pos=[   10,20,  90,40,   170,20, 250,40,
                 250,120,  250,200,   250,280,
@@ -333,7 +330,7 @@ function draw_d1_planets(ctx)
                 10,200,  10,120 ];
   
     for(let i = 1; i < 13; i++){
-        planetsInNZD1[k] = mybhavas[i]; // mybhavas gives string of planets in it.
+        planetsInNZD1[k] = mybhavas[i]; 
         k = k + 1;
         if ( k > 12 ) { k = 1;}
         
@@ -387,9 +384,7 @@ function draw_d9_planets(ctx)
     }
 
     for(let i = 0; i < 10; i++){
-        k = mygrahas[i].navzn - 1;  // asc or graha is in which navamsa?
-        
-        //that navamsa bhava in nz has planet name.
+        k = mygrahas[i].navzn - 1;  
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
@@ -443,7 +438,7 @@ function showKujaDosham(){
 
 function printKujaDosham(){
       
-    let posKuja = mygrahas[3].rasizn; // rasi num 1 to 12.
+    let posKuja = mygrahas[3].rasizn; 
     
     let posLagna = mygrahas[0].rasizn;
    
@@ -469,36 +464,36 @@ function printKujaDosham(){
     
     strTemp += '<p class="main">';
    
-    //ద్వితీయంలో కుజుడు - అది మిధున లేక  కన్యా రాశి అయితే  దోషం లేదు.
+  
     if ( (relativePosLK == 2 ||  relativePosCK == 2 || relativePosSK == 2) && ( posKuja == 3 || posKuja == 6)){
         strTemp += 'Exception: kuja in 2nd and that Rasi is Midhuna or Kanya Rasi.<br>';
     }
-    // ద్వాదశంలో కుజుడు -  అది వృషభ లేక  తులా రాశి అయితే  దోషం లేదు.
+  
     if ( (relativePosLK == 12 ||  relativePosCK == 12 || relativePosSK == 12) && ( posKuja == 2 || posKuja == 7)){
         strTemp += 'Exception: kuja in 12th and that is Vrushabha or Tula Rasi.<br>';
     }
-    //  చతుర్ధంలో కుజుడు -  అది మేష  లేక వృశ్చిక రాశి  అయితే  దోషం లేదు.
+    
     if ( (relativePosLK == 4 ||  relativePosCK == 4 || relativePosSK == 4) && ( posKuja == 1 || posKuja == 8)){
          strTemp += 'Exception: kuja in 4th and that is Mesha or Vruschika Rasi.<br>';
     }
-    // సప్తమంలో కుజుడు -  అది మకర లేక  కర్కాటక రాశి  అయితే  దోషం లేదు.
+   
     if ( (relativePosLK == 7 ||  relativePosCK == 7 || relativePosSK == 7) && ( posKuja == 4 || posKuja == 10)){
          strTemp += 'Exception: kuja in 7th and that is Karkaataka or Makara Rasi.<br>';
     }
-    //  అష్టమంలో కుజుడు -  అది ధనుస్సు లేక మీనం రాశి  అయితే  దోషం లేదు.	
+    
     if( (relativePosLK == 8 ||  relativePosCK == 8 || relativePosSK == 8) && ( posKuja == 9 || posKuja == 12)){
         strTemp += 'Exception: kuja in 7th and that is Dhanu or Meena Rasi.<br>';
     }
-    //కుజుడు కుంభ లేక  సింహ రాశిలో స్థితి చెంది ఉంటె దోషం లేదు.
+    
     if(posKuja == 5 || posKuja == 11){
         strTemp += 'Exception:  Kuja in Simha or Kumbha Rasi.<br>';
     }
 
-    // కుజుడు చంద్రునితోగాని, గురువుతోగాని కలసి ఉంటె కుజ దోషం లేదు.	
+  
     if(posKuja == posChandra || posKuja == posGuru){
         strTemp += 'Exception: Kuja is in Yuti with Chandra or Guru.<br>';
     }
-    // గురువుగాని, శుక్రుడు గాని లగ్నంలో ఉంటె కుజ దోషముండదు.
+   
     if(posGuru == 1 || posSukra == 1){
         strTemp += 'Exception: Guru or Sukra is in Lagnam.<br>';
     }
@@ -508,10 +503,9 @@ function printKujaDosham(){
         strTemp += 'Note: Kuja is in Kendra or Kona from Guru.';
     }
 
-    strTemp += '</p><p class="main">Note: Exceptions are as per Mr BV Raman.&nbsp&nbsp';
-    strTemp += '<a href ="img/kuja_dosha.pdf" target="-blank" title="Kuja Dosham Notes">Kuja Dosham Notes</a><br>';
-    strTemp += 'From Lagna, Kuja in Lagna is Ok. From Chandra, Kuja in 2nd is OK.<br>';
-    strTemp += 'From Sukra, only Kuja in 7th is to be seen. Not other placements.</p>';
+    strTemp += '</p><p class="main">Note: Exceptions are as per Mr BV Raman.<br>';
+    strTemp += 'From Lagna, Kuja in Lagna is Ok.<br>From Chandra, Kuja in 2nd is Ok.<br>';
+    strTemp += 'From Sukra, only Kuja in 7th is critical.</p>';
     
     $('.main').empty();
     $('.main').append(strTemp);
@@ -561,7 +555,7 @@ function printPlaces(){
     strTemp += '<tr><td colspan=4>&nbsp</td></tr></tbody></table>';
     strTemp += '<br>Click on a row to fill the relevant fields.'
     strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>';
-    strTemp += '<img src="img/ss.png" height=16 > Search for Latitude & Longitude...</a>';
+    strTemp += '<img src="img/ss.png" width="16" > Search for Latitude & Longitude...</a>';
     $('.aside2').append(strTemp);
     readRownFillData();
 }
@@ -612,9 +606,7 @@ function parseDatenTime(adate, atime){
      
 function parse_latitude (input) 
 {
-    /*  North or South, range between 0 and 90 degrees 
-        *  Format: 45N48
-        */
+    
     lat = undefined;
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("N") !=-1) {
@@ -941,7 +933,7 @@ function calc_houses (zodiac,house,planetname)
 function calc_nakshatra (deg,n)
 {
     let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0, lnum=0; 
-    // nnum for star num, lnum star lord in weekday order.
+  
     if      (deg < 0)     {  deg += 360; }  
     if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; lnum=1; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
     else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; lnum=2; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
@@ -984,16 +976,16 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;        // starting degree of given star in zodiac.
+        return sdeg;       
     }
     else if (n == 5)  {
-        return nnum;        // star number 1 to 27
+        return nnum;       
     }
     else if (n == 6)  {
-        return vperiod;     // vimsottari dasa period in years
+        return vperiod;     
     }
     else if (n == 7)  {
-        return lnum;     // star lord sequence in weekday order.
+        return lnum;     
     }
 
 }
@@ -1184,9 +1176,7 @@ function calc_day_of_the_week (transit)
 
 function calc_sideral_time (hours,minutes,transit)
 {
-        /*   local mean sideral time [deg] 
-        *   West longitudes are negative
-        */
+       
 
     if (londir == "W")
     lon = -lon;
@@ -1952,7 +1942,7 @@ function calc_ayanamsa (transit)
     var a = -6.92416+16.90709*c-0.757371*c*c;
     var b = (mm + dd/30.)*1.1574074/d;
 
-    return (a + b - 0.021111); // my ayanamsa correction
+    return (a + b - 0.021111); 
 }
 
 function calc_ascendant (hours,minutes,transit)
@@ -2154,13 +2144,13 @@ if((browser.indexOf("firefox") > -1) ||
 
 var deg2DMS = function(mydeg){
 
-    //convert decimal notation degrees to degrees, minutes and seconds.
+   
     let tempVal = parseInt(mydeg);
-    let myD = parseInt(tempVal % 30 ); // divide by 30 and keep reminder as degs
-    tempVal = mydeg - tempVal;  // get decimal value of mydeg
-    tempVal = tempVal * 60 * 60;  // gives total secs
-    let myM = parseInt(tempVal / 60);  // gives minutes
-    let myS = parseInt(tempVal - myM * 60); // gives secs
+    let myD = parseInt(tempVal % 30 ); 
+    tempVal = mydeg - tempVal;  
+    tempVal = tempVal * 60 * 60;  
+    let myM = parseInt(tempVal / 60);  
+    let myS = parseInt(tempVal - myM * 60); 
     let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
     return tempStr;
 
@@ -2168,7 +2158,7 @@ var deg2DMS = function(mydeg){
 
 function numToString(num) { 
 
-    //add 0 to num string if it is single digit
+  
 	if ((num/10) < 1) { 
 	  return ( '0' + num.toString() );
 	} else {
@@ -2193,18 +2183,18 @@ function calc_tidhi(moondeg, sundeg){
 
     theNum = moondeg - sundeg ;
     if (theNum < 0){
-        theNum = theNum + 360;  // if negative add 360
+        theNum = theNum + 360; 
     }
-    theNum = theNum /12;    // divided by 12
-    theNum = Math.ceil(theNum);  // roundup
+    theNum = theNum /12;    
+    theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
   
     if (theNum == 15){
-        pakshaStr = " ";  // for Poornima or Amvasya no need to mention paksha.
+        pakshaStr = " ";  
     }
     else if( theNum == 30){
-        pakshaStr = " ";  // for Poornima or Amvasya no need to mention paksha.
+        pakshaStr = " ";  
     }
     else if ( theNum> 15  && theNum < 30){
         theNum = theNum -15;
@@ -2229,15 +2219,15 @@ function calc_vdasa(){
     let mdLordName = "";
     let adPeriod = 0;
 
-    let mDegrees = mygrahas[2].ra; // degrees
-    let msDegrees = calc_nakshatra(mDegrees,4)  // start degrees
-    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); // sequence num  of MD lord
+    let mDegrees = mygrahas[2].ra; 
+    let msDegrees = calc_nakshatra(mDegrees,4)  
+    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
     let antarLordSeqNum = dasaLordSeqNum;
     
     $('.aside2').append('<h2>Vimsottari Dasa:</h2>');   
 
-    mdPeriod = aDasaInfo[0][dasaLordSeqNum];    // period of MD lord
-    mdLordName = aDasaInfo[1][dasaLordSeqNum];  // name
+    mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
+    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2250,22 +2240,21 @@ function calc_vdasa(){
 
         for ( let a = 0 ; a < 9; a++){
           
-            adPeriod = aDasaInfo[0][antarLordSeqNum]; // antar period
+            adPeriod = aDasaInfo[0][antarLordSeqNum]; 
             mDate = calc_antarDasa(mdPeriod, adPeriod,mDate);
             tempStr = createDateStr(mDate);        
             strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
-            //$('.aside2').append(strTemp);
-            
+                        
             antarLordSeqNum++;
-            if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; // reset.
+            if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
     
         }
 
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
-        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    // period of MD lord
-        mdLordName = aDasaInfo[1][dasaLordSeqNum];  // name
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
         antarLordSeqNum = dasaLordSeqNum;
         $('.aside2').append(firstStr + strTemp + '</table><br>');   
 
@@ -2278,12 +2267,12 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
     let theYears = 0, theMonths = 0, theDays = 0;
     let theDiff = (mdeg - msdeg) ;
     theDiff = theDiff/13.3333;
-    theDiff = theDiff * mdperiod; // this many years passed.
+    theDiff = theDiff * mdperiod; 
 
     theYears = parseInt(theDiff);
-    theMonths =  (theDiff - theYears) * syear / 30 ; // decimal portion * 360 / 30
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  // decimal portion * 30
-    theMonths = parseInt(theMonths); // only the whole number
+    theMonths =  (theDiff - theYears) * syear / 30 ; 
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ; 
+    theMonths = parseInt(theMonths); 
     
     let vdate;
     vdate = createDate(-theDays,-theMonths,-theYears,date);   
