@@ -9,7 +9,7 @@ body {
 	background-color: #555555;
 	color: #c2c2c2;
 	width:98%;
-	letter-spacing: 0.1rem;
+	letter-spacing: 0.05rem;
 }
 
 .wrapper {	
@@ -28,7 +28,7 @@ body {
 
 h1{
 	color: white;
-	font-size:1.4rem;
+	font-size:1.6rem;
 	font-weight: bold;
 	/*text-shadow: 1px 1px #0b8aaa;*/
 	padding: 8px;
@@ -138,6 +138,7 @@ button:hover {
 	text-align: center;
 	background-color: #3b5bc7;
 	font-size: 0.8rem;
+	align-items: center;
 
 }
 
@@ -179,45 +180,86 @@ button:hover {
 }
 
 
-table {
+.myt {
 	border-collapse: collapse; 
 	margin:0 auto;
 	width:96%;
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	
 }	
   
-th {
-	background-color: #3b56ad;
+table.myt thead th {
+	background-color: #274fd3;
 	color: white;
-	padding: 2px;
+	padding-left: 4px;
 	text-align: left;
-	border-bottom: 1px solid #ddd;
+	
+	height: 30px;
 }
   
-td {
+table.myt tbody td {
 	padding: 1px 4px 1px 4px;
 	text-align: left;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #eee;
+	font-size: 10x;
+
 	
 }
   
-tr {
+table.myt tbody tr {
 	color: black;
-	background-color: #d6d6d6;
+	background-color: #e4e4e4;
 	padding: 2px;
 	text-align: left;
 }
   
-tbody tr:nth-child(even) {
-	background-color: #e1e1e1;
-}
-	  
-table tr:hover {
+table.myt tbody tr:hover {
 	color:black;
 	background-color: rgb(220, 245, 174);
 	  
 }
+
+
+	  
+
+#chart {
+
+	color:black;
+	background-color: #edf0f1;
+	border: 10px solid #254bca;
+	box-shadow: 1px 1px  #2e46a0;
+	table-layout: fixed;
+	text-align: center;
+	width:320px;
+	height: 340px;
+	margin: 0 auto;
+
+}
+
+#chart thead td{
+		
+	padding: 0.5rem;
+	color:#f2f0f5;
+	background-color: #274fd3	;
+	font-size: 14px;
+	height: 24px;
+	width: 25%;
+
+}
+
+
+#chart  td {
+	font-size: 9px;
+	border: 1px solid #c8c8c8;
+	padding: 0.5rem;
+	color:black;
+	height:25%;
+	width: 25%;
+	
+}
+
+
+
 
 
 a {
@@ -246,7 +288,7 @@ img :hover{
 }
  
 
-@media  all and (min-width: 768px ) and (orientation:landscape) {
+@media  all and (min-width: 860px ) and (orientation:landscape) {
 
 	body{
 		font-size: 16px;
