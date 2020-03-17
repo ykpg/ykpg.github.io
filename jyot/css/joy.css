@@ -1,4 +1,5 @@
 
+/* Mobile first */
 body {
 	margin:0 auto;
 	padding:0;
@@ -6,16 +7,27 @@ body {
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.6em;	 
+	text-align:center; 
+	width: 96%;
 	background-color: #555555;
-	color: #c2c2c2;
-	width:98%;
-	letter-spacing: 0.05rem;
+	color: white;
+	letter-spacing: 0.0625em;
 }
 
-.wrapper {	
+.wrapper {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
-	flex-direction: column;
-	background-color:#3B5BC7;		
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+
+}
+  
+.wrapper > * {
+	padding: 10px;
+	flex: 1 100%;	
 }
 
 .header{
@@ -26,61 +38,65 @@ body {
 	background-color: #3b5bc7;
 }
 
+header.header {
+	padding-right:0;
+	padding-left: 0;
+	padding-bottom: 0;
+}
+
+
 h1{
 	color: white;
-	font-size:1.6rem;
-	font-weight: bold;
-	/*text-shadow: 1px 1px #0b8aaa;*/
-	padding: 8px;
+	font-size:1.375em;
+	padding: 5px;
 }
 
 h2{
 	color: white;
-	font-size:0.8rem;
+	font-size:0.875em;
 }
 
-.nav1{
-	
-	flex-direction: row;
-	width:100%;
-	margin:0 auto;
-	padding:0px;
-	font-size: 0.8rem;
+h3{
+	color: white;
+	font-size:0.625em;
+}
+
+.nav1 {
+	padding: 0;
+	margin: 0;
 	background: #708adf;
-}
-
-li{
 	list-style: none;
+	display:flex;
+	flex-flow: column wrap;
+	
 }
 
 .nav1 a {
 	text-align: center;
-	padding: 10px;
-	border-top: 1px solid #bcd0ee52;
-	border-bottom: 1px solid #30373d1a ;
+	padding: 12px;
+	border-top: 1px solid #ffffff4d;
+	border-bottom: 1px solid #0000001a;
 	text-decoration: none;
 	display: block;
 	color:#d3d3d3;
 	background: #708adf;
+	font-size: 0.875rem;
 }
 
 .nav1 a:hover {
 	background: #3255c9;
 	color:white;
 }
+  
 
 .aside1{
 	
 	align-self: center; /* this works */
 	background-color: #3b5bc7;
 	margin:0px;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	font-size: 0.8rem;
+	font-size: 0.875em;
 
 }
-
-
 
 form{
 
@@ -88,7 +104,6 @@ form{
 	justify-content: center; /* this doeos the trick */
 	/*max-width: 150px;*/
 	background-color: #3b5bc7;
-	font-size: 0.8rem;
 }
 
 fieldset{
@@ -104,8 +119,6 @@ fieldset, fieldset div {
 	flex-direction: column;
 	flex-wrap: wrap; /* without this they lay inline */
 	/* align-content: center; with this each item is centered */
-	
-	font-size: 0.8rem;
 	flex: 1 1 auto;
 	max-width: 180px;
 	padding: 8px 12px 8px 12px;	
@@ -117,7 +130,6 @@ input{
 	width:96%;
 	background-color : #a0a8ca;
 	border:none;
-	font-size: 0.8rem;
 } 
 
 button{
@@ -137,7 +149,7 @@ button:hover {
 
 	text-align: center;
 	background-color: #3b5bc7;
-	font-size: 0.8rem;
+	font-size: 0.875em;
 	align-items: center;
 
 }
@@ -145,7 +157,6 @@ button:hover {
 .aside2 a {
 	text-align: center;
 	padding: 10px;
-	
 	text-decoration: none;
 	display: block;
 	color: white;
@@ -162,19 +173,23 @@ button:hover {
 	text-align: left;
 	padding: 5px 10px 5px 10px;
 	background-color: #3b5bc7;
-	font-size: 0.8rem;
+	font-size: 0.875em;
+	
+	
 }
 
 .main p {
 	padding:10px 10px 5px 20px;
-	font-size: 0.8rem;
+	color: #d9d9d9;
+	font-size: 0.875em;
+	
 	
 }
 .footer{
 	
 	text-align: center;
 	padding:3px 0px 3px 0px ; 
-	font-size: 0.8rem;
+	font-size: 0.75em;
 	background-color: #2f53c9;
 	color:#b6b6b6;
 }
@@ -184,7 +199,7 @@ button:hover {
 	border-collapse: collapse; 
 	margin:0 auto;
 	width:96%;
-	font-size: 0.7rem;
+	font-size: 0.875em;
 	
 }	
   
@@ -193,7 +208,6 @@ table.myt thead th {
 	color: white;
 	padding-left: 4px;
 	text-align: left;
-	
 	height: 30px;
 }
   
@@ -201,9 +215,7 @@ table.myt tbody td {
 	padding: 1px 4px 1px 4px;
 	text-align: left;
 	border-bottom: 1px solid #eee;
-	font-size: 10x;
 
-	
 }
   
 table.myt tbody tr {
@@ -259,21 +271,6 @@ table.myt tbody tr:hover {
 }
 
 
-
-
-
-a {
-	text-align: center;
-	padding: 0px 3px 0px 3px;
-	text-decoration: none;
-	color: gray;
-}
-
-a:hover {
-	background: #67C8FF;
-	color:white;
-}
-
 img{
 	margin:0 auto;
 	padding:0px;
@@ -281,44 +278,36 @@ img{
 	text-align:center;
 }
 
-
-
 img :hover{
 	background: none;
 }
- 
+
 
 @media  all and (min-width: 860px ) and (orientation:landscape) {
 
 	body{
 		font-size: 16px;
 	}
+
 	.wrapper{
-		display:flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		text-align: center;
-		
+		display: flex;	
 	}
 
-	.nav1{
-		
-		margin:0px;
-		padding:0px;
-		border-top: 1px solid #bcd0ee52;
-		border-bottom: 1px solid #30373d1a ;
+	.nav1 {
+		justify-content: flex-end;	
+		flex-flow: row;
+	}
+
+	.nav1 li{
+		margin: 0;
+		padding:0;	
+	}
+
+	li{
 	
-	}
-	.nav1 a{
-		padding: 9px 9px 9px 9px;
-		border:none;
-
-	}
-
-	.nav1 li:last-of-type a {
-		border-bottom: none;
-	}
-	 
+		margin-left: 0px;
+		margin-right:2em;
+	} 
 	.main {
 	  	flex: 2 0px;
 	  	order: 2;

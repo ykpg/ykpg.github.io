@@ -1,7 +1,6 @@
-/* Mobile First */
-body{
-	color:#333333;
-	background-color:#383535; 
+
+ /* Mobile first */
+ body {
 	margin:0 auto;
 	padding:0;
 	font-family: "Roboto, Arial, Tahoma, Helvetica, Verdana", sans-serif;    
@@ -10,6 +9,9 @@ body{
 	line-height: 1.6em;	 
 	text-align:center; 
 	width: 96%;
+	background-color: #555555;
+	color: black;
+	letter-spacing: 0.0625em;
 }
 
 .container{	
@@ -41,7 +43,7 @@ body{
 
 form.myform {
 	margin: 0px auto;
-	font-size: 0.8rem;	
+	font-size: 0.875em;	
 	padding: 5px;
 	padding-top: 10px;
 	width: 90%;
@@ -67,6 +69,7 @@ select#girlstar{
 
 select#boystar{	
 	background-color: #5B59BA; 
+
 }
 
 select#girlpaadam{	
@@ -75,27 +78,16 @@ select#girlpaadam{
 
 select#boypaadam{
 	background-color: #5B59BA; 
-	text-align:right;
+
 }
 
-#fg{
-	background-color:transparent; 
-	color:#9E0508;
-	text-align:left;
+#fg, #fb{
+	
 	justify-content:left;
 	font-weight: "strong";
 	display: inline-block;
 	padding:10px;	
-}
 
-#fb{
-	background-color:transparent; 
-	color:#5B59BA;
-	text-align:right;	
-	justify-content:right;
-	font-weight: "strong";
-	display: inline-block;
-	padding:10px;	
 }
 
 .navbar1 {
@@ -106,7 +98,7 @@ select#boypaadam{
 	display: flex;
 	flex-flow: column wrap;
 	justify-content: space-around;
-	font-size: 0.8rem;
+	font-size: 0.875em;
 	
 }
 
@@ -121,7 +113,7 @@ color: black;
 }
 
 .navbar1 a:hover {
-	background: #67C8FF;
+	background: #4fa8db;
 	color:white;
 }
 
@@ -135,16 +127,16 @@ input[type="button"]{
 	border:none;
 	border-top: 1px solid rgba(255, 255, 255, 0.3);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	font-size: 0.8rem;
 	margin:0;
-	padding: 14px 7px 7px 7px;
+	padding: 12px 7px 4px 7px;
 	display:block;
 	z-index: 1;
 	width: 100%;
+	font-size: 1.063em;
 }
 
 input[type="button"]:hover {
-	background: #67C8FF;
+	background: #4fa8db;
 	color: white;	
 	font-weight: bold;
 	cursor: pointer;
@@ -157,11 +149,13 @@ input[type="button"]:hover {
 .pattika{
 	text-align: center;
 	padding: 5px 10px 5px 10px;	
+	font-size: 0.875em;
 }
 
 .vivarana{
 	text-align: justify;
-	padding: 5px 10px 5px 10px;		
+	padding: 5px 10px 5px 10px;
+	font-size: 0.875em;		
 }
 
 .footer{
@@ -169,17 +163,15 @@ input[type="button"]:hover {
 	background-image: linear-gradient( rgb(117, 205, 235), rgb(131, 151, 161));
 	padding:2px 0px 2px 0px ;
 	width:100%;
-	font-size: 0.8rem;
+	font-size: 0.75em;
 }
 
 
-@media  all and (min-width: 768px ) and (orientation:landscape) {
+@media  all and (min-width: 880px ) and (orientation:landscape) {
 	/* This part is only read by viewports wider than 768 pixels */
 	body{ 
 		font-size: 16px;
-		line-height: 1.6rem;	 
-		margin:0 auto;
-		padding:0;
+
 	}
 	
 	.container{	
@@ -210,7 +202,7 @@ input[type="button"]:hover {
 
 
 h1 {
-	font-size: 1.4rem;
+	font-size: 1.375em;
 	font-weight: bold;
 	/*text-shadow: 1px 1px #0b8aaa;*/
 	padding: 8px;
@@ -218,7 +210,7 @@ h1 {
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 1.063em;
 	margin: 0;
 	margin-bottom: 5px;
 	padding: 0;
@@ -226,7 +218,7 @@ h2 {
 }
 
 h3 {
-	font-size: 1rem;
+	font-size: 1.063em;
 	margin: 0;
 	margin-bottom: 5px;
 	padding: 0;
@@ -235,7 +227,6 @@ h3 {
 }
 
 .minahaa {
-	font-size: 0.9rem;
 	margin: 0 0 0.75rem 0;
 	color:rgb(26, 138, 69);
 	font-weight: bold;
@@ -258,7 +249,7 @@ table {
 	border-collapse: collapse; 
 	margin:0 auto;
 	width:96%;
-	font-size: 0.8rem;
+	font-size: 0.75rem;
 }	
   
 th {
@@ -304,35 +295,9 @@ img :hover{
 	background: none;
 }
  
-.nav2{
-	padding: 0;
-	list-style: none;
-	margin: 0;
-	background:none;
-	display: inline;
-	font-size: 0.8rem;
-}
-
-.nav2 a {
-	text-align: center;
-	padding: 0px 3px 0px 3px;
-	text-decoration: none;
-	color: gray;
-}
-
-.nav2 a:hover {
-	background: #67C8FF;
-	color:white;
-}
-
-.nav2 li {
-	border: none;
-	display:inline;
-}
 
 p.mytext{
 	color:black;
-	font-size:0.8rem;
 	padding-left: 12px;
 }
 

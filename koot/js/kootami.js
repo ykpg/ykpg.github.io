@@ -36,6 +36,7 @@ let girlRajjuName = "";
 let boyRajjuName = "";
 
 
+
 strTemp = "అశ్వని,భరణి,కృత్తిక,రోహిణి,మృగశిర, ఆర్ద్ర,పునర్వసు,పుష్యమి,ఆశ్లేష,మఖ,పుబ్బ, ఉత్తర,హస్త,చిత్త,స్వాతి,విశాఖ,అనూరాధ,జ్యేష్ట,మూల,పూర్వాషాడ,ఉత్తరాషాడ,శ్రవణం,ధనిష్ట,శతభిషం,పూర్వాభాద్ర,ఉత్తరాభాద్ర,రేవతి";
 const aStarNames27 = strTemp.split(',');
 
@@ -57,6 +58,7 @@ aSpecialTaras.push({id:19,scheme:28,name:'ఆధాన'});
 aSpecialTaras.push({id:22,scheme:28,name:'వైనాశిక'});
 aSpecialTaras.push({id:25,scheme:28,name:'మానస'}); 
 aSpecialTaras.push({id:28,scheme:28,name:'అభిషేక'});
+
 
 strTemp = "0,3,4,9,11,12,13,14,16,18,20,21,22,25,26";
 const aVivahaTaras = strTemp.split(',');
@@ -92,7 +94,7 @@ arrayStarInfo.push({id:26,name:'ఉత్తరాభాద్ర',  gananame:'�
 arrayStarInfo.push({id:27,name:'రేవతి',     gananame:'దేవ',gananum:1,vedha:10,vadha:'Not OK',yoninum:2,yonipol:0});
 
 
-const arrayRasiInfo = []; // array has id, name, lord
+const arrayRasiInfo = []; 
 arrayRasiInfo.push({id:1,name:'మేషం',lord:'కుజ',}); 
 arrayRasiInfo.push({id:2,name:'వృషభం',lord:'శుక్ర'});
 arrayRasiInfo.push({id:3,name:'మిధునం',lord:'బుధ',}); 
@@ -110,6 +112,7 @@ arrayRasiInfo.push({id:12,name:'మీనం',lord:'గురు'});
 strTemp = "క్షత్రియ,వైశ్య,శూద్ర,బ్రాహ్మణ";
 const arrayVarnaNames = strTemp.split(',');
 
+
 strTemp = "చతుష్పాద,నర,జలచర,వనచర,కీటక";
 const arrayVasyas = strTemp.split(',');
 
@@ -122,8 +125,8 @@ const arrayMaitriNames = strTemp.split(',');
 
 
 strTemp = "+గుఱ్ఱం,+ఏనుగు,-మేక,+పాము,-పాము,-కుక్క,-పిల్లి,+మేక,+పిల్లి,+ఎలుక,-ఎలుక,+ఆవు,-దున్న,-పులి,+దున్న,+పులి,-లేడి,+లేడి,+కుక్క,+కోతి,+ముంగిస,-కోతి,-సింహం,-గుఱ్ఱం,+సింహం,-ఆవు,-ఏనుగు";
-const arrayYoniNames = strTemp.split(',');
 
+const arrayYoniNames = strTemp.split(',');
 strTemp = "1,2,3,4,4,5,6,3,6,7,7,8,9,10,9,10,11,11,5,12,13,12,14,1,14,8,2";
 const arrayYoniNum = strTemp.split( ",")
 
@@ -178,22 +181,24 @@ var showContent = function()
 		$(".pattika").empty();			
 		$('.pattika').append('<h2>  మేలాపకము - కూటముల పట్టిక  </h2> <hr>');		
 		
-
+	
 		strTemp = '<table id="mytable1"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';
 		
 	
 		strTemp+= '<tr>'			
 		strTemp+= '<td>నక్షత్రము - పాదం  </td> <td>(' + (gs+1) + ') <strong>' + aStarNames27[gs]  + ' - '+ (gp+1) + '</strong></td> <td>(' + (bs+1) + ') <strong>' + aStarNames27[bs]   + ' - ' + (bp+1) + '</strong></td></tr>';
 		
-
+		
 		strTemp+= '<tr><td>రాశి - రాశ్యాధిపతి</td> <td><strong>' + arrayRasiInfo[girlRasiNum].name + ' - ' + arrayRasiInfo[girlRasiNum].lord + '</strong></td>';
 		strTemp+= '<td><strong>' + arrayRasiInfo[boyRasiNum].name + ' - ' + arrayRasiInfo[boyRasiNum].lord + '</strong></td></tr>';
 		
+			
 		strTemp+= '<tr><td>నవాంశ - రాశి - అధిపతి</td> <td>'  + arrayRasiInfo[(girlNavamsa % 12)].name + ' - ' + arrayRasiInfo[(girlNavamsa % 12)].lord + '</td>';
 		strTemp+= '<td>' +  arrayRasiInfo[(boyNavamsa % 12)].name + ' - ' + arrayRasiInfo[(boyNavamsa % 12)].lord + '</td></tr>';
 			
 		strTemp+= '</table>';
 		$('.pattika').append(strTemp); 
+							
 		
 		strTemp = '<br><table id="mytable2"><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణం</th></tr>';
 		subPoints = 0;
@@ -209,11 +214,13 @@ var showContent = function()
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
 		
 		
+	
 		findNavakam();
 		find3Tara();
 		strTemp+= '<tr><td>3. దిన/తారా కూటమి</td> <td>' + arrayMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
 		strTemp+= '<td>' + arrayMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
-
+	
+	
 		find4Yoni();
 		strTemp+= '<tr><td>4. యోని కూటమి</td> <td>' + arrayYoniNames[gs]  + '</td>';
 		strTemp+= '<td>' + arrayYoniNames[bs] + '</td><td>' + thePoints + '</td></tr>';
@@ -221,7 +228,7 @@ var showContent = function()
 	
 		find5Grahamaitri();	
 		strTemp+= '<tr><td>5. రాశ్యాధిప/గ్రహమైత్రి కూటమి</td> <td>' +  arrayRasiInfo[girlRasiNum].lord + '</td>';
-		
+			
 		strTemp+= '<td>' +  arrayRasiInfo[boyRasiNum].lord + '</td><td>' + thePoints + '</td></tr>';	
 	
 			
@@ -234,22 +241,21 @@ var showContent = function()
 		strTemp+= '<tr><td>7. భ/రాశి కూటమి</td> <td>' +  rasiG2B + '</td>';
 		strTemp+= '<td>' +  rasiB2G + '</td><td>' + thePoints +'</td></tr>';
 		
-
 		
 		find8Nadi();
 		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  
 		strTemp+= '<td>' +  arrayNadiNames[boyNadiNum] +  '</td><td>' + thePoints +'</td></tr>';
+		
 
 		strTemp+= '<tr><td><strong>మొత్తం గుణములు(36 కి)</strong></td> <td>-</td>';  
 		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 	
 		
-
 		find10Rajju();
-		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>';  
+		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>'; 
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
-
+	
 		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>g->b:' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
 		strTemp+= 	'<td></td><td></td></tr>';	
 
@@ -261,7 +267,7 @@ var showContent = function()
 		
 
 		
-		strTemp+= '</table>';     
+		strTemp+= '</table>';    
 		$('.pattika').append(strTemp); 
 
 		
@@ -275,7 +281,6 @@ var showContent = function()
 	});	
 	
 };
-
 var tVarna = [4]; for (let i=0; i<4;i++) {tVarna[i]=[4]};
 tVarna = [
 	[1,0,0,1],[1,1,0,1],[1,1,1,1],[0,0,0,1]
@@ -507,20 +512,20 @@ function handleVadhuvuku(){
 		for ( let n=0;n<108;n++)
 		{
 			
+		
 			bs = parseInt(n/4);
 			
 			bp = n % 4;
 			boyNavamsa  = n;			
 			boyRasiNum =  parseInt( n / 9 );
 
-		
+			
 			girlNavamsa = gs * 4 + gp;		
-			girlRasiNum = parseInt( girlNavamsa / 9 );    
+			girlRasiNum = parseInt( girlNavamsa / 9 );  
 			
 			let countRasi = 0.0;
 			let countStar = 0.0;
 			
-		
 			find1Varna();
 			find2Vasya();
 			find5Grahamaitri();
@@ -538,7 +543,7 @@ function handleVadhuvuku(){
 						
 						if (countStar >= 7.5){
 							find10Rajju();
-							
+						
 							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) ){
 								
 								thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
@@ -564,7 +569,7 @@ function handleVadhuvuku(){
 
 
 function handleVaruniki(){
-	
+
 		
 	$("#varuniki").on("click",  function()
 	{
@@ -586,12 +591,12 @@ function handleVaruniki(){
 
 			
 			boyNavamsa = bs * 4 + bp;		
-			boyRasiNum = parseInt( boyNavamsa / 9 );    
+			boyRasiNum = parseInt( boyNavamsa / 9 );   
 			
 			let countRasi = 0.0;
 			let countStar = 0.0;
 			
-		
+			// rashi based
 			find1Varna();
 			find2Vasya();
 			find5Grahamaitri();
@@ -648,7 +653,7 @@ function handleMyMethod(){
 		subPoints = 0;
 		totalPoints = 0;
 
-			
+				
 		find1Varna();
 		strTemp+= '<tr><td>1. వర్ణ కూటమి</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
 		strTemp+= '<td>' + arrayVarnaNames[(boyRasiNum % 4)] + '</td><td>' + thePoints +'</td></tr>';
@@ -657,10 +662,10 @@ function handleMyMethod(){
 		strTemp+= '<tr><td>2. వశ్య కూటమి</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
 		
-		
+	
 		find5Grahamaitri();
 		strTemp+= '<tr><td>5. రాశ్యాధిప/గ్రహమైత్రి కూటమి</td> <td>' +  arrayRasiInfo[girlRasiNum].lord + '</td>';
-			
+		
 		strTemp+= '<td>' +  arrayRasiInfo[boyRasiNum].lord + '</td><td>' + thePoints + '</td></tr>';	
 	
 	
@@ -669,35 +674,32 @@ function handleMyMethod(){
 		strTemp+= '<tr><td>3. దిన/తారా కూటమి</td> <td>' + arrayMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
 		strTemp+= '<td>' + arrayMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
 			
-	
+
 		find4Yoni();
 		strTemp+= '<tr><td>4. యోని కూటమి</td> <td>' + arrayYoniNames[gs]  + '</td>';
 		strTemp+= '<td>' + arrayYoniNames[bs] + '</td><td>' + thePoints + '</td></tr>';
 		
-		
+				
 		find6Gana();
 		strTemp+= '<tr><td>6. గణ కూటమి</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
 		strTemp+= '<td>' +  arrayStarInfo[bs].gananame + '</td><td>' + thePoints + '</td></tr>';		
 	
 
 		find8Nadi();
-		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>'; 
+		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  
 		strTemp+= '<td>' +  arrayNadiNames[boyNadiNum] +  '</td><td>' + thePoints +'</td></tr>';
 	
 
-		
 		strTemp+= '<tr><td><strong>మొత్తం గుణములు(29 కి)</strong></td> <td>-</td>';  
 		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 
-
-				
+	
 		find7Bha();
 		strTemp+= '<tr><td>7. భ/రాశి కూటమి</td> <td>' +  rasiG2B + '</td>';
 		strTemp+= '<td>' +  rasiB2G + '</td><td>' + thePoints +'</td></tr>';
 	
-	
 		find10Rajju();
-		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>'; 
+		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>';  
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
 
@@ -739,7 +741,7 @@ function handleMyMethod(){
 
 	strTemp += '</p>';
 	
-	$('.vivarana').append(strTemp); 
+	$('.vivarana').append(strTemp); 	
 
 	divPosition = $("#mypos").offset();
 	$('html,body').animate({scrollTop: divPosition.top}, "slow");
@@ -840,7 +842,7 @@ function printTaras(astar){
 		for(let i = 0; i < number_of_rows; i++)
 		{
             
-		
+			
 			tempStr +='<tr><td>' + aMaitriNames[i] + '</td>';
 			
 			tempStr+='<td>' + (i+1) + '</td>';	
@@ -887,11 +889,11 @@ function printSpecialTaras(astar){
 			tempStr += '<tr><td>' + aSpecialTaras[i].id + '</td><td>' +  aSpecialTaras[i].name + '</td>';
 			tempStr += '<td>' +  aSpecialTaras[i].scheme + '</td><td>';
 			tempStr += aStarNames27[calcTara(Number(aSpecialTaras[i].id) + astar-1,0,28)] +'</td></tr>';
-			
+		
 			if( astar > 20 && astar < 27 ){
 				astar--;
 			}
-			
+		
 			if(aStarNames27.length == 28){
 				aStarNames27.splice(21, 1);
 			}
@@ -909,8 +911,7 @@ var calcTara = function(myStar,myFactor,myScheme){
 	
 	if(myScheme == 28){
 
-		
-		aStarNames27.splice(21, 0, "అభిజిత్");
+			aStarNames27.splice(21, 0, "అభిజిత్");
 		
 		temp = myStar + myFactor;
 		if ( temp > 27 )
@@ -945,7 +946,7 @@ function highlight_row()
 	let rowId = 0;
     for (let i = 0; i < cells.length; i++) 
 	{
-       
+        
         let cell = cells[i];
        
         cell.onclick = function () 
@@ -988,6 +989,8 @@ function prepareData()
 	for(let i=0 ; i < 10; i++){
 		arrayResults[i] = 0.0;
 	}
+
+	
 
 	
 	gs = $("#girlstar").prop('selectedIndex');
@@ -1068,9 +1071,8 @@ function findNavakam(){
 function find3Tara(){
 
 	
-	
 	thePoints = 0.0;
-	
+
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) || (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
 		thePoints = 1.5; 
 	}
@@ -1164,6 +1166,7 @@ function getGanaPoints(f,m)
 function find6Gana(){
 
 	
+
 	thePoints = getGanaPoints(arrayStarInfo[gs].gananum,arrayStarInfo[bs].gananum);
 
 	subPoints = parseInt(thePoints);
@@ -1225,6 +1228,7 @@ var getNadiNum = function(starNum)
 
 function find8Nadi(){
 	
+
 	girlNadiNum = getNadiNum(gs+1);
 	boyNadiNum = getNadiNum(bs+1);
 
