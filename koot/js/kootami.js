@@ -543,9 +543,10 @@ function handleVadhuvuku(){
 						
 						if (countStar >= 7.5){
 							find10Rajju();
-						
+							//if(n >67 && n < 72) {alert((girlRajjuName != boyRajjuName))};
 							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) ){
-								
+								//will not pass only if both are bad.
+								//if(n >67 && n < 72) {alert((girlNadiNum != boyNadiNum))};
 								thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
 							
 								strTemp += '<tr><td>' + ((bs==oldBS) ? ' ' : aStarNames27[bs]) + '</td><td>' + (bp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
@@ -612,7 +613,7 @@ function handleVaruniki(){
 						countStar = ( parseFloat(arrayResults[2]) + parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) );
 						if (countStar >= 7.5){
 							find10Rajju();
-							if ( (girlNadiNum != boyNadiNum) && (girlRajjuName != boyRajjuName) ){
+							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) ){
 								thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
 								
 								strTemp += '<tr><td>' + ((gs==oldGS) ? ' ' : aStarNames27[gs]) + '</td><td>' + (gp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
