@@ -2,14 +2,16 @@
 
 let windowParams = `scrollbars=yes,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=350,height=500,left=200,top=80`;
 
-let gs = 0; 	
-let bs = 0; 	
-let gp = 0;  	
-let bp = 0;  	
+let gs = 0; 	// the selected index of girl nakshatra
+let bs = 0; 	// the selected index of boy nakshatra
+let gp = 0;  	// the selected index of girl nakshatra paadam
+let bp = 0;  	// the selected index of boy nakshatra paadam
+
 let thePoints = 0.0;
 let subPoints = 0.0;
 let totalPoints = 0.0;
 let arrayResults = [];
+
 
 
 let girlNavamsa = 0;
@@ -54,6 +56,7 @@ aSpecialTaras.push({id:22,scheme:28,name:'వైనాశిక'});
 aSpecialTaras.push({id:25,scheme:28,name:'మానస'}); 
 aSpecialTaras.push({id:28,scheme:28,name:'అభిషేక'});
 
+//strTemp = "అశ్విని, రోహిణి, మృగశిర, మఖ, ఉత్తర, హస్త, చిత్ర, స్వాతి, అనూరాధ, మూల, ఉత్తరాషాడ, శ్రవణం, ధనిష్ఠ,   ఉత్తరాభాద్ర, రేవతి";
 strTemp = "0,3,4,9,11,12,13,14,16,18,20,21,22,25,26";
 const aVivahaTaras = strTemp.split(',');
 
@@ -115,6 +118,7 @@ const arrayVasyaNum = strTemp.split( ",");
 strTemp = "జన్మ,సంపత్,విపత్,క్షేమ,ప్రత్యక్,సాధన,నైధన,మిత్ర,పరమమిత్ర";
 const arrayMaitriNames = strTemp.split(',');
 
+//'names of yonis from aswini to revati. Mentions male or female also.
 strTemp = "+గుఱ్ఱం,+ఏనుగు,-మేక,+పాము,-పాము,-కుక్క,-పిల్లి,+మేక,+పిల్లి,+ఎలుక,-ఎలుక,+ఆవు,-దున్న,-పులి,+దున్న,+పులి,-లేడి,+లేడి,+కుక్క,+కోతి,+ముంగిస,-కోతి,-సింహం,-గుఱ్ఱం,+సింహం,-ఆవు,-ఏనుగు";
 const arrayYoniNames = strTemp.split(',');
 
@@ -150,47 +154,52 @@ $(document).ready(function()
 	
 	handleMyMethod("#viv");
 	handleTaralu("#viv");	
-
+	handleLakshana("#viv");
 	
 });
 
 var showContent = function() 
 {
 	
-	
+	// Init. fill select boxes of nakshatra names
 	$.each(aStarNames27, function(val, text) 
 	{
             $('#girlstar').append( $('<option></option>').val(val).html(text) );
 			$('#boystar').append( $('<option></option>').val(val).html(text) );
 			
 	}); 
-	$("#girlstar").val(0)   	
-	$("#boystar").val(13)   	
+	$("#girlstar").val(0)   	// selects  by default
+	$("#boystar").val(13)   	// selects  by default
 
 	
 	$('#bt').on("click", function () 
 	{		
 		prepareData();
 		$(".pattika").empty();			
-		$('.pattika').append('<h2>  మేలాపకము - కూటముల పట్టిక  </h2> <hr>');		
+		$('.pattika').append('<h2>  మేలాపకము - కూటముల పట్టిక  </h2> <hr>');		// Dispaly starts here
 		
+		//Table1 Starts
 		strTemp = '<table id="anytable"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';
 		
-		
+		// Table1-1st row - show nakshatra and paadam
 		strTemp+= '<tr>'			
 		strTemp+= '<td>నక్షత్రము - పాదం  </td> <td>(' + (gs+1) + ') <strong>' + aStarNames27[gs]  + ' - '+ (gp+1) + '</strong></td> <td>(' + (bs+1) + ') <strong>' + aStarNames27[bs]   + ' - ' + (bp+1) + '</strong></td></tr>';
 		
-		
+		// Table1-2nd row - show rasi name and lord of that rasi.
 		strTemp+= '<tr><td>రాశి - రాశ్యాధిపతి</td> <td><strong>' + aRasiInfo[girlRasiNum].name + ' - ' + aRasiInfo[girlRasiNum].lord + '</strong></td>';
 		strTemp+= '<td><strong>' + aRasiInfo[boyRasiNum].name + ' - ' + aRasiInfo[boyRasiNum].lord + '</strong></td></tr>';
 		
-		
+		//Table1-3rd row - show the navamsa rasi name and lord of that rasi
+		//there are 0 to 107 navamsa numbers.		
 		strTemp+= '<tr><td>నవాంశ - రాశి - అధిపతి</td> <td>'  + aRasiInfo[(girlNavamsa % 12)].name + ' - ' + aRasiInfo[(girlNavamsa % 12)].lord + '</td>';
 		strTemp+= '<td>' +  aRasiInfo[(boyNavamsa % 12)].name + ' - ' + aRasiInfo[(boyNavamsa % 12)].lord + '</td></tr>';
 			
 		strTemp+= '</table>';
 		$('.pattika').append(strTemp); 
+		//Table1 Ends							
 		
+		// *** Table2 ***
+		//Table2 - headings 
 		strTemp = '<br><table id="ktable"><thead><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణం</th></tr></thead><tbody>';
 		subPoints = 0;
 		totalPoints = 0;
@@ -200,64 +209,74 @@ var showContent = function()
 		strTemp+= '<tr><td>1. వర్ణ కూటమి</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
 		strTemp+= '<td>' + arrayVarnaNames[(boyRasiNum % 4)] + '</td><td>' + thePoints +'</td></tr>';
 
+		//Table2 - row 2.Vasya Kootami
+		//vasya divisions are - Chatushpada =0,Nara=1, JalaChara=2 ,VanaChara=3,Keetaka=4.rasinum is 0 to 11						
 		find2Vasya();
 		strTemp+= '<tr><td>2. వశ్య కూటమి</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
 		
 		
+		// Table2 - row 3.Dina or Taaraa kootami
 		findNavakam();
 		find3Tara();
 		strTemp+= '<tr><td>3. దిన/తారా కూటమి</td> <td>' + arrayMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
 		strTemp+= '<td>' + arrayMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
 	
-		
+		//Table2 - row 4.Yoni Kootami
 		find4Yoni();
 		strTemp+= '<tr><td>4. యోని కూటమి</td> <td>' + arrayYoniNames[gs]  + '</td>';
 		strTemp+= '<td>' + arrayYoniNames[bs] + '</td><td>' + thePoints + '</td></tr>';
 	
-		
+		//Table2 - row 5. grahamaitri or rasyaadhipa  kootami
 		find5Grahamaitri();	
 		strTemp+= '<tr><td>5. రాశ్యాధిప/గ్రహమైత్రి కూటమి</td> <td>' +  aRasiInfo[girlRasiNum].lord + '</td>';
-		
+		// ~rasiNum is 0 to 11		
 		strTemp+= '<td>' +  aRasiInfo[boyRasiNum].lord + '</td><td>' + thePoints + '</td></tr>';	
 	
-			
+		//Table2 - row 6.Ganam
+		//arrayGanaTypes gives 3 ganas and list of all stars in each gana - deva ,manushya, raakshasa
+		//for each gana get the list of nakshatras
+		// then check if one of them matches the girl's nakshatra.		
 		find6Gana();
 		strTemp+= '<tr><td>6. గణ కూటమి</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
 		strTemp+= '<td>' +  arrayStarInfo[bs].gananame + '</td><td>' + thePoints + '</td></tr>';		
 	
 
-				
+		//Table2 - row. 7.Bha Kootami				
 		find7Bha();
 		strTemp+= '<tr><td>7. భ/రాశి కూటమి</td> <td>' +  rasiG2B + '</td>';
 		strTemp+= '<td>' +  rasiB2G + '</td><td>' + thePoints +'</td></tr>';
 		
 
-	
+		//Table2 - row. 8.Naadi Kootami
 		
 		find8Nadi();
-		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  
+		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  arrayNadiNames[boyNadiNum] +  '</td><td>' + thePoints +'</td></tr>';
 		
-		strTemp+= '<tr><td><strong>మొత్తం గుణములు(36 కి)</strong></td> <td>-</td>';  
+		//Table2 - row 9. Total
+		strTemp+= '<tr><td><strong>మొత్తం గుణములు(36 కి)</strong></td> <td>-</td>';  // g is 0 to 26
 		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 	
-	
+		
+		//Table2 - row 10. Rajju
 		find10Rajju();
-		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>'; 
+		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
-		
+		//Table2 - 11th row - show G->B and B->G counts. sthree deergham
+
 		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>g->b:' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
 		strTemp+= 	'<td></td><td></td></tr>';	
 
 		
+		//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls.
 		girlNavamsa = gs * 4 + gp;		
 		boyNavamsa  = bs * 4 + bp;
 		thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
 		strTemp += '<tr><td style="color:royalblue;" colspan = 3><strong>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = </strong>' + '</td><td style="color:blue;"><strong>' +  thePoints  +'</td></strong></tr>' ;
 		
-		strTemp+= '</tbody></table>';    
+		strTemp+= '</tbody></table>';     // end of table2   
 		$('.pattika').append(strTemp); 
 
 		
@@ -267,9 +286,9 @@ var showContent = function()
 				
 		gotoTop('#pat');
 
-	});	
+	});	//function button click ends
 	
-};
+};// function show content ends
 
 var tVarna = [4]; for (let i=0; i<4;i++) {tVarna[i]=[4]};
 tVarna = [
@@ -482,21 +501,21 @@ function handleVadhuvuku(theDiv){
 		for ( let n=0;n<108;n++)
 		{
 			
-		
+			//gs and gp are given. selected by uer.
 			bs = parseInt(n/4);
 			
 			bp = n % 4;
 			boyNavamsa  = n;			
 			boyRasiNum =  parseInt( n / 9 );
 
-			
+			//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls.
 			girlNavamsa = gs * 4 + gp;		
-			girlRasiNum = parseInt( girlNavamsa / 9 );   
+			girlRasiNum = parseInt( girlNavamsa / 9 );    // rasi numbers are 0 to 11. 
 			
 			let countRasi = 0.0;
 			let countStar = 0.0;
 			
-			
+			// rashi based should be >= 6
 			find1Varna();
 			find2Vasya();
 			find5Grahamaitri();
@@ -506,18 +525,19 @@ function handleVadhuvuku(theDiv){
 			if (countRasi >= 6){
 					findNavakam();
 					find3Tara();
-					
+					//star based tara points should be > 1
 					if(thePoints > 1){
 						find4Yoni();					
 						find6Gana();
 						find8Nadi();
 						countStar = ( parseFloat(arrayResults[2]) + parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) );
-						
+						// star based total points should be > 7.5
 						if (countStar >= 7.5){
 							find10Rajju();
-							
+							//if(n >67 && n < 72) {alert((girlRajjuName != boyRajjuName))};
 							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) ){
-								
+								//will not pass only if both are bad.
+								//if(n >67 && n < 72) {alert((girlNadiNum != boyNadiNum))};
 								thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
 							
 								strTemp += '<tr><td>' + ((bs==oldBS) ? ' ' : aStarNames27[bs]) + '</td><td>' + (bp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
@@ -545,6 +565,7 @@ function handleVaruniki(theDiv){
 		
 	$("#varuniki").on("click",  function()
 	{
+		// for the girl
 		
 		prepareData();
 		$(theDiv).empty();	
@@ -554,20 +575,20 @@ function handleVaruniki(theDiv){
 		let oldGS = "xxx";
 		for ( let n=0;n<108;n++)
 		{
-			
+			//gs and gp are given. selected by uer.
 			gs = parseInt(n/4);			
 			gp = n % 4;
 			girlNavamsa  = n;			
 			girlRasiNum =  parseInt( n / 9 );
 
-			
+			//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls.
 			boyNavamsa = bs * 4 + bp;		
-			boyRasiNum = parseInt( boyNavamsa / 9 );   
+			boyRasiNum = parseInt( boyNavamsa / 9 );    // rasi numbers are 0 to 11. 
 			
 			let countRasi = 0.0;
 			let countStar = 0.0;
 			
-			
+			// rashi based should be >= 6
 			find1Varna();
 			find2Vasya();
 			find5Grahamaitri();
@@ -576,13 +597,13 @@ function handleVaruniki(theDiv){
 			if (countRasi >= 6){
 					findNavakam();
 					find3Tara();
-				
+					//star based tara points should be > 1
 					if(thePoints > 1){
 						find4Yoni();					
 						find6Gana();
 						find8Nadi();
 						countStar = ( parseFloat(arrayResults[2]) + parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) );
-					
+						// star based total points should be > 7.5
 						if (countStar >= 7.5){
 							find10Rajju();
 							if(n >67 && n < 72) {alert((girlRajjuName != boyRajjuName));}
@@ -616,68 +637,78 @@ function handleMyMethod(theDiv){
 
 		prepareData();
 		$(theDiv).empty();			
-		$(theDiv).append('<h2>  కూటముల పట్టిక - నా పద్ధతి </h2> <hr>');		
+		$(theDiv).append('<h2>  కూటముల పట్టిక - నా పద్ధతి </h2> <hr>');		// Dispaly starts here
 						
 		strTemp = '<p class="mytext">'  + aStarNames27[gs]  + ' - '+ (gp+1) + ' వధువు  &amp  '  + aStarNames27[bs]   + ' - ' + (bp+1) + ' వరుడు.';
 		strTemp+= ' మూడు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.</p>';
 		$(theDiv).append(strTemp); 
 			
-	
+		//Table2 - headings 
 		strTemp = '<table id="anytable"><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణం</th></tr>';
 		subPoints = 0;
 		totalPoints = 0;
 
+		// Table2 - row 1.varna.   varna index is 0 to 3. ~rasinum is 0 to 11
 			
 		find1Varna();
 		strTemp+= '<tr><td>1. వర్ణ కూటమి</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
 		strTemp+= '<td>' + arrayVarnaNames[(boyRasiNum % 4)] + '</td><td>' + thePoints +'</td></tr>';
 		
+		//Table2 - row 2.Vasya Kootami
+		//vasya divisions are - Chatushpada =0,Nara=1, JalaChara=2 ,VanaChara=3,Keetaka=4.rasinum is 0 to 11						
 		find2Vasya();
 		strTemp+= '<tr><td>2. వశ్య కూటమి</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
 		
-	
+		//Table2 - row 5. Rasyaadhipa or graha maitri kootami
 		find5Grahamaitri();
 		strTemp+= '<tr><td>5. రాశ్యాధిప/గ్రహమైత్రి కూటమి</td> <td>' +  aRasiInfo[girlRasiNum].lord + '</td>';
-			
+		// ~rasiNum is 0 to 11		
 		strTemp+= '<td>' +  aRasiInfo[boyRasiNum].lord + '</td><td>' + thePoints + '</td></tr>';	
 	
-	
+		// Table2 - row 3.Dina or Taaraa kootami
 		findNavakam();
 		find3Tara();
 		strTemp+= '<tr><td>3. దిన/తారా కూటమి</td> <td>' + arrayMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
 		strTemp+= '<td>' + arrayMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
 			
-	
+		//Table2 - row 4.Yoni Kootami
 		find4Yoni();
 		strTemp+= '<tr><td>4. యోని కూటమి</td> <td>' + arrayYoniNames[gs]  + '</td>';
 		strTemp+= '<td>' + arrayYoniNames[bs] + '</td><td>' + thePoints + '</td></tr>';
 		
-			
+		//Table2 - row 6.Ganam
+		//arrayGanaTypes gives 3 ganas and list of all stars in each gana - deva ,manushya, raakshasa
+		//for each gana get the list of nakshatras
+		// then check if one of them matches the girl's nakshatra.		
 		find6Gana();
 		strTemp+= '<tr><td>6. గణ కూటమి</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
 		strTemp+= '<td>' +  arrayStarInfo[bs].gananame + '</td><td>' + thePoints + '</td></tr>';		
 	
+		//Table2 - row. 8.Naadi Kootami
 		find8Nadi();
-		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>'; 
+		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  arrayNadiNames[boyNadiNum] +  '</td><td>' + thePoints +'</td></tr>';
 	
-		strTemp+= '<tr><td><strong>మొత్తం గుణములు(29 కి)</strong></td> <td>-</td>';  
+
+		//Table2 - row 9. Total
+		strTemp+= '<tr><td><strong>మొత్తం గుణములు(29 కి)</strong></td> <td>-</td>';  // g is 0 to 26
 		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 
-		
+
+		//Table2 - row. 7.Bha Kootami				
 		find7Bha();
 		strTemp+= '<tr><td>7. భ/రాశి కూటమి</td> <td>' +  rasiG2B + '</td>';
 		strTemp+= '<td>' +  rasiB2G + '</td><td>' + thePoints +'</td></tr>';
 	
-
+		//Table2 - row 10. Rajju
 		find10Rajju();
-		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>'; 
+		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
 
 		strTemp+= '</table>';
-		$(theDiv).append(strTemp); 
+		$(theDiv).append(strTemp); // end of table2 and div
 
 
 	strTemp = '<p class="mytext">';
@@ -714,7 +745,7 @@ function handleMyMethod(theDiv){
 
 	strTemp += '</p>';
 	
-	$(theDiv).append(strTemp);
+	$(theDiv).append(strTemp); // end of table2 and div	
 
 	gotoTop(theDiv);
 
@@ -738,11 +769,23 @@ function handleTaralu(theDiv){
 }
 
 
+function handleLakshana(theDiv){
+	
+	$("#lakshana").on("click",  function()
+	{
+		prepareData();
+		$(theDiv).empty();
+		printLakshana(girlRasiNum,theDiv);
+		
+		gotoTop(theDiv);
+	});
+}
 
 function printLakshana(selectedRasi, theDiv){
 	$.getJSON ('rasichar.json', function (data) {
 			
-		
+		//$('.rightcol').append('<h1>' + data[selectedRasi].Rasi + ' - లక్షణములు</h1><hr><br>');
+		//$('.rightcol').append( 'CVB:' + data[selectedRasi].CVB + '<br>');
 		$(theDiv).append('<h2>అమ్మాయి నక్షత్రమున్న రాశి యొక్క లక్షణములు:</h2><hr>');
 		$(theDiv).append('<ul>');
 		$.each(data[selectedRasi], function(index, value){     
@@ -759,7 +802,7 @@ function printLakshana(selectedRasi, theDiv){
 
 function printTaras(astar, theDiv){
 
-	let number_of_rows = 9; 
+	let number_of_rows = 9; // nine taras
 		let tempStr = "";
 		
 		tempStr = '<h2>Taras for - '+ aStarNames27[astar] + ' - Nakshatram</h2><hr>';
@@ -768,9 +811,10 @@ function printTaras(astar, theDiv){
 
 		for(let i = 0; i < number_of_rows; i++)
 		{
-           
+            
+			// name of star
 			tempStr +='<tr><td>' + aMaitriNames[i] + '</td>';
-		
+			// serial Num
 			tempStr+='<td>' + (i+1) + '</td>';	
 			tempStr +='<td>' + aStarNames27[calcTara(i + astar,0,27)] + '</td>';
 			tempStr+='<td>' + (i+1+9) + '</td>';	
@@ -790,7 +834,7 @@ function printTaras(astar, theDiv){
 
 function printSpecialTaras(astar, theDiv){
 
-	let number_of_rows = 10; 
+	let number_of_rows = 10; // special taras
 		let tempStr = "";
 		
 		tempStr = '<br><h2>Special Taras for - '+ aStarNames27[astar] + ' - Nakshatram</h2>';
@@ -808,18 +852,18 @@ function printSpecialTaras(astar, theDiv){
 
 		for (let i = 3; i < number_of_rows ; i++)
 		{
-			
+			//even in 28 scheme user is selecting 27 only
 			if( astar > 20 && astar < 27 ){
 				astar++;
 			}
 			tempStr += '<tr><td>' + aSpecialTaras[i].id + '</td><td>' +  aSpecialTaras[i].name + '</td>';
 			tempStr += '<td>' +  aSpecialTaras[i].scheme + '</td><td>';
 			tempStr += aStarNames27[calcTara(Number(aSpecialTaras[i].id) + astar-1,0,28)] +'</td></tr>';
-			
+			// re-instate user selection.
 			if( astar > 20 && astar < 27 ){
 				astar--;
 			}
-			
+			// calacTara function changed the array, restore it.
 			if(aStarNames27.length == 28){
 				aStarNames27.splice(21, 1);
 			}
@@ -901,7 +945,7 @@ var calcTara = function(myStar,myFactor,myScheme){
 	
 	if(myScheme == 28){
 
-	
+		// add abhijit if scheme is 28.
 		aStarNames27.splice(21, 0, "అభిజిత్");
 		
 		temp = myStar + myFactor;
@@ -927,6 +971,8 @@ var calcTara = function(myStar,myFactor,myScheme){
 }
 
 
+
+//reads,gs,gp,bs,bp. preapres - RasiNum and Navamsa for girl and boy.
 function prepareData()
 {	
 	thePoints = 0.0;
@@ -937,7 +983,7 @@ function prepareData()
 		arrayResults[i] = 0.0;
 	}	
 
-
+	// gs/bs is 0 to 26. gp/bp is 0 to 3
 	gs = $("#girlstar").prop('selectedIndex');
 	if (gs < 0 ) { gs = 0};			
 	gp = $("#girlpaadam").prop('selectedIndex');
@@ -947,18 +993,20 @@ function prepareData()
 	bp = $("#boypaadam").prop('selectedIndex');
 	if (bp < 0 ) { bp = 0};	
 	
-				
+	//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. row is girls. 				
 	girlNavamsa = gs * 4 + gp;		
-
+	//there are 0-107 navamsas. this gives navamsa of given nakshatra and paadam. col is boys.
 	boyNavamsa  = bs * 4 + bp;		
 		
-	girlRasiNum = parseInt( girlNavamsa / 9 );  
+	girlRasiNum = parseInt( girlNavamsa / 9 );    // rasi numbers are 0 to 11. 
 	boyRasiNum =  parseInt( boyNavamsa / 9 );	
 	
 }
 
 function find1Varna(){
-	
+	//takes rasinum of girl and boy
+	//reads points
+	//calculates sub and total
 	theRowNum = girlRasiNum % 4;
 	theColNum = boyRasiNum % 4;
 	thePoints = Number(tVarna[theRowNum][theColNum]);
@@ -969,14 +1017,19 @@ function find1Varna(){
 }
 
 function find2Vasya(){
-	
+	//uses rasinum of girl and boy to find vasya numbers
+	//corrects special cases of dhanus and makara rasi
+	//చతుష్పాద,నర,జలచర,వనచర,కీటక
+	// rasis taken as 0,0,1,2,3,1,1,4,1,0,1,2
+	//reads points. as per adipudi
+	//caluculates sub and total points
 
 	theRowNum = arrayVasyaNum[girlRasiNum];
 	theColNum = arrayVasyaNum[boyRasiNum];
-
+	//// for dhanus initially Nara. Only moola nara. others jantu.	
 	if ( boyRasiNum == 8  && (boyNavamsa > 75 && boyNavamsa < 81) ) theColNum = 0; 
 	if ( girlRasiNum == 8 &&  (girlNavamsa > 75 && girlNavamsa < 81 ) ) theRowNum = 0;
-
+	// for makara intially jantu. only dhanus 1 n 2 are jala.
 	if ( girlRasiNum == 9  && (girlNavamsa == 88 || girlNavamsa == 89) ) theRowNum = 2;	 
 	if ( boyRasiNum == 9  && (boyNavamsa == 88 || boyNavamsa == 89)  ) theColNum = 2;			
 	
@@ -1015,14 +1068,52 @@ function findNavakam(){
 
 function find3Tara(){
 
-	
-	thePoints = 0.0;
+	//before this findNavakam function calculates girldiff and boydiff
+	// takes girldiff and boydiff.
+	// starts with zero points
+	// if from girl tara is not 3/5/7 then 1.5 points
+	// then if from  boy also tara is not 3/5/7 then 3 points
+	//calculates sub and total points
 
+	/*
+	let tpG = 1.5;
+	let tpB = 1.5;
+	thePoints = 0.0;
+	
+	if ( (girlDiff+1) == 7 ){ tpG = 0.0;}
+	if ( ( (girlDiff+1) == 5 ) && ( girlNavakam == 1 || girlNavakam == 2) ){ tpG = 0.0; }
+	if ( ( (girlDiff+1) == 3 ) && ( girlNavakam == 1 ) ){ tpG = 0.0; }
+	
+	if ( (boyDiff+1) == 7 ){ tpB = 0.0;}
+	if ( ( (boyDiff+1) == 5 ) && ( boyNavakam == 1 || boyNavakam == 2) ){ tpB = 0.0; }
+	if ( ( (boyDiff+1) == 3 ) && ( boyNavakam == 1 ) ){ tpB = 0.0; }
+	
+	thePoints = tpG + tpB;
+	if(tpG == 0){ thePoints = 0;} // points only if G->B is OK.
+	*/
+	
+	/*
+	//first, g 2 b must be ok. then only chck b 2 g.
+	thePoints = 0;
+	if ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  )
+	{
+		thePoints = 1.5; // only g 2 b ok
+		if ( (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )
+		{
+			thePoints = 3; // both ways ok
+		}	
+
+	}
+		*/
+
+	// either ok means 1.5 points. both ways is 3
+	thePoints = 0.0;
+	//thePoints = 1.5; // only g 2 b ok
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) || (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
-		thePoints = 1.5; 
+		thePoints = 1.5; // either way ok
 	}
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) && (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
-		thePoints = 3.0; 
+		thePoints = 3.0; // both ways ok
 	}		
 
 
@@ -1034,8 +1125,11 @@ function find3Tara(){
 
 function find4Yoni(){
 
-	
-	theRowNum = arrayStarInfo[gs].yoninum-1; 
+	//gets yoninum of girl and boy from starinfo array
+	//calculates points as per adipudi
+	//calculates sub and total points
+
+	theRowNum = arrayStarInfo[gs].yoninum-1; // yoninum is 1 to 14
 	theColNum = arrayStarInfo[bs].yoninum-1;	
 	thePoints = Number(tYoni[theRowNum][theColNum]);
 	
@@ -1045,7 +1139,7 @@ function find4Yoni(){
 
 }
 
-
+//given rasi number 0 to 11, returns rasyadhipa graha number 0 to 6
 function getRaasyaadhipa(x)
 {
 				
@@ -1082,7 +1176,10 @@ function getRaasyaadhipa(x)
 
 
 function find5Grahamaitri(){
-	
+	// uses get rasyadhipa function to get rasyadhipa number of girl and boy
+	// gets points
+	// as per muhurta sindhu
+	//calculates sub and total points
 
 	theRowNum = getRaasyaadhipa(girlRasiNum);
 	theColNum = getRaasyaadhipa(boyRasiNum);
@@ -1094,23 +1191,28 @@ function find5Grahamaitri(){
 
 }
 
-
+//given gana number of female and male ( 1/2/3), returns Gana Points
 function getGanaPoints(f,m)
 {
-	
-	if ( f == m) { return 6;} 
-	else if (f == 1 && m == 2) { return 4;} 
-	else if (f == 1 && m == 3) { return 1;} 
-	else if (f == 2 && m == 1) { return 6;} 
-	else if (f == 2 && m == 3) { return 1;} 
-	else if (f == 3 && m == 1) { return 0;} 
-	else if (f == 3 && m == 2) { return 0;} 
+	//takes gana number of girl and boy. 
+	//returns gana points.
+	// as per muhurta sindhu.
+	if ( f == m) { return 6;} // both same
+	else if (f == 1 && m == 2) { return 4;} // G= deva. B= nara
+	else if (f == 1 && m == 3) { return 1;} // G= deva. B= rak
+	else if (f == 2 && m == 1) { return 6;} // G= nara. B= deva
+	else if (f == 2 && m == 3) { return 1;} // G= nara. B= rak
+	else if (f == 3 && m == 1) { return 0;} // G= rak. B= deva
+	else if (f == 3 && m == 2) { return 0;} // G= rak. B= nara
 	
 }
 
 function find6Gana(){
 
-	
+	//gana number for boy and girl is read from starinfo array.
+	//getganapoints function uses those gana numbers to calaculate points
+	//calculates sub and total points
+
 	thePoints = getGanaPoints(arrayStarInfo[gs].gananum,arrayStarInfo[bs].gananum);
 
 	subPoints = parseInt(thePoints);
@@ -1120,7 +1222,11 @@ function find6Gana(){
 }
 
 function find7Bha(){
-	
+	//first find rasidiff or rasi distance of g2b and b2g.
+	//this is required for print out.
+	//get points based on rasi numbers
+	//calaculate sub and total points
+
 				
 	if (girlRasiNum == boyRasiNum) 
 	{ 
@@ -1147,7 +1253,7 @@ function find7Bha(){
 	totalPoints = totalPoints + subPoints;
 }
 
-
+// given star number 1 to 27, returns nadi namber 0/1/2
 var getNadiNum = function(starNum)
 {
 	let numTemp = starNum % 6;
@@ -1171,7 +1277,9 @@ var getNadiNum = function(starNum)
 
 
 function find8Nadi(){
-	
+	// nadi num function returns nadi num 0/1/2, given the star number.
+	// calculates points, sub and total points
+
 	girlNadiNum = getNadiNum(gs+1);
 	boyNadiNum = getNadiNum(bs+1);
 
@@ -1183,7 +1291,7 @@ function find8Nadi(){
 	totalPoints = totalPoints + subPoints;
 }
 
-
+// given star num 1 to 27, returns rajju num 0 to 4
 function getRajjuNum(x)
 {
 		
@@ -1223,7 +1331,9 @@ function getRajjuNum(x)
 
 function find10Rajju(){
 
-	
+	// finds rajju number of boy or girl from get rajjuNum function.
+	// then find rajju name from rajjunames array.
+
 	girlRajjuName = arrayRajjuNames[getRajjuNum(gs+1)];
 	boyRajjuName = arrayRajjuNames[getRajjuNum(bs+1)];
 
