@@ -75,9 +75,7 @@ h1{
 	background-color: #2e83c4;
 }
   
-
-
-  
+ 
 .nav1 li:first-of-type a {
 	
 	background: transparent;
@@ -112,7 +110,6 @@ h2{
 }
 
 
-
 p{
 	text-indent: 3em;
 	font-weight: normal;
@@ -128,7 +125,6 @@ p{
 }
   
 
-  
 .tab {
 	/* order: 99; */
 	flex-grow: 1;
@@ -168,53 +164,53 @@ p{
 	background-image: linear-gradient( #78909e,#348dbd);
 }
  
-  .tabs input[type="radio"] {
-	
-	  display: none;
-  }
-  
-  .tabs input[type="radio"]:checked + label {
-	background: #3088c2;
-	color: white;
-	border-bottom: none;
-	background-image: linear-gradient(#93709c,#2e83c4);
-	text-shadow: 1px 1px 3px #333333;
-  
-  }
-  
-  .tabs input[type="radio"]:checked + label + .tab {
-	  display: block;
-  }
+.tabs input[type="radio"] {
 
-  
-  img{
-	float: left;
-	text-align: center;
-	margin: 0 auto;
-	width: 94%;
-  }
- 
-  
-  p{
-	text-indent: 4rem;
-	padding: 6px 12px 6px 14px;
-	text-align: justify;
-  }
-  
-  li{
-	text-decoration: none;
-	margin:0px;
-	padding:0px;
-	text-align: left;
-  
-	
-  }
-  
-  .myd{
+	display: none;
+}
+
+.tabs input[type="radio"]:checked + label {
+background: #3088c2;
+color: white;
+border-bottom: none;
+background-image: linear-gradient(#93709c,#2e83c4);
+text-shadow: 1px 1px 3px #333333;
+
+}
+
+.tabs input[type="radio"]:checked + label + .tab {
 	display: block;
-  }
+}
 
-    
+  
+img{
+float: left;
+text-align: center;
+margin: 0 auto;
+max-width: 100%;
+}
+
+
+p{
+text-indent: 4rem;
+padding: 6px 12px 6px 14px;
+text-align: justify;
+}
+
+li{
+text-decoration: none;
+margin:0px;
+padding:0px;
+text-align: left;
+
+
+}
+  
+.myd{
+display: block;
+}
+
+
  
 
 
@@ -273,82 +269,82 @@ p{
 
 
 	
-.tab {
-	order: 99; 
-	flex-grow: 1;
-	  width: 100%;
-	  display: none;
-	padding: 1rem;
-	background: #f1f1ee;
-	border: 6px solid #3487c7;
-  }
+	.tab {
+		order: 99; 
+		flex-grow: 1;
+		width: 100%;
+		display: none;
+		padding: 1rem;
+		background: #f1f1ee;
+		border: 6px solid #3487c7;
+	}
   
-  .tabs {
-	  display: flex;
-	flex-wrap: wrap; 
-	margin:0 auto;
-	padding:0px;
-	font-size:0.875em;
-	color: #333333;
-  }
-  
-  .tabs label {
-	  order: 1; 
-	  display: block;
-	  padding: 10px 10px;
-	  margin-right: 0.2rem;
-	  cursor: pointer;
-	color: #333333;
-	transition: background ease 0.2s;
-	border-radius: 15px 15px 0px 0px;
-	background-image: linear-gradient(#434a4e, #b9cedb);
-	width: 100px;
-	border-bottom: 3px solid #d5d5d5;
-  }
-  
-  .tabs input[type="radio"] {
+	.tabs {
+		display: flex;
+		flex-wrap: wrap; 
+		margin:0 auto;
+		padding:0px;
+		font-size:0.875em;
+		color: #333333;
+	}
 	
-	  display: none;
-  }
+	.tabs label {
+		order: 1; 
+		display: block;
+		padding: 10px 10px;
+		margin-right: 0.2rem;
+		cursor: pointer;
+		color: #333333;
+		transition: background ease 0.2s;
+		border-radius: 15px 15px 0px 0px;
+		background-image: linear-gradient(#434a4e, #b9cedb);
+		width: 100px;
+		border-bottom: 3px solid #d5d5d5;
+	}
   
-  .tabs input[type="radio"]:checked + label {
-	background: #3088c2;
-	color: white;
-	border-bottom: 0px;
-	background-image: linear-gradient(#93709c,#2e83c4);
-	text-shadow: 1px 1px 3px #333333;
-  
-  }
-  
-  .tabs input[type="radio"]:checked + label + .tab {
-	  display: block;
-  }
-  
-  img{
-  
-	float: left;
-	padding-right: 20px;
-  }
-  
-  p{
-	text-indent: 4rem;
-	padding: 6px 12px 6px 14px;
-	text-align: justify;
-  }
-  
-  li{
-	text-decoration: none;
-	margin:0px;
-	padding:0px;
-	text-align: left;
-  
+	.tabs input[type="radio"] {
+		
+		display: none;
+	}
 	
-  }
+	.tabs input[type="radio"]:checked + label {
+		background: #3088c2;
+		color: white;
+		border-bottom: 0px;
+		background-image: linear-gradient(#93709c,#2e83c4);
+		text-shadow: 1px 1px 3px #333333;
+	
+	}
+	
+	.tabs input[type="radio"]:checked + label + .tab {
+		display: block;
+	}
+	
+	img{
+	
+		float: left;
+		padding-right: 20px;
+	}
+	
+	p{
+		text-indent: 4rem;
+		padding: 6px 12px 6px 14px;
+		text-align: justify;
+	}
   
-  .myd{
-	display: block;
-  }
-  
+	li{
+		text-decoration: none;
+		margin:0px;
+		padding:0px;
+		text-align: left;
+	
+		
+	}
+	
+	.myd{
+		display: block;
+	}
+	
 		
 }
   
