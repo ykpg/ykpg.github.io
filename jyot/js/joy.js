@@ -6,8 +6,22 @@ let planetsInNZD1 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
 
 let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "]; 
 
-let aRasiNames = ['Mesha','Vrushabha','Midhuna','Karkataka','Simha','Kanya','Tula','Vruschika','Dhanus','Makara','Kumbha','Meena'];
-let aGrahaNames = ["Lagnam","Ravi","Chandra","Kuja","Budha","Guru","Sukra","Sani","Rahu","Ketu"];
+let aRasiAdhipaNum = [3,6,4,2,1,4,6,3,5,7,7,5]; 
+let aBhavaAdhipaNum = [0,0,0,0,0,0,0,0,0,0,0,0];  
+
+
+
+let aNPaapi = [0,0,0,1,0,0,0,1,1,1]; 
+let aPosRasi = []; 
+let aPosBhava = []; 
+
+let aKarakaVrudhdhi = [0,0,0,0,0,0,0,0,0,0]; 
+let aBhavaVrudhdhi = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aBhavaAdhipa = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aBhavaSubhatvam = [1,1,0,1,1,0,1,0,1,1,1,0] 
+let aPosBhavaLord = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aAdhipatyaVrudhdhi =  [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aABhavaVrudhdhi = [0,0,0,0,0,0,0,0,0,0,0,0]; 
 
 
 let aLL = [
@@ -42,11 +56,30 @@ let aDasaInfo = [
 
 let aKujaDoshaPos = [1,2,4,7,8,12];
 
-let strTemp ;			
+		
 let isOK = false;
-let divPosition;
 let mdLordName = "";
 let thePlaceName = "";
+
+strTemp = "Aswini,Bharani,Kruttika,Rohini,Mrugasira,Ardra,Punarvasu,Pushyami,Aslesha,Makha,PoorvaPhalguni,UttaraPhalguni,Hasta,Chitta,Swati,Visakha,Anuradha,Jyeshta,Moola,PoorvaShaada,UttaraShaada,Sravana,Dhanishta,Satabhisha,PoorvaBhaadra,UttaraBhaadra,Revati";		
+let aStarNames27 = strTemp.split(',');
+strTemp = "Aswini,Bharani,Kruttika,Rohini,Mrugasira,Ardra,Punarvasu,Pushyami,Aslesha,Makha,PoorvaPhalguni,UttaraPhalguni,Hasta,Chitta,Swati,Visakha,Anuradha,Jyeshta,Moola,PoorvaShaada,UttaraShaada,Abhijit,Sravana,Dhanishta,Satabhisha,PoorvaBhaadra,UttaraBhaadra,Revati";		
+let aStarNames28 = strTemp.split(',');
+strTemp = "Janma,Sampath,Vipath,Kshema,Pratyak,Sadhana,Nadhana,Mitra,ParamMitra";
+let aStarMaitri = strTemp.split(',');
+
+let aSpecialTaras = [];
+aSpecialTaras.push({id:4, scheme:27,name:'Jaati'}); 
+aSpecialTaras.push({id:7, scheme:27,name:'Naidhana'});
+aSpecialTaras.push({id:10,scheme:27,name:'Karma'}); 
+aSpecialTaras.push({id:12,scheme:28,name:'Desa'});
+aSpecialTaras.push({id:16,scheme:28,name:'Sanghatika'}); 
+aSpecialTaras.push({id:18,scheme:28,name:'Samudayika'});
+aSpecialTaras.push({id:19,scheme:28,name:'Aadhaana'}); 
+aSpecialTaras.push({id:22,scheme:28,name:'Vainasika'});
+aSpecialTaras.push({id:25,scheme:28,name:'Maanasa'}); 
+aSpecialTaras.push({id:28,scheme:28,name:'Abhisheka'});
+
 
 let t2,t3,t4,t5,t6,t7;
 let x, y,d="D";
@@ -160,11 +193,11 @@ var MAXNAKSHA      = 27  /* Max  */
 $(document).ready(function() 
 {	
     showInfo();
-    showPlaces();
-    	
-    showCharts();
+    showPlaces(); 
     showDasa();
     showKujaDosham();
+    showAnalysis();
+
 		
 });
 
@@ -175,27 +208,27 @@ var showInfo = function()
 	{
 		parse_input_data();
         calc_position(false);
+        calc_positions(); 
 
-        $('.main').empty();
-        isOK = printInfo(false);
-        divPosition = $("#maintop").offset();
-        $('html,body').animate({scrollTop: divPosition.top}, "slow");
-        
+        isOK = printInfo('.main');
+
+        printCharts('.main');
+        gotoTop('.main')
 
 	});
     
 };
 
-var printInfo = function(transit) {
+
+var printInfo = function(theDiv) {
      
     let tempStr;
+    $(theDiv).empty();
+    
     if ( lat == null || lon == null || lat == undefined || lon == undefined || isNaN(lat) || isNaN(lon) ){
-        $('.aside2').empty();
-        strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">'
-        strTemp += ' Latitude or Longitude is not proper. Hyd = 17N23 & 78E28<p>';
-        $('.aside2').append(strTemp);
-        isOK = false;
         
+        printError(' Latitude or Longitude is not proper. Hyd = 17N23 & 78E28.', '.aside2');
+        isOK = false; 
         return false;
     }
     
@@ -209,57 +242,67 @@ var printInfo = function(transit) {
     }
     
     strTemp += '</tbody></table>';
-    $(".main").append(strTemp);
+    $(theDiv).append(strTemp);
 
     strTemp = '<p class="right1P">' + name + ' - ' + date.toDateString().slice(0,15)  + ', ' + time.toTimeString().slice(0,8) + (thePlaceName ? (', ' + thePlaceName) : '') + '<br>';
     strTemp +=  ' Latitude:' + parseFloat(lat).toFixed(2) + ',  Longitude:' + parseFloat(lon).toFixed(2) + ', GMT: ' + tz + '<br>';
-    strTemp += '<span style = "color:#FF9912;"> Janma-Lagna:  ' + aRasiNames[(mygrahas[0].rasizn-1) ] + ' ,  Janma-Rasi: ' + aRasiNames[(mygrahas[2].rasizn-1) ] + ' - ' + mynaksha[2] + ' - ' + mynakshap[2] + '</span><br>';
+    strTemp += 'Lagnam:  ' + aRasiNames[(mygrahas[0].rasizn-1) ] + ',  Rasi: ' + aRasiNames[(mygrahas[2].rasizn-1) ] + ' - ' + mynaksha[2] + ' - ' + mynakshap[2] + '<br>';
     strTemp +=  "Ayanamsa:" + (calc_ayanamsa(false).toFixed(4)) +'° , '; 
     strTemp += '  Sid.Time:' + (deg2hms(calc_sideral_time(time.getHours(),time.getMinutes(),false)));
     strTemp += '<br>' + "Sunrise: " + calc_sunriseset(true,  false, true, false);
     strTemp += ",  Sunset: "+ calc_sunriseset(false, false, true, false) + '<br>';
-    strTemp += "Tithi: "+ calc_tidhi(mygrahas[2].ra,mygrahas[1].ra)  + ",  Vaaram: "+ calc_day_of_the_week(false) + '<br>';
-    strTemp += 'Day Lord:' + calc_day_lord(false) + ',  Hora Lord:' + calc_hora_lord(false);
+    strTemp += "Tithi: "+ calc_tidhi(mygrahas[2].ra,mygrahas[1].ra)  + '<br>';
+    strTemp +=  "Vaaram: " + calc_day_of_the_week(false) + ', Day Lord:' + calc_day_lord(false) + ',  Hora Lord:' + calc_hora_lord(false);
     strTemp += '</p>';
-    $(".main").append(strTemp);
+    $(theDiv).append(strTemp);
     isOK = true;
     $('.aside2').empty();
+
     return true;
     
 }
 
-function showCharts(){	
-	
-	$("#charts").on("click",  function()
-	{
-		$('.aside2').empty();
-        printCharts();
-        divPosition = $("#aside2top").offset();
-        $('html,body').animate({scrollTop: divPosition.top}, "slow");	
-		
-	});
+function calc_positions(){
+    for(let i =0 ; i < 10 ; i++){
+        aPosRasi[i] = mygrahas[i].rasizn;
+        
+    }
+    let k = myrashis[0]; // which rasi is lagna in.
+  
+    for(let i = 0 ; i < 10 ; i++){
+        aPosBhava[i] = aPosRasi[i] - k ;
+        if ( aPosBhava[i] < 0 ) { aPosBhava[i] = aPosBhava[i] + 12;}
+        aPosBhava[i]++;
+        
+    }
+    for(let i = 0 ; i < 12 ; i++){
+        aBhavaAdhipa[i] = aRasiAdhipaNum[myrashis[i]-1];
+        
+        aPosBhavaLord[i] = aPosBhava[aBhavaAdhipa[i]];
+        
+    }
+    
+    
 }
 
 
-function printCharts(){
-       
+function printCharts(theDiv){
+  
         if(isOK){
-            $('.aside2').empty();
-            $('.aside2').html('<h2>Rasi(D1) & Navamsa(D9) Charts</h2>');
-            drawCharts();
+         
+            $(theDiv).append('<h2>Rasi(D1) & Navamsa(D9) Charts</h2>');
+            drawCharts(theDiv);
         }
 
         else{
 
-            strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">';
-            strTemp += ' Charts can be viewed only after entering proper data and clicking on Generate button.<p>';
-            $('.aside2').empty();
-            $('.aside2').append(strTemp);
+            printError(' Charts can be viewed only after entering proper data and clicking on Generate button.','.aside2');
+           
         }
 }
 
 
-function drawCharts(){
+function drawCharts(theDiv){
 
     let k = myrashis[0];
     let theLagnaRasi = k;
@@ -267,8 +310,7 @@ function drawCharts(){
     for(let i = 1; i < 13; i++){
         planetsInNZD1[k] = mybhavas[i]; 
         k = k + 1;
-        if ( k > 12 ) { k = 1;}
-        
+        if ( k > 12 ) { k = 1;}    
     }
 
     strTemp = '<br><table class="chart" id="chart"><thead><tr><td colspan=4>Rasi Chart</td></tr></thead>';
@@ -276,7 +318,7 @@ function drawCharts(){
     strTemp += '<tr><td>' + planetsInNZD1[11] + '</td><td colspan=2 rowspan=2></td><td>' + planetsInNZD1[4] + '</td></tr>';
     strTemp += '<tr><td>' + planetsInNZD1[10] + '</td></td><td>' + planetsInNZD1[5] + '</td></tr>';
     strTemp += '<tr><td>' + planetsInNZD1[9] + '</td><td>' + planetsInNZD1[8] + '</td><td>' + planetsInNZD1[7] + '</td><td>' + planetsInNZD1[6] + '</td></tr></tbody></table><br>';
-    $('.aside2').append(strTemp);
+    $(theDiv).append(strTemp);
 
 
     for ( let i = 0; i < 12; i++){
@@ -284,9 +326,9 @@ function drawCharts(){
     }
 
     for(let i = 0; i < 10; i++){
-        k = mygrahas[i].navzn - 1;  
+        k = mygrahas[i].navzn - 1; 
         
-        
+     
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
@@ -296,8 +338,8 @@ function drawCharts(){
     strTemp += '<tr><td>' + planetsInNZD9[9] + '</td></td><td>' + planetsInNZD9[4] + '</td></tr>';
     strTemp += '<tr><td>' + planetsInNZD9[8] + '</td><td>' + planetsInNZD9[7] + '</td><td>' + planetsInNZD9[6] + '</td><td>' + planetsInNZD9[5] + '</td></tr></tbody></table><br>';
     
-    $('.aside2').append(strTemp);
-    $('.aside2').append("<h3>Notation: Ascendant,Sun,Moon,Mars,Mercury,Jupiter,Venus,Saturn,Rahu,Ketu</h3>");
+    $(theDiv).append(strTemp);
+    $(theDiv).append("<h4>Notation: Ascendant,Sun,Moon,Mars,Mercury,Jupiter,Venus,Saturn,Rahu,Ketu</h4>");
 }
 
 
@@ -306,14 +348,11 @@ function showKujaDosham(){
 	$("#kujadosham").on("click",  function()
 	{
 		if(isOK){
-            $('.main').empty();
-            printKujaDosham();     
+            
+            printKujaDosham('.aside2');     
         }
         else{
-            strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">';
-            strTemp += ' Kuja Dosham can be viewed only after entering proper data and clicking on Generate.<p>';
-            $('.aside2').empty();
-            $('.aside2').append(strTemp);
+            printError(' Kuja Dosham can be viewed only after entering proper data and clicking on Generate.','.aside2');
 
         }	
         divPosition = $("#maintop").offset();
@@ -322,7 +361,7 @@ function showKujaDosham(){
 	});
 }
 
-function printKujaDosham(){
+function printKujaDosham(theDiv){
       
     let posKuja = mygrahas[3].rasizn; 
     
@@ -350,15 +389,15 @@ function printKujaDosham(){
     
     strTemp += '<p class="main">';
    
-  
+
     if ( (relativePosLK == 2 ||  relativePosCK == 2 || relativePosSK == 2) && ( posKuja == 3 || posKuja == 6)){
         strTemp += 'Exception: kuja in 2nd and that Rasi is Midhuna or Kanya Rasi.<br>';
     }
-    
+  
     if ( (relativePosLK == 12 ||  relativePosCK == 12 || relativePosSK == 12) && ( posKuja == 2 || posKuja == 7)){
         strTemp += 'Exception: kuja in 12th and that is Vrushabha or Tula Rasi.<br>';
     }
-    
+   
     if ( (relativePosLK == 4 ||  relativePosCK == 4 || relativePosSK == 4) && ( posKuja == 1 || posKuja == 8)){
          strTemp += 'Exception: kuja in 4th and that is Mesha or Vruschika Rasi.<br>';
     }
@@ -366,20 +405,20 @@ function printKujaDosham(){
     if ( (relativePosLK == 7 ||  relativePosCK == 7 || relativePosSK == 7) && ( posKuja == 4 || posKuja == 10)){
          strTemp += 'Exception: kuja in 7th and that is Karkaataka or Makara Rasi.<br>';
     }
-    
+
     if( (relativePosLK == 8 ||  relativePosCK == 8 || relativePosSK == 8) && ( posKuja == 9 || posKuja == 12)){
         strTemp += 'Exception: kuja in 7th and that is Dhanu or Meena Rasi.<br>';
     }
-   
+
     if(posKuja == 5 || posKuja == 11){
         strTemp += 'Exception:  Kuja in Simha or Kumbha Rasi.<br>';
     }
 
-
+ 
     if(posKuja == posChandra || posKuja == posGuru){
         strTemp += 'Exception: Kuja is in Yuti with Chandra or Guru.<br>';
     }
- 
+   
     if(posGuru == 1 || posSukra == 1){
         strTemp += 'Exception: Guru or Sukra is in Lagnam.<br>';
     }
@@ -389,13 +428,12 @@ function printKujaDosham(){
         strTemp += 'Note: Kuja is in Kendra or Kona from Guru.';
     }
 
-    strTemp += '</p><p class="main">Note: Exceptions are as per Mr BV Raman.<br>';
-
-    strTemp += 'From Lagna, Kuja in Lagna is Ok.<br>From Chandra, Kuja in 2nd is Ok.<br>';
-    strTemp += 'From Sukra, only Kuja in 7th is critical.</p>';
+    strTemp += '</p><p class="main">Note: Exceptions if any, are as per Mr BV Raman.<br>';
+    strTemp += 'I think, Kuja in Lagna or   in 2nd from Chandra is Ok.';
+    strTemp += ' From Sukra, only Kuja in 7th is critical.</p>';
     
-    $('.main').empty();
-    $('.main').append(strTemp);
+    $(theDiv).empty();
+    $(theDiv).append(strTemp);
 
 }
 
@@ -410,8 +448,7 @@ function findRelativePos(fromRef,toPlanet){
     }
     else if( fromRef < toPlanet){
    
-        return ( toPlanet - fromRef + 1);
-        
+        return ( toPlanet - fromRef + 1);    
     }
 }
 
@@ -419,16 +456,13 @@ function findRelativePos(fromRef,toPlanet){
 function showPlaces(){	
 	
 	$("#places").on("click",  function()
-	{
-		$('.aside2').empty();
-        printPlaces();
-        divPosition = $("#aside2top").offset();
-        $('html,body').animate({scrollTop: divPosition.top}, "slow");   
+	{		
+        printPlaces('.aside2');
 		
 	});
 }
 
-function printPlaces(){
+function printPlaces(theDiv){
 
     strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><table class="myt" id="placest">';
     strTemp += '<thead><tr><th>Place</th><th>Latitude</th><th>Longitude</th><th>GMT</th></tr></thead><tbody>'
@@ -443,8 +477,10 @@ function printPlaces(){
     strTemp += '<br>Click on a row to fill the relevant fields.'
     strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>';
     strTemp += '<img src="img/ss.png" width="16" > Search for Latitude & Longitude...</a>';
-    $('.aside2').append(strTemp);
+    $(theDiv).empty();
+    $(theDiv).append(strTemp);
     readRownFillData();
+    gotoTop(theDiv);
 }
 
 
@@ -455,20 +491,234 @@ var showDasa = function()
 	{
 		
         if(isOK){
-            $('.aside2').empty();
-            calc_vdasa();       
+            
+            calc_vdasa('.aside2');       
         }
         else{
-            strTemp = '<p style="color:#FF9912; text-align: center"><img src="img/hand.png" height=16 ">';
-            strTemp += ' Dasa can be viewed only after entering proper data and clicking on Generate button.<p>';
-            $('.aside2').empty();
-            $('.aside2').append(strTemp);
+            printError(' Dasa can be viewed only after entering proper data and clicking on Generate button.', '.aside2') ;
+            
         }	
-        divPosition = $("#aside2top").offset();
-        $('html,body').animate({scrollTop: divPosition.top}, "slow");	
+        gotoTop('.aside2');
 	});
     
 };
+
+
+function showAnalysis(){	
+	
+	$("#analysis").on("click",  function()
+	{
+		if(isOK){
+            
+            printAnalysis('.aside2');     
+        }
+        else{
+            printError(' Analysis can be viewed only after entering proper data and clicking on Generate.' , '.aside2') ;
+            
+        }	
+        gotoTop('.aside2');
+		
+	});
+}
+
+function printAnalysis(theDiv){
+
+    $(theDiv).empty();
+    
+    strTemp = calc_tidhi(mygrahas[2].ra,mygrahas[1].ra);
+    let tempArray = strTemp.split('-');
+    if ( tempArray[2].trim() === "KsheenaChandra") { aNPaapi[2] = 1;}
+    strTemp = '<h2>Analysis:</h2><p class="leftp">';
+
+
+    strTemp += "Age = " + moment(date).fromNow(true) + '<br>' ; 
+
+    let degMoon = mygrahas[2].degree.toFixed(2);
+    strTemp += 'Chandra is - ' + (aNPaapi[2] == 1 ? 'Paapi(Ksheena)' : 'Subha(Poorna)') + (mygrahas[2].rasizn == 8 ? ', Neecha(0-3) ' + degMoon +  '°' : ' ')
+            + (mygrahas[2].rasizn == 2 ? ', Uchcha(0-3) ' + degMoon +  '°' : ' ');
+    
+    $(theDiv).append(strTemp);
+
+  
+    let degBudha = mygrahas[4].degree.toFixed(2);
+    let tempStr = "<br>";
+    tempStr = (aPosRasi[4] == 12 ? ', Neecha(15-20) ' + degBudha +  '°' : ' ')
+    + (aPosRasi[4] == 6 ? ', Uchcha(15-20) ' + degBudha +  '°' : ' ')
+    strTemp = '<p class="leftp"> Budha is - Subha. Not with Sani or Kuja.' + tempStr;
+    if ( aPosBhava[4] == aPosBhava[3] ) { aNPaapi[4] = 1; strTemp = '<p class="leftp">Budha is with Kuja. Hence Paapi' + tempStr ;} 
+    if ( aPosBhava[4] == aPosBhava[7] ) { aNPaapi[4] = 1; strTemp = '<p class="leftp">Budha is with Sani. Hence Paapi' + tempStr ;} 
+    if ( aPosBhava[4] == aPosBhava[3] && aPosBhava[4] == aPosBhava[7]) { aNPaapi[4] = 1;strTemp = '<p class="leftp">Budha is with Kuja & Sani. Hence Paapi' + tempStr; } 
+    $(theDiv).append(strTemp + '</p>');
+
+
+
+    strTemp = '<p>';
+    let theWindow = 48/60;
+    let theBTime = parseInt(time.getHours()) +  parseInt(time.getMinutes()) / 60 ;
+    let theRise = calc_sunriseset(true, false, false, false);
+    let theSet  = calc_sunriseset(false, false, false, false);
+    
+    if (   Math.abs(theBTime - theRise ) < theWindow) {strTemp += 'Birth around Sunrise.<br>';}
+    if (   Math.abs(theBTime - theSet ) < theWindow) {strTemp += 'Birth around Sunset.<br>';}
+
+  
+    if(mygrahas[1].degree <1.2) { strTemp += 'Ravi Samkramanam - ' + mygrahas[1].degree.toFixed(2); }
+
+   
+    strTemp += '<p>';
+    for ( let i = 1; i < 10 ; i++){
+        if (  mygrahas[i].ra >=100 && mygrahas[i].ra < 120)  {strTemp += aGrahaNames[i] + ' - in Sarpa Drekkana<br>'};
+        if (  mygrahas[i].ra >=210 && mygrahas[i].ra < 230)  {strTemp += aGrahaNames[i] + ' - in Sarpa Drekkana<br>'};
+        if (  mygrahas[i].ra >=350 && mygrahas[i].ra < 360)  {strTemp += aGrahaNames[i] + ' - in Sarpa Drekkana<br>'};
+        if (  mygrahas[i].ra >=270 && mygrahas[i].ra < 280)  {strTemp += aGrahaNames[i] + ' - in Nigala Drekkana<br>'};
+    }
+    
+    strTemp += '</p>';
+    $(theDiv).append(strTemp );
+  
+
+    strTemp = '<table class="myt"> <caption>Naisargika Graha Karakatva Vruddhi/Kshayam based on Sthiti</caption>' ;
+    strTemp += '<thead> <tr><th>Planet</th><th>Vrudhdi</th><th>Kshaya</th></thead><tbody>' ;
+    for ( let i = 1; i < 10 ; i++){
+        aKarakaVrudhdhi[i] = 1;
+     
+        if ( aPosBhava[i] == 3 || aPosBhava[i] == 6 || aPosBhava[i] == 8 || aPosBhava[i] == 12)
+        {
+            aKarakaVrudhdhi[i] = 0;
+        
+
+        }
+        strTemp += '<tr><td>' + aGrahaNames[i] + '</td><td> ' + (aKarakaVrudhdhi[i] == 1 ? 'Yes' : ' ') +
+                    '</td><td> ' + (aKarakaVrudhdhi[i] == 0 ? 'Yes' : ' ') + '</td></tr>'
+    }
+    $(theDiv).append(strTemp + '</tbody></table><br>');
+
+   
+    let tempBhava;
+    strTemp = '<table class="myt"> <caption>Naisargika Subha/Asubha Graha Sthiti/Drushti Phalam on Bhavas</caption>' ;
+    strTemp += '<thead> <tr><th>Bhava</th><th>Name</th><th>Grahas in</th><th>Vrudhdhi</th></thead><tbody>' ;
+    for ( let i = 1; i < 10 ; i++){
+        
+         
+        if (  !aNPaapi[i]) 
+        {
+            aBhavaVrudhdhi[aPosBhava[i] - 1]++; 
+            tempBhava = aPosBhava[i] - 1 + 6; 
+            if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+            aBhavaVrudhdhi[tempBhava]++; 
+            if (i == 5){
+                tempBhava = aPosBhava[i] - 1 + 4;
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]++; 
+            }
+            if (i == 5){ 
+                tempBhava = aPosBhava[i] - 1 + 8;
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]++;
+            }
+        }
+       
+        if (  aNPaapi[i]) {  
+          
+            tempBhava = aPosBhava[i] - 1 ;
+            
+            aBhavaVrudhdhi[tempBhava]--; 
+            
+        
+            if ( i < 8){  
+                tempBhava = aPosBhava[i] - 1 + 6; 
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]--; 
+            }
+
+            if (i == 3){ 
+                tempBhava = aPosBhava[i] - 1 + 3;
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]--; 
+            }
+            
+            if (i == 3){ 
+                tempBhava = aPosBhava[i] - 1 + 7;
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]--; 
+            }
+
+            if (i == 7){ 
+            
+                tempBhava = aPosBhava[i] - 1 + 2;
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]--; 
+            }
+            if (i == 7){  
+                tempBhava = aPosBhava[i] - 1 + 9;
+                if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
+                aBhavaVrudhdhi[tempBhava]--; 
+            } 
+                
+        }
+    }
+    
+    for ( let j = 0 ; j < 12 ; j++){
+        
+        tempStr = aBhavaVrudhdhi[j]   
+        strTemp += '<tr><td>' + padLeadingZeroes(j+1,2) + '</td><td>' + aBhavaNames[j] + '</td><td>' 
+                    + mybhavas[j+1] + '</td><td>' + padPositiveNums(aBhavaVrudhdhi[j]) + '</td></tr>';
+        aBhavaVrudhdhi[j] = 0; 
+    }
+
+    $(theDiv).append(strTemp + '</tbody></table>');
+
+    
+    
+    for ( let j = 0 ; j < 12 ; j++){ 
+        aABhavaVrudhdhi[j] = -1;  
+    }
+
+    for ( let i = 1; i < 10 ; i++){
+            
+       
+        if(aPosBhava[i] == 3 || aPosBhava[i] == 6 || aPosBhava[i] == 8 || aPosBhava[i] == 12){
+
+          
+            if ( i == aBhavaAdhipa[2]) aABhavaVrudhdhi[2]++;
+            if ( i == aBhavaAdhipa[5]) aABhavaVrudhdhi[5]++;
+            if ( i == aBhavaAdhipa[7]) aABhavaVrudhdhi[7]++;
+            if ( i == aBhavaAdhipa[11]) aABhavaVrudhdhi[11]++;
+          
+        }
+
+        else{ 
+
+        
+            if ( i == aBhavaAdhipa[0]) aABhavaVrudhdhi[0]++;
+            if ( i == aBhavaAdhipa[1]) aABhavaVrudhdhi[1]++;
+            if ( i == aBhavaAdhipa[3]) aABhavaVrudhdhi[3]++;
+            if ( i == aBhavaAdhipa[4]) aABhavaVrudhdhi[4]++;
+            if ( i == aBhavaAdhipa[6]) aABhavaVrudhdhi[6]++;
+            if ( i == aBhavaAdhipa[8]) aABhavaVrudhdhi[8]++;
+            if ( i == aBhavaAdhipa[9]) aABhavaVrudhdhi[9]++;
+            if ( i == aBhavaAdhipa[10]) aABhavaVrudhdhi[10]++;
+
+        }
+       
+    }
+
+    strTemp = '<br><table class="myt"> <caption>Adhipatya Subha/Asubha in Subha/Asubha Bhava</caption>' ;
+    strTemp += '<thead> <tr><th>Bhava</th><th>Rasi</th><th>Adhipati</th><th>In Bhava</th><th>Vrudhi</th></thead><tbody>' ;
+    
+    for ( let j = 0 ; j < 12 ; j++){ 
+        if(aABhavaVrudhdhi[j] == 0) aABhavaVrudhdhi[j]++ ; 
+        strTemp +=  '<tr><td>' + padLeadingZeroes(j+1,2) + '</td><td>' + aRasiNames[myrashis[j]-1] + '</td><td>' + aGrahaNames[aBhavaAdhipa[j]] +  
+        '</td><td>'  +  padLeadingZeroes( aPosBhavaLord[j],2 ) + '</td><td>' + 
+        padPositiveNums(aABhavaVrudhdhi[j]) + '</td></tr>';
+    }
+    $(theDiv).append(strTemp + '</tbody></table>');
+    
+    
+   
+}
+
+
 
 
 function parse_input_data ()
@@ -482,8 +732,7 @@ function parse_input_data ()
 }
 
 function parseDatenTime(adate, atime){
-    console.log(adate);
-    console.log(atime);
+    
     let ad = adate.split('-');
     let at = atime.split(':');
     date = new Date(ad[0],ad[1]-1,ad[2],at[0],at[1]);
@@ -820,7 +1069,7 @@ function calc_houses (zodiac,house,planetname)
 function calc_nakshatra (deg,n)
 {
     let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0, lnum=0; 
-    
+   
     if      (deg < 0)     {  deg += 360; }  
     if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; lnum=1; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
     else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; lnum=2; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
@@ -863,16 +1112,16 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;       
+        return sdeg;        
     }
     else if (n == 5)  {
-        return nnum;       
+        return nnum;        
     }
     else if (n == 6)  {
         return vperiod;     
     }
     else if (n == 7)  {
-        return lnum;     
+        return lnum;    
     }
 
 }
@@ -1651,150 +1900,7 @@ function dT (transit)
     return dt;
 }
 
-function dms2real (deg, min, sec)
-{
-    
-    var r;
-    if (deg < 0) r =  deg - min/60 - sec/3600;
-    else         r =  deg + min/60 + sec/3600;       
 
-    return r;
-}
-
-function hms2deg (hours, min, sec)
-{
-    
-
-    return (hours * 15 + min/4 + sec/240);
-}
-
-function dec2hms (x)
-{
-    
-
-    if (isNaN(x)) return ("00:00:00");
-
-    var st = x;
-    var s  = st;      
-    st     = st; 
-
-    var d = Math.floor( s );
-
-    s = s - d;
-    s = s * 60;
-    var mm = Math.floor( s );
-
-    var hour = Math.floor( st );
-
-    st  = st - hour;
-    st  = st * 60;
-    var minute = Math.floor( st );
-
-    st  = st - minute;
-    st  = st * 60;
-    var second = Math.floor( st );
-
-    var str = ((hour  <10) ?  "0" :  "") + hour;
-    str    += ((minute<10) ? ":0" : ":") + minute;
-    str    += ((second<10) ? ":0" : ":") + second;
-
-    return str;
-}
-
-function deg2hms (x)
-{
-    
-
-    if (isNaN(x)) return ("00:00:00");
-
-    var st = x;
-    var s  = st;      
-    st     = st / 15.0; 
-
-    var d = Math.floor( s );
-
-    s = s - d;
-    s = s * 60;
-    var mm = Math.floor( s );
-
-    var hour = Math.floor( st );
-
-    st  = st - hour;
-    st  = st * 60;
-    var minute = Math.floor( st );
-
-    st  = st - minute;
-    st  = st * 60;
-    var second = Math.floor( st );
-
-    var str = ((hour  <10) ?  "0" :  "") + hour;
-    str    += ((minute<10) ? ":0" : ":") + minute;
-    str    += ((second<10) ? ":0" : ":") + second;
-
-    return str;
-}
-
-function dec2date (etime)
-{
-    
-
-    if (isNaN(etime)) return ("00/00/0000");
-
-    var s = etime;
-    var tmp = Math.round(s);
-    var year = parseInt(date.getFullYear() - tmp);
-
-    s = s - tmp;
-    var tmp0 = Math.round(s*12);
-    var month = parseInt((12-tmp0)+(date.getMonth()+1) - 12);
-    if (isNaN(month) || month<0) month=1;
-
-    var tmp1 = Math.round(s*12);
-    var tmp2 = Math.abs(tmp1 - (s*12));
-    var tmp3 = Math.round(tmp2*30);
-    var day  = Math.abs((30-date.getDate())-tmp3);
-
-    var str = ((day   <10) ?  "0" :  "") + day;
-    str    += ((month <10) ? "/0" : "/") + month;
-    str    += ((year<1000) ? "/0" : "/") + year;
-
-    return str;
-}
-
-function _abs (x)
-{
-    var r;
-    if (x >= 0.0) r = Math.floor(x);
-    else          r = Math.ceil(x);
-
-    return r;
-}
-
-function mod24 (x)
-{
-    return (x + 24) % 24;
-}
-
-function mod2pi(x)
-{
-    
-
-    var b = x/(2*Math.PI);
-    var a = (2*Math.PI)*(b - _abs(b));
-    if (a < 0) a = (2*Math.PI) + a;
-
-    return a;
-}
-
-function mod360 (x) 
-{
-    
-
-    var a = 360 * ((x / 360) - _abs(x / 360));
-    if (a < 0) a = a + 360; 
-
-    return a;
-}
 
 function calc_moon_acending_node (transit) 
 { 
@@ -2029,35 +2135,11 @@ if((browser.indexOf("firefox") > -1) ||
 }
 
 
-var deg2DMS = function(mydeg){
-
-    
-    let tempVal = parseInt(mydeg);
-    let myD = parseInt(tempVal % 30 );
-    tempVal = mydeg - tempVal;  
-    tempVal = tempVal * 60 * 60;  
-    let myM = parseInt(tempVal / 60);  
-    let myS = parseInt(tempVal - myM * 60); 
-    let tempStr = numToString(myD) + '° ' + numToString(myM) + "\' " + numToString( myS) + '\"';
-    return tempStr;
-
-}
-
-function numToString(num) { 
-
-    
-	if ((num/10) < 1) { 
-	  return ( '0' + num.toString() );
-	} else {
-	  return num.toString(); 
-	}
-}
-
-
 function calc_tidhi(moondeg, sundeg){
 
     let theNum; 
     let tidhiStr;
+    let vrudhdhiStr = "KsheenaChandra";
     let pakshaStr = "Sukla Paksha";
     let atidhiStr = [ "",
         "Pratipada",  "Dvitiya",   "Trutiya", "Chaturthi",   "Panchami",
@@ -2070,28 +2152,32 @@ function calc_tidhi(moondeg, sundeg){
 
     theNum = moondeg - sundeg ;
     if (theNum < 0){
-        theNum = theNum + 360;  
+        theNum = theNum + 360; 
     }
-    theNum = theNum /12;    
+    theNum = theNum /12;   
     theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
   
     if (theNum == 15){
-        pakshaStr = " ";  
+        pakshaStr = " "; 
     }
     else if( theNum == 30){
         pakshaStr = " ";  
     }
-    else if ( theNum> 15  && theNum < 30){
+    if ( theNum >7 && theNum < 23){
+        vrudhdhiStr = "PoornaChandra"
+    }
+   
+    if ( theNum> 15  && theNum < 30){
         theNum = theNum -15;
         pakshaStr = "Krishna Paksha"
     }
    
-    return pakshaStr + ' - ' + tidhiStr;;
+    return pakshaStr + ' - ' + tidhiStr + ' - ' + vrudhdhiStr ;
 }
 
-function calc_vdasa(){
+function calc_vdasa(theDiv){
 
     let jd =  calc_julian_date(time.getHours(),time.getMinutes(),0,false);
     let Ts = (jd - 2415020.0)/36525.0;
@@ -2111,10 +2197,11 @@ function calc_vdasa(){
     let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
     let antarLordSeqNum = dasaLordSeqNum;
     
-    $('.aside2').append('<h2>Vimsottari Dasa:</h2>');   
+    $(theDiv).empty();
+    $(theDiv).append('<h2>Vimsottari Dasa:</h2>');   
 
     mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
-    mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
+    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2132,7 +2219,7 @@ function calc_vdasa(){
             tempStr = createDateStr(mDate);        
             strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
-           
+            
             
             antarLordSeqNum++;
             if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
@@ -2141,10 +2228,10 @@ function calc_vdasa(){
 
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
-        mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
-        mdLordName = aDasaInfo[1][dasaLordSeqNum];  
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    
+        mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
         antarLordSeqNum = dasaLordSeqNum;
-        $('.aside2').append(firstStr + strTemp + '</tbody></table><br>');   
+        $(theDiv).append(firstStr + strTemp + '</tbody></table><br>');   
 
     }      
     
@@ -2161,6 +2248,7 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
     theMonths =  (theDiff - theYears) * syear / 30 ; 
     theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
     theMonths = parseInt(theMonths); 
+    
     let vdate;
     vdate = createDate(-theDays,-theMonths,-theYears,date);   
     return vdate;
@@ -2191,8 +2279,8 @@ function createDate(days, months, years,idate) {
 }
 
 function createDateStr(idate){
-    let strD = numToString( idate.getUTCDate() );
-    let strM = numToString( idate.getUTCMonth() + 1 );
+    let strD = padLeadingZeroes( idate.getUTCDate(), 2 );
+    let strM = padLeadingZeroes( idate.getUTCMonth() + 1 , 2);
     let strY = idate.getUTCFullYear();
     return (strY + ' - ' + strM + ' - ' + strD) ;
 }
@@ -2227,12 +2315,7 @@ function readRownFillData()
             };
         }
     }
+    
 	
-}
-
-function gotoDiv(theDiv){
-
-    divPosition = $(theDiv).offset();
-    $('html,body').animate({scrollTop: divPosition.top}, "slow");	
 }
 

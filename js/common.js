@@ -30,11 +30,10 @@ function showText(fileName,theDiv)
 }
 
 
-//given the table id and a div, when a row is clciked, shows related text in the div and moves to top
-// uses gotoTop function and showText(filename) function
+
 function showRowWiseText(theTableID, theDiv) 
 {       
-    //only for table2  
+   
     let rowID = 0;
     let rowSelected = 0;
     let theStr = theTableID + " tbody tr";
@@ -55,9 +54,9 @@ function showRowWiseText(theTableID, theDiv)
         rowSelected.style.backgroundColor = "khaki";
         rowSelected.className += " selected";
         
-        // display text for given row
+      
 		let fileName = "txt/t" + (rowID+1).toString() + ".txt" ;
-        //only upto rwo id 11
+     
         if(rowID < 11) { showText(fileName, theDiv);}
         
     });
@@ -67,35 +66,35 @@ function showRowWiseText(theTableID, theDiv)
 }
 	
 
-//prints the given error msg to the given div in orange color
+
 function printError( thePrompt, theDiv){
 
-    strTemp = '<p style="color:red;"; text-align: center"><img src="img/hand.png" height=16 ">';
+    strTemp = '<p style="color:darkred;"; text-align: center"><img src="img/hand.png" height=16 ">';
     strTemp += thePrompt + '<p>';
     $(theDiv).empty();
     $(theDiv).append(strTemp);
 }
 
 
-//helps go to top of the given div
+
 function gotoTop(theDiv){
 
     divPosition = $(theDiv).offset();
     $('html,body').animate({scrollTop: divPosition.top}, "slow");	
 }
 
-//given a number and the rquired no of digits, returns a string filled with prefixed zeroes 
+
 function padLeadingZeroes(num, size) {
     	
 	let s = num + "";
     while (s.length < size) s = "0" + s;
-    //console.log('num = ' + num + ' s = ' + s);
+
     return s;
 }
 
 function numToString(num) { 
 
-    //add 0 to num string if it is single digit
+  
 	if ((num/10) < 1) { 
 	  return ( '0' + num.toString() );
 	} else {
@@ -103,60 +102,30 @@ function numToString(num) {
 	}
 }
 
-// given a number, returns a string prefixed with  a space if it is a positive number
+
 function padPositiveNums(num) {
     
 	let s = num + "";
     if (num >= 0) {s = "&nbsp" + s;}  
-    //console.log('num = ' + num + ' s = ' + s);
+   
     return s;
 }
 
 
-//given decimal degrees, returns a string converted as Degrees, Minutes and Seconds.
+
 function deg2DMS(mydeg){
 
     let tempVal = parseInt(mydeg);
-    let myD = parseInt(tempVal % 30 ); // divide by 30 and keep reminder as degs
-    tempVal = mydeg - tempVal;  // get decimal value of mydeg
-    tempVal = tempVal * 60 * 60;  // gives total secs
-    let myM = parseInt(tempVal / 60);  // gives minutes
-    let myS = parseInt(tempVal - myM * 60); // gives secs
+    let myD = parseInt(tempVal % 30 ); 
+    tempVal = mydeg - tempVal;  
+    tempVal = tempVal * 60 * 60; 
+    let myM = parseInt(tempVal / 60);  
+    let myS = parseInt(tempVal - myM * 60); 
     let tempStr = padLeadingZeroes(myD,2) + '° ' + padLeadingZeroes(myM,2) + "\' " + padLeadingZeroes( myS,2) + '\"';
     return tempStr;
 
 }
 
-/*
-function dec2date (etime)
-{
-    
-
-    if (isNaN(etime)) return ("00/00/0000");
-
-    var s = etime;
-    var tmp = Math.round(s);
-    var year = parseInt(date.getFullYear() - tmp);
-
-    s = s - tmp;
-    var tmp0 = Math.round(s*12);
-    var month = parseInt((12-tmp0)+(date.getMonth()+1) - 12);
-    if (isNaN(month) || month<0) month=1;
-
-    var tmp1 = Math.round(s*12);
-    var tmp2 = Math.abs(tmp1 - (s*12));
-    var tmp3 = Math.round(tmp2*30);
-    var day  = Math.abs((30-date.getDate())-tmp3);
-
-    var str = ((day   <10) ?  "0" :  "") + day;
-    str    += ((month <10) ? "/0" : "/") + month;
-    str    += ((year<1000) ? "/0" : "/") + year;
-
-    return str;
-}
-*/
-
-//given degrees, minutes and seconds, returns a real number of that total.
 function dms2real (deg, min, sec)
 {
     
@@ -167,17 +136,6 @@ function dms2real (deg, min, sec)
     return r;
 }
 
-/*
-//given hours, minutes and seconds, returns degrees
-function hms2deg (hours, min, sec)
-{
-    
-
-    return (hours * 15 + min/4 + sec/240);
-}
-*/
-
-//given anumber, returns hours, minutes, seconds.
 function dec2hms (x)
 {
     

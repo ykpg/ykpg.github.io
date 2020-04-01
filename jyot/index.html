@@ -8,30 +8,37 @@
 	<meta name="author" content="YK Prakash">
 	<title>Horoscope</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" type="text/css" href="css/joy.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src= "../js/common.js"> </script>
+	<script type="text/javascript" src= "../js/moment.js"> </script>	
 	<script type="text/javascript" src= "js/joy.js"> </script>
 	<script type="text/javascript" src="js/eJyotivsop87.js"></script>
 </head>
 
-<body>
+<body id="home">
 	<div class="wrapper">
 
 		<header class="header">
 
-			<h1>Horoscope</h1>
-			<nav>
+			<h1 class="logo">Jyotishy</h1>
+
+			<nav id="primary_nav">
 
 				<ul class="nav1">
-
+	
 					<li><a href="/index.html" title="Home">Home</a></li>
-					<li><a href="#charts" title="Rasi & Navamsa Charts" name="charts" id="charts">Charts</a></li>
 					<li><a href="#dasa" id="dasa" title="Vimsottari Dasa">Vimsottari Dasa</a></li>
 					<li><a href="#kujadosham" id="kujadosham" title="Kuja Dosham">Kuja Dosham</a></li>
 					<li><a href="#places" name="places" id="places" title="Lattitude & Longitude Info">Places</a></li>
-				  
+					<li><a href="#analysis" name="analysis" id="analysis" title="Analysis">Analysis</a></li>
+					
+					
 				</ul>				
-			</nav>			
+			</nav>		
+				
 		</header>
 	
 		
@@ -79,7 +86,7 @@
 
 		<main class="main" id="maintop">
 			
-				<p><img src="img/horo1.png" style="max-width:100%;" alt="Horoscope Picture"><br>	
+				<p><img src="img/horo.png" style="max-width:100%;" alt="Horoscope Picture"><br>	
 				
 					Enter date as MM/DD/YYYY. Or your System format.<br><br>
 					GMT for any palce in India is +5hrs 30min. Enter as 5.5. <br>
@@ -98,7 +105,11 @@
 			<canvas id="mycanvas1"  width="350" height="350" > D1 </canvas>			
 				
 		</aside>
-			
+		
+		
+		
+
+
 		<footer class="footer">
 			Copyright &copy 2020 YK Prakash. All rights reserved.
 		</footer>
