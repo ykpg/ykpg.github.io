@@ -154,7 +154,7 @@ $(document).ready(function()
 	
 	handleMyMethod("#viv");
 	handleTaralu("#viv");	
-	handleLakshana("#viv");
+
 	
 });
 
@@ -769,35 +769,7 @@ function handleTaralu(theDiv){
 }
 
 
-function handleLakshana(theDiv){
-	
-	$("#lakshana").on("click",  function()
-	{
-		prepareData();
-		$(theDiv).empty();
-		printLakshana(girlRasiNum,theDiv);
-		
-		gotoTop(theDiv);
-	});
-}
 
-function printLakshana(selectedRasi, theDiv){
-	$.getJSON ('rasichar.json', function (data) {
-			
-		//$('.rightcol').append('<h1>' + data[selectedRasi].Rasi + ' - లక్షణములు</h1><hr><br>');
-		//$('.rightcol').append( 'CVB:' + data[selectedRasi].CVB + '<br>');
-		$(theDiv).append('<h2>అమ్మాయి నక్షత్రమున్న రాశి యొక్క లక్షణములు:</h2><hr>');
-		$(theDiv).append('<ul>');
-		$.each(data[selectedRasi], function(index, value){     
-			if(index !=  'Id') {      
-				$(theDiv).append('<li>' + index + ' : ' + value + '</li>');
-			}
-			
-		});
-		$(theDiv).append('</ul>');
-		$(theDiv).append('<br><strong>Note:</strong> Some words may be harsh. Please, do not worry.');
-	});
-}
 
 
 function printTaras(astar, theDiv){
