@@ -11,7 +11,6 @@ body {
 	width: 94%;
 	background-color: #555555;
 	color: black;
-	
 }
 
 .wrapper {
@@ -45,17 +44,14 @@ h1{
 	margin: 0px;
 	text-shadow: -1px -1px 1px #fcfdfd, 1px 1px 1px #0d0d0e;
 	opacity: 0.8;
-	
-}
 
+}
 
 .nav1 {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 	font-size: 0.875em;
-
-	
 }
 
 .nav1 a {
@@ -65,7 +61,7 @@ h1{
 	border-bottom: 1px solid #0000001a;
 	text-decoration: none;
 	display: block;
-	color: #e4e4e4;
+	color: white;
 	background-color: #4e92c7;
 }
 
@@ -80,48 +76,29 @@ h1{
 	
 	background: transparent;
 	color: #d2d2d2;
-
 }
 
 .nav1 li:first-of-type a:hover {
 
 	background: transparent;
 	text-decoration: none;
-
 }
 
-.left, .right {
-
-	text-align: justify;
-	color: white;
-	background-color: #7CA6D0;
-	padding-top: 15px;
-	padding-bottom: 15px;
-
-}
 
 h2{
 	color: #0e75c4;
-  font-size:1.125em;
-  font-weight: bold;
+  	font-size:1.125em;
+  	font-weight: bold;
 	margin: 0px;
 	padding: 0px;
-
 }
 
-
-p{
-	text-indent: 3em;
-	font-weight: normal;
-	color: #333333;
-}
 
 .footer {
 	background-color: #2e83c4;
 	font-size: 0.75em;
 	color: #d4d4d4;
 	padding:6px;
-
 }
   
 
@@ -131,18 +108,16 @@ p{
 	width: 100%;
 	display: none;
 	padding: 1rem;
-	background: #f1f1ee;
 	border: 6px solid #3487c7;
 	padding-bottom: 10px;
+	background-color: #f1f1ee;
 }
   
 .tabs {
 	display: flex;
 	flex-wrap: wrap; 
 	margin:0 auto;
-	padding:0px;
-	font-size:0.875em;
-	color: #333333;
+	padding:0px;	
 	text-align: center; /* now only images get centered */
     border: 6px solid #348dbd;
     background-color: #348dbd;
@@ -155,13 +130,13 @@ p{
 	padding: 10px 10px;
 	margin:0px;
 	cursor: pointer;
-
 	width: 100%;
 	border-top: 1px solid #ffffff4d;
     border-bottom: 1px solid #0000001a;
     border-radius: 15px 0px 0px 0px;
 	color: #333333;
 	background-image: linear-gradient( #78909e,#348dbd);
+	font-size: 0.875em;
 }
  
 .tabs input[type="radio"] {
@@ -170,12 +145,11 @@ p{
 }
 
 .tabs input[type="radio"]:checked + label {
-background: #3088c2;
-color: white;
-border-bottom: none;
-background-image: linear-gradient(#93709c,#2e83c4);
-text-shadow: 1px 1px 3px #333333;
-
+	background: #3088c2;
+	color: white;
+	border-bottom: none;
+	background-image: linear-gradient(#93709c,#2e83c4);
+	text-shadow: 1px 1px 3px #333333;
 }
 
 .tabs input[type="radio"]:checked + label + .tab {
@@ -184,34 +158,32 @@ text-shadow: 1px 1px 3px #333333;
 
   
 img{
-float: left;
-text-align: center;
-margin: 0 auto;
-max-width: 100%;
+	float: left;
+	text-align: center;
+	margin: 0 auto;
+	max-width: 100%;
 }
 
 
 p{
-text-indent: 4rem;
-padding: 6px 12px 6px 14px;
-text-align: justify;
+	text-indent: 4rem;
+	padding: 6px 12px 6px 14px;
+	text-align: justify;
+	font-size:1.0em;
+	font-weight: normal;
+	color: #333333;
 }
 
 li{
-text-decoration: none;
-margin:0px;
-padding:0px;
-text-align: left;
-
-
+	text-decoration: none;
+	margin:0px;
+	padding:0px;
+	text-align: left;
 }
   
 .myd{
 display: block;
 }
-
-
- 
 
 
 @media  all and (min-width: 768px ) and (orientation:landscape) {
@@ -275,7 +247,6 @@ display: block;
 		width: 100%;
 		display: none;
 		padding: 1rem;
-		background: #f1f1ee;
 		border: 6px solid #3487c7;
 	}
   
@@ -284,7 +255,7 @@ display: block;
 		flex-wrap: wrap; 
 		margin:0 auto;
 		padding:0px;
-		font-size:0.875em;
+		font-size:1.0em;
 		color: #333333;
 	}
 	
@@ -330,6 +301,7 @@ display: block;
 		text-indent: 4rem;
 		padding: 6px 12px 6px 14px;
 		text-align: justify;
+	
 	}
   
 	li{
@@ -338,7 +310,6 @@ display: block;
 		padding:0px;
 		text-align: left;
 	
-		
 	}
 	
 	.myd{

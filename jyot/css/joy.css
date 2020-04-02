@@ -65,7 +65,7 @@ h1{
 	border-bottom: 1px solid #0000001a;
 	text-decoration: none;
 	display: block;
-	color: #e4e4e4;
+	color: white;
 	background-color: #4e92c7;
 }
 
@@ -100,7 +100,7 @@ h4 {
 	
 	align-self: center; /* this works */
 	color: #333333;
-	background-color: #7CA6D0;
+	background-color: #f1f1f1;
 	margin:0px;
 	font-size: 0.875em;
 
@@ -163,7 +163,7 @@ button:hover {
 
 	text-align: left;
 	color: #333333;
-	background-color: #7CA6D0;
+	background-color: #f1f1f1;
 	font-size: 0.875em;
 	align-items: center;
 
@@ -188,7 +188,7 @@ button:hover {
 	text-align: left;
 	padding: 5px 10px 5px 10px;
 	color: #eeeeee;
-	background-color: #7CA6D0;
+	background-color: #f1f1f1;
 	font-size: 0.875em;
 	
 	
@@ -196,13 +196,13 @@ button:hover {
 
 .main p {
 	padding:10px 10px 5px 20px;
-	color: white;
+	color: #333333;
 	font-size: 0.875em;
 }
 
 .aside2 p {
 	padding:10px 10px 5px 20px;
-	color: #eeeeee;
+	color: #333333;
 	font-size: 0.875em;
 	text-align: justify;
 }
@@ -210,7 +210,7 @@ button:hover {
 .leftp{
 
 	padding: 5px;
-	color: #eeeeee;
+	color: #555555;
 	font-size: 0.875em;
 	text-align: justify;
 
@@ -227,7 +227,7 @@ button:hover {
   
 
 
-.myt {
+table.myt {
 	border-collapse: collapse; 
 	margin:0 auto;
 	width:96%;
@@ -252,9 +252,13 @@ table.myt tbody td {
   
 table.myt tbody tr {
 	color: black;
-	background-color: #e4e4e4;
+	background-color: #e8e8e8;
 	padding: 2px;
 	text-align: left;
+}
+
+table.myt tbody tr:nth-child(even) {
+	background-color: #e4e4e4;
 }
   
 table.myt tbody tr:hover {
@@ -363,7 +367,7 @@ img :hover{
 	  	flex: 2 0px;
 	  	order: 2;
 		min-width: 35%;
-		  background-color: none;
+		background-color: none;
 		  
 	}
 	.aside1 {

@@ -65,7 +65,7 @@ h1{
 	border-bottom: 1px solid #0000001a;
 	text-decoration: none;
 	display: block;
-	color: #e4e4e4;
+	color: white;
 	background-color: #4e92c7;
 }
 
@@ -92,11 +92,10 @@ h1{
 
 }
 
-.left, .right {
+.left {
 
 	text-align: justify;
-	color: white;
-	background-color: #7CA6D0;
+	background-color: #f1f1f1;
 	padding-top: 15px;
 	padding-bottom: 15px;
 
@@ -105,7 +104,7 @@ h1{
 p{
 	text-indent: 3em;
 	font-weight: normal;
-	color: white;
+	color: #555555;
 	padding: 14px 20px 10px 20px;
 	font-size: 0.875em;	
 }

@@ -154,8 +154,7 @@ $(document).ready(function()
 	
 	handleMyMethod("#viv");
 	handleTaralu("#viv");	
-
-	
+		
 });
 
 var showContent = function() 
@@ -767,8 +766,6 @@ function handleTaralu(theDiv){
 		gotoTop(theDiv);
 	});
 }
-
-
 
 
 
