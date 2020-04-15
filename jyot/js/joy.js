@@ -480,7 +480,7 @@ function printPlaces(theDiv){
     $(theDiv).empty();
     $(theDiv).append(strTemp);
     readRownFillData();
-    gotoTop(theDiv);
+    gotoTop('.aside1');
 }
 
 
@@ -2380,7 +2380,7 @@ function readRownFillData()
                 document.getElementById("tz").value  = cgmt;
                 document.getElementById("lat").value = clat;
                 document.getElementById("lon").value = clon;
-                gotoDiv('.aside1');
+                
             };
         }
     }
