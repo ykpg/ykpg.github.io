@@ -23,7 +23,12 @@ function showText(fileName,theDiv)
 	$.get(fileName) 	
 			.done(function(data) {
 				$(theDiv).empty();
-				$(theDiv).append(data); })
+				$(theDiv).append(data); 
+		
+		
+   gotoTop(theDiv)  ;
+	})
+ 
 			.fail(function(xhr, status, error) {
 				alert( "Reading: \"" + fileName +  "\"." + ' - ' + status + ' - ' + error );
 		});   
