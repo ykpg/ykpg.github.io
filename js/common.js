@@ -62,7 +62,7 @@ function showRowWiseText(theTableID, theDiv)
         
     });
    
-        
+   gotoTop(theDiv)  ;
     
 }
 	
