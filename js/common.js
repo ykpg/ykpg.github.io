@@ -26,7 +26,6 @@ function showText(fileName,theDiv)
 				$(theDiv).append(data); 
 		
 		
-   gotoTop(theDiv)  ;
 	})
  
 			.fail(function(xhr, status, error) {
@@ -64,7 +63,7 @@ function showRowWiseText(theTableID, theDiv)
 		let fileName = "txt/t" + (rowID+1).toString() + ".txt" ;
         //only upto rwo id 11
         if(rowID < 11) { showText(fileName, theDiv);}
-        
+        gotoTop(theDiv)  ;
     });
     
 }
