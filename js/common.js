@@ -66,8 +66,6 @@ function showRowWiseText(theTableID, theDiv)
         if(rowID < 11) { showText(fileName, theDiv);}
         
     });
-   
-   gotoTop(theDiv)  ;
     
 }
 	
