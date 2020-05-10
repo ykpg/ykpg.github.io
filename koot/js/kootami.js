@@ -1,4 +1,4 @@
-'use strict'
+﻿'use strict'
 
 let windowParams = `scrollbars=yes,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=350,height=500,left=200,top=80`;
 
@@ -284,6 +284,7 @@ var showContent = function()
 		let theRow = showRowWiseText("#ktable", "#viv");
 				
 		gotoTop('#pat');
+
 
 	});	//function button click ends
 	
