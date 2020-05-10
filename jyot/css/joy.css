@@ -94,6 +94,19 @@ h4 {
 	color:#0e63a3;
 }
  
+hr {
+	border: 0;
+	height: 1px;
+	background: #333;
+	background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  }
+  
+  hr.style2 {
+	  height: 10px;
+	  border: 0;
+	  background-image: linear-gradient(to right, #c7c7c7, #979696, #c7c7c7);
+	  opacity: 0.5;
+  }
 
 
 .aside1{

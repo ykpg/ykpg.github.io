@@ -95,6 +95,7 @@ h2{
 
 
 .footer {
+	order:5;
 	background-color: #2e83c4;
 	font-size: 0.75em;
 	color: #d4d4d4;
@@ -103,7 +104,7 @@ h2{
   
 
 .tab {
-	/* order: 99; */
+	order: 2; 
 	flex-grow: 1;
 	width: 100%;
 	display: none;
@@ -114,6 +115,7 @@ h2{
 }
   
 .tabs {
+	order:1; 
 	display: flex;
 	flex-wrap: wrap; 
 	margin:0 auto;
@@ -125,7 +127,7 @@ h2{
 
 
 .tabs label {
-	order: 1; 
+	
 	display: block;
 	padding: 10px 10px;
 	margin:0px;

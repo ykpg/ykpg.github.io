@@ -354,7 +354,7 @@ function showKujaDosham(){
             printError(' Kuja Dosham can be viewed only after entering proper data and clicking on Generate.','.aside2');
 
         }	
-        divPosition = $("#maintop").offset();
+        divPosition = $(".aside2").offset();
         $('html,body').animate({scrollTop: divPosition.top}, "slow");	
 		
 	});
@@ -479,8 +479,9 @@ function printPlaces(theDiv){
     strTemp += '<img src="img/ss.png" width="16" > Search for Latitude & Longitude...</a>';
     $(theDiv).empty();
     $(theDiv).append(strTemp);
+    gotoTop(theDiv);
     readRownFillData();
-    gotoTop('.aside1');
+    
 }
 
 
@@ -2380,7 +2381,7 @@ function readRownFillData()
                 document.getElementById("tz").value  = cgmt;
                 document.getElementById("lat").value = clat;
                 document.getElementById("lon").value = clon;
-                
+                gotoTop('.aside1');
             };
         }
     }
