@@ -231,7 +231,7 @@ var printInfo = function(theDiv) {
         return false;
     }
     
-    strTemp = '<h2>Birth Details:</h2><table class="myt">';
+    strTemp = '<h2>Birth Details:</h2><hr><table class="myt">';
     strTemp += '<thead><tr><th>Planet</th><th>Rasi</th><th>Degree</th><th>Nakashatra</th><th>Paada</th></tr></thead>';
        
     for (var i=0; i<=9; i++) {
@@ -289,7 +289,7 @@ function printCharts(theDiv){
   
         if(isOK){
             //$('.aside2').empty();
-            $(theDiv).append('<h2>Rasi(D1) & Navamsa(D9) Charts</h2>');
+            $(theDiv).append('<h2>Rasi(D1) & Navamsa(D9) Charts</h2><hr>');
             drawCharts(theDiv);
         }
 
@@ -370,7 +370,7 @@ function printKujaDosham(theDiv){
     let posSukra = mygrahas[6].rasizn;
     let posGuru = mygrahas[5].rasizn;
     let relativePosLK, relativePosCK, relativePosSK, relativePosGK;
-    strTemp = '<h2>Kuja Dosham:</h2><p class="main" >Kuja Dosham is defined as situation of kuja in: <br>';
+    strTemp = '<h2>Kuja Dosham:</h2><hr><p class="main" >Kuja Dosham is defined as situation of kuja in: <br>';
     strTemp += aKujaDoshaPos.toString() + ' from Lagna/Chandra/Sukra.</p>'
     
     relativePosLK = findRelativePos(posLagna,posKuja);
@@ -464,7 +464,7 @@ function showPlaces(){
 
 function printPlaces(theDiv){
 
-    strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><table class="myt" id="placest">';
+    strTemp = '<h2>Lattitude, Longitude & GMT of a few palces:</h2><hr><table class="myt" id="placest">';
     strTemp += '<thead><tr><th>Place</th><th>Latitude</th><th>Longitude</th><th>GMT</th></tr></thead><tbody>'
     aLL.forEach( function (v1, i1){
         strTemp += '<tr>';
@@ -527,7 +527,7 @@ function printAnalysis(theDiv){
     $(theDiv).empty();
 
     //age
-    strTemp = '<h2>Analysis:</h2><p class="leftp">';
+    strTemp = '<h2>Analysis:</h2><hr><p class="leftp">';
     strTemp += "Age = " + moment(date).fromNow(true) + '<br>' ; // 4 years ago;
 
     // Sandhya Samyam
@@ -2268,7 +2268,7 @@ function calc_vdasa(theDiv){
     let antarLordSeqNum = dasaLordSeqNum;
     
     $(theDiv).empty();
-    $(theDiv).append('<h2>Vimsottari Dasa:</h2>');   
+    $(theDiv).append('<h2>Vimsottari Dasa:</h2><hr>');   
 
     mdPeriod = aDasaInfo[0][dasaLordSeqNum];    // period of MD lord
     mdLordName = aDasaInfo[1][dasaLordSeqNum];  // name
