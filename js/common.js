@@ -36,7 +36,7 @@ function showText(fileName,theDiv)
 
 //given the table id and a div, when a row is clciked, shows related text in the div and moves to top
 // uses gotoTop function and showText(filename) function
-function showRowWiseText(theTableID, theDiv) 
+function onRowClickShowText(theTableID, theDiv) 
 {       
     //only for table2  
     let rowID = 0;

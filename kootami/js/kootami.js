@@ -139,6 +139,27 @@ strTemp = "ఆది,మధ్య,అంత్య";
 const arrayNadiNames = strTemp.split(',');
 
 
+let aVedhaStars = 
+[
+	['అశ్వని',	'జ్యేష్ట'],
+	['భరణి', 'అనూరాధ'],
+	['కృత్తిక', 'విశాఖ'],
+	['రోహిణి','స్వాతి'],
+	['ఆర్ద్ర',	'శ్రవణం'],
+	['పునర్వసు','ఉత్తరాషాడ'],
+	['[పుష్యమి', 'పూర్వాషాడ'],
+	['ఆశ్లేష','మూల'],
+	['మఖ','రేవతి'],
+	['పుబ్బ','ఉత్తరాభాద్ర'],
+	['ఉత్తర','పూర్వాభాద్ర'],
+	['హస్త','శతభిషం'],
+	['మృగశిర', 'చిత్త'],
+	['మృగశిర','ధనిష్ట'],
+	[ 'చిత్త','ధనిష్ట']
+];
+
+let aVadhaOK = [1,1,0,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0,0];
+
 
 $(document).ready(function() 
 {	
@@ -281,7 +302,7 @@ var showContent = function()
 		
 		showText("txt/t0.txt", "#viv");
 		
-		let theRow = showRowWiseText("#ktable", "#viv");
+		let theRow = onRowClickShowText("#ktable", "#viv");
 				
 		gotoTop('#pat');
 
@@ -743,11 +764,44 @@ function handleMyMethod(theDiv){
 		strTemp += '<span class="mygreen">' + "దోషం లేదు." + '</span>' ;
 	}
 
+	if ( gs != bs){
+		if (isVedhaStar(gs, bs)){
+			strTemp += '<br><br><span class="myred">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ ఉన్నది." + '</span>';
+		}
+		else
+		{
+			strTemp += '<br><br><span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '</span>';
+		}
+	}
+	
+	console.log('girl navakam = ' + girlNavakam + 'girldiff = ' + girlDiff);
+	if( girlNavakam <2 || boyNavakam <2){
+		if(isVadhaOK(gs,bs)){
+			strTemp += '<br><br><span class="mygreen">' + " నైధాన తార (N1) అయినా, వధ తార ఫలితం శుభదాయకమే." + '</span>';
+		}
+		else{
+			strTemp += '<br><br><span class="myred">' + " నైధాన తార (N1) అయింది, పైగా వధ తార ఫలితం అశుభము." + '</span>';
+		}
+	}
+
+	strTemp += '</p><br>';
+
+	strTemp += '<h2>విశ్లేషణ - పద్ధతి</h2><hr>';
+
+	strTemp += '<p>';
+	strTemp += '1. రాశి సంబంధ విభజనలో, గ్రహ మైత్రికి 5 లో కనీసం 5 లేక 4 పాయింట్స్ రావాలి. వర్ణ వశ్య కూటములలో రెండిట్లో కలిపి 1 లేక 2 పాయింట్స్ వస్తే చాలు.<br><br>';
+	strTemp += '2. నక్షత్ర సంబంధ విభజనలో - తారా బలం పాయింట్స్ కనీసం 1.5 రావాలి. అంటే g -> b కాని, b -> g కాని తారా బలం ఉండాలి. ఆపై,  యోని, గణ, నాడీ కూటములు మూడింటా కలిపి 6 పాయింట్స్ రావాలి.<br><br>';
+	strTemp += '3. ఒకటే నాడీ, మరియు రజ్జు - రెండు దోషములూ ఉండ కూడదు. కాబట్టి, ఆటోమేటిక్ గా జన్మ తార పనికిరాదు. <br><br>';
 	strTemp += '</p>';
+	strTemp += '<b>గమనిక:</b><br>';
+	strTemp += 'ఇది నాపథ్ధతి మాత్రమే  గనుక ఎప్పుడైనా మారవచ్చు. మూడు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.';   
+	strTemp += 'వేధ నక్షత్ర దోషం మరియు వధ తార అంటే మొదటి నవకంలో నైధన తార మినహాయింపు పరిశీలించబడినవి.';
+	strTemp += 'సామాన్యంగా, తెలుగు వారు ఈ  వధ తార అంటే మొదటి నవకంలో నైధన తార మినహాయింపు సమ్మతించరు.';
 	
 	$(theDiv).append(strTemp); // end of table2 and div	
 
 	gotoTop(theDiv);
+
 
 	});
 
@@ -900,10 +954,10 @@ function printVivahaTaras( bstar, gstar, aVT, theDiv){
 		
 
 	}
-	tempStr += '<tr><td colspan =4>' + 'ముందుగా పంచాగం చూసి, ఎన్నుకున్న నెలలో ఇచ్చిన వివాహ ముహూర్తములు చూడాలి.' + '</td></tr>';
-	tempStr += '<tr><td colspan =4>' + 'వివాహ ముహూర్తానికి యోగ్యమైన నక్షత్రముల పట్టిక ఇక్కడ ఇవ్వబడింది.' + '</td></tr>';
-	tempStr += '<tr><td colspan =4>' + 'వధూవర నక్షత్ర జంటలనుండి - జన్మ మరియు ముఖ్యంగా విపత్, ప్రత్యక్, నైధన - తారలు వదిలివేయడం మంచిది.' + '</td></tr>';
-	tempStr += '<tr><td colspan =4>' + 'ఇది ప్రయోగాత్మకం. వివాహా ముహూర్తం ఎంచుకోవడానికి చూచాయగా వాడచ్చు.' + '</td></tr></table>';
+	tempStr += '<tr><td colspan =4>' + 'ముందుగా పంచాగం చూసి, ఎన్నుకున్న నెలలో ఇచ్చిన వివాహ ముహూర్తములు, వాటి  నక్షత్రములు రాసుకోవాలి.' + '</td></tr>';
+	tempStr += '<tr><td colspan =4>' + 'ఇక్కడ ఆ నక్షత్రములు వధూవరులకు ఇద్దరికీ సరిపోతాయో లేదో చూడవచ్చు.' + '</td></tr>';
+	tempStr += '<tr><td colspan =4>' + 'జన్మ మరియు ముఖ్యంగా విపత్, ప్రత్యక్, నైధన - తారలు అయితే, ఆ ముహూర్తం వదిలివేయడం మంచిది.' + '</td></tr>';
+	tempStr += '</table>';
 
 	$(theDiv).append(tempStr);
 
@@ -1308,3 +1362,28 @@ function find10Rajju(){
 	boyRajjuName = arrayRajjuNames[getRajjuNum(bs+1)];
 
 }
+
+function isVedhaStar(starg, starb){
+
+	for (let i=0; i< aVedhaStars.length; i++){
+		if( aVedhaStars[i][0].includes(aStarNames27[starg] ) || aVedhaStars[i][1].includes(aStarNames27[starg] ) ){
+			if( aVedhaStars[i][0].includes(aStarNames27[starb] ) || aVedhaStars[i][1].includes(aStarNames27[starb] ) ){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function isVadhaOK(starg, starb){
+	
+	if  ( girlDiff == 6 &&   girlNavakam  == 1) { 
+		if(aVadhaOK[starg]) return true;
+	}
+	if  ( boyDiff == 6 &&   boyNavakam == 1) { 
+		if(aVadhaOK[starb]) return true;
+	}
+	return false;
+
+}
+

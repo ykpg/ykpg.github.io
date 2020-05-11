@@ -476,11 +476,11 @@ function printPlaces(theDiv){
     strTemp += '<tr><td colspan=4>&nbsp</td></tr></tbody></table>';
     strTemp += '<br>Click on a row to fill the relevant fields.'
     strTemp += '<br><a href="http://www.geonames.org/search.html?" title="Opens in seperate window" target=_blank>';
-    strTemp += '<img src="img/ss.png" width="16" > Search for Latitude & Longitude...</a>';
+    strTemp += '<img src="img/search.png" width="16" > Search for Latitude & Longitude...</a>';
     $(theDiv).empty();
     $(theDiv).append(strTemp);
     gotoTop(theDiv);
-    readRownFillData();
+    onRowClickFillData();
     
 }
 
@@ -2355,7 +2355,7 @@ function createDateStr(idate){
     return (strY + ' - ' + strM + ' - ' + strD) ;
 }
 
-function readRownFillData() 
+function onRowClickFillData() 
 {
 	       
     let theTable;
@@ -2363,19 +2363,23 @@ function readRownFillData()
     if ( (theTable = document.getElementById('placest')) != null){
         
         
-        let rows = theTable.getElementsByTagName('tr');
+        let theCells = theTable.getElementsByTagName('td');
         let cname , clat , clon , cgmt ;
         
-        for ( let i = 1; i < rows.length; i++) {
+        
+        for ( let i = 1; i < theCells.length; i++) {
 
-            rows[i].i = i;
-            rows[i].onclick = function() {
+            let theCell = theCells[i];
+            
+            theCell.onclick = function() {
                 
-                cname = theTable.rows[this.i].cells[0].innerHTML;                
-                clat  = theTable.rows[this.i].cells[1].innerHTML;
-                clon  = theTable.rows[this.i].cells[2].innerHTML;
-                cgmt  = theTable.rows[this.i].cells[3].innerHTML;
-              
+                let theRowID = this.parentNode.rowIndex;
+                let theRowSelected = theTable.getElementsByTagName('tr')[theRowID];
+
+                cname = theRowSelected.cells[0].innerHTML;                
+                clat  = theRowSelected.cells[1].innerHTML;
+                clon  = theRowSelected.cells[2].innerHTML;
+                cgmt  = theRowSelected.cells[3].innerHTML;
               
                 thePlaceName = cname;
                 document.getElementById("tz").value  = cgmt;
