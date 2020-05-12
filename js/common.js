@@ -18,19 +18,17 @@ aPataTable.push( { utpata: 12, mruthyu: 13, kaana: 14, rasi1: 5,  rasi2: -1});
 aPataTable.push( { utpata: 16, mruthyu: 17, kaana: 18, rasi1: 7,  rasi2: -1});
 
 
-function showText(fileName,theDiv)
+function showText(fileName,theDiv,donotEmpty)
 {	
 	$.get(fileName) 	
 			.done(function(data) {
-				$(theDiv).empty();
-				$(theDiv).append(data); 
-		
-		
-	})
- 
+				if (!donotEmpty) $(theDiv).empty();
+                $(theDiv).append(data);
+                $(theDiv).append('<br>');
+             })
 			.fail(function(xhr, status, error) {
 				alert( "Reading: \"" + fileName +  "\"." + ' - ' + status + ' - ' + error );
-		});   
+		    });   
 }
 
 

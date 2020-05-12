@@ -164,17 +164,17 @@ let aVadhaOK = [1,1,0,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0,0];
 $(document).ready(function() 
 {	
 	showContent();
-		
-	printVadha("#viv");	
-	printVedha("#viv");
-	printEka("#viv");	
 
+	handleMyMethod("#viv");
 		
+
 	handleVadhuvuku("#viv");	
 	handleVaruniki("#viv");	
 	
-	handleMyMethod("#viv");
-	handleTaralu("#viv");	
+	handleSpecialTopics("#viv");	
+	handleTaras("#viv");	
+	handleLakshanas("#viv");
+	
 		
 });
 
@@ -480,31 +480,17 @@ tPidaparti = [
 ];
 
 
-function printVadha(theDiv){	
+function handleSpecialTopics(theDiv){	
 
-	$("#vadha").on("click",  function()
+	$("#specials").on("click",  function()
 	{
-		showText("txt/vadha.txt", theDiv) ;	
+		showText("txt/vadha.txt", theDiv, false) ;	
+		gotoTop(theDiv);
+		showText("txt/vedha.txt", theDiv,true) ;
+		gotoTop(theDiv);
+		showText("txt/eka.txt", theDiv,true) ;
 		gotoTop(theDiv);
 		
-	});
-}
-
-function printVedha(theDiv){
-
-	$("#vedha").on("click",  function()
-	{
-		showText("txt/vedha.txt", theDiv) ;
-		gotoTop(theDiv);
-	});
-}
-
-function printEka(theDiv){
-	
-	$("#eka").on("click",  function()
-	{
-		showText("txt/eka.txt", theDiv) ;
-		gotoTop(theDiv);
 	});
 }
 
@@ -766,11 +752,11 @@ function handleMyMethod(theDiv){
 
 	if ( gs != bs){
 		if (isVedhaStar(gs, bs)){
-			strTemp += '<br><br><span class="myred">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ ఉన్నది." + '</span>';
+			strTemp += '<br><span class="myred">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ ఉన్నది." + '</span>';
 		}
 		else
 		{
-			strTemp += '<br><br><span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '</span>';
+			strTemp += '<br><span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '</span>';
 		}
 	}
 	
@@ -792,11 +778,12 @@ function handleMyMethod(theDiv){
 	strTemp += '1. రాశి సంబంధ విభజనలో, గ్రహ మైత్రికి 5 లో కనీసం 5 లేక 4 పాయింట్స్ రావాలి. వర్ణ వశ్య కూటములలో రెండిట్లో కలిపి 1 లేక 2 పాయింట్స్ వస్తే చాలు.<br><br>';
 	strTemp += '2. నక్షత్ర సంబంధ విభజనలో - తారా బలం పాయింట్స్ కనీసం 1.5 రావాలి. అంటే g -> b కాని, b -> g కాని తారా బలం ఉండాలి. ఆపై,  యోని, గణ, నాడీ కూటములు మూడింటా కలిపి 6 పాయింట్స్ రావాలి.<br><br>';
 	strTemp += '3. ఒకటే నాడీ, మరియు రజ్జు - రెండు దోషములూ ఉండ కూడదు. కాబట్టి, ఆటోమేటిక్ గా జన్మ తార పనికిరాదు. <br><br>';
+	strTemp += '3. వధూవరుల నక్షత్రముల మధ్య పరస్పర వేధ ఉండకూడదు.<br><br>';
 	strTemp += '</p>';
 	strTemp += '<b>గమనిక:</b><br>';
-	strTemp += 'ఇది నాపథ్ధతి మాత్రమే  గనుక ఎప్పుడైనా మారవచ్చు. మూడు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.';   
-	strTemp += 'వేధ నక్షత్ర దోషం మరియు వధ తార అంటే మొదటి నవకంలో నైధన తార మినహాయింపు పరిశీలించబడినవి.';
-	strTemp += 'సామాన్యంగా, తెలుగు వారు ఈ  వధ తార అంటే మొదటి నవకంలో నైధన తార మినహాయింపు సమ్మతించరు.';
+	strTemp += 'ఇది నాపథ్ధతి మాత్రమే  గనుక ఎప్పుడైనా మారవచ్చు. నాలుగు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.';   
+	strTemp += ' వధ తార అంటే - మొదటి నవకంలో నైధన తార మినహాయింపు కూడా పరిశీలించబడినది.  తెలుగు వారీ మినహాయింపు సమ్మతించరు.';
+	
 	
 	$(theDiv).append(strTemp); // end of table2 and div	
 
@@ -808,9 +795,9 @@ function handleMyMethod(theDiv){
 	
 }
 
-function handleTaralu(theDiv){
+function handleTaras(theDiv){
 	
-	$("#taralu").on("click",  function()
+	$("#taras").on("click",  function()
 	{
 		prepareData();
 		$(theDiv).empty();
@@ -993,6 +980,73 @@ var calcTara = function(myStar,myFactor,myScheme){
 	}
 
 }
+
+
+function handleLakshanas(theDiv){
+	
+	$("#lakshanas").on("click",  function()
+	{
+		prepareData();
+		$(theDiv).empty();
+		printStarLakshana(gs,theDiv);
+		
+		gotoTop(theDiv);
+
+
+		prepareData();
+		$(theDiv).empty();
+		printRasiLakshana(girlRasiNum,theDiv);
+		
+		gotoTop(theDiv);
+
+	});
+}
+
+
+function printStarLakshana( theStar,  theDiv){
+
+	$.getJSON ('starchar.json', function (data) {
+		
+		//$('.rightcol').append('<h1>' + data[selectedRasi].Rasi + ' - లక్షణములు</h1><hr><br>');
+		//$('.rightcol').append( 'CVB:' + data[selectedRasi].CVB + '<br>');
+		$(theDiv).append('<h2>అమ్మాయి నక్షత్రము యొక్క లక్షణములు:</h2><hr>');
+		$(theDiv).append('<ul>');
+		
+		$.each(data[theStar], function(index, value){     
+			if(index !=  'Id') {      
+				$(theDiv).append('<li>' + index + ' : ' + value + '</li>');
+			}
+			
+		});
+		$(theDiv).append('</ul>');
+		$(theDiv).append('<p><br><strong>Note:</strong> Some words may be harsh. Please, do not worry. Nakshatra charecteristcs given in classics are not proper.</p>');
+	});
+
+}
+
+
+function printRasiLakshana(  selectedRasi, theDiv){
+	
+
+	$.getJSON ('rasichar.json', function (data) {
+		
+		//$('.rightcol').append('<h1>' + data[selectedRasi].Rasi + ' - లక్షణములు</h1><hr><br>');
+		//$('.rightcol').append( 'CVB:' + data[selectedRasi].CVB + '<br>');
+		$(theDiv).append('<h2>అమ్మాయి నక్షత్రమున్న రాశి యొక్క లక్షణములు:</h2><hr>');
+		$(theDiv).append('<ul>');
+		
+		$.each(data[selectedRasi], function(index, value){     
+			if(index !=  'Id') {      
+				$(theDiv).append('<li>' + index + ' : ' + value + '</li>');
+			}
+			
+		});
+		$(theDiv).append('</ul>');
+		$(theDiv).append('<p><br><strong>Note:</strong> Some words may be harsh. Please, do not worry.</p>');
+		$(theDiv).append('CVB = CVB Subrahmanyam Garu, Bambi = Pandit Ajay Bambi.');
+	});
+}	
+
 
 
 
