@@ -668,8 +668,8 @@ function handleMyMethod(theDiv){
 		$(theDiv).empty();			
 		$(theDiv).append('<h2>  కూటముల పట్టిక - నా పద్ధతి </h2> <hr>');		// Dispaly starts here
 						
-		strTemp = '<p class="mytext">'  + aStarNames27[gs]  + ' - '+ (gp+1) + ' వధువు  &amp  '  + aStarNames27[bs]   + ' - ' + (bp+1) + ' వరుడు.';
-		strTemp+= ' మూడు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.</p>';
+		strTemp = '<p class="mytext">'  + aStarNames27[gs]  + ' - '+ (gp+1) + ' వధువు  మరియు  '  + aStarNames27[bs]   + ' - ' + (bp+1) + ' వరుడు.';
+		strTemp+= ' </p>';
 		$(theDiv).append(strTemp); 
 			
 		//Table2 - headings 
