@@ -522,40 +522,51 @@ function handleVadhuvuku(theDiv){
 			let countRasi = 0.0;
 			let countStar = 0.0;
 			
-			// rashi based should be >= 6
+			
 			find1Varna();
 			find2Vasya();
 			find5Grahamaitri();
 			
 			countRasi = ( parseFloat(arrayResults[0]) + parseFloat(arrayResults[1]) + parseFloat(arrayResults[4]) );
-			
-			if (countRasi >= 6){
+			// rashi based points should be >= 6
+			if (countRasi >= 6)
+			{
 					findNavakam();
-					find3Tara();
-					//star based tara points should be > 1
-					if(thePoints > 1){
+					let tempResult = findTaraStrict();
+					//tara balam points should be > 1. Must be ok from G to B
+					if(tempResult > 1)
+					{
 						find4Yoni();					
 						find6Gana();
 						find8Nadi();
-						countStar = ( parseFloat(arrayResults[2]) + parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) );
-						// star based total points should be > 7.5
-						if (countStar >= 7.5){
+						countStar = (  parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) );
+						// star based total points should be > 7
+						if (countStar >= 7)
+						{
 							find10Rajju();
 							//if(n >67 && n < 72) {alert((girlRajjuName != boyRajjuName))};
-							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) ){
-								//will not pass only if both are bad.
-								//if(n >67 && n < 72) {alert((girlNadiNum != boyNadiNum))};
-								thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
-							
-								strTemp += '<tr><td>' + ((bs==oldBS) ? ' ' : aStarNames27[bs]) + '</td><td>' + (bp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
-								oldBS = bs;								
+							// same nadi and same rajju is not allowed
+							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) )
+							{
+								// vedha star check
+								if ( gs != bs)
+								{
+									if (!isVedhaStar(gs, bs))
+									{
+								
+										thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
+									
+										strTemp += '<tr><td>' + ((bs==oldBS) ? ' ' : aStarNames27[bs]) + '</td><td>' + (bp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
+										oldBS = bs;	
+									}
+								}							
 								
 							}
 						}
 					}
 			}	
 			
-		}
+		} // end of for loop
 		strTemp += '</tbody></table>';
 		strTemp += '<p class="mytext">గుణములు పిడపర్తి పంచాంగములోనివి. నా పద్ధతిలో అన్నిటికన్నా మేలయిన నక్షత్రములు మాత్రమె ఇవ్వబడ్డాయి.';
 		strTemp += '</p>';
@@ -595,37 +606,48 @@ function handleVaruniki(theDiv){
 			let countRasi = 0.0;
 			let countStar = 0.0;
 			
-			// rashi based should be >= 6
+			
 			find1Varna();
 			find2Vasya();
 			find5Grahamaitri();
 			
 			countRasi = ( parseFloat(arrayResults[0]) + parseFloat(arrayResults[1]) + parseFloat(arrayResults[4]) );
-			if (countRasi >= 6){
+			// rashi based should be >= 6
+			if (countRasi >= 6)
+			{
 					findNavakam();
-					find3Tara();
-					//star based tara points should be > 1
-					if(thePoints > 1){
+					let tempResult = findTaraStrict();
+					//tara balam points should be > 1. Must be ok from G to B
+					if(tempResult > 1)
+					{
 						find4Yoni();					
 						find6Gana();
 						find8Nadi();
 						countStar = ( parseFloat(arrayResults[2]) + parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) );
-						// star based total points should be > 7.5
-						if (countStar >= 7.5){
+						// star based total points should be > 7
+						if (countStar >= 7)
+						{
 							find10Rajju();
-							if(n >67 && n < 72) {alert((girlRajjuName != boyRajjuName));}
-							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) ){
-								thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
-								
-								strTemp += '<tr><td>' + ((gs==oldGS) ? ' ' : aStarNames27[gs]) + '</td><td>' + (gp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
-								oldGS = gs;	
-								
+							//if(n >67 && n < 72) {alert((girlRajjuName != boyRajjuName));}
+							// same nadi and same rajju is not allowed
+							if ( (girlNadiNum != boyNadiNum) || (girlRajjuName != boyRajjuName) )
+							{
+								// vedha star check
+								if ( gs != bs)
+								{
+									if (!isVedhaStar(gs, bs))
+									{
+										thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
+										strTemp += '<tr><td>' + ((gs==oldGS) ? ' ' : aStarNames27[gs]) + '</td><td>' + (gp+1) + '</td><td>' + thePoints + '</td></tr>'  ;
+										oldGS = gs;					
+									}
+								}
 							}
-						}
-					}
-			}	
+						}	
 			
-		}
+					}
+			}
+		} // for loop ends
 		strTemp += '</tbody></table>';
 		strTemp += '<p class="mytext">గుణములు పిడపర్తి పంచాంగములోనివి. నా పద్ధతిలో అన్నిటికన్నా మేలయిన నక్షత్రములు మాత్రమె ఇవ్వబడ్డాయి.';
 		strTemp += '</p>';
@@ -720,7 +742,7 @@ function handleMyMethod(theDiv){
 
 	strTemp = '<p class="mytext">';
 	strTemp += '</p>';
-	strTemp += '<p class="mytext">రాశి ఆధార విభజన( 8 కి కనీసం 6)     :';
+	strTemp += '<p class="mytext">1. రాశి ఆధార విభజన( 8 కి కనీసం 6)     :';
 	let tempResult = ( parseFloat(arrayResults[0]) + parseFloat(arrayResults[1]) + parseFloat(arrayResults[4]) );
 	strTemp +=  tempResult;
 	if (tempResult >= 6){
@@ -730,17 +752,27 @@ function handleMyMethod(theDiv){
 		strTemp += '<span class="myred">' + " పొంతన బాలేదు.  " + '</span>';
 	}
 	
-	strTemp += '<br>నక్షత్ర ఆధార విభజన( 21 కి కనీసం 7.5):';
-	tempResult = ( parseFloat(arrayResults[2]) + parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) ) ;
+	strTemp += '<br>2. తారా బలం ( G-->B తప్పక ఉండాలి.  ):';
+	tempResult = findTaraStrict();
+	
+	if (tempResult >= 1){
+	
+		strTemp += '<span class="mygreen">' + " తారా బలం  బాగుంది." + '</span>' ;
+	} else{
+		strTemp += '<span class="myred">' + " తారా బలం  బాలేదు." + '</span>' ;
+	}
+
+	strTemp += '<br>3. నక్షత్ర ఆధార విభజన( 18 కి కనీసం 7):';
+	tempResult = ( parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) ) ;
 	strTemp += tempResult;
-	if (tempResult >= 7.5){
+	if (tempResult >= 7){
 	
 		strTemp += '<span class="mygreen">' + " పొంతన బాగుంది." + '</span>' ;
 	} else{
 		strTemp += '<span class="myred">' + " పొంతన బాలేదు." + '</span>' ;
 	}
 
-	strTemp += '<br>ఏక నాడి మరియు ఏక రజ్జు:';
+	strTemp += '<br>4. ఏక నాడి మరియు ఏక రజ్జు:';
 	
 	if(( girlNadiNum == boyNadiNum) && (girlRajjuName == boyRajjuName) ){
 
@@ -750,25 +782,21 @@ function handleMyMethod(theDiv){
 		strTemp += '<span class="mygreen">' + "దోషం లేదు." + '</span>' ;
 	}
 
+	// vedha star check
 	if ( gs != bs){
 		if (isVedhaStar(gs, bs)){
-			strTemp += '<br><span class="myred">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ ఉన్నది." + '</span>';
+			strTemp += '<br>5. వేధ నక్షత్రములు: <span class="myred">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ ఉన్నది." + '<br></span>';
 		}
 		else
 		{
-			strTemp += '<br><span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '</span>';
+			strTemp += '<br>4. వేధ నక్షత్రములు: <span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '<br></span>';
 		}
 	}
 	
-	console.log('girl navakam = ' + girlNavakam + 'girldiff = ' + girlDiff);
-	if( girlNavakam <2 || boyNavakam <2){
-		if(isVadhaOK(gs,bs)){
-			strTemp += '<br><br><span class="mygreen">' + " నైధాన తార (N1) అయినా, వధ తార ఫలితం శుభదాయకమే." + '</span>';
-		}
-		else{
-			strTemp += '<br><br><span class="myred">' + " నైధాన తార (N1) అయింది, పైగా వధ తార ఫలితం అశుభము." + '</span>';
-		}
-	}
+	//console.log('girl navakam = ' + girlNavakam + 'girldiff = ' + girlDiff);
+	strTemp += '<h2>గమనిక:</h2>';
+	strTemp += 'ఇది నాపథ్ధతి మాత్రమే  గనుక ఎప్పుడైనా మారవచ్చు. latest = 2019-May-14.<br>';
+	strTemp += 'అయిదు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.<br><br>';   
 
 	strTemp += '</p><br>';
 
@@ -776,15 +804,137 @@ function handleMyMethod(theDiv){
 
 	strTemp += '<p>';
 	strTemp += '1. రాశి సంబంధ విభజనలో, గ్రహ మైత్రికి 5 లో కనీసం 5 లేక 4 పాయింట్స్ రావాలి. వర్ణ వశ్య కూటములలో రెండిట్లో కలిపి 1 లేక 2 పాయింట్స్ వస్తే చాలు.<br><br>';
-	strTemp += '2. నక్షత్ర సంబంధ విభజనలో - తారా బలం పాయింట్స్ కనీసం 1.5 రావాలి. అంటే g -> b కాని, b -> g కాని తారా బలం ఉండాలి. ఆపై,  యోని, గణ, నాడీ కూటములు మూడింటా కలిపి 6 పాయింట్స్ రావాలి.<br><br>';
-	strTemp += '3. ఒకటే నాడీ, మరియు రజ్జు - రెండు దోషములూ ఉండ కూడదు. కాబట్టి, ఆటోమేటిక్ గా జన్మ తార పనికిరాదు. <br><br>';
-	strTemp += '4. వధూవరుల నక్షత్రముల మధ్య పరస్పర వేధ ఉండకూడదు.<br><br>';
+	strTemp += '2.అమ్మాయి నుండి అబ్బాయికి తారా బలం తప్పక ఉండాలి. G-->B నైధన తార అస్సలు పనికి రాదు.  విపత్తార రెండవ, మూడవ నవకంలో పనికొస్తుంది, మొదటి నవకంలో పనికిరాదు. ప్రత్యక్తార మూడవ నవకంలో మాత్రమె పనికి వస్తుంది, మొదటి రెండవ నవకాలలో పనికిరాదు.<br><br>';
+	strTemp += '3. నక్షత్ర సంబంధ విభజనలో - యోని, గణ, నాడీ కూటములు మూడింటా కలిపి కనీసం 7 పాయింట్స్ రావాలి.<br><br>';
+	strTemp += '4. ఒకటే నాడీ, మరియు రజ్జు - రెండు దోషములూ ఉండ కూడదు. కాబట్టి, ఆటోమేటిక్ గా జన్మ తార పనికిరాదు. <br><br>';
+	strTemp += '5. వధూవరుల నక్షత్రముల మధ్య పరస్పర వేధ ఉండకూడదు.<br><br>';
 	strTemp += '</p>';
-	strTemp += '<b>గమనిక:</b><br>';
-	strTemp += 'ఇది నాపథ్ధతి మాత్రమే  గనుక ఎప్పుడైనా మారవచ్చు. నాలుగు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.';   
-	strTemp += ' వధ తార అంటే - మొదటి నవకంలో నైధన తార మినహాయింపు కూడా పరిశీలించబడినది.  తెలుగు వారీ మినహాయింపు సమ్మతించరు.';
+	
+	strTemp += '<h2>మినహాయింపుల పరిశీలన:</h2><hr>';
+
+	//varna kootami check
+	if ( arrayResults[0] < 1 )
+	{
+		strTemp += '<span class="myred">' + 'వర్ణ కూటమి లేదు. ' +  'రాశ్యాధిపతులు = ' + aRasiInfo[girlRasiNum].lord + ' & ' + aRasiInfo[boyRasiNum].lord + '</span><br>';
+	}
+
+	//vasya kootami check
+	if ( arrayResults[1] < 1 )
+	{
+		strTemp += '<span class="myred">' + 'వశ్య కూటమి లేదు. ' + '</span><br>';
+	}
+
+	
+
+	// vadha star check 
+	// if niadhana tara of N1, returns true if vadha result is OK.
+	if(  (girlDiff == 6 &&   girlNavakam  == 1) ||  (boyDiff == 6 &&   boyNavakam  == 1) ) {
+		
+		if( aVadhaOK[gs] || aVadhaOK[bs]  ) {
+			strTemp += '<span class="mygreen">' + " నైధాన తార (N1) అయినా, వధ తార ఫలితం శుభదాయకమే." + '</span><br>';
+		}
+		else{
+			strTemp += '<span class="myred">' + " నైధాన తార (N1) అయింది, పైగా వధ తార ఫలితం అశుభము." + '</span><br>';
+		}
+	}
+
+	// check paraspara vairam in Yoni Kootami.
+	if ( arrayResults[3] < 1)
+	{
+		strTemp += '<span class="myred">' + " యోని కూటమిలో పరస్పర వైరం ఉన్నది."  +'</span><br>';
+	}
+
+	// చెక్ గ్రహ మైత్రి 
+	//console.log( 'gn= '+ girlNavamsa % 12 + ' bn = ' + boyNavamsa % 12);
+	if ( arrayResults[4] < 4)
+	//+ aRasiInfo[(girlNavamsa % 12)].lord  + ' & ' + aRasiInfo[(boyNavamsa % 12)].lord
+	{
+		strTemp += '<span class="myred">' + "గ్రహ మైత్రి లేదు. </span>"   +  (findGrahamaitriInNavamsa() > 4 ? '<span class="mygreen">చంద్ర నవాంశ అధిపతుల మధ్య పరస్పర మైత్రి - ఉన్నది.' : '<span class="myred">చంద్ర నవాంశ అధిపతుల మధ్య పరస్పర మైత్రి - లేదు.' ) + '</span><br>';
+	}
+
+	// check if girl is rakshasa gana
+	if (arrayStarInfo[gs].gananum == 3 && arrayStarInfo[bs].gananum != 3)
+	{
+		strTemp += '<span class="myred">' + "అమ్మాయిది రాక్షస గణము." + '</span>';
+
+		// స్త్రీ దీర్ఘం చెక్
+		let sDeergham = ( (girlDiff+1) + (girlNavakam-1) * 9 ) ;
+		if ( sDeergham >= 14)
+		{
+
+			strTemp += '<span class="mygreen">' + " కాని,  స్త్రీ దీర్ఘం ఉన్నది." + '</span>';
+		}
+		else
+		{
+			strTemp +=  '<span class="myred">' + " పైగా స్త్రీ దీర్ఘం లేదు." + '</span>';
+		}
+
+		//గ్రహ మైత్రి చెక్
+		strTemp +=   ( arrayResults[4] > 4 ? '<span class="mygreen"> గ్రహ మైత్రి  ఉన్నది.' : '<span class="myred"> గ్రహ మైత్రి లేదు.') + '</span><br>';
+
+	}
+
+	//bha kootami check
+
+	if ( rasiG2B == 6 || rasiB2G == 6 )
+	{
+		strTemp += '<span class="myred">' + " రాశి/భ కూటమి షష్టాష్టక దోషం ఉన్నది." +  (arrayResults[4] > 3 ? 'కాని, గ్రహమైత్రి ఉన్నది.' : 'పైగా గ్రహ మైత్రి లేదు.') +'</span><br>';
+	}
+	
+	if ( rasiG2B == 2 || rasiB2G == 2 )
+	{
+		strTemp += '<span class="myred">' + " రాశి/భ కూటమి ద్విర్ద్వాదశ దోషం ఉన్నది." +  (arrayResults[4] > 3 ? 'కాని, గ్రహమైత్రి ఉన్నది.' : 'పైగా గ్రహ మైత్రి లేదు.') +'</span><br>';
+	}
+
+	// nakshatra Paada based nadi check
+	if ( girlNadiNum == boyNadiNum){
+		if ( getNavamsaNadi(girlNavamsa) == getNavamsaNadi(boyNavamsa) )
+		{
+			strTemp += '<span class="myred">' + " నక్షత్రముల పరంగా ఏక నాడి దోషం ఉన్నది. నక్షత్ర పాదముల పరంగా కూడా ఏక నాడి దోషం ఉన్నది." + '</span><br>';
+		}
+		else
+		{
+			strTemp += '<span class="myred">' + " నక్షత్రముల పరంగా ఏక నాడి దోషం ఉన్నది." + '</span>' + '<span class="mygreen">' + "నక్షత్ర పాదముల పరంగా ఏక నాడి దోషం లేదు." + '</span><br>';
+		}
+	}
+	else
+	{
+		strTemp +=  '<span class="mygreen">' + " ఏక నాడి దోషం లేదు." + '</span><br>';
+	}
+
+	// rajju dosham check
+	if (girlRajjuName == boyRajjuName)
+	{
+
+		strTemp += '<span class="myred">' + " ఏక రజ్జు దోషం ఉన్నది." + '</span><br>';
+	}
+	else
+	{
+		strTemp +=  '<span class="mygreen">' + " ఏక రజ్జు దోషం లేదు." + '</span><br>';
+	}
+
+	// sthree deergham check
+	let sDeergham = ( (girlDiff+1) + (girlNavakam-1) * 9 ) ;
+	if ( sDeergham >= 14)
+	{
+
+		strTemp += '<span class="mygreen">' + " స్త్రీ దీర్ఘం = " + sDeergham + ".  ( G --> B >= 14) ఉన్నది." + '</span><br>';
+	}
+	else
+	{
+		strTemp +=  '<span class="myred">' + " స్త్రీ దీర్ఘం = " + sDeergham + ".  (G --> B >= 14) లేదు." + '</span><br>';
+	}
+
 	
 	
+	/*
+	strTemp +=  'మొదటి నవకంలో నైధన తార అయితే, వధ తార మినహాయింపు పరిశీలించబడినది.  తెలుగు వారీ మినహాయింపు సమ్మతించరు.<br>'; 
+	strTemp += 'యోని కూటమిలో -  పరస్పర వైరమున్నదా, అని పరిశీలించబడుతుంది.<br>';
+	strTemp += 'గ్రహ మైత్రి లేకున్నచో, చంద్ర నవాంశ అధిపతుల మధ్య పరస్పర మైత్రి పరిశీలించబడుతుంది.<br>';
+	strTemp += 'రాశి/భ కూటమిలో -  షష్టాష్టక లేక ద్విర్ద్వాదశ  దోషం ఉంటె గనుక, గ్రహమైత్రి పరిశీలించబడుతుంది.<br>';
+	strTemp += 'ఏక నాడి దోషం ఉంటె గనుక, నక్షత్ర పాదముల పరంగా చెప్పబడ్డ ఏక నాడి దోషం పరిశీలించబడుతుంది.<br>';
+	*/
+
 	$(theDiv).append(strTemp); // end of table2 and div	
 
 	gotoTop(theDiv);
@@ -986,16 +1136,16 @@ function handleLakshanas(theDiv){
 	
 	$("#lakshanas").on("click",  function()
 	{
-		prepareData();
-		$(theDiv).empty();
-		printStarLakshana(gs,theDiv);
 		
-		gotoTop(theDiv);
-
-
 		prepareData();
 		$(theDiv).empty();
 		printRasiLakshana(girlRasiNum,theDiv);
+		
+		gotoTop(theDiv);
+
+		prepareData();
+		$(theDiv).empty();
+		printStarLakshana(gs,theDiv);
 		
 		gotoTop(theDiv);
 
@@ -1019,7 +1169,7 @@ function printStarLakshana( theStar,  theDiv){
 			
 		});
 		$(theDiv).append('</ul>');
-		$(theDiv).append('<p><br><strong>Note:</strong> Some words may be harsh. Please, do not worry. Nakshatra charecteristcs given in classics are not proper.</p>');
+		$(theDiv).append('<p><br><strong>Note:</strong><span class="myred"> Some words may be harsh. Please, do not worry. Nakshatra charecteristcs given in classics are not proper.</span></p>');
 	});
 
 }
@@ -1042,8 +1192,8 @@ function printRasiLakshana(  selectedRasi, theDiv){
 			
 		});
 		$(theDiv).append('</ul>');
-		$(theDiv).append('<p><br><strong>Note:</strong> Some words may be harsh. Please, do not worry.</p>');
-		$(theDiv).append('CVB = CVB Subrahmanyam Garu, Bambi = Pandit Ajay Bambi.');
+		$(theDiv).append('<p><br><strong>Note:</strong> <span class="myred">Some words may be harsh. Please, do not worry.</span><br>');
+		$(theDiv).append('<span class="mygreen">CVB = CVB Subrahmanyam Gaaru, Bambi = Pandit Ajay Bambi. <br>BPHS = Bruhath Paraasara Hora Saasthram.</span></p>');
 	});
 }	
 
@@ -1186,19 +1336,71 @@ function find3Tara(){
 
 	// either ok means 1.5 points. both ways is 3
 	thePoints = 0.0;
-	//thePoints = 1.5; // only g 2 b ok
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) || (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
 		thePoints = 1.5; // either way ok
 	}
 	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) && (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
 		thePoints = 3.0; // both ways ok
 	}		
-
-
 		
 	subPoints = thePoints;
 	arrayResults[2] = subPoints;
 	totalPoints = totalPoints + subPoints;
+}
+
+function findTaraStrict(){
+
+	//before this findNavakam function calculates girldiff and boydiff
+	// takes girldiff and boydiff.
+	// starts with zero points
+	// if from girl tara is not 3/5/7 then 1.5 points
+	// then if from  boy also tara is not 3/5/7 then 3 points
+	//calculates sub and total points
+
+	
+	let tpG = 1.5;
+	let tpB = 1.5;
+	thePoints = 0.0;
+	
+	if ( (girlDiff+1) == 7 ){ tpG = 0.0;}
+	if ( ( (girlDiff+1) == 5 ) && ( girlNavakam == 1 || girlNavakam == 2) ){ tpG = 0.0; }
+	if ( ( (girlDiff+1) == 3 ) && ( girlNavakam == 1 ) ){ tpG = 0.0; }
+	
+	if ( (boyDiff+1) == 7 ){ tpB = 0.0;}
+	if ( ( (boyDiff+1) == 5 ) && ( boyNavakam == 1 || boyNavakam == 2) ){ tpB = 0.0; }
+	if ( ( (boyDiff+1) == 3 ) && ( boyNavakam == 1 ) ){ tpB = 0.0; }
+	
+	thePoints = tpG + tpB;
+	if(tpG == 0){ thePoints = 0;} // points only if G->B is OK.
+	
+	return thePoints;
+	/*
+	//first, g 2 b must be ok. then only chck b 2 g.
+	thePoints = 0;
+	if ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  )
+	{
+		thePoints = 1.5; // only g 2 b ok
+		if ( (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )
+		{
+			thePoints = 3; // both ways ok
+		}	
+
+	}
+	
+	/*
+	// either ok means 1.5 points. both ways is 3
+	thePoints = 0.0;
+	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) || (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
+		thePoints = 1.5; // either way ok
+	}
+	if (  ( (girlDiff+1) != 3 && (girlDiff+1) != 5 && (girlDiff+1) != 7  ) && (  (boyDiff+1) != 3 && (boyDiff+1) != 5 && (boyDiff+1) != 7  )  ){
+		thePoints = 3.0; // both ways ok
+	}		
+		
+	subPoints = thePoints;
+	arrayResults[2] = subPoints;
+	totalPoints = totalPoints + subPoints;
+	*/
 }
 
 function find4Yoni(){
@@ -1266,6 +1468,20 @@ function find5Grahamaitri(){
 	subPoints = thePoints;
 	arrayResults[4] = subPoints;
 	totalPoints = totalPoints + subPoints;
+
+}
+
+function findGrahamaitriInNavamsa(){
+	// uses get rasyadhipa function to get rasyadhipa number of girl and boy
+	// gets points
+	// as per muhurta sindhu
+	// returns grahamaitri points between navamasa lords.
+
+	theRowNum = getRaasyaadhipa(girlNavamsa % 12);
+	theColNum = getRaasyaadhipa(boyNavamsa % 12);
+	let nPoints  = Number(tGrahamaitri[theRowNum][theColNum]);
+
+	return nPoints;
 
 }
 
@@ -1418,7 +1634,10 @@ function find10Rajju(){
 }
 
 function isVedhaStar(starg, starb){
-
+	// given the stars of boy and girl, 
+	// checks if girls star is in Vedha array
+	// if yes, checks if boys stars also is in that array and returns true.
+	// both same star was already checked by calling program.
 	for (let i=0; i< aVedhaStars.length; i++){
 		if( aVedhaStars[i][0].includes(aStarNames27[starg] ) || aVedhaStars[i][1].includes(aStarNames27[starg] ) ){
 			if( aVedhaStars[i][0].includes(aStarNames27[starb] ) || aVedhaStars[i][1].includes(aStarNames27[starb] ) ){
@@ -1429,15 +1648,13 @@ function isVedhaStar(starg, starb){
 	return false;
 }
 
-function isVadhaOK(starg, starb){
-	
-	if  ( girlDiff == 6 &&   girlNavakam  == 1) { 
-		if(aVadhaOK[starg]) return true;
-	}
-	if  ( boyDiff == 6 &&   boyNavakam == 1) { 
-		if(aVadhaOK[starb]) return true;
-	}
-	return false;
 
+function getNavamsaNadi(theNavamsa){
+	// navamsa is 0 to 107. Given Navamsa, returns the nadi num as 1/2/3
+	let theNadi = 99;
+	if ( (theNavamsa % 6 == 0) || (theNavamsa % 6 == 5) ) theNadi = 1;
+	if ( (theNavamsa % 6 == 1) || (theNavamsa % 6 == 4) ) theNadi = 2;
+	if ( (theNavamsa % 6 == 2) || (theNavamsa % 6 == 3) ) theNadi = 3;
+	return theNadi;
 }
 

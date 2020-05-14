@@ -177,10 +177,12 @@ p.mytext{
 
 .myred{
 	  color:red;
+	  font-size: 0.875em;
 }
 
 .mygreen{
 	  color:green;
+	  font-size: 0.875em;
 }
 
 .vivarana li{
