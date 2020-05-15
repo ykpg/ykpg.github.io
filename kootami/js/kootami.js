@@ -789,7 +789,7 @@ function handleMyMethod(theDiv){
 		}
 		else
 		{
-			strTemp += '<br>4. వేధ నక్షత్రములు: <span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '<br></span>';
+			strTemp += '<br>5. వేధ నక్షత్రములు: <span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '<br></span>';
 		}
 	}
 	

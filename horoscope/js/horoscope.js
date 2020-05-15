@@ -768,6 +768,7 @@ function printAnalysis(theDiv){
     }
     $(theDiv).append(strTemp + '</tbody></table>');
     
+    /*
     strTemp = '<p>Are Functional malefics weak in Dusthanas?<br>';
     strTemp += 'Are these Functional malefics Natural Benefics?<br>';
     strTemp += 'Are Functional benefics in Kendra/Kona?<br></p>';
@@ -775,6 +776,7 @@ function printAnalysis(theDiv){
     strTemp += '<p>Are Functional malefics in  Kendra/Kona?<br>';
     strTemp += 'Do Kendra/Kona have influence of Natural Benefics?<br>';
     strTemp += 'Are the running dasas not favourable?<br></p>';
+    */
 
     $(theDiv).append(strTemp );
 
