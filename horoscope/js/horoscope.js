@@ -1,29 +1,29 @@
 'use strict'
 
 let aGrahaAll = [];
-// planets string as in Natural Zodiac for D1. 0 index unsed.
+
 let planetsInNZD1 = [ " "," "," "," "," "," "," "," "," "," "," "," "];
-// planets string as in Natural Zodiac for D9. 0 index unsed.
+
 let planetsInNZD9 = [ " "," "," "," "," "," "," "," "," "," "," "," "]; 
 
-let aRasiAdhipaNum = [3,6,4,2,1,4,6,3,5,7,7,5]; // for mesha kuja is lord
-let aBhavaAdhipaNum = [0,0,0,0,0,0,0,0,0,0,0,0];  // which palnet is adhipa of  bhavas 0 to 11
+let aRasiAdhipaNum = [3,6,4,2,1,4,6,3,5,7,7,5]; 
+let aBhavaAdhipaNum = [0,0,0,0,0,0,0,0,0,0,0,0];  
 
 
-//0 asc. leave. 1 to 9 palnets. Sun to Rahu. Default 0 => shubha.
-let aNPaapi = [0,0,0,1,0,0,0,1,1,1]; // 1 is paapi. first Asc. moon and budha can change.
-let aPosRasi = []; // 0 asc 1 sun till 9 = ketu . in which rasi
-let aPosBhava = []; // 0 asc 1 sun till 9 = ketu . in which bhava
 
-let aKarakaVrudhdhi = [0,0,0,0,0,0,0,0,0,0]; // 1 is vrudhdhi
-let aBhavaVrudhdhi = [0,0,0,0,0,0,0,0,0,0,0,0]; // +1 is vrudhdhi - 1 is kshayam. position based
-let aBhavaAdhipa = [0,0,0,0,0,0,0,0,0,0,0,0]; // adhipati graha num for each bhava
-let aBhavaSubhatvam = [1,1,0,1,1,0,1,0,1,1,1,0] // 0 to 11. 3,6,8,12 are asubha.
-let aPosBhavaLord = [0,0,0,0,0,0,0,0,0,0,0,0]; // in which bahva is each bhava lord.
-let aAdhipatyaVrudhdhi =  [0,0,0,0,0,0,0,0,0,0,0,0]; // 0 initial. increase or decrease.
-let aABhavaVrudhdhi = [0,0,0,0,0,0,0,0,0,0,0,0]; // +1 is vrudhdhi - 1 is kshayam. Adhipatya Based
+let aNPaapi = [0,0,0,1,0,0,0,1,1,1]; 
+let aPosRasi = []; 
+let aPosBhava = []; 
 
-//['',     '',     '',    5.5],
+let aKarakaVrudhdhi = [0,0,0,0,0,0,0,0,0,0]; 
+let aBhavaVrudhdhi = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aBhavaAdhipa = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aBhavaSubhatvam = [1,1,0,1,1,0,1,0,1,1,1,0];
+let aPosBhavaLord = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aAdhipatyaVrudhdhi =  [0,0,0,0,0,0,0,0,0,0,0,0]; 
+let aABhavaVrudhdhi = [0,0,0,0,0,0,0,0,0,0,0,0]; 
+
+
 let aLL = [
 
     ['Anantapur',		'14N41',    '77E36',    5.5],
@@ -121,30 +121,30 @@ var division   = [ myhoraz,myhorah,mysashthamshaz,mysashthamshah,
                     myashthamsaz,myashthamsah,mynavamsaz,mynavamsah,
                     mydwadashamsaz,mydwadashamsah ];
        
-var AS    = 0;  /* Ascendant or Lagna  */
-var SU    = 1;  /* Sun     Surya      (Leo)                  South 7th          Sunday     6Y 29D     */
-var MO    = 2;  /* Moon    Chandra    (Cancer)               North 7th          Monday    10Y 2D      */
-var MA    = 3;  /* Mars    Mangala    (Aries+, Scorpio)      South 4th,7th,8th  Tuesday    7Y 2M5D    */
-var ME    = 4;  /* Mercury Budha      (Virgo+, Gemini)       East  7th          Wednesday 17Y 2M9D    */
-var JU    = 5;  /* Jupiter Brihaspati (Sagittarius+, Pisces) East  5th,7th,9th  Thursday  16Y 1Y1M11D */
-var VE    = 6;  /* Venus   Shukra     (Libra+, Taurus)       North 7th          Friday    20Y 25D     */
-var SA    = 7;  /* Saturn  Shani      (Aquarius+,Capricorn)  West  3rd,7th,10th Saturday  19Y 3Y1M24D */
-var RA    = 8;  /* Rahu    5th, 7th, 9th 18Y */
-var KE    = 9;  /* Ketu    5th, 7th, 9th  7Y */
+var AS    = 0; 
+var SU    = 1; 
+var MO    = 2;  
+var MA    = 3; 
+var ME    = 4;  
+var JU    = 5;  
+var VE    = 6; 
+var SA    = 7;  
+var RA    = 8;  
+var KE    = 9;  
 
-var Aries     = 1;       /* Mesha      Fire  M Movable Mars    [00-30]   Apr15 - May15 */
-var Taurus    = 2;       /* Vrishaba   Earth F Fixed   Venus   [30-60]   May16 - Jun15 */
-var Gemini    = 3;       /* Mithuna    Air   M Common  Mercury [60-90]   Jun16 - Jul15 */
-var Cancer    = 4;       /* Karkata    Water F Movable Moon    [90-120]  Jul16 - Aug15 */
-var Leo       = 5;       /* Simha      Fire  M Fixed   Sun     [120-150] Aug16 - Sep15 */
-var Virgo     = 6;       /* Kanya      Earth F Common  Mercury [150-180] Sep16 - Oct15 */
-var Libra     = 7;       /* Tula       Air   M Movable Venus   [180-210] Oct16 - Nov15 */
-var Scorpio   = 8;       /* Vrishchika Water F Fixed   Mars    [210-240] Nov16 - Dec15 */
-var Sagittarius = 9;     /* Dhanus     Fire  M Common  Jupiter [240-270] Dec16 - Jan14 */
-var Capricorn   = 10;    /* Makara     Earth F Movable Saturn  [270-300] Jan15 - Feb14 */
-var Aquarius  = 11;      /* Kumbha     Air   M Fixed   Saturn  [300-330] Feb15 - Mar14 */
-var Pisces    = 12;      /* Meena      Water F Common  Jupiter [330-360] Mar15 - Apr14 */
-var MAXZOD    = 12;      /* Max zodiacs */
+var Aries     = 1;      
+var Taurus    = 2;      
+var Gemini    = 3;      
+var Cancer    = 4;      
+var Leo       = 5;      
+var Virgo     = 6;     
+var Libra     = 7;      
+var Scorpio   = 8;       
+var Sagittarius = 9;    
+var Capricorn   = 10;    
+var Aquarius  = 11;      
+var Pisces    = 12;     
+var MAXZOD    = 12;     
 
 var H1  = 1   /* Lagna     Su    E */
 var H2  = 2   /* Dhana     Ju,Ve   */
@@ -207,8 +207,7 @@ var showInfo = function()
 	{
 		parse_input_data();
         calc_position(false);
-        calc_positions(); // for general use. asc or planet - in which house or bhava
-
+        calc_positions(); 
         isOK = printInfo('.main');
 
         printCharts('.main');
@@ -266,7 +265,7 @@ function calc_positions(){
         aPosRasi[i] = mygrahas[i].rasizn;
         
     }
-    let k = myrashis[0]; // which rasi is lagna in.
+    let k = myrashis[0]; 
   
     for(let i = 0 ; i < 10 ; i++){
         aPosBhava[i] = aPosRasi[i] - k ;
@@ -278,9 +277,9 @@ function calc_positions(){
         aBhavaAdhipa[i] = aRasiAdhipaNum[myrashis[i]-1];
         
         aPosBhavaLord[i] = aPosBhava[aBhavaAdhipa[i]];
-        //console.log(aBhavaAdhipa[i] + ' - ' + aGrahaNames[aBhavaAdhipa[i]] + ' - ' + aPosBhavaLord[i]);
+        
     }
-    //console.log(aBhavaAdhipa );   
+    
     
 }
 
@@ -288,7 +287,7 @@ function calc_positions(){
 function printCharts(theDiv){
   
         if(isOK){
-            //$('.aside2').empty();
+            
             $(theDiv).append('<h2>Rasi(D1) & Navamsa(D9) Charts</h2><hr>');
             drawCharts(theDiv);
         }
@@ -307,7 +306,7 @@ function drawCharts(theDiv){
     let theLagnaRasi = k;
 
     for(let i = 1; i < 13; i++){
-        planetsInNZD1[k] = mybhavas[i]; // mybhavas gives string of planets in it.
+        planetsInNZD1[k] = mybhavas[i]; 
         k = k + 1;
         if ( k > 12 ) { k = 1;}    
     }
@@ -325,9 +324,9 @@ function drawCharts(theDiv){
     }
 
     for(let i = 0; i < 10; i++){
-        k = mygrahas[i].navzn - 1;  // asc or graha is in which navamsa?
+        k = mygrahas[i].navzn - 1; 
         
-        //that navamsa bhava in nz has planet name.
+   
         planetsInNZD9[k] = planetsInNZD9[k] + mygrahas[i].name + ' '; 
     }
 
@@ -362,7 +361,7 @@ function showKujaDosham(){
 
 function printKujaDosham(theDiv){
       
-    let posKuja = mygrahas[3].rasizn; // rasi num 1 to 12.
+    let posKuja = mygrahas[3].rasizn; 
     
     let posLagna = mygrahas[0].rasizn;
    
@@ -388,36 +387,36 @@ function printKujaDosham(theDiv){
     
     strTemp += '<p class="main">';
    
-    //ద్వితీయంలో కుజుడు - అది మిధున లేక  కన్యా రాశి అయితే  దోషం లేదు.
+
     if ( (relativePosLK == 2 ||  relativePosCK == 2 || relativePosSK == 2) && ( posKuja == 3 || posKuja == 6)){
         strTemp += 'Exception: kuja in 2nd and that Rasi is Midhuna or Kanya Rasi.<br>';
     }
-    // ద్వాదశంలో కుజుడు -  అది వృషభ లేక  తులా రాశి అయితే  దోషం లేదు.
+   
     if ( (relativePosLK == 12 ||  relativePosCK == 12 || relativePosSK == 12) && ( posKuja == 2 || posKuja == 7)){
         strTemp += 'Exception: kuja in 12th and that is Vrushabha or Tula Rasi.<br>';
     }
-    //  చతుర్ధంలో కుజుడు -  అది మేష  లేక వృశ్చిక రాశి  అయితే  దోషం లేదు.
+    
     if ( (relativePosLK == 4 ||  relativePosCK == 4 || relativePosSK == 4) && ( posKuja == 1 || posKuja == 8)){
          strTemp += 'Exception: kuja in 4th and that is Mesha or Vruschika Rasi.<br>';
     }
-    // సప్తమంలో కుజుడు -  అది మకర లేక  కర్కాటక రాశి  అయితే  దోషం లేదు.
+ 
     if ( (relativePosLK == 7 ||  relativePosCK == 7 || relativePosSK == 7) && ( posKuja == 4 || posKuja == 10)){
          strTemp += 'Exception: kuja in 7th and that is Karkaataka or Makara Rasi.<br>';
     }
-    //  అష్టమంలో కుజుడు -  అది ధనుస్సు లేక మీనం రాశి  అయితే  దోషం లేదు.	
+ 
     if( (relativePosLK == 8 ||  relativePosCK == 8 || relativePosSK == 8) && ( posKuja == 9 || posKuja == 12)){
         strTemp += 'Exception: kuja in 7th and that is Dhanu or Meena Rasi.<br>';
     }
-    //కుజుడు కుంభ లేక  సింహ రాశిలో స్థితి చెంది ఉంటె దోషం లేదు.
+    
     if(posKuja == 5 || posKuja == 11){
         strTemp += 'Exception:  Kuja in Simha or Kumbha Rasi.<br>';
     }
 
-    // కుజుడు చంద్రునితోగాని, గురువుతోగాని కలసి ఉంటె కుజ దోషం లేదు.	
+
     if(posKuja == posChandra || posKuja == posGuru){
         strTemp += 'Exception: Kuja is in Yuti with Chandra or Guru.<br>';
     }
-    // గురువుగాని, శుక్రుడు గాని లగ్నంలో ఉంటె కుజ దోషముండదు.
+    
     if(posGuru == 1 || posSukra == 1){
         strTemp += 'Exception: Guru or Sukra is in Lagnam.<br>';
     }
@@ -428,7 +427,6 @@ function printKujaDosham(theDiv){
     }
 
     strTemp += '</p><p class="main">Note: Exceptions if any, are, as per Mr BV Raman.<br>';
-    //strTemp += '<a href ="img/kuja_dosha.pdf" target="-blank" title="Kuja Dosham Notes">Kuja Dosham Notes</a><br>';
     strTemp += 'In my opinion, Kuja in Lagna or in 2nd from Moon is Ok.';
     strTemp += ' From Sukra, only Kuja in 7th is critical.</p>';
     
@@ -524,50 +522,47 @@ function showAnalysis(){
 
 function printAnalysis(theDiv){
 
-    $(theDiv).empty();
-
     //age
     strTemp = '<h2>Analysis:</h2><hr><p class="leftp">';
-    strTemp += "Age = " + moment(date).fromNow(true) + '<br>' ; // 4 years ago;
+    strTemp += "Age = " + moment(date).fromNow(true) + '<br>' ; 
+    
 
-    // Sandhya Samyam
     let theWindow = 48/60;
     let theBTime = parseInt(time.getHours()) +  parseInt(time.getMinutes()) / 60 ;
     let theRise = calc_sunriseset(true, false, false, false);
     let theSet  = calc_sunriseset(false, false, false, false);
     if (   Math.abs(theBTime - theRise ) < theWindow) {strTemp += 'Birth around Sunrise.<br>';}
     if (   Math.abs(theBTime - theSet ) < theWindow) {strTemp += 'Birth around Sunset.<br>';}
+    else strTemp += 'Sandhya Samayam - Not Applicable.<br>';
 
-
-    //ravi samkramanam below 1.2 degrees
-    if(mygrahas[1].degree <1.2) { strTemp += 'Ravi Samkramanam - ' + mygrahas[1].degree.toFixed(2) +  '°'; }
-
+  
+    if(mygrahas[1].degree <= 1.0) { strTemp += 'Ravi Samkramanam - ' + mygrahas[1].degree.toFixed(2) +  '°'; }
+    else strTemp += 'Ravi Samkramanam below one degree - Not Applicable.<br>';
     $(theDiv).append(strTemp );
     
 
-    // About CHandra. Is he Subha/Poorna or Paapi/Ksheena. Ex or Deb Degrees.
    
     strTemp = calc_tidhi(mygrahas[2].ra,mygrahas[1].ra);
     let tempArray = strTemp.split('-');
     if ( tempArray[2].trim() === "KsheenaChandra") { aNPaapi[2] = 1;}
     let degMoon = mygrahas[2].degree.toFixed(2);
-    strTemp = '<p>Chandra is - ' + (aNPaapi[2] == 1 ? 'Paapi(Ksheena)' : 'Subha(Poorna)') + (mygrahas[2].rasizn == 8 ? ', Neecha(0-3) ' + degMoon +  '°' : ' ')
-            + (mygrahas[2].rasizn == 2 ? ', Uchcha(0-3) ' + degMoon +  '°' : ' ');
-    $(theDiv).append(strTemp);
+    strTemp = '<p>Chandra is - ' + (aNPaapi[2] == 1 ? 'Paapi(Ksheena)' : 'Subha(Poorna)') + (mygrahas[2].rasinum == 8 ? ', Neecha(0°-3°) ' + degMoon +  '°' : ' ')
+            + (mygrahas[2].rasinum == 2 ? ', Uchcha(0°-3°) ' + degMoon +  '°' : ' ');
+    
 
-    //About Budha.Is he Subha or Paapi. Ex or Deb Degrees.
+  
     let degBudha = mygrahas[4].degree.toFixed(2);
     let tempStr = "";
     tempStr = (aPosRasi[4] == 12 ? ', Neecha(15-20) ' + degBudha +  '°' : ' ')
     + (aPosRasi[4] == 6 ? ', Uchcha(15-20) ' + degBudha +  '°' : ' ')
-    strTemp = '<p class="leftp"> Budha is - Subha. Not with Sani or Kuja.' + tempStr;
-    if ( aPosBhava[4] == aPosBhava[3] ) { aNPaapi[4] = 1; strTemp = '<p class="leftp">Budha is with Kuja. Hence Paapi' + tempStr ;} 
-    if ( aPosBhava[4] == aPosBhava[7] ) { aNPaapi[4] = 1; strTemp = '<p class="leftp">Budha is with Sani. Hence Paapi' + tempStr ;} 
-    if ( aPosBhava[4] == aPosBhava[3] && aPosBhava[4] == aPosBhava[7]) { aNPaapi[4] = 1;strTemp = '<p class="leftp">Budha is with Kuja & Sani. Hence Paapi' + tempStr; } 
+    strTemp += '<br> Budha is - Subha. Not with Sani or Kuja.' + tempStr;
+    if ( aPosBhava[4] == aPosBhava[3] ) { aNPaapi[4] = 1; strTemp = '<br>Budha is with Kuja. Hence Paapi' + tempStr ;} 
+    if ( aPosBhava[4] == aPosBhava[7] ) { aNPaapi[4] = 1; strTemp = '<br>Budha is with Sani. Hence Paapi' + tempStr ;} 
+    if ( aPosBhava[4] == aPosBhava[3] && aPosBhava[4] == aPosBhava[7]) { aNPaapi[4] = 1;strTemp = '<br>Budha is with Kuja & Sani. Hence Paapi' + tempStr; } 
     $(theDiv).append(strTemp + '</p>');
 
      
-    // sarpa and nigala drekkanas
+ 
     strTemp = '<p>';
     for ( let i = 1; i < 10 ; i++){
         if (  mygrahas[i].ra >=100 && mygrahas[i].ra < 120)  {strTemp += aGrahaNames[i] + ' - in Sarpa Drekkana<br>'};
@@ -580,17 +575,16 @@ function printAnalysis(theDiv){
     strTemp += '</p>';
     $(theDiv).append(strTemp );
 
-    //Naisargika subha asubha graha's - karakatva vrudhdhi - based on Bhava sthiti
-    //naisargika benefics or malefics improve their  karakatwa if palced in good bhavas.
+    
     strTemp = '<table class="myt"> <caption>Naisargika Graha Karakatva Vruddhi/Kshayam based on Sthiti</caption>' ;
     strTemp += '<thead> <tr><th>Planet</th><th>Vrudhdi</th><th>Kshaya</th></thead><tbody>' ;
     for ( let i = 1; i < 10 ; i++){
         aKarakaVrudhdhi[i] = 1;
-        // if any planet is in bad bhava, karakatvas get a hit.
+       
         if ( aPosBhava[i] == 3 || aPosBhava[i] == 6 || aPosBhava[i] == 8 || aPosBhava[i] == 12)
         {
             aKarakaVrudhdhi[i] = 0;
-            //console.log('i = ' + i + ') - ' + aGrahaNames[i] + ' - Pos = ' + aPosBhava[i]);
+           
 
         }
         strTemp += '<tr><td>' + aGrahaNames[i] + '</td><td> ' + (aKarakaVrudhdhi[i] == 1 ? 'Yes' : ' ') +
@@ -598,65 +592,63 @@ function printAnalysis(theDiv){
     }
     $(theDiv).append(strTemp + '</tbody></table><br>');
 
-    // Naisargika subha  sthiti / drushti falam - affecting 12 bhavas
-    //naisargika subha grahas improve bhavss they sit in and aspect
-    //naisargika Paapa grahas spoil bhavss they sit in and aspect
+   
     let tempBhava;
     strTemp = '<table class="myt"> <caption>Naisargika Subha/Asubha Graha Sthiti/Drushti Phalam on Bhavas</caption>' ;
     strTemp += '<thead> <tr><th>Bhava</th><th>Name</th><th>Grahas in</th><th>Vrudhdhi</th></thead><tbody>' ;
     for ( let i = 1; i < 10 ; i++){
         
-        //for subha grahas       
-        if (  !aNPaapi[i]) // if that graha is  not paapi
+        
+        if (  !aNPaapi[i]) 
         {
-            aBhavaVrudhdhi[aPosBhava[i] - 1]++; // improves where he sits. bhavas are 0 11
-            tempBhava = aPosBhava[i] - 1 + 6; // improves what he aspects. 7th aspect
+            aBhavaVrudhdhi[aPosBhava[i] - 1]++; 
+            tempBhava = aPosBhava[i] - 1 + 6; 
             if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
-            aBhavaVrudhdhi[tempBhava]++; // bhava vrudhdhi of bhavas aspected by natural benefics
-            if (i == 5){// guru's 5th aspec
+            aBhavaVrudhdhi[tempBhava]++; 
+            if (i == 5){
                 tempBhava = aPosBhava[i] - 1 + 4;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
-                aBhavaVrudhdhi[tempBhava]++; // 5th aspect of guru
+                aBhavaVrudhdhi[tempBhava]++;
             }
-            if (i == 5){ // guru's 9th aspect
+            if (i == 5){ 
                 tempBhava = aPosBhava[i] - 1 + 8;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
-                aBhavaVrudhdhi[tempBhava]++; // 5th aspect of guru
+                aBhavaVrudhdhi[tempBhava]++; //
             }
         }
        
-        if (  aNPaapi[i]) {   // if that graha is paapi
+        if (  aNPaapi[i]) {   
           
             tempBhava = aPosBhava[i] - 1 ;
-            //if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
-            aBhavaVrudhdhi[tempBhava]--; // paapispoils bhava he sits in
+          
+            aBhavaVrudhdhi[tempBhava]--; 
             
         
-            if ( i < 8){  // 7th aspect for paapis other than rahu ketu
-                tempBhava = aPosBhava[i] - 1 + 6; // 7th aspect
+            if ( i < 8){  
+                tempBhava = aPosBhava[i] - 1 + 6;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
-                aBhavaVrudhdhi[tempBhava]--; // bhava kshaya of bhavas aspected by natural alefics
+                aBhavaVrudhdhi[tempBhava]--; 
             }
 
-            if (i == 3){ // 4th aspect of kuja
+            if (i == 3){ 
                 tempBhava = aPosBhava[i] - 1 + 3;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
                 aBhavaVrudhdhi[tempBhava]--; // 
             }
             
-            if (i == 3){ // 8th aspect of kuja
+            if (i == 3){
                 tempBhava = aPosBhava[i] - 1 + 7;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
                 aBhavaVrudhdhi[tempBhava]--; 
             }
 
-            if (i == 7){ // 3rd aspect of sani
+            if (i == 7){ 
             
                 tempBhava = aPosBhava[i] - 1 + 2;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
                 aBhavaVrudhdhi[tempBhava]--; 
             }
-            if (i == 7){  // 10th aspect of sani
+            if (i == 7){  
                 tempBhava = aPosBhava[i] - 1 + 9;
                 if ( tempBhava > 11) { tempBhava = tempBhava - 12;}
                 aBhavaVrudhdhi[tempBhava]--; 
@@ -670,69 +662,22 @@ function printAnalysis(theDiv){
         tempStr = aBhavaVrudhdhi[j]   
         strTemp += '<tr><td>' + padLeadingZeroes(j+1,2) + '</td><td>' + aBhavaNames[j] + '</td><td>' 
                     + mybhavas[j+1] + '</td><td>' + padPositiveNums(aBhavaVrudhdhi[j]) + '</td></tr>';
-        aBhavaVrudhdhi[j] = 0;  // init
+        aBhavaVrudhdhi[j] = 0; 
     }
 
     $(theDiv).append(strTemp + '</tbody></table>');
 
-    
-    /*
-    strTemp = '<br><table class="myt"> <caption>Adhipatya Subha/Asubha in Subha/Asubha Bhava</caption>' ;
-    strTemp += '<thead> <tr><th>Bhava</th><th>Rasi</th><th>Adhipati</th><th>In Bhava</th><th>Vrudhi/Kshay</th></thead><tbody>' ;
+   
     for ( let j = 0 ; j < 12 ; j++){ 
-        aAdhipatyaVrudhdhi[j] = 0;  // init
-        if ( j == 2 || j == 5 || j == 7 || j == 11 ) {   // bad bahvas - 3,6,8,12 
-            // bad bahava's lord in bad position
-            if ( aPosBhavaLord[j] == 3 || aPosBhavaLord[j] == 6 || aPosBhavaLord[j] == 8 || aPosBhavaLord[j] == 12){
-
-                aAdhipatyaVrudhdhi[j]++; // improves as weak 
-            }
-            else{ // bad lord in good position
-                aAdhipatyaVrudhdhi[j]--; // worsens as strong
-            }
-        }
-        
-        else{
-            //good bahavas. if their lords are in bad positions - 
-            if ( aPosBhavaLord[j] == 3 || aPosBhavaLord[j] == 6 || aPosBhavaLord[j] == 8 || aPosBhavaLord[j] == 12){
-
-                aAdhipatyaVrudhdhi[j]--; 
-            }
-            else{ 
-                aAdhipatyaVrudhdhi[j]++; 
-            }
-        }
-        
-        // now this good or bad effect is tranferred to bhavas they actually own.
-        // who is the lord  [aBhavaAdhipa[j]
-        
-        //console.log(j + ' - Pos = ' + aPosBhavaLord[j] + ' - ' + aAdhipatyaVrudhdhi[j-1])
-        strTemp += '<tr><td>' + padLeadingZeroes(j+1,2) + '</td><td>' + aRasiNames[myrashis[j]-1] + '</td><td>' + aGrahaNames[aBhavaAdhipa[j]] +  
-        '</td><td>'  +  padLeadingZeroes( aPosBhavaLord[j],2 ) + '</td><td>' + 
-        padPositiveNums(aAdhipatyaVrudhdhi[j]) + '</td></tr>';
-    }
-
-
-        
-    $(theDiv).append(strTemp + '</tbody></table>');
-
-    */
-
-    //Functional benefics if in good bahavas improve bahavas they own
-    //Functional benefics if in bad  bahavas spoil   bahavas they own
-    //Functional malefics if in good bahavas spoil   bahavas they own
-    //Functional malefics if in bad  bahavas improve bahavas they own
-    
-    for ( let j = 0 ; j < 12 ; j++){ 
-        aABhavaVrudhdhi[j] = -1;  //init
+        aABhavaVrudhdhi[j] = -1; 
     }
 
     for ( let i = 1; i < 10 ; i++){
             
-        // in which bhava is each planet placed? is it bad?
+       
         if(aPosBhava[i] == 3 || aPosBhava[i] == 6 || aPosBhava[i] == 8 || aPosBhava[i] == 12){
 
-            // is that palnet owner of a bad bhava also?
+           
             if ( i == aBhavaAdhipa[2]) aABhavaVrudhdhi[2]++;
             if ( i == aBhavaAdhipa[5]) aABhavaVrudhdhi[5]++;
             if ( i == aBhavaAdhipa[7]) aABhavaVrudhdhi[7]++;
@@ -740,9 +685,9 @@ function printAnalysis(theDiv){
           
         }
 
-        else{ // planet is palced in good bhava
+        else{ 
 
-            // is that palnet owner of a good bhava also?
+            
             if ( i == aBhavaAdhipa[0]) aABhavaVrudhdhi[0]++;
             if ( i == aBhavaAdhipa[1]) aABhavaVrudhdhi[1]++;
             if ( i == aBhavaAdhipa[3]) aABhavaVrudhdhi[3]++;
@@ -753,7 +698,7 @@ function printAnalysis(theDiv){
             if ( i == aBhavaAdhipa[10]) aABhavaVrudhdhi[10]++;
 
         }
-        //console.log( i + ')' +  aGrahaNames[i] + ' in = ' + aPosBhava[i]);
+        
 
     }
 
@@ -761,26 +706,14 @@ function printAnalysis(theDiv){
     strTemp += '<thead> <tr><th>Bhava</th><th>Rasi</th><th>Adhipati</th><th>In Bhava</th><th>Vrudhi</th></thead><tbody>' ;
     
     for ( let j = 0 ; j < 12 ; j++){ 
-        if(aABhavaVrudhdhi[j] == 0) aABhavaVrudhdhi[j]++ ;  // report zero as 1
+        if(aABhavaVrudhdhi[j] == 0) aABhavaVrudhdhi[j]++ ; 
         strTemp +=  '<tr><td>' + padLeadingZeroes(j+1,2) + '</td><td>' + aRasiNames[myrashis[j]-1] + '</td><td>' + aGrahaNames[aBhavaAdhipa[j]] +  
         '</td><td>'  +  padLeadingZeroes( aPosBhavaLord[j],2 ) + '</td><td>' + 
         padPositiveNums(aABhavaVrudhdhi[j]) + '</td></tr>';
     }
     $(theDiv).append(strTemp + '</tbody></table>');
     
-    /*
-    strTemp = '<p>Are Functional malefics weak in Dusthanas?<br>';
-    strTemp += 'Are these Functional malefics Natural Benefics?<br>';
-    strTemp += 'Are Functional benefics in Kendra/Kona?<br></p>';
-
-    strTemp += '<p>Are Functional malefics in  Kendra/Kona?<br>';
-    strTemp += 'Do Kendra/Kona have influence of Natural Benefics?<br>';
-    strTemp += 'Are the running dasas not favourable?<br></p>';
-    */
-
-    $(theDiv).append(strTemp );
-
-      
+  
 }
 
 
@@ -807,9 +740,7 @@ function parseDatenTime(adate, atime){
      
 function parse_latitude (input) 
 {
-    /*  North or South, range between 0 and 90 degrees 
-        *  Format: 45N48
-        */
+    
     lat = undefined;
     var tmp = input.replace(/\s+/g,"");
     if (tmp.indexOf("N") !=-1) {
@@ -1136,7 +1067,7 @@ function calc_houses (zodiac,house,planetname)
 function calc_nakshatra (deg,n)
 {
     let nakshatra, lord, pada=0, sdeg=0, vperiod = 0, nnum=0, lnum=0; 
-    // nnum for star num, lnum star lord in weekday order.
+  
     if      (deg < 0)     {  deg += 360; }  
     if      (deg>=0.0000  && deg<=13.3333)  {nakshatra="Ashvini";   nnum=1;  lord="Ke"; lnum=1; vperiod = 7;  pada=(deg -   0.0000);sdeg=  0.0000;}
     else if (deg>13.3333  && deg<=26.6667)  {nakshatra="Bharani";   nnum=2;  lord="Ve"; lnum=2; vperiod = 20; pada=(deg -  13.3333);sdeg= 13.3333;}
@@ -1179,16 +1110,16 @@ function calc_nakshatra (deg,n)
         return 4;
     }
     else if (n == 4)  {
-        return sdeg;        // starting degree of given star in zodiac.
+        return sdeg;        
     }
     else if (n == 5)  {
-        return nnum;        // star number 1 to 27
+        return nnum;       
     }
     else if (n == 6)  {
-        return vperiod;     // vimsottari dasa period in years
+        return vperiod;     
     }
     else if (n == 7)  {
-        return lnum;     // star lord sequence in weekday order.
+        return lnum;    
     }
 
 }
@@ -1211,7 +1142,7 @@ function calc_planets_position ()
 
     mygrahas[1] = new myplanets("Su",SU,calc_vsop87(1,jd)-ay,"Leo",Leo,"7th","Sunday",
             "Le,Ar","1,5,9,10","Li","4,6,7,8,12","Mo,Ma,Ju","Sa,Ve",
-            calc_vsop87(1,jdnow)-aynow);//calc_ra(0) //0
+            calc_vsop87(1,jdnow)-aynow);
 
     mygrahas[2] = new myplanets("Mo",MO,calc_moon_positionIII(false)-ay,"Cancer",Cancer,"7th",
             "Monday","Ca,Ta","4,7,9,11,12","Sc,Cp","2,3,6,8","Su,Me"," - ",
@@ -1379,10 +1310,7 @@ function calc_day_of_the_week (transit)
 
 function calc_sideral_time (hours,minutes,transit)
 {
-        /*   local mean sideral time [deg] 
-        *   West longitudes are negative
-        */
-
+      
     if (londir == "W")
     lon = -lon;
 
@@ -2224,18 +2152,18 @@ function calc_tidhi(moondeg, sundeg){
 
     theNum = moondeg - sundeg ;
     if (theNum < 0){
-        theNum = theNum + 360;  // if negative add 360
+        theNum = theNum + 360;  
     }
-    theNum = theNum /12;    // divided by 12
-    theNum = Math.ceil(theNum);  // roundup
+    theNum = theNum /12;    
+    theNum = Math.ceil(theNum);  
     
     tidhiStr = atidhiStr[theNum];
   
     if (theNum == 15){
-        pakshaStr = " ";  // for Poornima or Amvasya no need to mention paksha.
+        pakshaStr = " ";  
     }
     else if( theNum == 30){
-        pakshaStr = " ";  // for Poornima or Amvasya no need to mention paksha.
+        pakshaStr = " ";  
     }
     if ( theNum >7 && theNum < 23){
         vrudhdhiStr = "PoornaChandra"
@@ -2264,16 +2192,16 @@ function calc_vdasa(theDiv){
     let mdLordName = "";
     let adPeriod = 0;
 
-    let mDegrees = mygrahas[2].ra; // degrees
-    let msDegrees = calc_nakshatra(mDegrees,4)  // start degrees
-    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); // sequence num  of MD lord
+    let mDegrees = mygrahas[2].ra; 
+    let msDegrees = calc_nakshatra(mDegrees,4)  
+    let dasaLordSeqNum = calc_nakshatra(mDegrees,7); 
     let antarLordSeqNum = dasaLordSeqNum;
     
     $(theDiv).empty();
     $(theDiv).append('<h2>Vimsottari Dasa:</h2><hr>');   
 
-    mdPeriod = aDasaInfo[0][dasaLordSeqNum];    // period of MD lord
-    mdLordName = aDasaInfo[1][dasaLordSeqNum];  // name
+    mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+    mdLordName = aDasaInfo[1][dasaLordSeqNum];  
     
     mDate = calc_mahaDasa(mDegrees, msDegrees,mdPeriod, solaryear);
    
@@ -2286,22 +2214,22 @@ function calc_vdasa(theDiv){
 
         for ( let a = 0 ; a < 9; a++){
           
-            adPeriod = aDasaInfo[0][antarLordSeqNum]; // antar period
+            adPeriod = aDasaInfo[0][antarLordSeqNum]; 
             mDate = calc_antarDasa(mdPeriod, adPeriod,mDate);
             tempStr = createDateStr(mDate);        
             strTemp += '<tr><td>' + mdLordName + ' - ' + aDasaInfo[1][antarLordSeqNum] + '</td>\t<td>Till</td><td>';  
             strTemp +=  tempStr + '</td></tr>';
-            //$('.aside2').append(strTemp);
+         
             
             antarLordSeqNum++;
-            if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; // reset.
+            if ( antarLordSeqNum  > 9) { antarLordSeqNum = 1}; 
     
         }
 
         dasaLordSeqNum++;
         if (dasaLordSeqNum > 9) {dasaLordSeqNum = 1;}
-        mdPeriod = aDasaInfo[0][dasaLordSeqNum];    // period of MD lord
-        mdLordName = aDasaInfo[1][dasaLordSeqNum];  // name
+        mdPeriod = aDasaInfo[0][dasaLordSeqNum];   
+        mdLordName = aDasaInfo[1][dasaLordSeqNum]; 
         antarLordSeqNum = dasaLordSeqNum;
         $(theDiv).append(firstStr + strTemp + '</tbody></table><br>');   
 
@@ -2314,12 +2242,12 @@ function calc_mahaDasa(mdeg,msdeg,mdperiod,syear){
     let theYears = 0, theMonths = 0, theDays = 0;
     let theDiff = (mdeg - msdeg) ;
     theDiff = theDiff/13.3333;
-    theDiff = theDiff * mdperiod; // this many years passed.
+    theDiff = theDiff * mdperiod; 
 
     theYears = parseInt(theDiff);
-    theMonths =  (theDiff - theYears) * syear / 30 ; // decimal portion * 360 / 30
-    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  // decimal portion * 30
-    theMonths = parseInt(theMonths); // only the whole number
+    theMonths =  (theDiff - theYears) * syear / 30 ; 
+    theDays =  parseInt(  ( theMonths - parseInt( theMonths  ) ) * 30  ) ;  
+    theMonths = parseInt(theMonths); 
     
     let vdate;
     vdate = createDate(-theDays,-theMonths,-theYears,date);   
