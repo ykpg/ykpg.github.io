@@ -522,6 +522,7 @@ function showAnalysis(){
 
 function printAnalysis(theDiv){
 
+    $(theDiv).empty();
     //age
     strTemp = '<h2>Analysis:</h2><hr><p class="leftp">';
     strTemp += "Age = " + moment(date).fromNow(true) + '<br>' ; 
