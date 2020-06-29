@@ -1,0 +1,10 @@
+<h2>Vasya Kootami </h2><hr>
+<p>Rasis are divided as five types of animals - Chatushpada, Nara(manushya), Jala Chara, Vana Chara ( Lion), Keetaka.</p>
+<p>Points are allotted based on mutual attraction or repulsion between them.
+
+<p>Special cases followed here: In Dhanus Rasi - Moola is Nara, PoorvaShada and UttaraShada-1 are Chatushpada.In Makara Rasi - UttaraShada-2,3,4 and Sravana are Chatushpada and Dhanishta-1,2 are JalaChara. </p>
+
+<p><span class = "minahaa">Exception</span></P>
+
+<p>If the lords of both the Rasis happen to be the same planet or if these lords are mutual friends, even zero points from this kootami is acceptable. </p>
+

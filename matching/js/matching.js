@@ -33,15 +33,18 @@ let boyNadiNum = 0;
 let girlRajjuName = "";
 let boyRajjuName = "";
 
-
+/*
 strTemp = "అశ్వని,భరణి,కృత్తిక,రోహిణి,మృగశిర, ఆర్ద్ర,పునర్వసు,పుష్యమి,ఆశ్లేష,మఖ,పుబ్బ, ఉత్తర,హస్త,చిత్త,స్వాతి,విశాఖ,అనూరాధ,జ్యేష్ట,మూల,పూర్వాషాడ,ఉత్తరాషాడ,శ్రవణం,ధనిష్ట,శతభిషం,పూర్వాభాద్ర,ఉత్తరాభాద్ర,రేవతి";
 const aStarNames27 = strTemp.split(',');
 
 strTemp = "అశ్వని,భరణి,కృత్తిక,రోహిణి,మృగశిర, ఆర్ద్ర,పునర్వసు,పుష్యమి,ఆశ్లేష,మఖ,పుబ్బ, ఉత్తర,హస్త,చిత్త,స్వాతి,విశాఖ,అనూరాధ,జ్యేష్ట,మూల,పూర్వాషాడ,ఉత్తరాషాడ,అభిజిత్,శ్రవణం,ధనిష్ట,శతభిషం,పూర్వాభాద్ర,ఉత్తరాభాద్ర,రేవతి";
 let aStarNames28 = strTemp.split(',');
+*/
 
+strTemp = "Aswini,Bharani,Kruttika,Rohini,Mrugasira,Ardra,Punarvasu,Pushyami,Aslesha,Makha,PoorvaPhalguni,UttaraPhalguni,Hasta,Chitta,Swati,Visakha,Anuradha,Jyeshta,Moola,PoorvaShaada,UttaraShaada,Sravana,Dhanishta,Satabhisha,PoorvaBhaadra,UttaraBhaadra,Revati";		
+let aStarNames27 = strTemp.split(',');
 
-strTemp = "జన్మ,సంపత్,విపత్,క్షేమ,ప్రత్యక్,సాధన,నైధన,మిత్ర,పరమమిత్ర";
+strTemp = "Janma,Sampath,Vipath,Kshema,Pratyak,Saadhana,Naidhana,Mitra,ParamaMitra";
 const aMaitriNames = strTemp.split(',');
 
 let aSpecialTaras = [];
@@ -60,71 +63,74 @@ strTemp = "0,3,4,9,11,12,13,14,16,18,20,21,22,25,26";
 const aVivahaTaras = strTemp.split(',');
 
 const aRasiInfo = []; 
-aRasiInfo.push({id:1,name:'మేషం',     lord:'కుజ',}); 
-aRasiInfo.push({id:2,name:'వృషభం',    lord:'శుక్ర'});
-aRasiInfo.push({id:3,name:'మిధునం',   lord:'బుధ',}); 
-aRasiInfo.push({id:4,name:'కర్కాటకం',  lord:'చంద్ర'});
-aRasiInfo.push({id:5,name:'సింహం',    lord:'రవి',}); 
-aRasiInfo.push({id:6,name:'కన్య',      lord:'బుధ'});
-aRasiInfo.push({id:7,name:'తుల',     lord:'శుక్ర',}); 
-aRasiInfo.push({id:8,name:'వృశ్చికం',   lord:'కుజ'});
-aRasiInfo.push({id:9,name:'ధనుస్సు',   lord:'గురు',}); 
-aRasiInfo.push({id:10,name:'మకరం',   lord:'శని'});
-aRasiInfo.push({id:11,name:'కుంభం',   lord:'శని',}); 
-aRasiInfo.push({id:12,name:'మీనం',    lord:'గురు'});
+aRasiInfo.push({id:1,name:'Mesha',     lord:'Kuja',}); 
+aRasiInfo.push({id:2,name:'Vrushabha',    lord:'Sukra'});
+aRasiInfo.push({id:3,name:'Midhuna',   lord:'Budha',}); 
+aRasiInfo.push({id:4,name:'Karakataka',  lord:'Chandra'});
+aRasiInfo.push({id:5,name:'Simha',    lord:'Ravi',}); 
+aRasiInfo.push({id:6,name:'Kanya',      lord:'Budha'});
+aRasiInfo.push({id:7,name:'Tula',     lord:'Sukra',}); 
+aRasiInfo.push({id:8,name:'Vrschika',   lord:'Kuja'});
+aRasiInfo.push({id:9,name:'Dhanus',   lord:'Guru',}); 
+aRasiInfo.push({id:10,name:'Makara',   lord:'Sani'});
+aRasiInfo.push({id:11,name:'Kumbha',   lord:'Sani',}); 
+aRasiInfo.push({id:12,name:'Meena',    lord:'Guru'});
 
 const arrayStarInfo = [];
-arrayStarInfo.push({id:1,name:'అశ్వని',gananame:'దేవ',gananum:1,vedha:18,vadha:'OK',rajju:0,yoninum:1,yonipol:1});
-arrayStarInfo.push({id:2,name:'భరణి',gananame:'మనుష్య',gananum:2,vedha:17,vadha:'OK',rajju:1,yoninum:2,yonipol:1});
-arrayStarInfo.push({id:3,name:'కృత్తిక',gananame:'రాక్షస',gananum:3,vedha:16,vadha:'Not OK',rajju:2,yoninum:3,yonipol:0});
-arrayStarInfo.push({id:4,name:'రోహిణి',gananame:'మనుష్య',gananum:2,vedha:15,vadha:'OK',rajju:3,yoninum:4,yonipol:1});
-arrayStarInfo.push({id:5,name:'మృగశిర',gananame:'దేవ',gananum:1,vedha:37,vadha:'Not OK',rajju:4,yoninum:4,yonipol:0});
-arrayStarInfo.push({id:6,name:'ఆర్ద్ర',gananame:'మనుష్య',gananum:2,vedha:22,vadha:'OK',yoninum:5,yonipol:0});
-arrayStarInfo.push({id:7,name:'పునర్వసు',gananame:'దేవ',gananum:1,vedha:21,vadha:'OK',yoninum:6,yonipol:0});
-arrayStarInfo.push({id:8,name:'పుష్యమి',gananame:'దేవ',gananum:1,vedha:20,vadha:'OK',yoninum:3,yonipol:1});
-arrayStarInfo.push({id:9,name:'ఆశ్లేష',gananame:'రాక్షస',gananum:3,vedha:19,vadha:'Not OK',yoninum:6,yonipol:1});
-arrayStarInfo.push({id:10,name:'మఖ',gananame:'రాక్షస',gananum:3,vedha:27,vadha:'Not OK',yoninum:7,yonipol:1});
-arrayStarInfo.push({id:11,name:'పుబ్బ',gananame:'మనుష్య',gananum:2,vedha:26,vadha:'OK',yoninum:7,yonipol:0});
-arrayStarInfo.push({id:12,name:'ఉత్తర',gananame:'మనుష్య',gananum:2,vedha:25,vadha:'Not OK',yoninum:8,yonipol:1});
-arrayStarInfo.push({id:13,name:'హస్త',gananame:'దేవ',gananum:1,vedha:24,vadha:'Not OK',yoninum:9,yonipol:0});
-arrayStarInfo.push({id:14,name:'చిత్త',gananame:'రాక్షస',gananum:3,vedha:28,vadha:'Not OK',yoninum:10,yonipol:0});
-arrayStarInfo.push({id:15,name:'స్వాతి',gananame:'దేవ',gananum:1,vedha:4,vadha:'OK',yoninum:9,yonipol:1});
-arrayStarInfo.push({id:16,name:'విశాఖ',  	gananame:'రాక్షస',gananum:3,vedha:3,vadha:'Not OK',yoninum:10,yonipol:1});
-arrayStarInfo.push({id:17,name:'అనూరాధ',   gananame:'దేవ',gananum:1,vedha:2,vadha:'Not OK',yoninum:11,yonipol:0});
-arrayStarInfo.push({id:18,name:'జ్యేష్ట',     gananame:'రాక్షస',gananum:3,vedha:1,vadha:'Not OK',yoninum:11,yonipol:1});
-arrayStarInfo.push({id:19,name:'మూల',    gananame:'రాక్షస',gananum:3,vedha:9,vadha:'OK',yoninum:5,yonipol:1});
-arrayStarInfo.push({id:20,name:'పూర్వాషాడ', gananame:'మనుష్య',gananum:2,vedha:8,vadha:'OK',yoninum:12,yonipol:1});
-arrayStarInfo.push({id:21,name:'ఉత్తరాషాడ',  gananame:'మనుష్య',gananum:2,vedha:7,vadha:'Not OK',yoninum:13,yonipol:1});
-arrayStarInfo.push({id:22,name:'శ్రవణం',    gananame:'దేవ',gananum:1,vedha:6,vadha:'Not OK',yoninum:12,yonipol:0});
-arrayStarInfo.push({id:23,name:'ధనిష్ట',     gananame:'రాక్షస',gananum:3,vedha:19,vadha:'Not OK',yoninum:14,yonipol:0});
-arrayStarInfo.push({id:24,name:'శతభిషం',   gananame:'రాక్షస',gananum:3,vedha:13,vadha:'Not OK',yoninum:1,yonipol:0});
-arrayStarInfo.push({id:25,name:'పూర్వాభాద్ర', gananame:'మనుష్య',gananum:2,vedha:12,vadha:'OK',yoninum:14,yonipol:1});
-arrayStarInfo.push({id:26,name:'ఉత్తరాభాద్ర',  gananame:'మనుష్య',gananum:2,vedha:11,vadha:'Not OK',yoninum:8,yonipol:0});
-arrayStarInfo.push({id:27,name:'రేవతి',     gananame:'దేవ',gananum:1,vedha:10,vadha:'Not OK',yoninum:2,yonipol:0});
+arrayStarInfo.push({id:1,name:'అశ్వని',gananame:'Deva',gananum:1,vedha:18,vadha:'OK',rajju:0,yoninum:1,yonipol:1});
+arrayStarInfo.push({id:2,name:'భరణి',gananame:'Manushya',gananum:2,vedha:17,vadha:'OK',rajju:1,yoninum:2,yonipol:1});
+arrayStarInfo.push({id:3,name:'కృత్తిక',gananame:'Rakshasa',gananum:3,vedha:16,vadha:'Not OK',rajju:2,yoninum:3,yonipol:0});
+arrayStarInfo.push({id:4,name:'రోహిణి',gananame:'Manushya',gananum:2,vedha:15,vadha:'OK',rajju:3,yoninum:4,yonipol:1});
+arrayStarInfo.push({id:5,name:'మృగశిర',gananame:'Deva',gananum:1,vedha:37,vadha:'Not OK',rajju:4,yoninum:4,yonipol:0});
+arrayStarInfo.push({id:6,name:'ఆర్ద్ర',gananame:'Manushya',gananum:2,vedha:22,vadha:'OK',yoninum:5,yonipol:0});
+arrayStarInfo.push({id:7,name:'పునర్వసు',gananame:'Deva',gananum:1,vedha:21,vadha:'OK',yoninum:6,yonipol:0});
+arrayStarInfo.push({id:8,name:'పుష్యమి',gananame:'Deva',gananum:1,vedha:20,vadha:'OK',yoninum:3,yonipol:1});
+arrayStarInfo.push({id:9,name:'ఆశ్లేష',gananame:'Rakshasa',gananum:3,vedha:19,vadha:'Not OK',yoninum:6,yonipol:1});
+arrayStarInfo.push({id:10,name:'మఖ',gananame:'Rakshasa',gananum:3,vedha:27,vadha:'Not OK',yoninum:7,yonipol:1});
+arrayStarInfo.push({id:11,name:'పుబ్బ',gananame:'Manushya',gananum:2,vedha:26,vadha:'OK',yoninum:7,yonipol:0});
+arrayStarInfo.push({id:12,name:'ఉత్తర',gananame:'Manushya',gananum:2,vedha:25,vadha:'Not OK',yoninum:8,yonipol:1});
+arrayStarInfo.push({id:13,name:'హస్త',gananame:'Deva',gananum:1,vedha:24,vadha:'Not OK',yoninum:9,yonipol:0});
+arrayStarInfo.push({id:14,name:'చిత్త',gananame:'Rakshasa',gananum:3,vedha:28,vadha:'Not OK',yoninum:10,yonipol:0});
+arrayStarInfo.push({id:15,name:'స్వాతి',gananame:'Deva',gananum:1,vedha:4,vadha:'OK',yoninum:9,yonipol:1});
+arrayStarInfo.push({id:16,name:'విశాఖ',  	gananame:'Rakshasa',gananum:3,vedha:3,vadha:'Not OK',yoninum:10,yonipol:1});
+arrayStarInfo.push({id:17,name:'అనూరాధ',   gananame:'Deva',gananum:1,vedha:2,vadha:'Not OK',yoninum:11,yonipol:0});
+arrayStarInfo.push({id:18,name:'జ్యేష్ట',     gananame:'Rakshasa',gananum:3,vedha:1,vadha:'Not OK',yoninum:11,yonipol:1});
+arrayStarInfo.push({id:19,name:'మూల',    gananame:'Rakshasa',gananum:3,vedha:9,vadha:'OK',yoninum:5,yonipol:1});
+arrayStarInfo.push({id:20,name:'పూర్వాషాడ', gananame:'Manushya',gananum:2,vedha:8,vadha:'OK',yoninum:12,yonipol:1});
+arrayStarInfo.push({id:21,name:'ఉత్తరాషాడ',  gananame:'Manushya',gananum:2,vedha:7,vadha:'Not OK',yoninum:13,yonipol:1});
+arrayStarInfo.push({id:22,name:'శ్రవణం',    gananame:'Deva',gananum:1,vedha:6,vadha:'Not OK',yoninum:12,yonipol:0});
+arrayStarInfo.push({id:23,name:'ధనిష్ట',     gananame:'Rakshasa',gananum:3,vedha:19,vadha:'Not OK',yoninum:14,yonipol:0});
+arrayStarInfo.push({id:24,name:'శతభిషం',   gananame:'Rakshasa',gananum:3,vedha:13,vadha:'Not OK',yoninum:1,yonipol:0});
+arrayStarInfo.push({id:25,name:'పూర్వాభాద్ర', gananame:'Manushya',gananum:2,vedha:12,vadha:'OK',yoninum:14,yonipol:1});
+arrayStarInfo.push({id:26,name:'ఉత్తరాభాద్ర',  gananame:'Manushya',gananum:2,vedha:11,vadha:'Not OK',yoninum:8,yonipol:0});
+arrayStarInfo.push({id:27,name:'రేవతి',     gananame:'Deva',gananum:1,vedha:10,vadha:'Not OK',yoninum:2,yonipol:0});
 
 
 
-strTemp = "క్షత్రియ,వైశ్య,శూద్ర,బ్రాహ్మణ";
+strTemp = "Kshatriya,Vaisya,Soodra,Braahmana";
 const arrayVarnaNames = strTemp.split(',');
 
 
-strTemp = "చతుష్పాద,నర,జలచర,వనచర,కీటక";
+strTemp = "Chatushpada,Nara,JalaChara,VanaChara,Keetaka";
 const arrayVasyas = strTemp.split(',');
 
 strTemp = "0,0,1,2,3,1,1,4,1,0,1,2";
 const arrayVasyaNum = strTemp.split( ",");
 
+/*
 strTemp = "జన్మ,సంపత్,విపత్,క్షేమ,ప్రత్యక్,సాధన,నైధన,మిత్ర,పరమమిత్ర";
 const arrayMaitriNames = strTemp.split(',');
+*/
 
-strTemp = "+గుఱ్ఱం,+ఏనుగు,-మేక,+పాము,-పాము,-కుక్క,-పిల్లి,+మేక,+పిల్లి,+ఎలుక,-ఎలుక,+ఆవు,-దున్న,-పులి,+దున్న,+పులి,-లేడి,+లేడి,+కుక్క,+కోతి,+ముంగిస,-కోతి,-సింహం,-గుఱ్ఱం,+సింహం,-ఆవు,-ఏనుగు";
+//strTemp = "+గుఱ్ఱం,+ఏనుగు,-మేక,+పాము,-పాము,-కుక్క,-పిల్లి,+మేక,+పిల్లి,+ఎలుక,-ఎలుక,+ఆవు,-దున్న,-పులి,+దున్న,+పులి,-లేడి,+లేడి,+కుక్క,+కోతి,+ముంగిస,-కోతి,-సింహం,-గుఱ్ఱం,+సింహం,-ఆవు,-ఏనుగు";
+strTemp = "+Horse,+Elephant,-Goat,+Snake,-Snake,-Dog,-Cat,+Goat,+Cat,+Rat,-Rat,+Cow,-Buffalo,-Tiger,+Buffalo,+Tiger,-Deer,+Deer,+Dog,+Monkey,+Mongoose,-Monkey,-Lion,-Horse,+Lion,-Cow,-Elephant";
 const arrayYoniNames = strTemp.split(',');
 
 strTemp = "1,2,3,4,4,5,6,3,6,7,7,8,9,10,9,10,11,11,5,12,13,12,14,1,14,8,2";
 const arrayYoniNum = strTemp.split( ",")
 
 
-strTemp = "పాద,ఊరూ/కటి,నాభి/ఉదర,కంఠ,శిర ";
+strTemp = "Paada,Uru/Kati,Nabhi/Udara,Kanta,Sira ";
 const arrayRajjuNames = strTemp.split(',');
 
 strTemp = "4,6,10,13,16,22,26,27";
@@ -133,27 +139,29 @@ strTemp = "2,9,14,18,19,24,25";
 const arrayssNotAllowed = strTemp.split(",");
 
 let nadiNum = 0;
-strTemp = "ఆది,మధ్య,అంత్య";
+strTemp = "Aadi,Madhya,Anthya";
 const arrayNadiNames = strTemp.split(',');
 
+//"Aswini,Bharani,Kruttika,Rohini,Mrugasira,Ardra,Punarvasu,Pushyami,Aslesha,Makha,PoorvaPhalguni,UttaraPhalguni,
+//Hasta,Chitta,Swati,Visakha,Anuradha,Jyeshta,Moola,PoorvaShaada,UttaraShaada,Sravana,Dhanishta,Satabhisha,PoorvaBhaadra,UttaraBhaadra,Revati";		
 
 let aVedhaStars = 
 [
-	['అశ్వని',	'జ్యేష్ట'],
-	['భరణి', 'అనూరాధ'],
-	['కృత్తిక', 'విశాఖ'],
-	['రోహిణి','స్వాతి'],
-	['ఆర్ద్ర',	'శ్రవణం'],
-	['పునర్వసు','ఉత్తరాషాడ'],
-	['పుష్యమి', 'పూర్వాషాడ'],
-	['ఆశ్లేష','మూల'],
-	['మఖ','రేవతి'],
-	['పుబ్బ','ఉత్తరాభాద్ర'],
-	['ఉత్తర','పూర్వాభాద్ర'],
-	['హస్త','శతభిషం'],
-	['మృగశిర', 'చిత్త'],
-	['మృగశిర','ధనిష్ట'],
-	['చిత్త','ధనిష్ట']
+	['Aswini',	'Jyeshta'],
+	['Bharani', 'Anuradha'],
+	['Kruttika', 'Visakha'],
+	['Rohini','Swati'],
+	['Ardra',	'Sravana'],
+	['Punarvasu','UttaraShaada'],
+	['Pushyami', 'PoorvaShaada'],
+	['Aslesha','Moola'],
+	['Makha','Revati'],
+	['PoorvaPhalguni','UttaraBhaadra'],
+	['UttaraPhalguni','PoorvaBhaadra'],
+	['Hasta','Satabhisha'],
+	['Mrugasira', 'Chitta'],
+	['Mrugasira','Dhanishta'],
+	['Chitta','Dhanishta']
 ];
 
 let aVadhaOK = [1,1,0,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0,0];
@@ -192,89 +200,90 @@ var showContent = function()
 	{		
 		prepareData();
 		$(".pattika").empty();			
-		$('.pattika').append('<h2>  మేలాపకము - కూటముల పట్టిక  </h2> <hr>');		
+		$('.pattika').append('<h2>  Kootamis - Table  </h2> <hr>');		
 		
-		strTemp = '<table id="anytable"><tr><th> </th><th>వధువు</th><th>వరుడు</th></tr>';
+		strTemp = '<table id="anytable"><tr><th> </th><th>Vadhoo</th><th>Vara</th></tr>';
 		
 		strTemp+= '<tr>'			
-		strTemp+= '<td>నక్షత్రము - పాదం  </td> <td>(' + (gs+1) + ') <strong>' + aStarNames27[gs]  + ' - '+ (gp+1) + '</strong></td> <td>(' + (bs+1) + ') <strong>' + aStarNames27[bs]   + ' - ' + (bp+1) + '</strong></td></tr>';
+		strTemp+= '<td>Star Num & Name -Paadam </td> <td>(' + (gs+1) + ') <strong>' + aStarNames27[gs]  + ' - '+ (gp+1) + '</strong></td> <td>(' + (bs+1) + ') <strong>' + aStarNames27[bs]   + ' - ' + (bp+1) + '</strong></td></tr>';
 		
-		strTemp+= '<tr><td>రాశి - రాశ్యాధిపతి</td> <td><strong>' + aRasiInfo[girlRasiNum].name + ' - ' + aRasiInfo[girlRasiNum].lord + '</strong></td>';
-		strTemp+= '<td><strong>' + aRasiInfo[boyRasiNum].name + ' - ' + aRasiInfo[boyRasiNum].lord + '</strong></td></tr>';
+		strTemp+= '<tr><td>Rasi - Rasi Lord</td> <td>' + aRasiInfo[girlRasiNum].name + ' - ' + aRasiInfo[girlRasiNum].lord + '</td>';
+		strTemp+= '<td>' + aRasiInfo[boyRasiNum].name + ' - ' + aRasiInfo[boyRasiNum].lord + '</td></tr>';
 		
 			
-		strTemp+= '<tr><td>నవాంశ - రాశి - అధిపతి</td> <td>'  + aRasiInfo[(girlNavamsa % 12)].name + ' - ' + aRasiInfo[(girlNavamsa % 12)].lord + '</td>';
+		strTemp+= '<tr><td>Navamsa - Navamsa Lord</td> <td>'  + aRasiInfo[(girlNavamsa % 12)].name + ' - ' + aRasiInfo[(girlNavamsa % 12)].lord + '</td>';
 		strTemp+= '<td>' +  aRasiInfo[(boyNavamsa % 12)].name + ' - ' + aRasiInfo[(boyNavamsa % 12)].lord + '</td></tr>';
 			
 		strTemp+= '</table>';
 		$('.pattika').append(strTemp); 
 		
 
-		strTemp = '<br><table id="ktable"><thead><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణం</th></tr></thead><tbody>';
+		strTemp = '<br><table id="ktable"><thead><tr><th>Kootami</th><th>Vadhoo</th><th>Vara</th><th>Points</th></tr></thead><tbody>';
 		subPoints = 0;
 		totalPoints = 0;
 		
 	
 		find1Varna();
-		strTemp+= '<tr><td>1. వర్ణ కూటమి</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
+		strTemp+= '<tr><td>1. Varna Kootami</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
 		strTemp+= '<td>' + arrayVarnaNames[(boyRasiNum % 4)] + '</td><td>' + thePoints +'</td></tr>';
 
 		find2Vasya();
-		strTemp+= '<tr><td>2. వశ్య కూటమి</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
+		strTemp+= '<tr><td>2. Vasya Kootami</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
 		
 		
 	
 		findNavakam();
 		find3Tara();
-		strTemp+= '<tr><td>3. దిన/తారా కూటమి</td> <td>' + arrayMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
-		strTemp+= '<td>' + arrayMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
+		strTemp+= '<tr><td>3. Dina/Taaraa Kootami</td> <td>' + aMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
+		strTemp+= '<td>' + aMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
 	
 	
 		find4Yoni();
-		strTemp+= '<tr><td>4. యోని కూటమి</td> <td>' + arrayYoniNames[gs]  + '</td>';
+		strTemp+= '<tr><td>4. Yoni Kootami</td> <td>' + arrayYoniNames[gs]  + '</td>';
 		strTemp+= '<td>' + arrayYoniNames[bs] + '</td><td>' + thePoints + '</td></tr>';
 	
 		find5Grahamaitri();	
-		strTemp+= '<tr><td>5. రాశ్యాధిప/గ్రహమైత్రి కూటమి</td> <td>' +  aRasiInfo[girlRasiNum].lord + '</td>';
+		strTemp+= '<tr><td>5. Raasyaadhipa/Graha Maitri</td> <td>' +  aRasiInfo[girlRasiNum].lord + '</td>';
 				
 		strTemp+= '<td>' +  aRasiInfo[boyRasiNum].lord + '</td><td>' + thePoints + '</td></tr>';	
 	
 			
 		find6Gana();
-		strTemp+= '<tr><td>6. గణ కూటమి</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
+		strTemp+= '<tr><td>6. Gana Kootami</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
 		strTemp+= '<td>' +  arrayStarInfo[bs].gananame + '</td><td>' + thePoints + '</td></tr>';		
 	
 			
 		find7Bha();
-		strTemp+= '<tr><td>7. భ/రాశి కూటమి</td> <td>' +  rasiG2B + '</td>';
+		strTemp+= '<tr><td>7. Raasi/Bha Kootami</td> <td>' +  rasiG2B + '</td>';
 		strTemp+= '<td>' +  rasiB2G + '</td><td>' + thePoints +'</td></tr>';
 
 		
 		find8Nadi();
-		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  
+		strTemp+= '<tr><td>8. Naadi Kootami</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  
 		strTemp+= '<td>' +  arrayNadiNames[boyNadiNum] +  '</td><td>' + thePoints +'</td></tr>';
 		
 
-		strTemp+= '<tr><td><strong>మొత్తం గుణములు(36 కి)</strong></td> <td>-</td>';  
+		strTemp+= '<tr><td><strong>Calculated Points out of 36:</strong></td> <td>-</td>';  
 		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 	
 
 		find10Rajju();
-		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>'; 
+		strTemp+= '<tr><td>Rajju Kootami</td> <td>' +  girlRajjuName + '</td>'; 
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
 	
-		strTemp+= '<tr><td>స్త్రీ దీర్ఘం</td> <td>g->b:' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
+		strTemp+= '<tr><td>Sthree Deergham</td> <td>g->b:' + ( (girlDiff+1) + (girlNavakam-1) * 9 )  + '</td>';
 		strTemp+= 	'<td></td><td></td></tr>';	
 
 		
-			girlNavamsa = gs * 4 + gp;		
+		girlNavamsa = gs * 4 + gp;		
 		boyNavamsa  = bs * 4 + bp;
 		thePoints = Number(tPidaparti[girlNavamsa][boyNavamsa]);
-		strTemp += '<tr><td style="color:royalblue;" colspan = 3><strong>పిడపర్తి పంచాంగం ప్రకారం గుణాంకములు = </strong>' + '</td><td style="color:blue;"><strong>' +  thePoints  +'</td></strong></tr>' ;
+		strTemp += '<tr><td  colspan = 3><strong>Points as per Panchangam:</strong>' + '</td><td><strong>' +  thePoints  +'</td></strong></tr>' ;
 		
-		strTemp+= '</tbody></table>';    
+		strTemp+= '</tbody></table>'; 
+		strTemp+=  "<br><br>Click on each row of the table to see relevant definition and exceptions.";  
 		$('.pattika').append(strTemp); 
 
 		
@@ -479,9 +488,9 @@ function handleVadhuvuku(theDiv){
 	{		
 		prepareData();
 		$(theDiv).empty();	
-		strTemp = 	'<h2>' + aStarNames27[gs] + ' - ' + (gp + 1) +  ' వధువుకు సరిపడే వరుల నక్షత్రములు</h2> <hr>';
-		strTemp += '<table class="mytable"><tbody><tr><th> నక్షత్రం </th> <th> పాదం </th><th>గుణములు</th></tr>';
-		
+		strTemp = 	'<h2>' + "List of suitable boy stars for the girl's star - "+ aStarNames27[gs] + ' - ' + (gp + 1) +  '</h2> <hr>';
+		strTemp += '<table class="mytable"><tbody><tr><th> Nakshatra </th> <th> Paada </th><th>Points</th></tr>';
+	
 		let oldBS = "xxx";
 		for ( let n=0;n<108;n++)
 		{
@@ -544,7 +553,7 @@ function handleVadhuvuku(theDiv){
 			
 		} 
 		strTemp += '</tbody></table>';
-		strTemp += '<p class="mytext">గుణములు పిడపర్తి పంచాంగములోనివి. నా పద్ధతిలో అన్నిటికన్నా మేలయిన నక్షత్రములు మాత్రమె ఇవ్వబడ్డాయి.';
+		strTemp += '<p class="mytext">Points as per Pidaparthi Panchangam. Suggested stars are as per my method.';
 		strTemp += '</p>';
 
 		$(theDiv).append(strTemp); 
@@ -563,8 +572,8 @@ function handleVaruniki(theDiv){
 		
 		prepareData();
 		$(theDiv).empty();	
-		strTemp = 	'<h2>' + aStarNames27[bs] + ' - ' + (bp+1) +  ' వరునికి సరిపడే వధూ నక్షత్రములు</h2> <hr>';
-		strTemp += '<table class="mytable"><tbody><tr><th> నక్షత్రం </th> <th> పాదం </th><th>గుణములు</th></tr>';
+		strTemp = 	'<h2>' + "List of suitable girl stars for the boy's star - " + aStarNames27[bs] + ' - ' + (bp+1) +  '</h2> <hr>';
+		strTemp += '<table class="mytable"><tbody><tr><th> Nakshatra </th> <th> Paada </th><th>Points</th></tr>';
 	
 		let oldGS = "xxx";
 		for ( let n=0;n<108;n++)
@@ -624,7 +633,7 @@ function handleVaruniki(theDiv){
 			}
 		} 
 		strTemp += '</tbody></table>';
-		strTemp += '<p class="mytext">గుణములు పిడపర్తి పంచాంగములోనివి. నా పద్ధతిలో అన్నిటికన్నా మేలయిన నక్షత్రములు మాత్రమె ఇవ్వబడ్డాయి.';
+		strTemp += '<p class="mytext">Points are as per Pidaparthi Panchangam. Suggested stars are as per my method.';
 		strTemp += '</p>';
 
 		$(theDiv).append(strTemp); 
@@ -641,64 +650,64 @@ function handleMyMethod(theDiv){
 
 		prepareData();
 		$(theDiv).empty();			
-		$(theDiv).append('<h2>  కూటముల పట్టిక - నా పద్ధతి </h2> <hr>');		// Dispaly starts here
+		$(theDiv).append('<h2>  Kootamis Table - My Method </h2> <hr>');		// Dispaly starts here
 						
-		strTemp = '<p class="mytext">'  + aStarNames27[gs]  + ' - '+ (gp+1) + ' వధువు  మరియు  '  + aStarNames27[bs]   + ' - ' + (bp+1) + ' వరుడు.';
+		strTemp = '<p class="mytext">'  + aStarNames27[gs]  + ' - '+ (gp+1) + ' girl and  '  + aStarNames27[bs]   + ' - ' + (bp+1) + ' boy.';
 		strTemp+= ' </p>';
 		$(theDiv).append(strTemp); 
 			
-		strTemp = '<table id="anytable"><tr><th>కూటమి</th><th>వధువు</th><th>వరుడు</th><th>గుణం</th></tr>';
+		strTemp = '<table id="anytable"><tr><th>Kootami</th><th>Vadhoo</th><th>Vara</th><th>Points</th></tr>';
 		subPoints = 0;
 		totalPoints = 0;
 
 			
 		find1Varna();
-		strTemp+= '<tr><td>1. వర్ణ కూటమి</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
+		strTemp+= '<tr><td>1. Varna Kootami</td> <td>' + arrayVarnaNames[(girlRasiNum % 4)] + '</td>';	
 		strTemp+= '<td>' + arrayVarnaNames[(boyRasiNum % 4)] + '</td><td>' + thePoints +'</td></tr>';
 		
 		find2Vasya();
-		strTemp+= '<tr><td>2. వశ్య కూటమి</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
+		strTemp+= '<tr><td>2. Vasya Kootami</td> <td>' + arrayVasyas[theRowNum] + '</td>';	
 		strTemp+= '<td>' + arrayVasyas[theColNum] + '</td><td>' + thePoints + '</td></tr>';		
 		
 		
 		find5Grahamaitri();
-		strTemp+= '<tr><td>5. రాశ్యాధిప/గ్రహమైత్రి కూటమి</td> <td>' +  aRasiInfo[girlRasiNum].lord + '</td>';
+		strTemp+= '<tr><td>5. Rasyadhipa/Graha Maitri</td> <td>' +  aRasiInfo[girlRasiNum].lord + '</td>';
 			
 		strTemp+= '<td>' +  aRasiInfo[boyRasiNum].lord + '</td><td>' + thePoints + '</td></tr>';	
 	
 		
 		findNavakam();
 		find3Tara();
-		strTemp+= '<tr><td>3. దిన/తారా కూటమి</td> <td>' + arrayMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
-		strTemp+= '<td>' + arrayMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
+		strTemp+= '<tr><td>3. Dina/Taaraa Kootami</td> <td>' + aMaitriNames[girlDiff] + '_N' + girlNavakam +  '</td>';
+		strTemp+= '<td>' + aMaitriNames[boyDiff] +  '_N' + boyNavakam  + '</td><td>' + thePoints + '</td></tr>' ;
 			
 		
 		find4Yoni();
-		strTemp+= '<tr><td>4. యోని కూటమి</td> <td>' + arrayYoniNames[gs]  + '</td>';
+		strTemp+= '<tr><td>4. Yoni Kootami</td> <td>' + arrayYoniNames[gs]  + '</td>';
 		strTemp+= '<td>' + arrayYoniNames[bs] + '</td><td>' + thePoints + '</td></tr>';
 		
 			
 		find6Gana();
-		strTemp+= '<tr><td>6. గణ కూటమి</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
+		strTemp+= '<tr><td>6. Gana Kootami</td> <td>' +  arrayStarInfo[gs].gananame + '</td>';
 		strTemp+= '<td>' +  arrayStarInfo[bs].gananame + '</td><td>' + thePoints + '</td></tr>';		
 	
 
 		find8Nadi();
-		strTemp+= '<tr><td>8. నాడీ కూటమి</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  // g is 0 to 26
+		strTemp+= '<tr><td>8. Naadi Kootami</td> <td>' +  arrayNadiNames[girlNadiNum] + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  arrayNadiNames[boyNadiNum] +  '</td><td>' + thePoints +'</td></tr>';
 	
 
-		strTemp+= '<tr><td><strong>మొత్తం గుణములు(29 కి)</strong></td> <td>-</td>';  // g is 0 to 26
+		strTemp+= '<tr><td><strong>Calculated points out of 29</strong></td> <td>-</td>';  // g is 0 to 26
 		strTemp+= '<td>-</td><td><strong>' + totalPoints +'</strong></td></tr>';
 
 			
 		find7Bha();
-		strTemp+= '<tr><td>7. భ/రాశి కూటమి</td> <td>' +  rasiG2B + '</td>';
+		strTemp+= '<tr><td>7. Raasi/Bha Kootami</td> <td>' +  rasiG2B + '</td>';
 		strTemp+= '<td>' +  rasiB2G + '</td><td>' + thePoints +'</td></tr>';
 	
 	
 		find10Rajju();
-		strTemp+= '<tr><td>రజ్జు</td> <td>' +  girlRajjuName + '</td>';  // g is 0 to 26
+		strTemp+= '<tr><td>Rajju Kootami</td> <td>' +  girlRajjuName + '</td>';  // g is 0 to 26
 		strTemp+= '<td>' +  boyRajjuName +  '</td><td>' + ' ' +'</td></tr>';
 		
 
@@ -708,86 +717,86 @@ function handleMyMethod(theDiv){
 
 	strTemp = '<p class="mytext">';
 	strTemp += '</p>';
-	strTemp += '<p class="mytext">1. రాశి ఆధార విభజన( 8 కి కనీసం 6)     :';
+	strTemp += '<p class="mytext">1. Rasi based Kootamis( min 6 out of 8)     :';
 	let tempResult = ( parseFloat(arrayResults[0]) + parseFloat(arrayResults[1]) + parseFloat(arrayResults[4]) );
 	strTemp +=  tempResult;
 	if (tempResult >= 6){
 	
-		strTemp += '<span class="mygreen">' + " పొంతన బాగుంది.  " + '</span>' ;
+		strTemp += '<span class="mygreen">' + " Pass.  " + '</span>' ;
 	} else{
-		strTemp += '<span class="myred">' + " పొంతన బాలేదు.  " + '</span>';
+		strTemp += '<span class="myred">' + " Fail.  " + '</span>';
 	}
 	
-	strTemp += '<br>2. తారా బలం ( G-->B తప్పక ఉండాలి.  ):';
+	strTemp += '<br>2. Tara Balam( G-->B is must.  ):';
 	tempResult = findTaraStrict();
 	
 	if (tempResult >= 1){
 	
-		strTemp += '<span class="mygreen">' + " తారా బలం  బాగుంది." + '</span>' ;
+		strTemp += '<span class="mygreen">' + " Pass." + '</span>' ;
 	} else{
-		strTemp += '<span class="myred">' + " తారా బలం  బాలేదు." + '</span>' ;
+		strTemp += '<span class="myred">' + " Fail." + '</span>' ;
 	}
 
-	strTemp += '<br>3. నక్షత్ర ఆధార విభజన( 18 కి కనీసం 7):';
+	strTemp += '<br>3. Star based Kootamis( min 7 out of 18):';
 	tempResult = ( parseFloat(arrayResults[3]) + parseFloat(arrayResults[5]) + parseFloat(arrayResults[7]) ) ;
 	strTemp += tempResult;
 	if (tempResult >= 7){
 	
-		strTemp += '<span class="mygreen">' + " పొంతన బాగుంది." + '</span>' ;
+		strTemp += '<span class="mygreen">' + " Pass." + '</span>' ;
 	} else{
-		strTemp += '<span class="myred">' + " పొంతన బాలేదు." + '</span>' ;
+		strTemp += '<span class="myred">' + " Fail." + '</span>' ;
 	}
 
-	strTemp += '<br>4. ఏక నాడి మరియు ఏక రజ్జు:';
+	strTemp += '<br>4. Same Nadi and Same Rajju:';
 	
 	if(( girlNadiNum == boyNadiNum) && (girlRajjuName == boyRajjuName) ){
 
 		
-		strTemp += '<span class="myred">' + " దోషం ఉన్నది." + '</span>';
+		strTemp += '<span class="myred">' + " Fail." + '</span>';
 	} else{
-		strTemp += '<span class="mygreen">' + "దోషం లేదు." + '</span>' ;
+		strTemp += '<span class="mygreen">' + "Pass." + '</span>' ;
 	}
 
 
 	if ( gs != bs){
 		if (isVedhaStar(gs, bs)){
-			strTemp += '<br>5. వేధ నక్షత్రములు: <span class="myred">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ ఉన్నది." + '<br></span>';
+			strTemp += '<br>5. Vedha Stars Check: <span class="myred">' + " Fail." + '<br></span>';
 		}
 		else
 		{
-			strTemp += '<br>5. వేధ నక్షత్రములు: <span class="mygreen">' + " ఇరువురి నక్షత్రములకు పరస్పర వేధ లేదు." + '<br></span>';
+			strTemp += '<br>5. Vedha Stars Check: <span class="mygreen">' + " Pass." + '<br></span>';
 		}
 	}
 	
 	
-	strTemp += '<h2>గమనిక:</h2>';
-	strTemp += 'ఇది నాపథ్ధతి మాత్రమే  గనుక ఎప్పుడైనా మారవచ్చు. latest = 2019-May-14.<br>';
-	strTemp += 'అయిదు విధాలుగా బాగుంటేనే పొంతన ఉన్నట్లు.<br><br>';   
+	strTemp += '<h2>Note:</h2>';
+	strTemp += 'This is my method. So, can change anytime. latest = 2019-Jun-18.<br>';
+	strTemp += 'Must pass all 5 checks given above.<br><br>';   
 
 	strTemp += '</p><br>';
 
-	strTemp += '<h2>విశ్లేషణ - పద్ధతి</h2><hr>';
+	strTemp += '<h2>Methodology of my method:</h2><hr>';
 
 	strTemp += '<p>';
-	strTemp += '1. రాశి సంబంధ విభజనలో, గ్రహ మైత్రికి 5 లో కనీసం 5 లేక 4 పాయింట్స్ రావాలి. వర్ణ వశ్య కూటములలో రెండిట్లో కలిపి 1 లేక 2 పాయింట్స్ వస్తే చాలు.<br><br>';
-	strTemp += '2.అమ్మాయి నుండి అబ్బాయికి తారా బలం తప్పక ఉండాలి. G-->B నైధన తార అస్సలు పనికి రాదు.  విపత్తార రెండవ, మూడవ నవకంలో పనికొస్తుంది, మొదటి నవకంలో పనికిరాదు. ప్రత్యక్తార మూడవ నవకంలో మాత్రమె పనికి వస్తుంది, మొదటి రెండవ నవకాలలో పనికిరాదు.<br><br>';
-	strTemp += '3. నక్షత్ర సంబంధ విభజనలో - యోని, గణ, నాడీ కూటములు మూడింటా కలిపి కనీసం 7 పాయింట్స్ రావాలి.<br><br>';
-	strTemp += '4. ఒకటే నాడీ, మరియు రజ్జు - రెండు దోషములూ ఉండ కూడదు. కాబట్టి, ఆటోమేటిక్ గా జన్మ తార పనికిరాదు. <br><br>';
-	strTemp += '5. వధూవరుల నక్షత్రముల మధ్య పరస్పర వేధ ఉండకూడదు.<br><br>';
+	strTemp += '1. In Rasi based kootamis, graha Maitri should give at least 4 or 5 and then Varna plus Vasya kootami should give 2 or 1 point.<br><br>';
+	strTemp += '2.Tara balam from girl to boy is a must. G-->B Naidhana tara is rejected in all three navakams. Vipattara is rejected in 1st navakam only. Pratyak tara is rejected in 1st and 2nd navakam.<br><br>';
+	strTemp += '3.In star based kootamis, yoni,gana, nadi kootamis should together give atleast 7 points.<br><br>';
+	strTemp += '4.Same nadi and same rajju is rejected. Which invariably means janma tara is also rejected.<br><br>';
+	strTemp += '5.The stars of the girl and boy must not be mutual Vedha stars.<br><br>';
 	strTemp += '</p>';
 	
-	strTemp += '<h2>మినహాయింపుల పరిశీలన:</h2><hr>';
+	strTemp += '<h2>Exceptions and special rules:</h2><hr>';
 
 
 	if ( arrayResults[0] < 1 )
 	{
-		strTemp += '<span class="myred">' + 'వర్ణ కూటమి లేదు. ' +  'రాశ్యాధిపతులు = ' + aRasiInfo[girlRasiNum].lord + ' & ' + aRasiInfo[boyRasiNum].lord + '</span><br>';
+		strTemp += '<span class="myred">' + 'No varna kootami. ' +  'lord of rasis are - ' + aRasiInfo[girlRasiNum].lord + ' & ' + aRasiInfo[boyRasiNum].lord + '</span><br>';
 	}
 
 
 	if ( arrayResults[1] < 1 )
 	{
-		strTemp += '<span class="myred">' + 'వశ్య కూటమి లేదు. ' + '</span><br>';
+		strTemp += '<span class="myred">' + 'No vasya kootami. ' + '</span><br>';
 	}
 
 	
@@ -796,45 +805,45 @@ function handleMyMethod(theDiv){
 	if(  (girlDiff == 6 &&   girlNavakam  == 1) ||  (boyDiff == 6 &&   boyNavakam  == 1) ) {
 		
 		if( aVadhaOK[gs] || aVadhaOK[bs]  ) {
-			strTemp += '<span class="mygreen">' + " నైధాన తార (N1) అయినా, వధ తార ఫలితం శుభదాయకమే." + '</span><br>';
+			strTemp += '<span class="mygreen">' + " Naidhana Tara in 1st navakam. Vadha Tara result OK." + '</span><br>';
 		}
 		else{
-			strTemp += '<span class="myred">' + " నైధాన తార (N1) అయింది, పైగా వధ తార ఫలితం అశుభము." + '</span><br>';
+			strTemp += '<span class="myred">' + " Naidhana Tara in 1st navakam and Vadha Tara result is not OK." + '</span><br>';
 		}
 	}
 
 
 	if ( arrayResults[3] < 1)
 	{
-		strTemp += '<span class="myred">' + " యోని కూటమిలో పరస్పర వైరం ఉన్నది."  +'</span><br>';
+		strTemp += '<span class="myred">' + " Mutual enemies in Yoni kootami."  +'</span><br>';
 	}
 
 	
 	if ( arrayResults[4] < 4)
 	
 	{
-		strTemp += '<span class="myred">' + "గ్రహ మైత్రి లేదు. </span>"   +  (findGrahamaitriInNavamsa() > 4 ? '<span class="mygreen">చంద్ర నవాంశ అధిపతుల మధ్య పరస్పర మైత్రి - ఉన్నది.' : '<span class="myred">చంద్ర నవాంశ అధిపతుల మధ్య పరస్పర మైత్రి - లేదు.' ) + '</span><br>';
+		strTemp += '<span class="myred">' + "No graha maitri. </span>"   +  (findGrahamaitriInNavamsa() > 4 ? '<span class="mygreen"> But there is maitri between lords of chandra navamsa.' : '<span class="myred"> Also there is no maitri between lords of chandra navamsa.' ) + '</span><br>';
 	}
 
 
 	if (arrayStarInfo[gs].gananum == 3 && arrayStarInfo[bs].gananum != 3)
 	{
-		strTemp += '<span class="myred">' + "అమ్మాయిది రాక్షస గణము." + '</span>';
+		strTemp += '<span class="myred">' + "Girl is Rakshasa Ganam." + '</span>';
 
 
 		let sDeergham = ( (girlDiff+1) + (girlNavakam-1) * 9 ) ;
 		if ( sDeergham >= 14)
 		{
 
-			strTemp += '<span class="mygreen">' + " కాని,  స్త్రీ దీర్ఘం ఉన్నది." + '</span>';
+			strTemp += '<span class="mygreen">' + " Sthree Dergham exists." + '</span>';
 		}
 		else
 		{
-			strTemp +=  '<span class="myred">' + " పైగా స్త్రీ దీర్ఘం లేదు." + '</span>';
+			strTemp +=  '<span class="myred">' + "No sthree deergham." + '</span>';
 		}
 
 	
-		strTemp +=   ( arrayResults[4] > 4 ? '<span class="mygreen"> గ్రహ మైత్రి  ఉన్నది.' : '<span class="myred"> గ్రహ మైత్రి లేదు.') + '</span><br>';
+		strTemp +=   ( arrayResults[4] > 4 ? '<span class="mygreen"> Graha Maitri exists.' : '<span class="myred"> No graha maitri also.') + '</span><br>';
 
 	}
 
@@ -842,39 +851,39 @@ function handleMyMethod(theDiv){
 
 	if ( rasiG2B == 6 || rasiB2G == 6 )
 	{
-		strTemp += '<span class="myred">' + " రాశి/భ కూటమి షష్టాష్టక దోషం ఉన్నది." +  (arrayResults[4] > 3 ? 'కాని, గ్రహమైత్రి ఉన్నది.' : 'పైగా గ్రహ మైత్రి లేదు.') +'</span><br>';
+		strTemp += '<span class="myred">' + "rasi/bha kootami is 6/8." +  (arrayResults[4] > 3 ? 'But graha maitri exists.' : ' And , no graha maitri also.') +'</span><br>';
 	}
 	
 	if ( rasiG2B == 2 || rasiB2G == 2 )
 	{
-		strTemp += '<span class="myred">' + " రాశి/భ కూటమి ద్విర్ద్వాదశ దోషం ఉన్నది." +  (arrayResults[4] > 3 ? 'కాని, గ్రహమైత్రి ఉన్నది.' : 'పైగా గ్రహ మైత్రి లేదు.') +'</span><br>';
+		strTemp += '<span class="myred">' + " rasi/bha kootami is 2/12." +  (arrayResults[4] > 3 ? 'But graha maitri exists.' : 'And , no graha maitri also.') +'</span><br>';
 	}
 
 
 	if ( girlNadiNum == boyNadiNum){
 		if ( getNavamsaNadi(girlNavamsa) == getNavamsaNadi(boyNavamsa) )
 		{
-			strTemp += '<span class="myred">' + " నక్షత్రముల పరంగా ఏక నాడి దోషం ఉన్నది. నక్షత్ర పాదముల పరంగా కూడా ఏక నాడి దోషం ఉన్నది." + '</span><br>';
+			strTemp += '<span class="myred">' + " Nakshatra based same nadi dosham exists. And also as per nakshatra paadaas." + '</span><br>';
 		}
 		else
 		{
-			strTemp += '<span class="myred">' + " నక్షత్రముల పరంగా ఏక నాడి దోషం ఉన్నది." + '</span>' + '<span class="mygreen">' + "నక్షత్ర పాదముల పరంగా ఏక నాడి దోషం లేదు." + '</span><br>';
+			strTemp += '<span class="myred">' + " Nakshatra based same nadi dosham exists." + '</span>' + '<span class="mygreen">' + "But not  as per nakshatra paadaas." + '</span><br>';
 		}
 	}
 	else
 	{
-		strTemp +=  '<span class="mygreen">' + " ఏక నాడి దోషం లేదు." + '</span><br>';
+		strTemp +=  '<span class="mygreen">' + " Same nadi dosha does not exist." + '</span><br>';
 	}
 
 
 	if (girlRajjuName == boyRajjuName)
 	{
 
-		strTemp += '<span class="myred">' + " ఏక రజ్జు దోషం ఉన్నది." + '</span><br>';
+		strTemp += '<span class="myred">' + " Same rajju dosham exists." + '</span><br>';
 	}
 	else
 	{
-		strTemp +=  '<span class="mygreen">' + " ఏక రజ్జు దోషం లేదు." + '</span><br>';
+		strTemp +=  '<span class="mygreen">' + "Same rajju dosham  does not exist." + '</span><br>';
 	}
 
 
@@ -882,11 +891,11 @@ function handleMyMethod(theDiv){
 	if ( sDeergham >= 14)
 	{
 
-		strTemp += '<span class="mygreen">' + " స్త్రీ దీర్ఘం = " + sDeergham + ".  ( G --> B >= 14) ఉన్నది." + '</span><br>';
+		strTemp += '<span class="mygreen">' + " Sthree Deergham = " + sDeergham + ".  ( G --> B >= 14) is good." + '</span><br>';
 	}
 	else
 	{
-		strTemp +=  '<span class="myred">' + " స్త్రీ దీర్ఘం = " + sDeergham + ".  (G --> B >= 14) లేదు." + '</span><br>';
+		strTemp +=  '<span class="myred">' + " Sthree Deergham ం = " + sDeergham + ".  (G --> B >= 14) does not exist." + '</span><br>';
 	}
 
 	
@@ -943,8 +952,8 @@ function printTaras(astar, theDiv){
 					
 		}
             
-		tempStr+= '<tr><td colspan = 7>' + 'అమ్మాయి నక్షత్రం నుండి మూడు నవకములలో వివధ తారలు ఇవ్వబడ్డాయి.' + '</td></tr>';       
-		tempStr+= '<tr><td colspan = 7>' + 'కాబట్టి మీ నక్షత్రం నుండి ఏ ఏ నక్షత్రాలకు తారా బలముంటుందో చూసుకోవచ్చు.' + '</td></tr></table>';       
+		tempStr+= '<tr><td colspan = 7>' + "Different Taras for the star selected as girl's are given." + '</td></tr>';       
+		tempStr+= '<tr><td colspan = 7>' + 'So, you can see Taras for any star, in all three Navakams.' + '</td></tr></table>';       
 		
 		$(theDiv).append(tempStr);
 }
@@ -952,8 +961,8 @@ function printTaras(astar, theDiv){
 
 function printVivahaTaras( bstar, gstar, aVT, theDiv){
 	let gd, bd, tempStr;
-	tempStr = '<br><h2>' + aStarNames27[gstar] + ' అమ్మాయికి,  '  + aStarNames27[bstar] +  ' అబ్బాయికి - వివాహ నక్షత్ర తారా బలం'  + '</h2>';
-	tempStr += '<table><tr><th>సంఖ్య</th><th>వివాహ నక్షత్రం</th><th>అమ్మాయి నుండి</th><th>అబ్బాయి నుండి</th></tr>'
+	tempStr = '<br><h2>' + "Vivaha Nakshatra Tara Balam for - " + aStarNames27[gstar] + ' girl and '  + aStarNames27[bstar] +  ' boy'  + '</h2>';
+	tempStr += '<table><tr><th>SNo</th><th>Marriage Star</th><th>from Girl</th><th>from Boy</th></tr>'
 	for ( let i = 0 ; i < aVT.length; i++){
 
 		
@@ -1005,9 +1014,9 @@ function printVivahaTaras( bstar, gstar, aVT, theDiv){
 		
 
 	}
-	tempStr += '<tr><td colspan =4>' + 'ముందుగా పంచాగం చూసి, ఎన్నుకున్న నెలలో ఇచ్చిన వివాహ ముహూర్తములు, వాటి  నక్షత్రములు రాసుకోవాలి.' + '</td></tr>';
-	tempStr += '<tr><td colspan =4>' + 'ఇక్కడ ఆ నక్షత్రములు వధూవరులకు ఇద్దరికీ సరిపోతాయో లేదో చూడవచ్చు.' + '</td></tr>';
-	tempStr += '<tr><td colspan =4>' + 'జన్మ మరియు ముఖ్యంగా విపత్, ప్రత్యక్, నైధన - తారలు అయితే, ఆ ముహూర్తం వదిలివేయడం మంచిది.' + '</td></tr>';
+	tempStr += '<tr><td colspan =4>' + 'Consult panchangam and write down nakshatras of given marriage muhurtha.' + '</td></tr>';
+	tempStr += '<tr><td colspan =4>' + 'You can check if stars of girl and boy are suitable for those muhurta stars.' + '</td></tr>';
+	tempStr += '<tr><td colspan =4>' + 'Janma tara and especially vipath, pratyak and Naidhana are avoided.' + '</td></tr>';
 	tempStr += '</table>';
 
 	$(theDiv).append(tempStr);

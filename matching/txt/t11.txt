@@ -1,0 +1,7 @@
+<h2>Sthree Deergha Kootami</h2><hr>
+<p>
+Sthree deergham shows how far is the boy's star from that of the girl's. Better if G -> B is 14 or more.<br><br>
+
+<p><span class = "minahaa">Exception:</span><br>
+OK, if Graha Maitri and Rasi Kootami exist.<br><br></p>
+<p><b>Note:</b><br>Telugu people do not give much importance to this.</p>

@@ -1,0 +1,38 @@
+﻿<h2>Vadha Nakshatras Table </h2><hr>
+<table>
+<caption>Vadha nakshatras - Prasna Marga</caption>
+<tr>
+
+<th>Nakshatra</th><th>Vadha Nakshatra</th><th>Result</th><th>OK?</th></tr>
+<tr><td>Aswini</td><td>Punarvasu</td><td>more female kids</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Bharani</td><td>Pushyami</td><td>Prosperity</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Kruttika</td><td>Aslesha</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Rohini</td><td>Makha</td><td>more male kids</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Mrugasira</td><td>PoorvaPhalguni</td><td>death or seperation</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Ardra</td><td>UttaraPhalguni</td><td>happiness</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Punarvasu</td><td>Hasta</td><td>family welfare</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Pushyami</td><td>Chitta</td><td>happiness</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Aslesha</td><td>Swati</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Makha</td><td>Visakha</td><td>two marriages</td><td><img src="img/wrong.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>PoorvaPhalguni</td><td>Anuradha</td><td>Comforts</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>UttaraPhalguni</td><td>Jyeshta</td><td>disputes, speration</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Hasta</td><td>Moola</td><td>miseries</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Chitta</td><td>PoorvaShaada</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Swati</td><td>UttaraShaada</td><td>more female kids</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>Visakha</td><td>Sravana</td><td>enemity with spouse</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Anuradha</td><td>Dhanishta</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Jyeshta</td><td>Satabhisha</td><td>disputes, seperation</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Moola</td><td>PoorvaBhaadra</td><td>prosperity</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>PoorvaShaada</td><td>UttaraBhaadra</td><td>love</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>UttaraShaada</td><td>Revati</td><td>seperation</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Sravana</td><td>Aswini</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Dhanishta</td><td>Bharani</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Satabhisha</td><td>Kruttika</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>PoorvaBhaadra</td><td>Rohini</td><td>more male kids</td><td><img src="img/right.png" style="width: 16px;" alt="OK"></td></tr>
+<tr><td>UttaraBhaadra</td><td>Mrugasira</td><td>death</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+<tr><td>Revati</td><td>Ardra</td><td>disputes, seperation</td><td><img src="img/wrong.png" style="width: 16px;" alt="X"></td></tr>
+
+<tr><td colspan='4'><img src="img/attention.png" style="width: 18px;" alt="!"> Normally, Naidhana Taara is not acceptable.</td></tr>
+<tr><td colspan='4'>This table gives few exceptions for Naidhana Tara in 1st Navakam</td></tr>
+<tr><td colspan='4'>Reasons are not known. Telugu people do not follow this.</td></tr>
+</table>
