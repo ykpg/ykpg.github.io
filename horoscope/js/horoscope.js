@@ -2324,3 +2324,40 @@ function onRowClickFillData()
 	
 }
 
+
+var getChart = function() 
+{
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //console.log(xhttp.responseText);
+                let response = JSON.parse( xhttp.responseText );
+                let charts = response.charts;
+                console.log(response.charts);
+                let theName = document.getElementById('name').value;
+                theName = theName.trim();
+                theName = theName.toUpperCase();
+                console.log(theName);
+                for( let i = 0 ; i < charts.length; i++)
+                {
+                    console.log("i = " + i + ", name = " + charts[i].tzone);
+                    if ( theName == charts[i].name.toUpperCase() )
+                    {
+                        document.getElementById('tz').value = charts[i].tzone;
+                        document.getElementById('lat').value = charts[i].lati;
+                        document.getElementById('lon').value = charts[i].longi;
+                        thePlaceName = charts[i].pob;
+                        document.getElementById('date').value = charts[i].dob;
+                        document.getElementById('time').value = charts[i].tob;
+                        document.getElementById('name').value = charts[i].name;
+                    }
+                }         
+            }
+        };
+        xhttp.open("GET", "charts.json", true);
+        xhttp.send();
+	
+};
+
+
