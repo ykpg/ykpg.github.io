@@ -369,8 +369,8 @@ function printKujaDosham(theDiv){
     let posSukra = mygrahas[6].rasizn;
     let posGuru = mygrahas[5].rasizn;
     let relativePosLK, relativePosCK, relativePosSK, relativePosGK;
-    strTemp = '<h2>Kuja Dosham:</h2><hr><p class="main" >Kuja Dosham is defined as situation of kuja in: <br>';
-    strTemp += aKujaDoshaPos.toString() + ' from Lagna/Chandra/Sukra.</p>'
+    strTemp = '<h2>Kuja Dosham:</h2><hr><p class="main" ><B>Kuja Dosham is defined as situation of kuja in: <br>';
+    strTemp += aKujaDoshaPos.toString() + ' from Lagna/Chandra/Sukra.</B></p>'
     
     relativePosLK = findRelativePos(posLagna,posKuja);
 
@@ -385,7 +385,7 @@ function printKujaDosham(theDiv){
     strTemp += '<p class="main" >from Sukra' + ' Kuja is in: ' + relativePosSK  + '.&nbsp' ;
     strTemp += (aKujaDoshaPos.includes(relativePosSK) ? 'Dosham - Yes.</p>' : 'Dosham - No.</p>');
     
-    strTemp += '<p class="main">';
+    strTemp += '<p class="main">' + "<br><B>Exceptions given below,  if any, are, as per Mr BV Raman:</B>" + '<br><br>';
    
 
     if ( (relativePosLK == 2 ||  relativePosCK == 2 || relativePosSK == 2) && ( posKuja == 3 || posKuja == 6)){
@@ -425,11 +425,11 @@ function printKujaDosham(theDiv){
     if(relativePosGK == 5 || relativePosGK == 9 || relativePosGK == 4 || relativePosGK == 7 || relativePosGK == 10){
         strTemp += 'Note: Kuja is in Kendra or Kona from Guru.';
     }
-
-    strTemp += '</p><p class="main">Note: Exceptions if any, are, as per Mr BV Raman.<br>';
+    /*
+    strTemp += '</p><p class="main"><B>Note:</B><br>';
     strTemp += 'In my opinion, Kuja in Lagna or in 2nd from Moon is Ok.';
     strTemp += ' From Sukra, only Kuja in 7th is critical.</p>';
-    
+    */
     $(theDiv).empty();
     $(theDiv).append(strTemp);
 
